@@ -77,7 +77,7 @@ TCP/IP は 4 層に分かれた通信方法を定義しています。1 層の�
 
 TCP/IP の階層は、上から「アプリケーション層」「トランスポート層」「インターネット層」「ネットワークインターフェイス層」の 4 層に分かれています。TCP/IP は 4 つの階層のプロトコルが正常に機能して初めて通信ができます。覚え方は上の層が人間が利用するアプリケーションに関係すること、中間層がアプリケーション通信をする際の補助的な役割を果たすもの、下層が電気信号などの物理的な信号に対して送られる暗号のようなものとして分けて考えると理解しやすいです。
 
-### プロキシサーバーとは
+### What is Proxy Server?
 
 - プロキシサーバーとは、インターネットへのアクセスを代理で行うサーバーのこと。
 - 通常はパソコンやモバイル端末のブラウザを経由して直接 Web サイトへアクセスし、サーバーがデータをブラウザに返すことで画面に Web サイトが表示されます。
@@ -88,3 +88,4 @@ TCP/IP の階層は、上から「アプリケーション層」「トランス�
 - https://cloud.google.com/load-balancing/docs/load-balancing-overview
 - https://www.itmanage.co.jp/column/tcp-ip-protocol/
 - https://jp.norton.com/internetsecurity-etc-proxy-server.html
+- https://www.fortinet.com/resources/cyberglossary/proxy-server
