@@ -18,6 +18,34 @@ you must first determine
 - whether you need global or regional load balancing, external or internal
 - load balancing, and proxy or pass-through load balancing.
 
+### Traffic type
+
+The type of traffic that you need your load balancer to handle is another factor in determining which load balancer to use:
+
+**HTTP and HTTPS traffic:**
+
+- Global external HTTP(S) load balancer
+- Global external HTTP(S) load balancer (classic)
+- Regional external HTTP(S) load balancer
+- Internal HTTP(S) load balancer
+
+**SSL traffic:**
+
+- External SSL proxy load balancer
+
+**TCP traffic:**
+
+- External TCP proxy load balancer
+- External TCP/UDP network load balancer
+- Internal TCP/UDP load balancer
+- Internal regional TCP proxy load balancer (Preview)
+
+**UDP traffic:**
+
+- External TCP/UDP network load balancer
+- Internal TCP/UDP load balancer
+- Network load balancer
+
 ### External vs internal load balancing
 
 - Google Cloud load balancers can be divided into external and internal load balancers:
@@ -49,7 +77,14 @@ TCP/IP は 4 層に分かれた通信方法を定義しています。1 層の�
 
 TCP/IP の階層は、上から「アプリケーション層」「トランスポート層」「インターネット層」「ネットワークインターフェイス層」の 4 層に分かれています。TCP/IP は 4 つの階層のプロトコルが正常に機能して初めて通信ができます。覚え方は上の層が人間が利用するアプリケーションに関係すること、中間層がアプリケーション通信をする際の補助的な役割を果たすもの、下層が電気信号などの物理的な信号に対して送られる暗号のようなものとして分けて考えると理解しやすいです。
 
-**References:**
+### プロキシサーバーとは
+
+- プロキシサーバーとは、インターネットへのアクセスを代理で行うサーバーのこと。
+- 通常はパソコンやモバイル端末のブラウザを経由して直接 Web サイトへアクセスし、サーバーがデータをブラウザに返すことで画面に Web サイトが表示されます。
+- これに対してプロキシサーバーを使用すると、ブラウザで直接 Web サイトにアクセスせずに、プロキシサーバーにアクセス、プロキシサーバーが代わりに目的のサイトにアクセスしてデータを受け取り、ブラウザにデータを渡して表示させます。
+- Proxies provide a valuable layer of security for your computer. They can be set up as web filters or firewalls, protecting your computer from internet threats like malware.
+  **References:**
 
 - https://cloud.google.com/load-balancing/docs/load-balancing-overview
 - https://www.itmanage.co.jp/column/tcp-ip-protocol/
+- https://jp.norton.com/internetsecurity-etc-proxy-server.html
