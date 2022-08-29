@@ -40,17 +40,6 @@ By default, each Compute Engine instance has a small boot persistent disk that c
 - Do not offer AutoScaling
 - No support instance template
 
-## HOW TO CREATE INSTANCE GROUPS IN COMPUTE ENGINE?
-
-### What is Instance Group?
-
-Instance group is nothing but a group of virtual machine instances managed as a single entity. You can manage groups of similar VMs having a similar life cycle as one unit and you can create two types of Instance group in Compute Engine.
-
-- Managed instance group
-- Unmanaged Instance group
-
-Instance group is the basis for Autoscaling group, Load balancers and Autohealing.
-
 **References:**
 
 - https://cloud.google.com/compute/docs/instances
