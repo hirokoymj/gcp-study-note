@@ -6,7 +6,7 @@ Q1:When you run a Kubanates engine cluster on google cloud platform, you gain th
 2. Automatic scalling of your claster's count - (Auto scale)
 3. Load balancing for instances(Global load balancing)
 4. Automatic upgrades for your cluster's node software
-5. All of the above
+5. All of the above (a)
 
 https://cloud.google.com/kubernetes-engine#:~:text=Pod%20and%20cluster%20autoscaling,CPU%20utilization%20or%20custom%20metrics.
 
