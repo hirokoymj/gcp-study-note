@@ -136,7 +136,7 @@ Q14: With the help of managed instance group a company deployed its web applicat
 Q15: You need to choose and design register asset for a set of batch progressing jobs. These jobs take around two hours to finish and run nightly. In order to limit administrator costs what would you choose?
 
 1. Select GKE and Use a single-node cluster with a small instance type.
-2. Select GKE and Use a three-node cluster with micro instance types.
+2. Select GKE and Use a three-node cluster with micro instance types. (a)
 3. Select Compute Engine and use preemptible VM instance of the standard type.
 
 <hr />
