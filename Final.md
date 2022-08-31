@@ -107,7 +107,7 @@ Q11: Hema is working as a Network Engineer in a Cloud consulting company. Their 
 1. You will be charge for the total inbound and outgoing traffic of GCP.
 2. instances with external IP or the use NAT can access internet.
 3. Both ingress request an degress request traffics are chargable.
-4. Your outbound HTTP requests will be count as egress traffic and you will be charged.
+4. Your outbound HTTP requests will be count as egress traffic and you will be charged. (a)
 
 <hr />
 
