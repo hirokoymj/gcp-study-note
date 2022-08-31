@@ -24,7 +24,7 @@ Q2: Company X is planing to deploy a web application to Google cloud hosted on a
 Q3: You have created two types of instances to deliver different types of files based on incoming URL, For example we want to spend request for http://www.example.com/audio to one instance and request for http://www.example.com/video to another instance. Which type of load balancer is perfered in this scenario?
 
 1. TCP load balancer
-2. HTTP(s) load balancer
+2. HTTP(s) load balancer (a)
 3. UDP load balancer
 4. Any of the above
 
