@@ -15,9 +15,9 @@ https://cloud.google.com/kubernetes-engine#:~:text=Pod%20and%20cluster%20autosca
 Q2: Company X is planing to deploy a web application to Google cloud hosted on a custom Linux distribution. The web site is going to be accesible globally and desires to scale to satisfy demand.(Select two)
 
 1. Network Load Balancer
-2. App Engine Standard Environment
+2. App Engine Standard Environment (a)
 3. HTTP load Balancer
-4. Managed Instance Group on Compute Engine
+4. Managed Instance Group on Compute Engine (a)
 
 <hr />
 
