@@ -119,7 +119,7 @@ Q13: Stephen is deployed application on App Engine that has to integrate with an
 
 1. Deploy his appliation on App Engine standard environment and use App Engine firewall rules to limit access to the on-premise database.
 2. Deploy his appliation on App Engine standard environment and use Cloud VPN limit access to opne the on-premise database.
-3. Deploy his appliation on App Engine flexible environment and use App Engine firewall rules to limit access to the on-premise database.
+3. Deploy his appliation on App Engine flexible environment and use App Engine firewall rules to limit access to the on-premise database. (a)
 4. Deploy his appliation on App Engine flexible environment and use Cloud VPN limit access to on the on-premise database.
 
 <hr />
