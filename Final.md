@@ -143,7 +143,7 @@ Q15: You need to choose and design register asset for a set of batch progressing
 
 Q16: An Enterprise wants to have a hybrid solution where the instances in cloud can communicate to their on-premise data center and vice versa. They created VPC and provision ed their resource in it. What would be the best solution?
 
-1. Create a custom mode Network adn use Dynamic routes to allow instances to communicate on-premises resources and vice versa.
+1. Create a custom mode Network adn use Dynamic routes to allow instances to communicate on-premises resources and vice versa.(a)
 2. Create an auto mode network and subnets
 3. Create a custom mode Network and use static routes to. How instance to communicate on-premises resource and vice versa.
 
