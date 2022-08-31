@@ -154,7 +154,7 @@ Q17: You have created an instance template in us-central-b zone and wan to creat
 1. Instance template is a global resource which can be unconditionally used across zones or regions
 2. Instance template can be used across zones or regions without any zonal resources in it
 3. Create identical template for each rezion and create managed instance group based on the indifidual templates.
-4. Copy one instance template to another region using copy-instance template command then use to create instance group in other regions.
+4. Copy one instance template to another region using copy-instance template command then use to create instance group in other regions.(a)
 
 <hr />
 Q18 Aron needs to bulid up a Compute Engine application in a solitary VPC accross two regions. The application should communicate over VPN to an on-premises network. How should the deploy the VPN?
