@@ -160,7 +160,7 @@ Q17: You have created an instance template in us-central-b zone and wan to creat
 Q18 Aron needs to bulid up a Compute Engine application in a solitary VPC accross two regions. The application should communicate over VPN to an on-premises network. How should the deploy the VPN?
 
 1. Deploy Cloud VPN gateway in each region and ensure that each resion has at least one VPN tunnel to the on-premise peer gateway.
-2. Create a Global Cloud VPN Gateway with VPN tunnels from each region to the on-premises Peer gateway.
+2. Create a Global Cloud VPN Gateway with VPN tunnels from each region to the on-premises Peer gateway.(a)
 3. Using VPC Shareing expose the VPC to on-premises n/w
 4. None of the above
 
