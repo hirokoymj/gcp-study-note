@@ -33,16 +33,16 @@ https://cloud.google.com/compute
 - A root persistent disk for instances
 - It contains a root file system and OS that will run on your instances.
 
-![image](./compupte-engine/gce1-region.PNG)
-![image](./compupte-engine/gce2-machine-type.PNG)
-![image](./compupte-engine/gce3-1-boot-disk-change.PNG)
-![image](./compupte-engine/gce3-2-boot-disk.PNG)
-![image](./compupte-engine/gce4-firewall.PNG)
-![image](./compupte-engine/gce5-detail.PNG)
-![image](./compupte-engine/gce5-1-network.PNG)
-![image](./compupte-engine/gce5-2-network-2.PNG)
-![image](./compupte-engine/gce5-3-security.PNG)
-![image](./compupte-engine/region-zones.PNG)
+![image](./compute-engine/gce1-region.PNG)
+![image](./compute-engine/gce2-machine-type.PNG)
+![image](./compute-engine/gce3-1-boot-disk-change.PNG)
+![image](./compute-engine/gce3-2-boot-disk.PNG)
+![image](./compute-engine/gce4-firewall.PNG)
+![image](./compute-engine/gce5-detail.PNG)
+![image](./compute-engine/gce5-1-network.PNG)
+![image](./compute-engine/gce5-2-network-2.PNG)
+![image](./compute-engine/gce5-3-security.PNG)
+![image](./compute-engine/region-zones.PNG)
 
 <hr />
 
@@ -60,7 +60,7 @@ https://cloud.google.com/compute
 - Public images are provided and maintained by Google, open source communities, and third-party vendors. By default, all Google Cloud projects have access to these images and can use them to create instances.
 - Custom images are available only to your Cloud project. You can create a custom image from boot disks and other images. Then, use the custom image to create an instance.
 
-![image](./compupte-engine/custom-image2.PNG)
+![image](./compute-engine/custom-image2.PNG)
 
 **References:**
 
@@ -134,7 +134,7 @@ sudo mount -o discard,defaults /dev/DEVICE_NAME /mnt/disks/MOUNT_DIR
 sudo chmod a+w /mnt/disks/MOUNT_DIR
 ```
 
-![image](./compupte-engine/persist-format.PNG)
+![image](./compute-engine/persist-format.PNG)
 
 <hr />
 
