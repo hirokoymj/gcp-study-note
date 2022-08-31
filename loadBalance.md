@@ -1,10 +1,74 @@
 # Load Balance
 
+**Scenario**
+
+- Web application is accessible using the public IP address
+- Customer base has increased to around 10000 hits
+- Organization is expecting further increase in customer base in next 3 months
+
+**Requirements**
+
+- Distribute HTTP requests
+- Manage application load
+- Need a single end point
+
+**Solution**
+
+- HTTP(s) load balancing
+  ![image](./load-balance/lb2.PNG)
+
+## Lab
+
+1. Networking -> Network Services -> Load Balancing
+
+![image](./load-balance/demo1.PNG)
+![image](./load-balance/demo2.PNG)
+![image](./load-balance/demo3.PNG)
+![image](./load-balance/demo4.PNG)
+![image](./load-balance/demo5.PNG)
+![image](./load-balance/demo6.PNG)
+![image](./load-balance/demo7.PNG)
+![image](./load-balance/demo8.PNG)
+![image](./load-balance/demo9.PNG)
+
+## Quiz
+
+**Q1:** When your backends are distributed across multiple regions, users need access to the same applications and content, and you want to provide access by using a single anycast IP address. Which load balancing would be the better option?
+
+1. Regional Load Balancing
+2. Global Load Balancing (Correct)
+3. Internal Load Balancing
+
+> Global load balancing is used when your applications are available across the world
+
+**Q2:** Your company is planning to roll out a new version of their API. While they do so, they need to ensure that the old version of API is also available till that time customers and testers try out the new API.
+So what want a mechanism to keep the same SSL and DNS records in place to serve both APIs. What should they do?
+
+1. Configure a new load balancer for the new version of the API.
+2. Reconfigure old clients to use new endpoint for new API
+3. Have old API forward traffic to new API based on path
+4. Use separate backend pools for each API path behind the load balancer (Correct)
+
+> This solution meets both requirements: continue servicing old and new API and keep the same SSL and DNS records
+
+**Q3:** Heena is looking for a solution that offers proxy-based load balancers for TCP and SSL traffic, and need to use globally distributed infrastructure.
+Which service(s) should she use?
+
+1. TCP Proxy for TCP traffic for external load balancing (Correct)
+2. SSL Proxy for SSL offload for external load balancing (Correct)
+3. Network Load Balancing for external load balancing
+
+> Use TCP proxy load balancer when you are dealing with TCP traffic and do not need SSL offload.
+> Use SSL proxy load balancer when you are dealing with TCP traffic and need SSL offload.
+> Network Load Balancing is for TCP/UDP traffic.
+
+<hr />
+
 ### Cloud Load Balancing overview
 
 A load balancer distributes user traffic across multiple instances of your applications. By spreading the load, load balancing reduces the risk that your applications experience performance issues.
 
-![image](./load1.png)
+![image](./load-balance/load1.png)
 
 ### About Cloud Load Balancing
 
@@ -83,7 +147,8 @@ TCP/IP の階層は、上から「アプリケーション層」「トランス�
 - 通常はパソコンやモバイル端末のブラウザを経由して直接 Web サイトへアクセスし、サーバーがデータをブラウザに返すことで画面に Web サイトが表示されます。
 - これに対してプロキシサーバーを使用すると、ブラウザで直接 Web サイトにアクセスせずに、プロキシサーバーにアクセス、プロキシサーバーが代わりに目的のサイトにアクセスしてデータを受け取り、ブラウザにデータを渡して表示させます。
 - Proxies provide a valuable layer of security for your computer. They can be set up as web filters or firewalls, protecting your computer from internet threats like malware.
-  **References:**
+
+## References:
 
 - https://cloud.google.com/load-balancing/docs/load-balancing-overview
 - https://www.itmanage.co.jp/column/tcp-ip-protocol/
