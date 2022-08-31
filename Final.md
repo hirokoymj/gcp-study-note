@@ -127,9 +127,9 @@ Q13: Stephen is deployed application on App Engine that has to integrate with an
 Q14: With the help of managed instance group a company deployed its web application on multiple instances. If an instance gets crashed, which assertion would be right for this senario from the below options? Select two.
 
 1. Automatically the managed instance group creates an instance with a random name.
-2. The managed instance group creates an instance with a new instance template.
+2. The managed instance group creates an instance with a new instance template.(a)
 3. Traffic will not be sent to the VM that went down.
-4. Automatically, new instance gets created with the instance template that is suppled during the creation of a VM.
+4. Automatically, new instance gets created with the instance template that is suppled during the creation of a VM. (a)
 
 <hr />
 
