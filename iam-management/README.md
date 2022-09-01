@@ -98,6 +98,7 @@ https://cloud.google.com/products/operations#all-features
 ## Cloud Monitoring (Stackdriver)
 
 ![](./images/operations-menu.PNG)
+![](./images/logging.png)
 ![](./images/sd2.PNG)
 ![](./images/sd3.PNG)
 ![](./images/sd4.PNG)
@@ -124,9 +125,61 @@ https://cloud.google.com/products/operations#all-features
 
 - **Cloud Profiler** provides continuous profiling of resource consumption in your production applications,
 
-
 ### Security management
+
 - Cloud Audit Logs provides near real-time user activity visibility across Google Cloud.
+
+## Cloud Operations monitoring agent
+
+https://cloud.google.com/monitoring/agent
+
+Google Cloud's operations suite provides the following agents for collecting metrics on Linux and Windows VM instances.
+
+- Ops Agent:
+  > The primary agent and preferred agent for collecting telemetry from your Compute Engine instances.
+- Legacy Monitoring agent:
+  > Gathers system and application metrics from virtual machine instances and sends them to Cloud Monitoring
+
+## Stackdriver with Kubernetes
+
+Step 1.
+
+- The GKE comes pre-configured with 3 monitoring tools – Prometheus,
+  Metrics server, and Stack Driver Agent as part of the cluster setup itself.
+
+```js
+kubectl get pods --all-namespaces
+```
+
+Step 2.
+To view an application/workload metrics we will deploy a sample nginx Pad and a NodePort service to expose it.
+
+
+To create the Pod and the service we will use the command 
+
+```js
+kubectl create -f sample-nginx.yaml
+kubectl create -f sample-expose.yaml
+```
+
+**Step 3. Simulating Load to the Pod application**
+
+To view the metrics related to the application deployed, we will install
+“Siege” which is a load testing application to load test HTTP endpoints
+
+```js
+sudo apt-get update -y
+sudo apt-get install -y siege
+kubectl get nodes -o wide // view the external IP of the worker Nodes.
+
+siege http://<any-worker-node-external-ip>:<node-port-exposed> -c
+<concurrent users count (10-255)>
+```
+
+![](./images/kuber-1.PNG)
+![](./images/kuber-2.PNG)
+![](./images/kuber-3.PNG)
+![](./images/kuber-4.PNG)
 
 ## Quiz - Cloud Monitoring and Logging
 
@@ -173,4 +226,7 @@ Select one or more options:
 
 1. Cloud Trace (a)
 2. Cloud Profiler
-3. Explanation :
+
+- https://cloud.google.com/products/operations#all-features
+- latency = 待ち時間
+- up-time = 使用可能時間, 稼働 time
