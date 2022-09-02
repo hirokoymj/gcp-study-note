@@ -294,38 +294,61 @@ Kubectl get pod
 
 ## Creating a ConfigMap
 
-https://cloud.google.com/kubernetes-engine/docs/concepts/configmap
-
-- the key/value pair value
-
-
-Step 3 – Create a file config-demo.yaml with the below content
+- https://cloud.google.com/kubernetes-engine/docs/concepts/configmap
+- https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/
 
 ```js
-apiVersion: v1
-kind: ConfigMap
-metadata:
-name: myfirst-configmap
-namespace: default
-data:
-region-1: London
-region-2: Ireland
+kubectl create configmap <map-name> <data-source>
 ```
 
+**Example**
 
-Step 4 – Create Configmap with the below command
 ```js
+# Create the local directory
+mkdir -p configure-pod-container/configmap/
+
+# Download the sample files into `configure-pod-container/configmap/` directory
+wget https://kubernetes.io/examples/configmap/game.properties -O configure-pod-container/configmap/game.properties
+wget https://kubernetes.io/examples/configmap/ui.properties -O configure-pod-container/configmap/ui.properties
+
+# Create the configmap
+kubectl create configmap game-config --from-file=configure-pod-container/configmap/
 ```
 
-a) kubectl create -f config-demo.yaml
-b) View the detailed information of the ConfigMap using the below command
-kubectl describe configmaps myfirst-configmap
+**Display details of the ConfigMap:**
 
+```js
+kubectl describe configmaps game-config
+```
 
+**Output**
 
+```js
+Name:         game-config
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
 
+Data
+====
+game.properties:
+----
+enemies=aliens
+lives=3
+enemies.cheat=true
+enemies.cheat.level=noGoodRotten
+secret.code.passphrase=UUDDLRLRBABAS
+secret.code.allowed=true
+secret.code.lives=30
+ui.properties:
+----
+color.good=purple
+color.bad=yellow
+allow.textmode=true
+how.nice.to.look=fairlyNice
+```
 
-
+## GKE Services
 
 ## GKE ClusterIP
 
