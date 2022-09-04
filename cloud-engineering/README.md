@@ -1,6 +1,44 @@
+## Cloud Identity
 
-- Stackdriver
-- const management
+https://cloud.google.com/identity/docs/overview
+https://cloud.google.com/identity/
+
+**Cloud Identity** is an Identity as a Service (IDaaS) solution that centrally manages users and groups. You can configure Cloud Identity to federate identities between Google and other identity providers, such as Active Directory and Azure Active Directory.
+
+1. Multi-factor authentication (MFA)
+2. Endpoint management
+3. Single sign-on (SSO)
+   Enable employees to work from virtually anywhere, on any device, with single sign-on to thousands of pre-integrated apps, both in the cloud and on-premises.
+
+## Stackdriver
+
+Stackdriver is a one-stop solution for **Monitoring**, **Logging**, **Tracing**,
+**Debugging**, **Profiling** and **error reporting**. **Stackdriver workspaces** provide
+centralized control over metric data across multiple projects in your GCP
+account.
+
+## Stackdriver workspaces
+
+- Create a workspace, add projects and merge workspaces
+
+**Add a project in an existing workspace **
+
+0. Operation: Monitoring -> Settings
+1. Observe the workspace if it is already created.
+2. Add GCP projects. Observe the host project and monitored project.
+
+![](images/stackdriver-1.PNG)
+![](images/stackdriver-2.PNG)
+![](images/stackdriver-3.PNG)
+![](images/stackdriver-4.PNG)
+![](images/stackdriver-5.PNG)
+
+## Billing Report
+
+Menu -> Billing -> Reports
+
+![](images/billing1.PNG)
+![](images/billing2.PNG)
 
 ## Quiz - Setting up a cloud solution environment
 
@@ -31,10 +69,13 @@ An enterprise has migrated their workload to GCP. The applications are organized
 2. You can add multiple projects to single workspace and extract all the metric data
 3. Use of third-party solutions is not the best solution as Stackdriver provides simple solution to address the given requirement
 ```
+
 <hr />
 
 Choosing the right computing option - Go
+
 ## Quiz- Planning and configuring a cloud solution
+
 https://www.youtube.com/watch?v=2tLXKCgqwLY
 
 Choose network connectivity options
@@ -223,9 +264,7 @@ Permissions determine what operations are allowed on a resource. In the IAM worl
 
 A role is a collection of permissions
 
-
 ## BigQuery : Querying external data
-
 
 ## Quiz : Successful operations on GCP
 
