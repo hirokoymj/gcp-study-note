@@ -1,3 +1,7 @@
+
+- Stackdriver
+- const management
+
 ## Quiz - Setting up a cloud solution environment
 
 **Q1**
@@ -27,9 +31,16 @@ An enterprise has migrated their workload to GCP. The applications are organized
 2. You can add multiple projects to single workspace and extract all the metric data
 3. Use of third-party solutions is not the best solution as Stackdriver provides simple solution to address the given requirement
 ```
+<hr />
 
+Choosing the right computing option - Go
 ## Quiz- Planning and configuring a cloud solution
+https://www.youtube.com/watch?v=2tLXKCgqwLY
 
+Choose network connectivity options
+Choose load balancing options
+https://www.youtube.com/watch?v=tc2940Zwvyk
+GCP Billing
 **Q1**
 
 A developer has written a Python application and wants to deploy the application in a managed environment which can scale within seconds to cater huge traffic spikes hitting the application. Which of the following is most appropriate service to host the application?
@@ -166,11 +177,55 @@ https://cloud.google.com/compute/docs/gpus
 
 ![](./images/gpu.PNG)
 
-## BigQuery : Cost controls
+## BigQuery : Managing IAM permissions
 
-Project level, user level
+https://cloud.google.com/iam/docs/overview
 
-Menu -> IAM Admin -> Quatas Quata(割り当て)
+## How IAM works
+
+- With IAM, you manage access control by defining who (identity) has what access (role) for which resource. For example, Compute Engine virtual machine instances, Google Kubernetes Engine (GKE) clusters, and Cloud Storage buckets are all Google Cloud resources. The organizations, folders, and projects that you use to organize your resources are also resources.
+
+- In IAM, permission to access a resource isn't granted directly to the end user. Instead, permissions are grouped into roles, and roles are granted to authenticated principals. (In the past, IAM often referred to principals as members. Some APIs still use this term.)
+
+## Concepts related to identity
+
+In IAM, you grant access to principals. Principals can be of the following types:
+
+- Google Account
+- Service account
+- Google group
+- Google Workspace account
+- Cloud Identity domain
+
+**Google Account**
+A Google Account represents a developer, an administrator, or any other person who interacts with Google Cloud. Any email address that's associated with a Google Account can be an identity, including gmail.com or other domains.
+
+**Service account**
+A service account is an account for an application or compute workload instead of an individual end user.
+
+**Google group**
+A Google group is a named collection of Google Accounts and service accounts.
+
+**Cloud Identity domain or G Suite domain**
+alias@example.com
+
+<hr />
+
+**Resource**
+
+If a user needs access to a specific Google Cloud resource, you can grant the user a role for that resource. Some examples of resources are projects, Compute Engine instances, and Cloud Storage buckets.
+
+**Permissions**
+
+Permissions determine what operations are allowed on a resource. In the IAM world, permissions are represented in the form of service.resource.verb, for example, pubsub.subscriptions.consume.
+
+**Roles**
+
+A role is a collection of permissions
+
+
+## BigQuery : Querying external data
+
 
 ## Quiz : Successful operations on GCP
 
