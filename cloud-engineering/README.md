@@ -156,7 +156,7 @@ Premptible instances cannot live more than 24 hours
 
 ## GKE
 
-- Google Kubernetes Engine (GKE) provides a managed environment for deploying, managing, and scaling your containerized applications using Google infrastructure
+- Google Kubernetes Engine (GKE) for your containerized applications.
 - GKE clusters are powered by the Kubernetes open source cluster management system.
 - **Autopilot**: GKE provisions and manages the cluster's underlying infrastructure, including nodes and node pools, giving you an optimized cluster with a hands-off experience.
 - **Standard**: You manage the cluster's underlying infrastructure, giving you node configuration flexibility
@@ -169,8 +169,6 @@ Premptible instances cannot live more than 24 hours
   - Prototyping
   - Testing
   ```
-
-- Reginal Cluster
 
 ![](./images/kuber1.PNG)
 ![](./images/kuber2.PNG)
@@ -193,29 +191,52 @@ Premptible instances cannot live more than 24 hours
 8. Nodes - Image type, Machine config.
 9. Create -> Create cluster creation
 10. Connect -> Run in Cloud Shell
-
-**To view the worker nodes in the cluster**
+11. View the worker nodes in the cluster
 
 ```text
 kubectl get nodes
 ```
 
-![](./images/cluster1.PNG)
+**Create a cluster - basic and Master version**
 ![](./images/cluster2.PNG)
 ![](./images/cluster3.PNG)
+
+Nodes - Boot disk, Machine type
+![](./images/cluster1.PNG)
 ![](./images/cluster4.PNG)
 ![](./images/cluster5.PNG)
 ![](./images/cluster6.PNG)
 ![](./images/cluster7.PNG)
 ![](./images/cluster8.PNG)
 
-## Pod
+## Viewing Pods and Nodes
 
-https://cloud.google.com/kubernetes-engine/docs/concepts/pod
+- https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/
 
-- Pods are the smallest, most basic deployable objects in Kubernetes.
-- A Pod is meant to run a single instance of your application on your cluster. However, it is not recommended to create individual Pods directly. Instead, you generally create a set of identical Pods, called **replicas**, to run your application.
+```js
+kubectl get - list resources
+kubectl describe - show detailed information about a resource
+kubectl logs - print the logs from a container in a pod
+kubectl exec - execute a command on a container in a pod
+```
+
+## Kubernetes Pods
+
+When you created a Deployment in Module 2, Kubernetes created a Pod to host your application instance. A Pod is a Kubernetes abstraction that represents a group of one or more application containers (such as Docker), and some shared resources for those containers. Those resources include:
+
+- Shared storage, as Volumes
+- Networking, as a unique cluster IP address
+- Information about how to run each container, such as the container image version or specific ports to use
+- you generally create a set of identical Pods, called **replicas**, to run your application.
 - Pods run on nodes in your **cluster**.
+
+![](./images/pods-overview.png)
+
+## Nodes
+
+A Pod always runs on a Node. A Node is a worker machine in Kubernetes and may be either a virtual or a physical machine, depending on the cluster. Each Node is managed by the control plane. A Node can have multiple pods,
+
+![](./images/node-overview.png)
 
 ## Pod lifecycle
 
