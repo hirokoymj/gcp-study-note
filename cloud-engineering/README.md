@@ -113,7 +113,71 @@ An E-commerce enterprise wants to perform click stream data analytics and derive
 4. BigTable is not a right choice for this use case.
 ```
 
+# Successful operation of Cloud solution
+
+## Storage classes
+
+https://cloud.google.com/storage/docs/storage-classes
+
+| Storage Class    | Name     | min storage duration |
+| ---------------- | -------- | -------------------- |
+| Standard storage | STANDARD | None                 |
+| Nearline storage | NEARLINE | 30 days              |
+| Coldline storage | COLDLINE | 90 days              |
+| Archive storage  | ARCHIVE  | 365 days             |
+
+- **Standard storage** is best for data that is **frequently** accessed ("**hot**" data) and/or stored for only brief periods of time.
+- **Nearline storage** is a low-cost, highly durable storage service for storing infrequently accessed data.
+- **Coldline storage** is a very-low-cost, highly durable storage service for storing infrequently accessed data, a 90-day minimum storage duration
+- **Archive storage** is the lowest-cost, highly durable storage service for data archiving, online backup, and disaster recovery.
+
+![](./images/storage-classes-1.png)
+![](./images/storage-classes-2.png)
+![](./images/storage-classes-3.png)
+![](./images/storage-classes-4.png)
+![](./images/storage-classes-5.png)
+![](./images/storage-classes-6.png)
+
+## Handling service accounts
+
+https://cloud.google.com/storage/docs/gsutil/commands/defacl
+
+![](images/service-account0.PNG)
+![](images/service-account1.PNG)
+![](images/service-account2.PNG)
+
+## VM Inventory - describe a virtual machine instance
+
+https://cloud.google.com/sdk/gcloud/reference/compute/instances/describe
+
+**Describe a virtual machine instance**
+
+```js
+gcloud compute instances describe [instance-name]
+gcloud compute instances describe test-instance
+```
+
+## GPU (graphics processing units) platforms
+
+https://cloud.google.com/compute/docs/gpus
+
+- you can add to your virtual machine (VM) instances.
+- If you have graphics-intensive workloads, such as 3D visualization, 3D rendering, or virtual applications, you can use NVIDIA RTX virtual workstations (formerly known as NVIDIA GRID).
+
+![](./images/gpu.PNG)
+
+## BigQuery : Cost controls
+
+Project level, user level
+
+Menu -> IAM Admin -> Quatas Quata(割り当て)
+
 ## Quiz : Successful operations on GCP
+
+![](./images/vm-desc1.PNG)
+![](./images/vm-desc2.PNG)
+![](./images/vm-desc3.PNG)
+![](./images/vm-desc4.PNG)
 
 **Q1**
 
@@ -191,6 +255,17 @@ Premptible instances cannot live more than 24 hours
 8. Nodes - Image type, Machine config.
 9. Create -> Create cluster creation
 10. Connect -> Run in Cloud Shell
+
+```js
+gcloud container clusters get-credentials <cluster-name> --zone <cluster-zone> --project <gcp-project-id>
+
+gcloud container clusters get-credentials demo-gke-cluseter --zone us-central-c --project brio-eta-training
+
+```
+
+> we will be successfully connected to the cluster and kubectl commands can be executed to interact with the
+> cluster.
+
 11. View the worker nodes in the cluster
 
 ```text
@@ -371,6 +446,58 @@ how.nice.to.look=fairlyNice
 
 ## GKE Services
 
-## GKE ClusterIP
+- ClusterIP
+- NodePort Service
+- LoadBalancer
 
-## NodePort Service
+**ClusterIp exposure < NodePort exposure < LoadBalancer exposure**
+
+- ClusterIp
+  Expose service through k8s cluster with ip/name:port
+
+- NodePort
+  Expose service through Internal network VM's also external to k8s ip/name:port
+
+- LoadBalancer
+  Expose service through External world or whatever you defined in your LB.
+
+![](./images/GKE-services.jpg)
+
+## Quiz : Managing GKE resources
+
+**Q1 of 3**
+
+You are recently introduced to gcloud commands and you are supposed to create a kubernetes cluster. Identify the right initial part of command to create clusters in GKE.
+
+1. gcloud kubernetes
+2. gcloud containers (a)
+3. gsutil kubernetes
+4. kubectl containers
+
+```js
+1. Kubernetes is not to be used with gcloud directly like this.
+2. This is the right way as gcloud has to be used for creating clusters
+3. gsutil is for cloud storage not for kubernetes
+4. kubectl is to be used after the containers are created
+```
+
+**Q2 of 3**
+
+A developer on your team has deployed an App Engine application that should be running in a Python 3.4 environment but it is running in a Python 2.7 environment instead. Which configuration file would you edit to correct the problem?
+
+1. App-engine-python.yaml
+2. App.yaml (a)
+3. App-engine-python.py
+
+**Q3 of 3**
+
+You need to create a new Kubernetes Cluster on Google Cloud Platform that can autoscale the number of worker nodes. What should you do?
+
+1. Create a cluster on Kubernetes Engine and enable autoscaling on Kubernetes Engine. (a)
+2. Create a cluster on Kubernetes Engine and enable autoscaling on the instance group of the cluster.
+3. Configure a Compute Engine instance as a worker and add it to an unmanaged instance group. Add a load balancer to the instance group and rely on the load balancer to create additional Compute Engine instances when needed.
+4. Create Compute Engine instances for the workers and the master, and install Kubernetes. Rely on Kubernetes to create additional Compute Engine instances when needed.
+
+```js
+2. Autoscaling is not to be on instance group
+```
