@@ -82,6 +82,86 @@ Choose network connectivity options
 Choose load balancing options
 https://www.youtube.com/watch?v=tc2940Zwvyk
 GCP Billing
+
+https://cloud.google.com/blog/topics/developers-practitioners/bigtable-vs-bigquery-whats-difference
+
+## Enabling SSH keys in Google Compute Engine
+
+1. SSH key generated from PuTTy
+2. Save public key and private key. Now, navigate to GCE instance. Edit and
+   upload the public key. You will observe that the username is detected
+   automatically.
+
+3. Go to Putty and type an external IP and port and then hit "Open".
+4. A console window is open.
+5. Navigate to sshd config file. Change the password authentication to Yes.
+
+```js
+sudo su
+vi /ext/ssh/sshd_config
+service sshd restart
+Stopping sshd:
+Starting sshd:
+```
+
+## Streaming data pipeline with Cloud Pub/Sub, Dataflow and BigQuery
+
+### 1. Creating a dataset
+
+**bq command**
+https://cloud.google.com/bigquery/docs/reference/bq-cli-reference
+
+```js
+// Create a dataset
+bq mk taxirides
+// View a dataset
+bq show bq_load_codelab
+```
+
+![](./images/bq1.PNG)
+![](./images/bq2.PNG)
+
+<hr />
+
+### 2. Create a cloud storage bucket
+
+```js
+gsutil mb gs://<bucket-name>
+gsutil mb gs://$BUCKET_NAME
+```
+
+![](./images/bq3-bucket.PNG)
+![](./images/bq3.PNG)
+
+### 3. Navigate to Cloud Dataflow and create job from the template.
+
+![](./images/bq4.PNG)
+
+## Google Private Access and Cloud NAT
+
+**VPC(Virtual Private Cloud)**
+
+- Google Private Access allows instances with no internet connectivity to
+  access other google services
+- Cloud NAT allows instances without internet access to download updates and
+  patches from internet through Network Address Translation
+
+1. Create a GCE instance with external IP set to None.
+2. Create a bastion host in order to access the instance with no external IP.
+3. Create a Cloud storage bucket and upload objects.
+4. Login to bastion host and try to copy the object from Cloud storage bucket. It succeeds.
+5. Now, login to vm-internal and try to copy the object from cloud storage
+   bucket. It does not proceed.
+   Enable private google access for the subnet.
+6. Enable private google access for the subnet.
+
+## Bigtable vs. BigQuery
+
+- Bigtable is a NoSQL database.
+- BigQuery is RDB.
+- Bigtable is a NoSQL wide-column database optimized for heavy reads and writes
+- BigQuery is an enterprise data warehouse for large amounts of relational structured data.
+
 **Q1**
 
 A developer has written a Python application and wants to deploy the application in a managed environment which can scale within seconds to cater huge traffic spikes hitting the application. Which of the following is most appropriate service to host the application?
@@ -146,7 +226,7 @@ An enterprise has recently deployed their workload to Google Cloud Platform. The
 ```text
 1. Private google access does not allow internet access
 2. Looks like relevant solution. However, it is a tedious process.
-3. Cloud NAT allows you to download updates from internet without enabling public access to the instances.
+3. Cloud NAT allows you to download updates from internet without enabling public access to the instances. (a)
 ```
 
 **Q2**
@@ -154,13 +234,13 @@ An enterprise has recently deployed their workload to Google Cloud Platform. The
 An E-commerce enterprise wants to perform click stream data analytics and derive insights in near real time. Also, they wish to store the data to perform querying. Which of the following solutions is the best solution?
 
 1. Cloud Dataflow for ingestion and processing of streaming data, Cloud BigQuery for long term querying and local persistent disks for storing the data.
-2. Cloud Pub/Sub for data ingestion, Cloud Dataflow for stream data processing, BigQuery for long term querying and Cloud storage for long term data retention
+2. Cloud Pub/Sub for data ingestion, Cloud Dataflow for stream data processing, BigQuery for long term querying and Cloud storage for long term data retention. (a)
 3. Cloud Pub/Sub for data ingestion, Cloud BigTable for processing the data and Cloud storage archive storage class for long term storage
 4. Cloud Pub/Sub for data ingestion, Cloud BigTable for processing the data and Cloud BigQuery for querying and data retention for long tenure.
 
 ```text
 1. Dataflow is not used for data ingestion. Also, persistent disks is not a good choice for long term data retention
-2. Pub/Sub, Dataflow, Cloud Storage and BigQuery form a pipeline that addresses the requirements
+2. Pub/Sub, Dataflow, Cloud Storage and BigQuery form a pipeline that addresses the requirements. (a)
 3. BigTable is not for streaming data analysis. Querying requirement is not addressed here
 4. BigTable is not a right choice for this use case.
 ```
@@ -593,5 +673,8 @@ You need to create a new Kubernetes Cluster on Google Cloud Platform that can au
 4. Create Compute Engine instances for the workers and the master, and install Kubernetes. Rely on Kubernetes to create additional Compute Engine instances when needed.
 
 ```js
+1. Correct
 2. Autoscaling is not to be on instance group
+3. wrong
+4. wrong
 ```
