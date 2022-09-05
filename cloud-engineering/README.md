@@ -125,6 +125,8 @@ bq show bq_load_codelab
 
 ### 2. Create a cloud storage bucket
 
+**mb - Make buckets**
+
 ```js
 gsutil mb gs://<bucket-name>
 gsutil mb gs://$BUCKET_NAME
@@ -196,18 +198,23 @@ Which of the following is most appropriate service to store this data?
 4. Google Cloud SQL is not capable to handle high ingesting rate in real time
 ```
 
+```js
+https://cloud.google.com/storage/
+Cloud Storage - standard, nearline, coldline, archives storage
+```
+
 **Q3**
 
 You have been asked to rewrite an application using a microservice architecture approach, which they are planning to run on Docker containers. Most importantly, the application work on Cloud and can also be deployed internally in private Cloud.Which of the following service is most appropriate and quick to use?
 
 1. Deploy the application on Compute Engine VM instances and export the VM to run on a private cloud.
-2. Use Kubernetes and GKE
+2. Use Kubernetes and GKE (a)
 3. Deploy the application on App Engine Flexible environment and write scripts to copy the application to private cloud
 4. Run each service as a Google Cloud Function
 
 ```text
 1. Deploying application on Compute Engine VM is where you will have to configure the instance, platform, scale the instances and manage the containers on host by your own
-2. Kubernetes offer a container-orchestration system for deploying applications with automatic scaling and management.
+2. Kubernetes offer a container-orchestration system for deploying applications with automatic scaling and management. (a)
 3. App Engine is preferred to run web applications
 4. Cloud Function is an event-driven compute platform to run functions that respond to Cloud events
 ```
