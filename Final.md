@@ -111,7 +111,17 @@ Q11: Hema is working as a Network Engineer in a Cloud consulting company. Their 
 
 <hr />
 
-Q12:
+Q12: The firewall rules to connected to a VM instance follows a certain evaluation logic. Identify the valid evaluation logic considerations the below:
+a. Precedence to the highest priority rule applicable to a target for a given type of traffic. Target specificity does not matter.
+b. Even when the protocol and port definition is more general, the highest priority rule applicable for a given protocol and definition will have precedence.
+c. A an allow accino is overridden by a rule with deny action, only if the two rules have the same priority.
+d. Rules that apply to ingress traffic cannot confilict with rules that apply to egress traffic.
+Hint: Refer: Firewall rules
+
+1. Only a, c and d
+2. Only b, c and d
+3. a, b, c and d
+4. a and d only
 
 <hr />
 
