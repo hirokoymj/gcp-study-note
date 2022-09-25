@@ -82,3 +82,33 @@ mynetwork 22 1460 Custom
 None
 
 Note: Converting an auto mode network to a custom mode network is an easy task, and it provides you with more flexibility. We recommend that you use custom mode networks in production.
+
+# Create private network using gcloud
+
+```js
+gcloud compute networks create privatenet --subnet-mode=custom
+
+//To create the privatesubnet-us subnet,
+gcloud compute networks subnets create privatesubnet-us --network=privatenet --region=us-central1 --range=172.16.0.0/24
+
+//To create the privatesubnet-eu subnet
+gcloud compute networks subnets create privatesubnet-eu --network=privatenet --region=europe-west1 --range=172.20.0.0/20
+
+//To list the available VPC networks
+gcloud compute networks list
+```
+
+```js
+NAME           SUBNET_MODE  BGP_ROUTING_MODE  IPV4_RANGE  GATEWAY_IPV4
+managementnet  CUSTOM       REGIONAL
+mynetwork      CUSTOM       REGIONAL
+privatenet     CUSTOM       REGIONAL
+
+//To list the available VPC subnets (sorted by VPC network),
+gcloud compute networks subnets list --sort-by=NETWORK
+```
+
+```js
+//To list all the firewall rules (sorted by VPC network), run the following command:
+gcloud compute firewall-rules list --sort-by=NETWORK
+```
