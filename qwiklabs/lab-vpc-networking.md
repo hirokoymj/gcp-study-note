@@ -31,5 +31,5 @@ gcloud compute networks subnets list --sort-by=NETWORK
 
 gcloud compute instances create privatenet-us-vm --zone=us-central1-c --machine-type=f1-micro --subnet=privatesubnet-us --image-family=debian-10 --image-project=debian-cloud --boot-disk-size=10GB --boot-disk-type=pd-standard --boot-disk-device-name=privatenet-us-vm
 
-gcloud compute instances list --sort-by=ZONE
+gcloud compute instances list --sort-by=ZONE*
 ```
