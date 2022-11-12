@@ -72,6 +72,10 @@
 
 9, 27, 38, 39, 47, 48, 50, 106, 111, 128, 167, 174, 176, 189, 191
 
+**Other Topics**
+
+[other-topics](./other-topics.md)
+
 ## Index
 
 | No. | KW                      | Result        |
@@ -275,16 +279,3 @@
 | 197 | MIGs                    |               |
 | 198 | IAM/role                |               |
 | 199 | VPC/ DMZ                |               |
-
-**Audit Logs**
-
-[Audit Logs: Querying Logs, Pricing and Retention](https://www.youtube.com/watch?v=dVBBKR3SgDQ&t=3s)
-
-Access Control to Audit Logs
-
-| Audit Logs     | Logging.viewer | Logging.privateLogViewer |
-| -------------- | -------------- | ------------------------ |
-| Admin Activity | Yes            | Yes                      |
-| Data Access    | NO             | Yes                      |
-| Policy Denied  | Yes            | Yes                      |
-| System Event   | Yes            | Yes                      |
