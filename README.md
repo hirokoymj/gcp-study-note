@@ -16,7 +16,7 @@
 
 [GCP Study App](https://gcp-study-app.dt.r.appspot.com/category/associate_cloud_engineer/study)
 
-**Get infosys voucher**
+**Get Infosys voucher**
 
 [Full Stack - GCP Associate Engineer](https://lex.infosysapps.com/web/en/app/toc/lex_auth_013153194786381824537/overview)
 
