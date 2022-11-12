@@ -16,6 +16,10 @@
 
 [GCP Study App](https://gcp-study-app.dt.r.appspot.com/category/associate_cloud_engineer/study)
 
-**(Voucher/Exam) Infosys Certified Google Cloud Associate Engineer**
+**Get a voucher**
 
 [Full Stack - GCP Associate Engineer](https://lex.infosysapps.com/web/en/app/toc/lex_auth_013153194786381824537/overview)
+
+# GCP
+
+[Google Cloud Quick Tutorials](https://www.youtube.com/playlist?list=PLuJRcdtonlDAN73rZsRk_eiJ0NU9h1Cms)
