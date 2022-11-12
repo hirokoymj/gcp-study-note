@@ -19,10 +19,18 @@
 | IAM                  | [Demo: Custom roles](./demo-Custom-roles.md)                                           |
 |                      | [Lab Intro: Cloud IAM ](./lab-IAM.md)                                                  |
 | Storage              | [Lab: Cloud Storage](./lab-Cloud-Storage.md)                                           |
-|                      | [Lab: Intro: Cloud SQL](./cloud-sql.md)                                                |
+|                      | [Lab: Intro: Cloud SQL](./lab-Cloud-SQL.md)                                            |
 | Resource Management  | [Demo: Billing Administration](./demo-Billing-Administration.md)                       |
 |                      | [Lab: Examining Billing data with BigQuery](./lab-Examining-Billing-data-with-BigQ.md) |
 | Resource Monitorning | [Lab: Resource Monitoring](./lab-Resource-Monitoring.md)                               |
 |                      | [Lab: Error Reporting and Debugging](./lab-Error-Reporting-and-Debugging.md)           |
 
 ## 1-4. Elastic Cloud Infrastructure: Scaling and Automation
+
+| Title            | Links                                                                   |
+| ---------------- | ----------------------------------------------------------------------- |
+| Interconnecting  | [Lab: Cloud VPN](./lab-Cloud-VPN.md)                                    |
+| LB               | [Lab: HTTP Load Balancer with Autoscaling](./lab-HTTP-Load-Balancer.md) |
+|                  | [Lab: Internal Load Balancer](./lab-Internal-Load-Balancer.md)          |
+| Infra Automation | [Lab: Terraform](./lab-Terraform.md)                                    |
+|                  | [Demo: Google Cloud Marketplace](./demo-Marketplace.md)                 |
