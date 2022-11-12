@@ -1,5 +1,3 @@
-# Lab
-
 ## 1-2. Essential Cloud Infrastructure: Foundation
 
 | Title | Links                                                                                    |
