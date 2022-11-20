@@ -32,3 +32,9 @@
 |                  | [Lab: Internal Load Balancer](./lab-Internal-Load-Balancer.md)          |
 | Infra Automation | [Lab: Terraform](./lab-Terraform.md)                                    |
 |                  | [Demo: Google Cloud Marketplace](./demo-Marketplace.md)                 |
+
+## Quiz
+
+Resource Management:
+
+![](images/quiz-resource-management.png)
