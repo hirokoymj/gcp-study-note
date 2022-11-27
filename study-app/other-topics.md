@@ -43,9 +43,10 @@ Preview the requested create without actually instantiating the underlying resou
 **--config=CONFIG**
 Filename of a top-level yaml config that specifies resources to deploy. For a guide to creating a configuration, refer to [Creating a Basic Configuration](https://cloud.google.com/deployment-manager/docs/configuration/create-basic-configuration)
 
-**References:**
-d- [gcloud deployment-manager deployments create](https://cloud.google.com/sdk/gcloud/reference/deployment-manager/deployments/create#--config)
+- [gcloud deployment-manager deployments create](https://cloud.google.com/sdk/gcloud/reference/deployment-manager/deployments/create#--config)
 
 ![](images/deployment-m-1.png)
 
 ![](images/deployment-m-2.png)
+
+**Q88:**
