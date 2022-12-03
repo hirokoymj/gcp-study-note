@@ -5,20 +5,20 @@ https://www.cloudskillsboost.google/course_sessions/1596805/quizzes/326684
 Q:
 What are the advantages of using App Engine’s flexible environment instead of its standard environment? (Select 3).
 
-- Your application can write to the local disk.
+- Your application can write to the local disk.\*\*
 - Google provides automatic in-place security patches.
-- You can use SSH to connect to the virtual machines on which your application runs.
+- You can use SSH to connect to the virtual machines on which your application runs.\*\*
 - Your application can execute code in background threads.
-- You can install third-party binaries.
+- You can install third-party binaries.\*\*
 
 Q:
 Which statements are true about App Engine? (Select 2).
 
-- The daily billing for an App Engine application can drop to zero.
+- The daily billing for an App Engine application can drop to zero.\*\*
 - App Engine charges you based on the resources you preallocate instead of the resources you use.
 - App Engine manages the hardware and networking infrastructure required to run your code.
 - Developers who write for App Engine do not need to code their applications in any particular way to use the service.
-- App Engine requires you to supply or code your own application load balancing and logging services.
+- App Engine requires you to supply or code your own application load balancing and logging services.\*\*
 
 Q:
 Cloud Run can only pull images from:
@@ -62,12 +62,9 @@ Q:Which definition best describes a service level indicator (SLI)?
 
 # Quiz: Containers in the Cloud
 
-- Your score: 57% Passing score: 75%
-- Your score: 71% Passing score: 75%
-- Your score: 85% Passing score: 75%
-- Your score: 100% Passing score: 75%
+- Your score: 57%, 71%, 85%, 100%
 
-- Q:What is a Kubernetes pod?
+Q:What is a Kubernetes pod?
 
 - A group of nodes X
 - A group of containers \*\*
@@ -105,3 +102,56 @@ Q: How do containers access an operating system?
 - Containers use a shared base operating system stored in a shared kernel layer.
 
 > Review the "Introduction to containers" lecture.
+
+# Quiz: Storage in the Cloud
+
+- Your score: 83% Passing score: 75%
+- Your score: 100% Passing score: 75%
+
+Q:Which database service can scale to higher database sizes?
+
+- Bigtable X
+- Cloud SQL
+- Firestore
+- Cloud Spanner\*\*
+
+> Review the lectures in the "Storage in the Cloud" module.
+
+Q:How are Firestore and Bigtable alike? (Select two answers.)
+
+- They both have a free daily quota.
+- They are both highly scalable. \*\*
+- They both offer SQL-like queries.
+- They are both NoSQL databases. \*\*
+
+# Quiz: Virtual Machines and Networks in the Cloud
+
+# Quiz: Resources and Access in Google Cloud
+
+- Your score: 62% Passing score: 75%
+- Your score: 100% Passing score: 75%
+
+Q: Consider a single hierarchy of Google Cloud resources. Which of these situations is possible? (Choose 3 responses.)
+Note: To get credit for a multiple-select question, you must select all of the correct options and none of the incorrect ones.
+
+- There is an organization node, and there is at least one folder.\*\*
+- There is an organization node, and there are no folders.
+- There is no organization node, but there is at least one folder.\*\*
+- There are two or more organization nodes.
+- There is no organization node, and there are no folders.\*\*
+
+Q: How does the resource hierarchy control how IAM policies are inherited?
+
+- IAM policies are only implemented at the project level; they cannot be amended by lower levels of the resource hierarchy.
+- IAM policies that are implemented by lower-level policies can override the policies defined at a higher level.\*\*
+- IAM policies that are implemented higher in the resource hierarchy deny access that is granted by lower-level policies.
+  Review the lecture "Google Cloud resource hierarchy."
+
+Q: Your company has two Google Cloud projects and you want them to share policies. What is the least error-prone way to set this up?
+
+- Define the new shared policy in the organization node.
+- Create shared resource policies on the common resources that are used in both projects.
+- Place both projects into a folder, and define the policies on that folder.\*\*
+- Duplicate all the policies from one project onto the other.
+
+# Quiz : Introducing Google Cloud
