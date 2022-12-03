@@ -126,6 +126,42 @@ Q:How are Firestore and Bigtable alike? (Select two answers.)
 
 # Quiz: Virtual Machines and Networks in the Cloud
 
+- Your score: 42%, Your score: 85%, Your score: 100%
+
+Q: Select the true statement about Google’s VPC networks and subnets.
+
+- Networks are regional, and subnets are zonal.X
+- Networks are global, and subnets are zonal.
+- Both networks and subnets are global.
+- Networks are global, and subnets are regional.\*\*
+
+Q:Which interconnect option is a service level agreement (SLA) available for?
+
+- Direct Peering
+- Carrier Peering
+- Standard Network Tier X
+- Dedicated Interconnect\*\*
+
+> Review the lecture "Important VPC compatibilities."
+
+Q: A Google Cloud customer wants to load-balance traffic among the backend VMs that form part of a multi-tier application. Which load-balancing option should this customer choose?
+
+- The global HTTP(S) load balancer X
+- The global TCP proxy
+- The regional internal load balancer\*\*
+- The regional load balancer
+- The global SSL proxy
+  > Review the lecture "Important VPC compatibilities."
+
+<hr />
+
+Q: Which statement best describes how VPC routers and firewalls work?
+
+- They are managed by Google in virtual machines and customers can tune or deactivate them.X
+- They are managed by Google in virtual machines and customers cannot modify them.
+- Customers provision virtual machines and run their routers and firewalls in them.X
+- They are managed by Google as a built-in feature.\*\*
+
 # Quiz: Resources and Access in Google Cloud
 
 - Your score: 62% Passing score: 75%
@@ -155,3 +191,32 @@ Q: Your company has two Google Cloud projects and you want them to share policie
 - Duplicate all the policies from one project onto the other.
 
 # Quiz : Introducing Google Cloud
+
+Your score: 50%,83%, 83%, 100%
+
+Q: What cloud computing service provides raw compute, storage, and network resources that are organized similarly to physical data centers?
+
+- Database as a service
+- Platform as a service X
+- Software as a service
+- Infrastructure as a service\*\*
+  ![](images/laaS-PaaS.png)
+
+Q: What cloud computing service binds application code to libraries that give access to the infrastructure an application needs?
+
+- Virtualized data centers
+- Hybrid cloud
+- Infrastructure as a service
+- Software as a service X
+- Platform as a service \*\*
+  ![](images/SaaS.png)
+
+  > Review the lecture "IaaS and PaaS”
+
+Q: Who benefits the most from billing by the second for cloud resources, such as virtual machines?
+
+- Customers who create virtual machines that run commercially licensed operating systems X
+- Customers who create many virtual machines and leave them running for months X
+- Customers who create too few virtual machines to get discounts X
+- Customers who create and run many virtual machines
+  > Review the lecture "Pricing and billing."
