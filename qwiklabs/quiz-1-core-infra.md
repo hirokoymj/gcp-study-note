@@ -258,3 +258,5 @@ Q: Who benefits the most from billing by the second for cloud resources, such as
 - when you run an instance for more than 25% of a month, Compute Engine automatically
   gives you a discount for every incremental minute
   ![](images/vm-price.png)
+
+![](./images/standard-vs-flex.png)
