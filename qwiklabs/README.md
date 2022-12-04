@@ -4,6 +4,8 @@
 
 ## 1-2. Essential Cloud Infrastructure: Foundation
 
+[Quiz](./quiz-1-foundation.md)
+
 | Title | Links                                                                                    |
 | ----- | ---------------------------------------------------------------------------------------- |
 | VN    | [Demo: Expand a Subnet ](./demo-expand-a-subnet.md)                                      |
