@@ -90,6 +90,8 @@ Q: What is a Kubernetes cluster?
 - https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview
   > The GKE environment consists of multiple machines (specifically, Compute Engine instances) grouped together to form a cluster.
 
+![](images/cluster-node-pod.png)
+
 <hr />
 
 Q:What is a Kubernetes pod?
