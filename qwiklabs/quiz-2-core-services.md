@@ -16,11 +16,13 @@ Q: What abstraction is primarily used to administer user access in IAM ?
 Q: Which data storage service provides data warehouse services for storing data but also offers an interactive SQL interface for querying the data?
 
 - Cloud SQL X
-- BigQuery
+- BigQuery\*\*
 - Dataproc
 - Datalab
 
 > BigQuery is a data warehousing service that allows the storage of huge data sets while making them immediately processable without having to extract or run the processing in a separate service.
+
+![](images/big-query.png)
 
 # Quiz: Resource Management
 
