@@ -33,6 +33,8 @@
 
 ## 1-4. Elastic Cloud Infrastructure: Scaling and Automation
 
+[Quiz](./quiz-3-scaling.md)
+
 | Title            | Links                                                                   |
 | ---------------- | ----------------------------------------------------------------------- |
 | Interconnecting  | [Lab: Cloud VPN](./lab-Cloud-VPN.md)                                    |
