@@ -11,6 +11,8 @@ What are the advantages of using App Engine’s flexible environment instead of 
 - Your application can execute code in background threads.
 - You can install third-party binaries.\*\*
 
+https://cloud.google.com/appengine/docs/the-appengine-environments
+
 Q:
 Which statements are true about App Engine? (Select 2).
 
@@ -27,6 +29,12 @@ Cloud Run can only pull images from:
 - GitHub
 - Artifact Registry
 - Self-hosted registries
+
+**Links:**
+
+- https://cloud.google.com/run/docs/overview/what-is-cloud-run
+- https://cloud.google.com/run/docs/quickstarts/build-and-deploy/-deploy-nodejs-service
+- https://cloud.google.com/run/docs/quickstarts/build-and-deploy/deploy-nodejs-service
 
 # Quiz: Developing and Deploying in the Cloud
 
@@ -60,9 +68,29 @@ Q:Which definition best describes a service level indicator (SLI)?
 - A time-bound measurable attribute of a service \*\*
 - A contract with your customers regarding service performance X
 
+> What is difference between SLO and SLA?
+> SLAs are used externally to define an agreement between a company's service and its paid users. SLOs are objectives that are measured internally to determine whether the SLA is being met. If an SLO's terms are violated, teams must respond and react quickly to prevent from breaking the SLA.
+
 # Quiz: Containers in the Cloud
 
 - Your score: 57%, 71%, 85%, 100%
+
+Q: What is a Kubernetes cluster?
+
+- A group of pods that manage the administration of a Kubernetes application. X
+- A group of machines where Kubernetes can schedule workloads. \*\*
+- A group of containers that provide high availability for applications.
+
+**Answer:**
+
+- https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster
+
+  > A cluster consists of at least one cluster control plane machine and multiple worker machines called nodes. Nodes are Compute Engine virtual machine (VM) instances that run the Kubernetes processes necessary to make them part of the cluster. You deploy applications to clusters, and the applications run on the nodes.
+
+- https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview
+  > The GKE environment consists of multiple machines (specifically, Compute Engine instances) grouped together to form a cluster.
+
+<hr />
 
 Q:What is a Kubernetes pod?
 
@@ -71,13 +99,13 @@ Q:What is a Kubernetes pod?
 - A group of VMs X
 - A group of clusters
 
-https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster
+**Answer**
 
-> A cluster consists of at least one cluster control plane machine and multiple worker machines called nodes. Nodes are Compute Engine virtual machine (VM) instances that run the Kubernetes processes necessary to make them part of the cluster. You deploy applications to clusters, and the applications run on the nodes.
+https://cloud.google.com/kubernetes-engine/docs/concepts/pod
 
-> Review the "Kubernetes" lecture.
+> Pods are the smallest, most basic deployable objects in Kubernetes. A Pod represents a single instance of a running process in your cluster. Pods contain one or more containers, such as Docker containers. When a Pod runs multiple containers, the containers are managed as a single entity and share the Pod's resources.
 
-Pods are the smallest, most basic deployable objects in Kubernetes. A Pod represents a single instance of a running process in your cluster. Pods contain one or more containers, such as Docker containers. When a Pod runs multiple containers, the containers are managed as a single entity and share the Pod's resources.
+<hr />
 
 Q: Where do the resources used to build Google Kubernetes Engine clusters come from?
 
@@ -86,14 +114,6 @@ Q: Where do the resources used to build Google Kubernetes Engine clusters come f
 - Cloud Storage
 - App Engine
 
-Q: What is a Kubernetes cluster?
-
-- A group of pods that manage the administration of a Kubernetes application. X
-- A group of machines where Kubernetes can schedule workloads. \*\*
-- A group of containers that provide high availability for applications.
-
-> Review the "Kubernetes" lecture.
-
 Q: How do containers access an operating system?
 
 - Containers use a shared base operating system stored in a Cloud Storage bucket. X
@@ -101,7 +121,15 @@ Q: How do containers access an operating system?
 - Containers use a shared base operating system stored in a shared runtime layer.X
 - Containers use a shared base operating system stored in a shared kernel layer.
 
-> Review the "Introduction to containers" lecture.
+**Answer**
+
+- Review the "Introduction to containers" lecture.
+- IaaS: - virtualize the hardware.(VM)
+- PaaS: - App Engine
+
+![](./images/gke-container.png)
+
+<hr />
 
 # Quiz: Storage in the Cloud
 
@@ -213,10 +241,20 @@ Q: What cloud computing service binds application code to libraries that give ac
 
   > Review the lecture "IaaS and PaaS”
 
+<hr />
+
 Q: Who benefits the most from billing by the second for cloud resources, such as virtual machines?
 
 - Customers who create virtual machines that run commercially licensed operating systems X
 - Customers who create many virtual machines and leave them running for months X
 - Customers who create too few virtual machines to get discounts X
 - Customers who create and run many virtual machines
-  > Review the lecture "Pricing and billing."
+
+**Answer**
+
+- Review the lecture "Pricing and billing.
+- per-second billing for IaaS:Compute Engine, GKE, Dataproc, App Engine flex VM
+- Compute Engine offers automatically applied sustained-use discounts, which are automatic
+- when you run an instance for more than 25% of a month, Compute Engine automatically
+  gives you a discount for every incremental minute
+  ![](images/vm-price.png)

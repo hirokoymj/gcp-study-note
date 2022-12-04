@@ -1,3 +1,7 @@
+## 1-1. Google Cloud Platform Fundamentals: Core Infrastructure
+
+[Quiz](./quiz-1-core-infra.md)
+
 ## 1-2. Essential Cloud Infrastructure: Foundation
 
 | Title | Links                                                                                    |
