@@ -18,6 +18,8 @@
 
 ## 1-3. Essential Cloud Infrastructure: Core Services
 
+[Quiz](./quiz-2-core-services.md)
+
 | Title                | Links                                                                                  |
 | -------------------- | -------------------------------------------------------------------------------------- |
 | IAM                  | [Demo: Custom roles](./demo-Custom-roles.md)                                           |
