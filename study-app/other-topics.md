@@ -81,12 +81,21 @@ STATUS: RUNNING
 
   https://cloud.google.com/datastore/docs/store-query-data
 
-- (DB) cache, analytics, offline - Firestore
+- (DB) cache, analytics, offline - Firestore(correct)
 - (NW) on-pre, video/VPC - Dynamic routes
 - (NW) private, 15 GB cable, hybrid
-- (NW) currentl y auto-mode. Delete a few subnets, modify => custom mode
+- (NW) currentl auto-mode. Delete a few subnets, modify => custom mode
 - (NW) private /google API/ Carreir /Partner/ Dedicate
 - (NW) start up script, always download the latest version
+
+  **Links:**
+  https://www.youtube.com/watch?v=ZnOSw23Z6no
+
+```
+gcloud auth login
+gcloud compute instances create hiroko-vm
+```
+
 - (IAM) gcloud config configurations create my-config.config
 - (IAM) VM pub/sub
 - (IAM) gcloud functions deploy
