@@ -197,7 +197,7 @@ https://cloud.google.com/kubernetes-engine/docs/concepts/service#why-use-a-servi
 | 112 | on-premises             |                                                                                                |
 | 113 | lifecycle               |                                                                                                |
 | 114 | BigQ/monitoring         |                                                                                                |
-| 115 | GKE                     |                                                                                                |
+| 115 | GKE                     | gcloud container node-pools create node-pool-1 --cluster=example-cluster --preemptible         |
 | 116 | IAM                     |                                                                                                |
 | 117 | BigQ/cost               |                                                                                                |
 | 118 | GKE                     |                                                                                                |
