@@ -204,7 +204,7 @@ https://cloud.google.com/kubernetes-engine/docs/concepts/service#why-use-a-servi
 | 119 | Spanner                 |                                                                                                |
 | 120 | Bill                    |                                                                                                |
 | 121 | SRE/IAM                 |                                                                                                |
-| 122 | VM                      |                                                                                                |
+| 122 | VM                      | gcloud compute instances create [INSTANCE_NAME] --deletion-protection                          |
 | 123 | BigQ                    |                                                                                                |
 | 124 | laptop                  |                                                                                                |
 | 125 | IAM                     |                                                                                                |
