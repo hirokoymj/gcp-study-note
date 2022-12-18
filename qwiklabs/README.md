@@ -42,3 +42,7 @@
 |                  | [Lab: Internal Load Balancer](./lab-Internal-Load-Balancer.md)          |
 | Infra Automation | [Lab: Terraform](./lab-Terraform.md)                                    |
 |                  | [Demo: Google Cloud Marketplace](./demo-Marketplace.md)                 |
+
+- [Lab Review: Configuring an HTTP Load Balancer with Autoscaling](https://www.youtube.com/watch?v=gjw1eaRn9U0)
+
+- [Lab Review: Configuring an Internal Load Balancer](https://www.youtube.com/watch?v=a890xluKfwI)
