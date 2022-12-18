@@ -17,7 +17,10 @@ https://cloud.google.com/kubernetes-engine/docs/concepts/service#why-use-a-servi
 
 **MIGs**
 
-9, 10, 15, 32, 37, 34, 64, 72, 78, 97, 142, 157, 158, 168, 171
+10, 37, 64, 72, 78, 142, 168
+
+preemptive VM
+171
 
 **Scale**
 
