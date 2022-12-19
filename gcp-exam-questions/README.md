@@ -23,9 +23,77 @@ Q15. You have created a Kubernetes deployment, called Deployment-A, with 3 repli
 
 Reveal
 Answer: D is correct because this exposes the service on a cluster-internal IP address. Choosing this method makes the service reachable only from within the cluster.
-https://kubernetes.io/docs/concepts/services-networking/service/
 
-<hr />
+**Links:**
+
+1. https://cloud.google.com/kubernetes-engine/docs/concepts/service
+
+**Service**
+
+- There are different types of Services, which you can use to group a set of Pod endpoints into a single resource.[1]
+
+**What is a Kubernetes Service?**
+
+- The idea of a Service is to group a set of Pod endpoints into a single resource. You can configure various ways to access the grouping. By default, you get a stable cluster IP
+- A Service identifies its member Pods with a selector.
+
+  ```
+  apiVersion: v1
+  kind: Service
+  metadata:
+  name: my-service
+  spec:
+  selector: // A Service identifies its member Pods with a selector
+    app: metrics
+    department: engineering
+  ports:
+
+  ```
+
+**Why use a Kubernetes Service?**
+
+- In a Kubernetes cluster, each Pod has an internal IP address. But the Pods in a Deployment come and go, and their IP addresses change. So it doesn't make sense to use Pod IP addresses directly. With a Service, you get a stable IP address that lasts for the life of the Service
+
+**Types of Kubernetes Services**
+
+- **ClusterIP** (default): Internal clients send requests to a stable internal IP address.
+
+- **NodePort**: Clients send requests to the IP address of a node on one or more nodePort values that are specified by the Service.
+
+- **LoadBalancer**: Clients send requests to the IP address of a network load balancer.
+
+**Services of type ClusterIP**
+
+- When you create a Service of type ClusterIP, Kubernetes creates a stable IP address that is accessible from nodes in the cluster.
+
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-cip-service
+spec:
+  selector:
+    app: metrics
+    department: sales
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+```
+
+- You can create the Service by using kubectl apply -f [MANIFEST_FILE]. After you create the Service, you can use kubectl get service to see the stable IP address:
+
+```
+kubectl apply -f [MANIFEST_FILE]
+```
+
+```
+NAME             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)
+my-cip-service   ClusterIP   10.11.247.213   none          80/TCP
+```
+
+  <hr />
 
 Q25. Which of the following products will allow you to perform live debugging without stopping your application?
 
@@ -36,6 +104,8 @@ Q25. Which of the following products will allow you to perform live debugging wi
 
 Answer: B
 https://cloud.google.com/debugger/docs/
+
+![](images/25.png)
 
 <hr />
 
@@ -90,7 +160,7 @@ https://cloud.google.com/compute/docs/autoscaler/
 
 <hr />
 
-45. What option does Cloud SQL offer to help with high availability?
+Q45. What option does Cloud SQL offer to help with high availability?
 
 - A. Point-in-time recovery
 - B. The AlwaysOn setting
@@ -101,9 +171,19 @@ Reveal
 Answer: D
 https://cloud.google.com/sql/docs/configure-ha#test
 
+- 障害迂回 ◆ 主にコンピューターシステムで、エラーが起きたときにそのエラーをやり過ごす（何もなかったかのように振る舞う）ための機能。例えばサーバーなら、エラー時にすぐ別のサーバーに自動的に切り替わるようにしておく。
+- high availability (HA)
+- ![](images/45.png)
+- ![](images/45-failover.png)
+
+**Links:**
+
+1. https://cloud.google.com/sql/docs/mysql/high-availability#failover-overview
+2. https://cloud.google.com/sql/docs/mysql/configure-ha#verify_an_instance_has
+
 <hr />
 
-46. Regarding Compute Engine: when executing a startup script on a Linux server which user does the instance execute the script as?
+Q46. Regarding Compute Engine: when executing a startup script on a Linux server which user does the instance execute the script as?
 
 - A. ubuntu
 - B. The Google provided “gceinstance” user
@@ -112,11 +192,21 @@ https://cloud.google.com/sql/docs/configure-ha#test
 
 Reveal
 Answer: D
-https://cloud.google.com/compute/docs/startupscript
+
+**Startup Script Overview**
+
+- A startup script is a file that contains commands that run when a virtual machine (VM) instance boots. Compute Engine provides support for running startup scripts on Linux VMs and Windows VMs.[2]
+- For Linux VMs, by using the root user.[1]
+- For Windows VMs, by using the System account.[1]
+
+**Links:**
+
+1. https://cloud.google.com/compute/docs/shutdownscript
+2. https://cloud.google.com/compute/docs/startupscript
 
 <hr />
 
-47. Which of the follow methods will not cause a shutdown script to be executed?
+Q47. Which of the follow methods will not cause a shutdown script to be executed?
 
 - A. When an instance shuts down through a request to the guest operating system
 - B. A preemptible instance being terminated
@@ -125,7 +215,53 @@ https://cloud.google.com/compute/docs/startupscript
 
 Reveal
 Answer: C
-https://cloud.google.com/compute/docs/shutdownscript
+
+- Create and run shutdown scripts that execute commands right before a virtual machine (VM) instance is stopped or restarted. This is useful if you rely on automated scripts to start up and shut down instances, allowing instances time to clean up or perform tasks, such as exporting logs, or syncing with other systems.
+
+**Links:**
+
+1. https://cloud.google.com/compute/docs/shutdownscript
+2. https://cloud.google.com/compute/docs/startupscript
+
+<hr />
+
+Q52. Which is the fastest instance storage option that will still be available when an instance is stopped?
+
+A. Local SSD
+B. Standard Persistent Disk
+C. SSD Persistent Disk
+D. RAM disk
+
+Reveal
+Answer: C
+https://cloud.google.com/compute/docs/disks/
+
+> Local SSDs and RAM disks disappear when you stop an instance. Standard Persistent Disks and SSD Persistent Disks both survive when you stop an instance, but SSD Persistent Disks have up to 4 times the throughput and up to 40 times the I/O operations per second of a Standard Persistent Disk.
+> Reference: https://cloud.google.com/compute/docs/disks/
+
+**Persistent disks**
+
+- Persistent disks are durable network storage devices that your instances can access like physical disks in a desktop or a server. The data on each persistent disk is distributed across several physical disks. Compute Engine manages the physical disks and the data distribution for you to ensure redundancy and optimal performance.
+
+- Persistent disks are located independently from your virtual machine (VM) instances, so you can detach or move persistent disks to keep your data even after you delete your instances.
+
+- Persistent disk performance scales automatically with size, so you can resize your existing persistent disks or add more persistent disks to an instance to meet your performance and storage space requirements.
+
+**Disk types**
+
+- Standard persistent disks (pd-standard)
+- Balanced persistent disks (pd-balanced)
+- Performance (SSD) persistent disks (pd-ssd)
+  > Suitable for enterprise applications and high-performance databases that require lower latency and more IOPS than standard persistent disks provide.
+
+**Local SSDs**
+
+- Local SSDs are physically attached to the server that hosts your VM instance. Local SSDs have higher throughput and lower latency than standard persistent disks or SSD persistent disks
+
+**Links:**
+
+1. https://cloud.google.com/compute/docs/disks/#pdspecs
+2. https://cloud.google.com/compute/docs/disks/#localssds
 
 <hr />
 
