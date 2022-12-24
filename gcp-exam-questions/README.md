@@ -9,8 +9,12 @@ Q11. You have an application server running on Compute Engine in the europe-west
 - C. Use “gcloud” to copy the disk to the europe-west2-c zone. Create a new VM with that disk.
 - D. Use “gcloud compute instances move” with parameter “–destination-zone europe-west2-c” to move the instance to the new zone.
 
-Reveal
 Answer: A is correct because this makes sure the VM gets replicated in the new zone.
+
+- Compute Engine -> Disk -> Create snapshot
+
+![](images/11-disk.png)
+![](images/11-snapshot.png)
 
 <hr />
 
@@ -93,19 +97,33 @@ NAME             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)
 my-cip-service   ClusterIP   10.11.247.213   none          80/TCP
 ```
 
-  <hr />
+**GKE**
+
+[GKE] -> [Cluster:node(vm), node(vm), node(vm)] -> [node(vm):pod(container),pod(container),pod(container)]
+
+<hr />
 
 Q25. Which of the following products will allow you to perform live debugging without stopping your application?
 
 - A. App Engine Active Debugger (AEAD)
-- B. Stackdriver Debugger A
+- B. Stackdriver Debugger
 - C. Code Inspector
 - D. Pause IT
 
 Answer: B
-https://cloud.google.com/debugger/docs/
 
 ![](images/25.png)
+
+**Debugging**
+
+- Inspect an application without stopping it or slowing it down significantly. [textbook]
+
+- Cloud Debugger is a feature of Google Cloud that lets you inspect the state of an application, at any code location, without stopping or slowing down the running app.[1]
+
+Links:
+
+1. https://cloud.google.com/debugger/docs/
+2. textbook
 
 <hr />
 
@@ -137,11 +155,27 @@ Answer: A(D is correct)
 
 - VPC firewall rules let you allow or deny connections to or from your virtual machine (VM) instances based on a configuration that you specify.[3]
 
-Links:
+**Links:**
 
 1. https://cloud.google.com/compute/docs/networking
 2. https://www.examtopics.com/discussions/google/view/19714-exam-professional-cloud-architect-topic-9-question-22/
 3. https://cloud.google.com/vpc/docs/firewalls
+
+**Default**
+![](images/41-3.png)
+
+**Created two custom FWs**
+![](images/41-2.png)
+
+- Target tags - webserver
+  we are going to allow traffice based on a paticular tag so we are only going to allow http
+  traffic to mathines that have a tag which we will called "webserver".
+
+**Attached FW to VM using Tag**
+![](images/41-1.png)
+
+1. VM doesn't have that network tag required for the firewall rule to apply.
+2. We are going to add FW rule to this
 
 <hr />
 
