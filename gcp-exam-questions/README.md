@@ -251,20 +251,44 @@ Reveal
 Answer: C
 
 - Create and run shutdown scripts that execute commands right before a virtual machine (VM) instance is stopped or restarted. This is useful if you rely on automated scripts to start up and shut down instances, allowing instances time to clean up or perform tasks, such as exporting logs, or syncing with other systems.
+- Compute Engine always stops preemptible instances after they run for 24 hours. Certain actions reset this 24-hour counter.[3]
+
+**Preemptible**
+
+- Lower price for interruptible service (up to 91%)
+- VM might be terminated at any time
+
+```
+  - No charge if terminated in the first minute
+  - 24 hours max
+  - 30-second terminate warning, but not guaranteed
+```
+
+- Time for a shutdown scrip
+
+**Reset a VM**
+
+- Resetting a VM forcibly wipes the memory contents of the machine and resets the VM to its initial state. The VM does **not** perform a clean shutdown of the guest OS[4]
+
+```
+gcloud compute instances reset VM_NAME
+```
 
 **Links:**
 
 1. https://cloud.google.com/compute/docs/shutdownscript
 2. https://cloud.google.com/compute/docs/startupscript
+3. https://cloud.google.com/compute/docs/instances/preemptible
+4. https://cloud.google.com/compute/docs/instances/stop-start-instance#resetting_an_instance
 
 <hr />
 
 Q52. Which is the fastest instance storage option that will still be available when an instance is stopped?
 
-A. Local SSD
-B. Standard Persistent Disk
-C. SSD Persistent Disk
-D. RAM disk
+- A. Local SSD
+- B. Standard Persistent Disk
+- C. SSD Persistent Disk
+- D. RAM disk
 
 Reveal
 Answer: C
@@ -306,6 +330,22 @@ Q65. Suppose you have a web server that is working properly, but you can’t con
 - C. Access the serial console output
 - D. Create a startup script to collect information.
 
+Answer: A B C
+
+- **User permissions tests:** Checks if you have the required IAM permissions to connect to the VM using SSH.
+- **Network connectivity tests**: Checks if the VM is connected to the network.
+- **VM instance status tests**: Checks the VM's CPU status to see if the VM is running.
+- **VPC settings tests**: Checks the default SSH port.
+
+```
+gcloud compute ssh VM_NAME \
+    --troubleshoot
+```
+
+**Links:**
+
+1. https://cloud.google.com/compute/docs/troubleshooting/troubleshooting-ssh-errors
+
 <hr />
 
 Q66. To configure Stackdriver to monitor a web server and let you know if it goes down, what steps do you need to take? (Select 2 answers.)
@@ -317,6 +357,12 @@ Q66. To configure Stackdriver to monitor a web server and let you know if it goe
 
 Reveal
 Answer: B D
+
+- Uptime checks verify that your web server is always accessible. The alerting policy controls who is notified if the uptime checks should fail.
+  You don't need to install the Stackdriver Monitoring Agent to get downtime alerts. The agent provides additional information, but it's not required. The Stackdriver
+  Logging Agent is for additional logging, not for alerts.
+  Using the Monitoring agent is optional. Stackdriver Monitoring can access some metrics without the Monitoring agent, including CPU utilization, some disk traffic metrics, network traffic, and uptime information. [https://cloud.google.com/monitoring/agent/#purpose]
+  Reference: https://cloud.google.com/monitoring/quickstart-lamp#gs-checks
 
 <hr />
 
@@ -343,6 +389,11 @@ Q70. Which of these statements about resilience testing are true? (Select 2 answ
 Reveal
 Answer: A B
 https://cloudacademy.com/google/managing-your-google-cloud-infrastructure-course/testing.html
+
+- resilience 回復力
+- Suggested Answer: AB
+  Resilience testing is similar to disaster recovery testing because youre testing what happens when infrastructure fails, but the difference is that in resilience testing, youre expecting your application to keep running, with little or no downtime. With disaster recovery testing, some downtime is expected.
+- One common testing scenario is to terminate a random instance within an autoscaling instance group. Netflix created software called Chaos Monkey that automates this sort of testing. If your application in the autoscaling instance group is stateless, then it should be able to survive this sort of failure without any noticeable impact on users.
 
 <hr />
 
@@ -375,12 +426,22 @@ Reveal
 Answer: C
 https://cloud.google.com/logging/docs/export/configure_export_v2#errors_exporting_to_bigquery
 
-- When you create a sink, Stackdriver Logging creates a new service account for the sink, called a unique writer identity.
-  In order to write logs to a BigQuery dataset, you must grant the sink's writer identity either Can edit permission or the Writer role.
-  It is not necessary to create a firewall rule to allow traffic between Stackdriver and BigQuery.
-  The Cloud Data Transfer Service is for importing data to Google Cloud Platform from an external source.
-  BigQuery can easily handle any volume of Stackdriver logs.
-  Reference: https://cloud.google.com/logging/docs/export/configure_export_v2#errors_exporting_to_bigquery
+**Create a sink**
+
+- You can create up to 200 sinks per Cloud project.
+- After you create the sink, ensure that Logging has the appropriate permissions to **write logs** to your sink's destination; see Set destination permissions.[2]
+
+**Storage Transfer Service**
+
+- Transfer data quickly and securely between object and file storage across Google Cloud, Amazon, Azure, on-premises, and more.[1]
+
+**Links:**
+
+1. https://cloud.google.com/storage-transfer-service
+2. https://cloud.google.com/logging/docs/export/configure_export_v2#creating_sink
+
+![](images/72-1.png)
+![](images/72-2.png)
 
 <hr />
 
@@ -394,6 +455,8 @@ Q73. You can use Stackdriver to monitor virtual machines on which cloud platform
 Reveal
 Answer: D
 https://cloud.google.com/stackdriver/
+
+![](images/73.png)
 
 <hr />
 
@@ -419,11 +482,18 @@ Q75. If network traffic between one Google Compute Engine instance and another i
 
 Reveal
 Answer: D
-https://cloud.google.com/compute/docs/troubleshooting#networktraffic
+
+**Troubleshooting dropped network traffic**
+
+- Compute Engine only allows network traffic that is explicitly permitted by your project's Firewall rules to reach your instance. By default, all projects automatically come with a default network [1]
+
+**Links:**
+
+1. https://cloud.google.com/compute/docs/troubleshooting/troubleshooting-networking
 
 <hr />
 
-76. Which of the following practices can help you develop more secure software? (Select 3 answers.)
+Q76. Which of the following practices can help you develop more secure software? (Select 3 answers.)
 
 - A. Penetration tests 侵入
 - B. Integrating static code analysis tools into your CI/CD pipeline
