@@ -491,6 +491,34 @@ Links:
 ![](images/78.png)
 
 <hr />
+
+Q79. Which of the following statements about Stackdriver Trace are true? (Select 2 answers.)
+
+- A. Stackdriver Trace tracks the performance of the virtual machines running the application.
+- B. Stackdriver Trace tracks the latency of incoming requests.
+- C. Applications in App Engine automatically submit traces to Stackdriver Trace. Applications outside of App Engine need to use the Trace SDK or Trace API.
+- D. To make an application work with Stackdriver Trace, you need to add instrumentation code using the Trace SDK or Trace API, even if the application is in App
+
+Suggested Answer: BC
+
+- The Cloud Trace API lets you send latency data to, and retrieve latency data from, Cloud Trace.[1]
+
+**Tracing system**
+
+- Displays data in near real–time
+- Latency reporting
+- Per-URL latency sampling
+
+**Collects latency data**
+
+- App Engine
+- Google HTTP(S) load balancers
+- Applications instrumented with the Cloud Trace SDKs
+  > Cloud Trace automatically analyzes all of your application's traces to generate in-depth latency reports that surface performance degradations and can capture traces from App Engine, HTTP(S) load balancers, and applications instrumented with the Cloud Trace API.
+
+1. https://cloud.google.com/trace/docs/reference
+2. textbook
+
 <hr />
 <hr />
 <hr />
