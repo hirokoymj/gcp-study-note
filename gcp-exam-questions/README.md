@@ -160,6 +160,7 @@ Answer: A(D is correct)
 1. https://cloud.google.com/compute/docs/networking
 2. https://www.examtopics.com/discussions/google/view/19714-exam-professional-cloud-architect-topic-9-question-22/
 3. https://cloud.google.com/vpc/docs/firewalls
+4. https://cloud.google.com/vpc/docs/add-remove-network-tags
 
 **Default**
 ![](images/41-3.png)
@@ -167,15 +168,18 @@ Answer: A(D is correct)
 **Created two custom FWs**
 ![](images/41-2.png)
 
+**Attached FW to VM using Tag**
+
 - Target tags - webserver
   we are going to allow traffice based on a paticular tag so we are only going to allow http
-  traffic to mathines that have a tag which we will called "webserver".
+  traffic to machines that have a tag which we will called "webserver".
+- VM doesn't have that network tag required for the firewall rule to apply yet so We are going to add FW rule to this.
 
-**Attached FW to VM using Tag**
 ![](images/41-1.png)
 
-1. VM doesn't have that network tag required for the firewall rule to apply.
-2. We are going to add FW rule to this
+**Add network tags**
+
+- Tags enable you to make firewall rules and routes applicable to specific VM instances.[4]
 
 <hr />
 
@@ -190,7 +194,9 @@ Reveal
 Answer: D
 https://cloud.google.com/compute/docs/autoscaler/
 
-![](images/43.png)
+**MIGs**
+
+![](images/43-migs.png)
 
 <hr />
 
@@ -258,13 +264,13 @@ Answer: C
 - Lower price for interruptible service (up to 91%)
 - VM might be terminated at any time
 
-```
   - No charge if terminated in the first minute
   - 24 hours max
   - 30-second terminate warning, but not guaranteed
-```
 
-- Time for a shutdown scrip
+- If your apps are fault-tolerant and can withstand possible instance preemptions, then preemptible instances can reduce your Compute Engine costs significantly. [5]
+- For example, batch processing jobs can run on preemptible instances. If some of those instances stop during processing, the job slows but does not completely stop. Preemptible instances complete your batch processing tasks without placing additional workload on your existing instances and without requiring you to pay full price for additional normal instances.[5]
+- **fault-tolerant computer**: fault ＝故障。torelant ＝許容すること・耐えること。つまり、故障が発生してもそれを許容して動き続けるコンピューターのこと。米国タンデム社の創設者であり、現在社長であるトレービック氏は、営業マネージャ時代に「一部が故障しても動き続けるコンピューターが絶対必要だ」と痛感し、1975 年、フォールト・トレラント・コンピューター「NonStop システム」を世界で初めて製品として発表することに成功した。
 
 **Reset a VM**
 
@@ -280,6 +286,7 @@ gcloud compute instances reset VM_NAME
 2. https://cloud.google.com/compute/docs/startupscript
 3. https://cloud.google.com/compute/docs/instances/preemptible
 4. https://cloud.google.com/compute/docs/instances/stop-start-instance#resetting_an_instance
+5. https://cloud.google.com/compute/docs/instances/preemptible#what_is_a_preemptible_instance
 
 <hr />
 
@@ -294,32 +301,18 @@ Reveal
 Answer: C
 https://cloud.google.com/compute/docs/disks/
 
-> Local SSDs and RAM disks disappear when you stop an instance. Standard Persistent Disks and SSD Persistent Disks both survive when you stop an instance, but SSD Persistent Disks have up to 4 times the throughput and up to 40 times the I/O operations per second of a Standard Persistent Disk.
-> Reference: https://cloud.google.com/compute/docs/disks/
+- You have three options: Standard, SSD, or local SSD.
+- Local SSDs have even higher throughput and lower latency than SSD persistent disks, because they are attached to the physical hardware. However, the data that you store on local SSDs persists **only until you stop or delete the instance.**
+- Typically, a local SSD is used as a swap disk, just like you would do if you want to create a ramdisk, but if you need more capacity, you can store those on a local SSD.
 
 **Persistent disks**
 
-- Persistent disks are durable network storage devices that your instances can access like physical disks in a desktop or a server. The data on each persistent disk is distributed across several physical disks. Compute Engine manages the physical disks and the data distribution for you to ensure redundancy and optimal performance.
-
-- Persistent disks are located independently from your virtual machine (VM) instances, so you can detach or move persistent disks to keep your data even after you delete your instances.
-
-- Persistent disk performance scales automatically with size, so you can resize your existing persistent disks or add more persistent disks to an instance to meet your performance and storage space requirements.
-
-**Disk types**
-
-- Standard persistent disks (pd-standard)
-- Balanced persistent disks (pd-balanced)
-- Performance (SSD) persistent disks (pd-ssd)
-  > Suitable for enterprise applications and high-performance databases that require lower latency and more IOPS than standard persistent disks provide.
-
-**Local SSDs**
-
-- Local SSDs are physically attached to the server that hosts your VM instance. Local SSDs have higher throughput and lower latency than standard persistent disks or SSD persistent disks
+- Persistent disks are durable network storage devices that your instances can access like physical disks in a desktop or a server.
 
 **Links:**
 
 1. https://cloud.google.com/compute/docs/disks/#pdspecs
-2. https://cloud.google.com/compute/docs/disks/#localssds
+2. textbook
 
 <hr />
 
