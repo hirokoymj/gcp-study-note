@@ -501,6 +501,11 @@ Q76. Which of the following practices can help you develop more secure software?
 Reveal
 Answer: A B D
 
+- There are four basic techniques for analyzing the security of a software application - automated scanning, manual penetration testing, static analysis, and manual code review.
+  Despite the many claims that code review is too expensive or time consuming, there is no question that it is the fastest and most accurate way to find and diagnose many security problems. There are also dozens of serious security problems that simply can't be found any other way.
+  Encrypting your source code might help with keeping it out of the hands of hackers, but it won't help you develop more secure software.
+  Reference: https://www.owasp.org/images/2/2e/OWASP_Code_Review_Guide-V1_1.pdf
+
 <hr />
 
 Q77. Which two places hold information you can use to monitor the effects of a Cloud Storage lifecycle policy on specific objects? (Select 2 answers.)
