@@ -12,51 +12,12 @@ D: Generate a new SSH key pair. Give the private key to each member of your team
 
 Answer: C
 
-**There are two ways to enable OS login.**
+**Explanation**
 
-**(1)Enable OS Login using Metadata:**
-
-1. Go to Compute Engine -> Metadata and create key and value.
-
-```
-Key: enable-oslogin
-Value: TRUE
-```
-
-2. Go to IAM and grant **roles/compute.osLogin** or **roles/compute.osAdminLogin**.
-
-**(2)Enable OS Login using SSH key:**
-
-1. Generate SSH key using below command.
-
-```
-// Generate SSH key
-ssh-keygen -t rsa -f ~/.ssh/hiroko-ssh -C hiroko -b 2048
-
-// ssh-keygen saves your private key file to ~/.ssh/KEY_FILENAME and your public key file to ~/.ssh/KEY_FILENAME.pub.
-hiroko@owners-MacBook-Pro ~ % cd .ssh
-hiroko@owners-MacBook-Pro .ssh % ls
--rw-------   1 hiroko  staff  1856 Dec  9 22:00 hiroko-ssh     # my private key
--rw-r--r--   1 hiroko  staff   388 Dec  9 22:00 hiroko-ssh.pub # my public key
-// View public ssh key
-cat hiroko-ssh.pub
-ssh-rsa AAAZHu+Sf3B3x0/2e6si3+IHbAlHIFEvNHrqtvPGE5rIuGL1Yf9OEcAJVNri2fdTj3YVn9ALWG887oJK9 hiroko
-```
-
-2. Go to Compute Engine -> Metadata. Then click on SSH KEYS tab. and add your public key.
-
-**Links:**
-
-1. https://www.youtube.com/watch?v=pGIR9Cq3-Kk
-2. https://cloud.google.com/compute/docs/connect/create-ssh-keys#create_an_ssh_key_pair
-3. https://cloud.google.com/compute/docs/oslogin/set-up-oslogin#configure_users
-4. https://cloud.google.com/compute/docs/oslogin/set-up-oslogin#enable_os_login
-
-![](images/os-login-1.png)
-![](images/os-login-2.png)
-![](images/os-login-3.png)
-![](images/os-login-meta.png)
-![](images/os-login-ssh-key.png)
+- SSH 認証手段 →password or keys
+- private key は誰にも教えてはいけない
+- public key is for identifying a user accessing a server
+- osAdminLogin allows administrative access
 
 <hr />
 
@@ -74,22 +35,9 @@ Answer: B
 
 **Explanation**
 
-- https://cloud.google.com/vpc/docs/vpc#restricted-ranges
-
-**VPC (A Virtual Private Cloud)**
-
-- VPC networks, including their associated routes and firewall rules.
-- Subnets are regional resources.
-- Each subnet defines a range of IPv4 addresses. Subnets in custom mode VPC networks can also have a range of IPv6 addresses.
-- default, auto, custom
-- When an auto mode VPC network is created, one subnet from each region is automatically created within it. These automatically created subnets use a set of predefined IPv4 ranges that fit within the 10.128.0.0/9 CIDR block.
-- When a custom mode VPC network is created, no subnets are automatically created.
-
-Links:
-
 - 0.0.0.0/0 is a restricted range
 - https://cloud.google.com/vpc/docs/vpc#valid-ranges
-
+- https://cloud.google.com/vpc/docs/vpc#restricted-ranges
 <hr />
 
 **Question 3** You are a project owner and need your co-worker to deploy a new version of your application to App Engine. You want to follow Google’s recommended practices. Which IAM roles should you grant your co-worker?
@@ -146,7 +94,7 @@ B: Use "bq config set project" to set the default project.
 C: Use "gcloud generate config-url" to generate a URL to the Google Cloud Platform Console to set the default project.
 
 D: Use "bq generate config-url" to generate a URL to the Google Cloud Platform Console to set the default project.
-C
+
 Answer: A
 
 **Explanation**
@@ -157,25 +105,6 @@ B is not correct because the bq command-line tool assumes the gcloud configurati
 C is not correct because entering this command will not achieve the desired result and will generate an error.
 
 D is not correct because entering this command will not achieve the desired result and will generate an error.
-
-```
-bq ls
-bq ls coffee
-$ bq cp coffee.coffee_dataset coffee.coffee_dataset_copy2
-bq query 'select * from coffee.coffee_dataset'
-bq mk sport_dataset
-bq load --autodetect sports_dataaset.superbowls gs://doug-rehnstrom-public/superbowls-clean.csv
-bq ls sports_dataset.superbowls
-bq query 'select count(Game) as Win from sports_dataset.superbowls'
-bq rm -f sports_dataset.superbowls
-bq rm -f sports_dataset
-```
-
-**Links:**
-
-- https://www.youtube.com/watch?v=SIE7Zpwk8zw&list=PLuJRcdtonlDAN73rZsRk_eiJ0NU9h1Cms&index=84
-- https://www.youtube.com/watch?v=Lz1PZdtsJiM
-- https://www.kaggle.com/datasets/psycon/daily-coffee-price
 
 <hr />
 
@@ -285,12 +214,6 @@ B: Create a VM from the instance template. Create an App Engine application in A
 C: Create a managed instance group based on the instance template. Configure autoscaling based on HTTP traffic and configure the instance group as the backend service of an HTTP load balancer.
 
 D: Create the necessary amount of instances required for peak user traffic based on the instance template. Create an unmanaged instance group and add the instances to that instance group. Configure the instance group as the Backend Service of an HTTP load balancer.
-
-Answer: C is correct because a managed instance group can use an instance template to scale based on HTTP traffic.
-
-Links:
-
-1. https://cloud.google.com/compute/docs/instance-groups/#managed_instance_groups_and_autoscaling
 
 <hr />
 
@@ -489,18 +412,14 @@ D: Use "bq estimate" to determine the amount billed for a single query. Multiply
 
 Answer: B
 
-```
- bq query \
---use_legacy_sql=false \
---dry_run \
-'SELECT * from coffee.coffee_dataset'
-// Result
-Query successfully validated. Assuming the tables are not modified, running this query will process 304538 bytes of data.
-```
+**Explanation**
+A is not correct because you should use bq, not gcloud, to estimate the amount of bytes read.
 
-**Links:**
+B is correct because this is the correct way to estimate the yearly BigQuery querying costs.
 
-https://cloud.google.com/bigquery/docs/dry-run-queries
+C is not correct because you should use bq, not gcloud, to work with BigQuery.
+
+D is not correct because this will not give the amount billed for a query.
 
 <hr />
 
@@ -573,25 +492,6 @@ Answer: C
 - C is correct because Google recommends to use groups where possible.
 - D is not correct because this command is to create roles, not to assign them.
 
-**--member**
-
-- user|group|serviceAccount:email or domain:domain.
-- user:test-user@gmail.com
-- group:admins@example.com
-- serviceAccount:test123@example.domain.com
-- domain:example.domain.com
-
-```
-gcloud projects add-iam-policy-binding example-project-id-1 --member='user:test-user@gmail.com' --role='roles/editor'
-```
-
-```
-gcloud projects add-iam-policy-binding example-project-id-1 --member='serviceAccount:test-proj1@example.domain.com' --role='roles/editor'
-```
-
-**Links:**
-https://cloud.google.com/sdk/gcloud/reference/projects/add-iam-policy-binding
-
 <hr />
 
 **Question 22**
@@ -647,18 +547,6 @@ D: Select Cloud Spanner. Set up your instance as multi-regional.
 
 Answer: A
 
-- Point-in-time recovery is enabled by default when you create a new Cloud SQL instance.[1][2]
-- Point-in-time recovery uses binary logs. These logs update regularly and use storage space.[3]
-- In the event of an instance or zone failure, the standby instance becomes the new primary instance. Users are then rerouted to the new primary instance. This process is called a failover [4]
-- fail-over 障害迂回
-
-**Links:**
-
-1. https://cloud.google.com/sql/docs/mysql/backup-recovery/restore#tips-pitr
-2. https://cloud.google.com/sql/docs/mysql/backup-recovery/pitr#enablingpitr
-3. https://cloud.google.com/sql/docs/mysql/backup-recovery/pitr#disk-usage
-4. https://cloud.google.com/sql/docs/mysql/high-availability
-
 <hr />
 
 **Question 25**
@@ -675,19 +563,6 @@ D: Create a managed instance group. Verify that the autoscaling setting is on.
 
 Answer: C
 
-- Autohealing lets you automatically restart apps that are compromised. It promptly detects failed instances and recreates them automatically, so clients can be served again. With autohealing, you no longer need to manually bring an app back to service after a failure.
-
-**The app includes the following Compute Engine components:[1]**
-
-- Health check: an HTTP health check policy used by the autohealer to detect failed VM instances.
-- Firewall rules: Google Cloud firewall rules let you allow or deny traffic to your instances.
-- Managed instance group: A group of instances running the same demo web service.
-- Instance template: A template used to create each instance in the instance group.
-
-**Links:**
-
-1. https://cloud.google.com/compute/docs/tutorials/high-availability-autohealing
-
 <hr />
 
 **Question 26**
@@ -703,25 +578,6 @@ C: Use kubectl config get-contexts to review the output.
 D: Use kubectl config use-context and kubectl config view to review the output.
 
 Answer: C
-
-```
-kubectl config get-contexts
-CURRENT   NAME          CLUSTER AUTHINFO           NAMESPACE
-*         white         white   dazwilkin
-          black         black   dazwilkin
-```
-
-```
-kubectl config use-context black
-Switched to context "black"
-kubectl config use-context white
-Switched to context "white"
-```
-
-- C is correct , Use kubectl config get-contexts to review the output : shows the clusters and the configurations and based on the output we can identify the inactive configurations
-
-**Links:**
-https://www.examtopics.com/discussions/google/view/20299-exam-associate-cloud-engineer-topic-1-question-5-discussion/
 
 <hr />
 
@@ -755,8 +611,6 @@ D: In the Google Cloud Platform Console, create a new billing account and set up
 
 Answer: C
 
-- https://cloud.google.com/billing/docs/how-to/billing-access#relationships-between-resources
-
 <hr />
 
 **Question 29**
@@ -789,38 +643,6 @@ D: Automatic Scaling with min_idle_instances set to 3.
 
 Answer: D
 
-**App Engine scaling types**
-
-You specify the scaling type in your app's app.yaml.
-
-- Automatic (default)
-- Basic
-- Manual
-
-```
-automatic_scaling:
-  target_cpu_utilization: 0.65
-  min_instances: 5
-  max_instances: 100
-  min_pending_latency: 30ms
-  max_pending_latency: automatic
-  max_concurrent_requests: 50
-```
-
-- For example, if App Engine calculates that 5 instances are necessary to serve traffic, and min_idle_instances is set to 2, App Engine will run 7 instances (5, calculated based on traffic, plus 2 additional per min_idle_instances)."[3]
-
-- Automatic scaling creates instances based on request rate, response latencies, and other application metrics.
-
-- Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent
-
-- Manual scaling specifies the number of instances that continuously run regardless of the load level.
-
-  **Links:**
-
-1. https://cloud.google.com/appengine/docs/standard/how-instances-are-managed#scaling_types
-2. https://cloud.google.com/appengine/docs/standard/reference/app-yaml?tab=node.js
-3. https://www.examtopics.com/discussions/google/view/20302-exam-associate-cloud-engineer-topic-1-question-9-discussion/
-
 <hr />
 
 **Question 31**
@@ -836,15 +658,6 @@ C: In the Google Cloud Platform Console, use the'create role from role' function
 D: In the Google Cloud Platform Console, use the'create role' functionality and select all applicable permissions.
 
 Answer: A
-
-```
-//To create a copy of an existing role spanner.databaseAdmin into a project with PROJECT_ID, run:
-gcloud iam roles copy --source="roles/spanner.databaseAdmin" --destination=CustomSpannerDbAdmin --dest-project=PROJECT_ID
-```
-
-Links:
-
-- https://cloud.google.com/sdk/gcloud/reference/iam/roles/copy#--destination
 
 <hr />
 
@@ -878,39 +691,6 @@ D: Create a docker image from the Dockerfile and upload it to Cloud Storage. Cre
 
 Answer: C
 
-**Hello App**
-
-- Dockerfile
-- main.go
-- Dockerfile is used to build the Docker image for the application.
-
-```
-// 1. Download the hello-app source code and Dockerfile by running the following commands:
-
-git clone https://github.com/GoogleCloudPlatform/kubernetes-engine-samples
-cd kubernetes-engine-samples/hello-app
-
-// 2. Build and tag the Docker image for hello-app:
-docker build -t us-cenral1-docker.pkg.dev/${PROJECT_ID}/hello-repo/hello-app:v1 .
-
-// 3. Run the docker images command to verify that the build was successful:
-docker images
-
-// Output
-REPOSITORY                                                 TAG     IMAGE ID       CREATED          SIZE
-us-west1-docker.pkg.dev/my-project/hello-repo/hello-app    v1      25cfadb1bf28   10 seconds ago   54 MB
-```
-
-> C is correct.
-> A can be eliminated because kubectl app \* is not a valid command
-> B can be eliminated because gcloud app deploy deploys on app engine, not on kubernetes (also it still requires a config file pointing to the image).
-> D is not correct, since you cannot deploy a container image directly from GCS
-
-**Links:**
-
-1. https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/tree/main/hello-app
-2. https://www.examtopics.com/discussions/google/view/18826-exam-associate-cloud-engineer-topic-1-question-12-discussion/
-
 <hr />
 
 **Question 34**
@@ -943,16 +723,6 @@ D: gcloud deployment-manager resources update --config <deployment-config-path>
 
 Answer: B
 
-- This command will update a deployment with the new config file provided.
-
-```
-gcloud deployment-manager deployments update my-deployment --config=new_config.yaml
-```
-
-**Links:**
-
-1. https://cloud.google.com/sdk/gcloud/reference/deployment-manager/deployments/update
-
 <hr />
 
 **Question 36**
@@ -968,36 +738,6 @@ C: Use the command line to run a dry run query to estimate the number of bytes r
 D: Run a select count (\*) to get an idea of how many records your query will look through. Then convert that number of rows to dollars using the Pricing Calculator.
 
 Answer: B
-
-**Estimate query costs by Console**
-
-- When you enter a query in the Google Cloud console, the query validator verifies the query syntax and provides an estimate of the number of bytes read. You can use this estimate to calculate query cost in the Pricing Calculator.
-  ![](images/36.png)
-
-**Estimate query costs by bq command**
-
-When you run a query in the bq command-line tool, you can use the --dry_run flag to estimate the number of bytes read.
-
-```
-bq query \
---use_legacy_sql=false \
---dry_run \
-'SELECT
-   COUNTRY,
-   AIRPORT,
-   IATA
- FROM
-   `project_id`.dataset.airports
- LIMIT
-   1000'
-```
-
-> Query successfully validated. Assuming the tables are not modified,
-> running this query will process 10918 bytes of data.
-
-**Links:**
-
-1. https://cloud.google.com/bigquery/docs/dry-run-queries
 
 <hr />
 
@@ -1088,15 +828,7 @@ C: Set a Windows password in the GCP Console. Verify that a firewall rule for po
 
 D: Set a Windows username and password in the GCP Console. Verify that a firewall rule for port 3389 exists. Click the RDP button in the GCP Console, and supply the credentials to log in.
 
-Answer: B (D is NOT correct so B is the answer.)
-
-- I tested this on on Compute Engine today by deploying a new instance. D is not correct. When you click the RDP button, you are asked to install a client or use the Windows RDP client if you are running Windows. There is no option to enter credentials or get an RDP session through the web interface.
-
-- If the VM instance has a public IP address and firewall rules permit RDP access, use an RDP client. For more information, see Microsoft Remote Desktop clients to connect to the Windows instance.[1]
-
-**Links:**
-
-1. https://cloud.google.com/compute/docs/instances/connecting-to-windows#before-you-begin
+Answer: B
 
 <hr />
 
@@ -1133,26 +865,19 @@ D: Execute the Deployment Manager template using the ""-preview option in the sa
 
 Answer: D
 
-- You can preview the update you want to make before committing any changes, with the Google Cloud CLI or the API.[1]
+https://cloud.google.com/sdk/gcloud/reference/deployment-manager/deployments
 
 ```js
-//With the Google Cloud CLI, make an update request with the --preview parameter:
-gcloud deployment-manager deployments update example-deployment \
-    --config configuration-file.yaml \
-    --preview
+nano vm.yaml
+gcloud deployment-manager deployments create my-first-deployment --config vm.yaml
+gcloud deployment-manager deployments describe my-first-deployment
 ```
-
-**Links:**
-
-1. https://cloud.google.com/deployment-manager/docs/deployments/updating-deployments#optional_preview_an_updated_configuration
 
 <hr />
 
 **Question 44**
 
 You are building a pipeline to process time-series data. Which Google Cloud Platform services should you put in boxes 1,2,3, and 4?
-
-![](images/44.jpg)
 
 A: Cloud Pub/Sub, Cloud Dataflow, Cloud Datastore, BigQuery
 
@@ -1164,24 +889,9 @@ D: Cloud Pub/Sub, Cloud Dataflow, Cloud Bigtable, BigQuery
 
 **Answer: D**
 
-> D is correct
-> as per google docs.
-> https://cloud.google.com/bigtable/docs/schema-design-time-series#time-series-cloud-bigtable
-> Storing time-series data in Cloud **Bigtable** is a natural fit.
-
-> A time series is a collection of data that consists of measurements and the times when the measurements are recorded. Examples of time series include the following:
-
-- The plot of memory usage on your computer
-- Temperature over time on a news report
-- Stock market prices over a period of time
-
-> A good schema results in excellent performance and scalability, and a bad schema can lead to a poorly performing system. However, no single schema design provides the best fit for all use cases.
-
-> The basic design patterns for storing time-series data in **Bigtable** are as follows:
-
-**Links:**
-
-1. https://cloud.google.com/bigtable/docs/schema-design-time-series#time-series-cloud-bigtable
+- https://www.examtopics.com/discussions/google/view/20453-exam-associate-cloud-engineer-topic-1-question-23-discussion/
+- Cloud Pub/Sub -> Cloud Dataflow -> Cloud Bigtable(Storage) -> BigQuery(Analytics)
+- Cloud Pub/Sub は Google が提供するメッセージングサービスです
 
 <hr />
 
@@ -1195,16 +905,8 @@ C: Create a Deployment Manager configuration file that copies the current App En
 
 D: Deploy your application again using gcloud and specify the project parameter with the new project name to create the new project.
 
-Answer: A (A is correct)
-
-> Correct is A.
-
-- Option B is wrong as the option to use gcloud app cp does not exist.
-- Option C is wrong as Deployment Manager does not copy the application, but allows you to specify all the resources needed for your application in a declarative format using yaml
-- Option D is wrong as gcloud app deploy would not create a new project. The project should be created before usage
-
-Links:
-https://www.examtopics.com/discussions/google/view/16693-exam-associate-cloud-engineer-topic-1-question-24-discussion/
+Answer: A
+https://cloud.google.com/sdk/gcloud/reference/app/deploy
 
 <hr />
 
@@ -1244,7 +946,7 @@ Answer: A (or C)
   > Grants full control over objects, including listing, creating, viewing, and deleting objects
 - As per as the least privileage recommended by google, C is the correct Option, A is incorrect because the scope doesnt exist. B incorrect because it will give him full of control
 - [Cloud Storage - Scopes](https://cloud.google.com/storage/docs/authentication#oauth-scopes)
-  > read-only, read-write, there is NO write_only
+  > read-only, read-write, full-control, cloud-platform.read.only, cloud-platform
 
 <hr />
 
@@ -1261,18 +963,14 @@ D: Create a trace in Stackdriver to view the information.
 Answer: B
 https://cloud.google.com/storage/docs/audit-logging
 
-- B is correct. In this scenario, you need to select data access audit logs in Cloud Logging.
+- B is correct.
+  In this scenario, you need to select data access audit logs in Cloud Logging.
+
 - Note the Stackdriver Logging is now named Cloud Logging.
+
 - B is the right ans. Activity log is not for data access audit logs, use log explorer for this purpose
-- Cloud Storage: When Cloud Storage usage logs are enabled, Cloud Storage writes usage data to the Cloud Storage bucket, which generates Data Access audit logs for the bucket. The generated Data Access audit log has its caller identity redacted.[1]
+
 - Admin Activity, **Data access**, policy denied, System event
-- Cloud Audit Logs features Admin Activity logs documenting administrative events, and Data Access logs record accesses to your cloud data by your users.[2]
-
-**Links:**
-
-1. https://cloud.google.com/logging/docs/audit#types
-2. https://cloud.google.com/audit-logs
-
 <hr />
 
 **Question 49** You are the project owner of a GCP project and want to delegate control to colleagues to manage buckets and files in Cloud Storage. You want to follow Google- recommended practices. Which IAM roles should you grant your colleagues?
@@ -1325,21 +1023,12 @@ D: Reference the monitoring pod in a cluster initializer at the GKE cluster crea
 
 Answer: B
 
-- Kubernetes has several ways to deploy applications, including **deployments**, **DaemonSets** and **StatefulSets**. But each resource type has unique benefits, drawbacks and use cases.
-- Like deployments, DaemonSets are files. T
-  ```
-  apiVersion: apps/v1
-  kind: DaemonSet
-  metadata:
-  name: fluentd-elasticsearch
-  namespace: kube-system
-  labels:
-     k8s-app: fluentd-logging
-  ```
-- DaemonSets are most often used to run background software, such as a **monitoring agent**, on each node in a cluster. DaemonSets are **not typically used to deploy the main apps** hosted on Kubernetes.
+> B is right: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+> Some typical uses of a DaemonSet are:
 
-Links:
-https://www.techtarget.com/searchitoperations/tip/Compare-Kubernetes-StatefulSet-vs-deployment-vs-DaemonSet
+running a cluster storage daemon on every node
+running a logs collection daemon on every node
+running a node monitoring daemon on every node
 
 <hr />
 
@@ -1371,15 +1060,6 @@ D: Configure a single Stackdriver account for one of the projects. In Stackdrive
 
 Answer: C
 
-- In the Monitoring navigation pane, select settings Settings.[1]
-- Click Add GCP Projects and then select the projects that you want to add.[1]
-- "View metrics for multiple Cloud projects: C. - Nothing about groups [2]
-
-Links:
-
-1. https://cloud.google.com/monitoring/settings/multiple-projects#add-monitored-project
-2. https://www.examtopics.com/discussions/google/view/16702-exam-associate-cloud-engineer-topic-1-question-32-discussion/
-
 <hr />
 
 **Question 54**
@@ -1410,31 +1090,6 @@ D: Navigate to the project and then to the Roles section in the GCP Console. Rev
 
 Answer: C
 
-- (gcloud iam roles list) When an organization or project is specified, this command lists the custom roles that are defined for that organization or project.
-  Otherwise, this command lists IAM's predefined roles.[1]
-
-```
-//To list custom roles for the organization 12345, run:
-gcloud iam roles list --organization=12345
-
-//To list custom roles for the project myproject, run:
-gcloud iam roles list --project=myproject
-
-//To list all predefined roles, run:
-gcloud iam roles list
-```
-
-- A role is a group of permissions that you can assign to principals.
-
-**Links:**
-
-1. https://cloud.google.com/sdk/gcloud/reference/iam/roles/list
-
-**IAM page and Roles page**
-
-![](images/55-iam-section.png)
-![](images/55-roles-section.png)
-
 <hr />
 
 **Question 56**
@@ -1442,26 +1097,20 @@ You need to create a new billing account and then link it with an existing Googl
 
 A: Verify that you are Project Billing Manager for the GCP project. Update the existing project to link it to the existing billing account.
 
-B: Verify that you are Project Billing Manager for the GCP project. Create a new billing account and link the new billing account to the existing project.\*\*
+B: Verify that you are Project Billing Manager for the GCP project. Create a new billing account and link the new billing account to the existing project.
 
 C: Verify that you are Billing Administrator for the billing account. Create a new project and link the new project to the existing billing account.
 
 D: Verify that you are Billing Administrator for the billing account. Update the existing project to link it to the existing billing account.
 
-Answer: C(correct is B)
+Answer: C
 
-**Billing Account Administrator (roles/billing.admin)**
+**Billing Account Administrator**
 
-- Manage billing accounts (but not create them).
-
-**Project Billing Manager(roles/billing.projectManager)**
-
-- resourcemanager.projects.createBillingAssignment
-- resourcemanager.projects.deleteBillingAssignment
-- Link/unlink the project to/from a billing account.
-- When granted in combination with the Billing Account User role, the Project Billing Manager role allows a user to attach the project to the billing account, but **does not** grant any rights over resources.
-
-https://cloud.google.com/billing/docs/how-to/billing-access#overview-of-cloud-billing-roles-in-cloud-iam
+> roles/billing.admin
+> Purpose: Manage billing accounts (but not create them).
+> Level: Organization or billing account.
+> link and unlink projects and manage other user roles on the billing account.
 
 <hr />
 
@@ -1647,18 +1296,14 @@ C: On the App Engine Versions page of the GCP Console, route 100% of the traffic
 
 D: Deploy the original version as a separate application. Then go to App Engine settings and split traffic between applications so that the original version serves 100% of the requests.
 
-Answer: D (the correct is C)
+Answer: D
 
-- correct is C NOT D.
-  Option A is wrong as gcloud app restore was used for backup and restore and has been deprecated.Option B is wrong as there is no application revert functionality available.Option D is wrong as App Engine maintains version and need not be redeployed.
+- Selected Answer: C
 
-- D - is wrong because there is only one app engine per project. C is correct, you have to split traffic
+  > route 100% of the traffic to the previous version
 
-- Correct option is C. AppEngine already creates a version for you. Also you do not create a application as one project is associated with one AppEngine application.
-
-**Links:**
-
-- https://www.examtopics.com/discussions/google/view/16707-exam-associate-cloud-engineer-topic-1-question-45-discussion/
+- Correct option is C.
+  > AppEngine already creates a version for you. Also you do not create a application as one project is associated with one AppEngine application.
 
 <hr />
 
@@ -1675,33 +1320,7 @@ D: Go to Cloud Shell and run gcloud config list to review the Google Cloud confi
 
 Answer: D
 
-https://cloud.google.com/appengine/docs/standard/reference/app-yaml?tab=node.js#top
-
-- The app.yaml file configures your App Engine app's settings. It is required to contain at least a runtime entry.
-
-- I would opt option D : as it would help to check the config details and Option A is not correct, as app.yaml would have only the runtime and script to run parameters and not the Project details
-
-```
-runtime: nodejs18 # required
-
-instance_class: F2 # Automatic scaling: (**F1**, F2, F4, F4_1G). Basic and manual scaling: (B1, **B2**, B4, B4_1G, B8)
-
-env_variables:
-  BUCKET_NAME: "example-gcs-bucket"
-
-handlers:
-- url: /stylesheets
-  static_dir: stylesheets
-
-- url: /.*
-  secure: always
-  redirect_http_response_code: 301
-  script: auto
-```
-
-https://cloud.google.com/appengine/docs/flexible/java/configuring-the-web-xml-deployment-descriptor
-
-- The web.xml file is only used when deploying a Java app to a runtime that includes the Eclipse Jetty 9/ servlet 3 server.
+> D. check project setting by gcloud config list
 
 <hr />
 
@@ -1761,14 +1380,6 @@ D: Stop the VM, increase the memory to 8 GB, and start the VM.
 
 Answer: D
 
-- D is correct. If you pay attention to the question, option C mentions n1-standard-8. That instance type has **8vCPUs** and 30 GB RAM, and we only need 8GB. On top of that, it is possible to use custom machine type to adjust current VM RAM to the value we need.
-
-Links:
-
-1. https://www.examtopics.com/discussions/google/view/16710-exam-associate-cloud-engineer-topic-1-question-49-discussion/
-
-![](images/70.png)
-
 <hr />
 
 **Question 71**
@@ -1783,12 +1394,6 @@ C: Create 2 custom VPCs, each with a single subnet. Create each subnet in a diff
 D: Create 2 custom VPCs, each with a single subnet. Create each subnet in the same region and with the same CIDR range.
 
 Answer: A
-
-- When a custom mode VPC network is created, no subnets are **automatically** created. This type of network provides you with complete control over its subnets and IP ranges. You decide which subnets to create in regions that you choose by using IP ranges that you specify.[1]
-
-**Links:**
-
-1. https://cloud.google.com/vpc/docs/vpc#subnet-ranges
 
 <hr />
 
@@ -1915,31 +1520,6 @@ D: Create a new instance template with the new application version. Update the e
 
 Answer: B
 
-**Links:**
-
-1. https://cloud.google.com/compute/docs/instance-groups/rolling-out-updates-to-managed-instance-groups#starting_a_basic_rolling_update
-
-**Instance Template v1,v2**
-![](images/78-instance-template.png)
-
-**Migs for v1**
-![](images/78-migs.png)
-
-**Edit Migs from template v1 to v2**
-![](images/78-maxSurge.png)
-
-**Migs is updating to v2**
-![](images/78-updating-migs.png)
-
-**maxSurge/maxUnavailable**
-![](images/78-mig-updater.png)
-
-```
-gcloud compute instance-groups managed rolling-action start-update INSTANCE_GROUP_NAME \
-    --version=template=INSTANCE_TEMPLATE_NAME
-    [--zone=ZONE | --region=REGION]
-```
-
 <hr />
 
 **Question 79**
@@ -1969,29 +1549,6 @@ C: Assign the finance team the Billing Account User role on the billing account 
 D: Assign the engineering team the Billing Account User role on the billing account and the Project Billing Manager role on the organization.
 
 Answer: C
-
-- Billing Account User (roles/billing.user)
-
-  > Link projects to billing accounts.
-
-  > This role allow a user to create new projects linked to the billing account on which the role is granted.
-
-  > Create new billable projects.
-
-- Project Billing Manager(roles/billing.projectManager)
-
-  > Link/unlink the project to/from a billing account.
-
-  > This role allows a user to attach the project to the billing account, but does not grant any rights over resources.
-
-```
-- Billing Account User (roles/billing.user) on the destination billing account
-- Project billing manager (roles/billing.projectManager) on the project
-```
-
-- https://cloud.google.com/billing/docs/how-to/billing-access
-- https://stackoverflow.com/questions/59559885/project-billing-manager-vs-billing-account-user-gcp#:~:text=Project%20Billing%20Manager%20is%20the,link%20projects%20to%20billing%20accounts.
-- https://cloud.google.com/billing/docs/how-to/billing-access#cloud-billing_access-control-examples
 
 <hr />
 
@@ -2041,22 +1598,19 @@ C: Package it in a container image, and run it on Kubernetes Engine, using n1-st
 D: Run it on Compute Engine, choose the instance type n1-standard-1, and add an SSD persistent disk of 32 GB.
 
 Answer: A
-Memorystore in Redis
-![](images/83-memorystore-price.png)
 
-**n1-standard-1**
-![](images/83-n1-stanadrd-1.png)
+```
+Memorystore
+Reduce latency with scalable, secure, and highly available in-memory service for Redis and Memcached.
+https://cloud.google.com/memorystore
 
-**n1-standard-32**
-![](images/83-n1-standard-32.png)
+https://cloud.google.com/memorystore/docs/redis/redis-overview#what_its_good_for
 
-![](images/83-memorystore.png)
-
-![](images/83-custom.png)
-
-Links:
-
-1. https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create
+- Memorystore for Redis provides a fast, in-memory store for use cases that require fast, real-time processing of data.
+- Caching
+- Gaming
+- Stream Processing: Whether processing a Twitter feed
+```
 
 <hr />
 
@@ -2095,8 +1649,15 @@ D: 1. Deploy your application on Cloud Run on GKE with the connectivity set to I
 
 Answer: C
 
-**Integrating with Pub/Sub**
-https://cloud.google.com/run/docs/tutorials/pubsub#integrating-pubsub
+https://cloud.google.com/run/docs/securing/managing-access#make-service-public
+
+```
+gcloud run services add-iam-policy-binding [SERVICE_NAME] \
+  --member="allUsers" \
+  --role="roles/run.invoker"
+
+gcloud run deploy [SERVICE_NAME] ... --allow-unauthenticated
+```
 
 <hr />
 
@@ -2131,13 +1692,9 @@ C: Migrate the acquired company's projects into your company's GCP organization.
 
 D: Create a new GCP organization and a new billing account. Migrate the acquired company's projects and your company's projects into the new GCP organization and link the projects to the new billing account.
 
-Answer: A (A will be correct within 24 hours or B)
-
-https://cloud.google.com/resource-manager/docs/project-migration#permissions-billing
+Answer: A
 
 - [Billing account permissions](https://cloud.google.com/resource-manager/docs/project-migration#permissions-billing)
-
-  > Cloud Billing accounts can be used across organization resources. Moving a project from one organization resource to another won't impact billing, and charges will continue against the old billing account.
 
 - https://fargyle.medium.com/google-cloud-platform-cross-org-billing-41c5db8fefa6
 
@@ -2163,17 +1720,7 @@ Answer: A
 
 - should not have access to table data
 - [roles/spanner.databaseReader](https://cloud.google.com/spanner/docs/iam#roles)
-
   > Read from the Cloud Spanner database.
-
-- Cloud Spanner Database Reader (roles/spanner.databaseReader)
-  > Read from the Cloud Spanner database.
-- Cloud Spanner Database User (roles/spanner.databaseUser)
-  > Read from and write to the Cloud Spanner database.
-  > View and update schema for the database.
-- https://cloud.google.com/monitoring/access-control#predefined_roles
-- Monitoring Viewer(roles/monitoring.viewer)
-  > Grants read-only access to Monitoring in the Google Cloud console and API.
 
 <hr />
 
@@ -2200,17 +1747,22 @@ resource.type="gce_instance"
 **Question 90**
 You are using Deployment Manager to create a Google Kubernetes Engine cluster. Using the same Deployment Manager deployment, you also want to create a DaemonSet in the kube-system namespace of the cluster. You want a solution that uses the fewest possible services. What should you do?
 
+A: Add the cluster's API as a new Type Provider in Deployment Manager, and use the new type to create the DaemonSet.
+
+B: Use the Deployment Manager Runtime Configurator to create a new Config resource that contains the DaemonSet definition.
+
+C: With Deployment Manager, create a Compute Engine instance with a startup script that uses kubectl to create the DaemonSet.
+
 D: In the cluster's definition in Deployment Manager, add a metadata that has kube-system as key and the DaemonSet manifest as value.
 
-Answer: C (**A is correct**)
+Answer: C
 
-- [Adding an API as a type provider](https://cloud.google.com/deployment-manager/docs/configuration/type-providers/creating-type-provider)
+- [Creating DaemonSets](https://cloud.google.com/kubernetes-engine/docs/concepts/daemonset#creating_daemonsets)
 
-  > This page describes how to add an API to Google Cloud Deployment Manager as a type provider. To learn more about types and type providers, read the Types overview documentation.
+  > kubectl create
 
-  > A type provider exposes all of the resources of a third-party API to Deployment Manager as base types that you can use in your configurations. These types must be directly served by a RESTful API that supports Create, Read, Update, and Delete (CRUD).
-
-- [Cloud Deployment Manager & Kubernetes](https://medium.com/google-cloud/cloud-deployment-manager-kubernetes-2dd9b8124223)
+- [DaemonSet](https://cloud.google.com/kubernetes-engine/docs/concepts/daemonset)
+  > A DaemonSet ensures that all (or some) Nodes run a copy of a Pod.
 
 <hr />
 
