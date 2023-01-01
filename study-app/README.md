@@ -1,9 +1,14 @@
 # GCP Study App
 
-Question #78
-https://cloud.google.com/kubernetes-engine/docs/concepts/service#why-use-a-service
+# Cloud Storage
 
-**BigQ**
+- Storage Admin
+
+# SA
+
+- Service account key: To use a service account from outside of Google Cloud, such as on other platforms or on-premises, you must first establish the identity of the service account
+
+- **BigQ**
 
 5, 8, 11, 18, 20, 36, 46, 73, 89, 114, 117, 112, 135, 137, 151, 186, 192, 198
 
