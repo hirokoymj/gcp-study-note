@@ -8,6 +8,14 @@
 
 - Service account key: To use a service account from outside of Google Cloud, such as on other platforms or on-premises, you must first establish the identity of the service account
 
+# VM
+
+- SSH: IAM-based-login=osLogin
+- RDB: Windows login, reset password, download RDP client
+- Network tags: it makes FW enable in a vm.
+
+<hr />
+
 - **BigQ**
 
 5, 8, 11, 18, 20, 36, 46, 73, 89, 114, 117, 112, 135, 137, 151, 186, 192, 198
