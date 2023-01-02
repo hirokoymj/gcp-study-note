@@ -3,6 +3,7 @@
 # Cloud Storage
 
 - Storage Admin
+- Bucket public -> a signed URL
 
 # SA
 
@@ -10,18 +11,22 @@
 
 # VM
 
-- SSH: osLogin with a IAM based permission
+- SSH: osLogin=true with a IAM based permission ( No SA needed) roles/compute.osLogin or roles/compute.osAdminLogin.
 - RDP: Windows login, reset password, download RDP client
 - Network tags: it makes FW enable in a vm.
 - batch job, preemptible vm
-- Maintenance occurs - On host maintenance/Automatic restart
+- Maintenance occurs - On host maintenance=Migrate VM instance, Automatic restart=ON
 - Stop VM when increasing the memeory 4GB -> 8GB
+- disk - persistant disc Local SSD
+- MIGs - port 4443 HTTPS
+- MIGs - autoscaling- CPU, max/min,
 
 # VPC
 
 - auto mode/custom mode
 - auto mode - one subnet from each region is automatically created within it.
 - custom mode: you have to create a subnet
+- VPC and the 2 subnets - custom
 
 # Cloud VPN
 
@@ -32,6 +37,8 @@
 # BigQuery
 
 - dry-run select \* from coffee.coffee_dataset -->304538 bytes of data
+- External table (source: Cloud Storage)
+- BigQuery jobUser - query
 
 # gcloud commands
 
@@ -43,16 +50,25 @@
 - gcloud | gcloud projects get-iam-policy react-app-demo
 - Cloud Function | gcloud functions deploy Hello --http-trigger (--trigger-topic=mytopic)
 - gcloud iam roles copy --source="roles/spanner.databaseAdmin" --destination=CustomSpannerDbAdmin --dest-project=PROJECT_ID
+- gcloud config list -> view project id
+- gcloud iam roles describe roles/spanner.databaseUser.
+- gcloud iam roles list
+- gcloud iam service-accounts list
 
 # App Engine
 
 - You specify the scaling type in your app's app.yaml.
 - app.yaml, runtime, URL, scaling
+- gradually deploy - a rolling-action start-update with maxSurge
+- --split
+- version in a same project
 
 # GKE
 
-- Deploy docker file| deokubectl create deployment hello-server \
-   --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
+- Deploy docker file| deokubectl create deployment hello-server --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
+- https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster
+- gcloud container clusters create-auto hello-cluster --region=us-central1
+- kubectl create deployment hello-server --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
 
 # Deployment Manager
 
@@ -65,6 +81,13 @@
 
 - Billing Account Admin: can link/unlink, but cannot create billing accounts.
 - Project Billing Manager: can link/unlink
+- A billing account is assosicated with org
+- new billing account -> Project Billing Manager
+
+# IAM
+
+- Cloud Identity - verify thrid party authentication
+- G Suite
 
 <hr />
 
