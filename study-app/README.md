@@ -4,6 +4,8 @@
 
 - Storage Admin
 - Bucket public -> a signed URL
+- failover
+-
 
 # SA
 
@@ -11,7 +13,8 @@
 
 # VM
 
-- SSH: osLogin=true with a IAM based permission ( No SA needed) roles/compute.osLogin or roles/compute.osAdminLogin.
+- SSH connection/VM: **enable-osLogin=true** with roles/compute.osLogin or roles/compute.osAdminLogin.
+- https://medium.com/infrastructure-adventures/centralized-ssh-login-to-google-compute-engine-instances-d00f8654f379
 - RDP: Windows login, reset password, download RDP client
 - Network tags: it makes FW enable in a vm.
 - batch job, preemptible vm
@@ -69,6 +72,9 @@
 - https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster
 - gcloud container clusters create-auto hello-cluster --region=us-central1
 - kubectl create deployment hello-server --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
+- kubectl config use-context black
+- kubectl config view
+- replicas
 
 # Deployment Manager
 
@@ -88,6 +94,16 @@
 
 - Cloud Identity - verify thrid party authentication
 - G Suite
+- 'storage.objectCreator or 'storage.objectAdmin - carm down and check if admin role is wider permission.
+- Storage Admin, Storage Object Admin, Storage Object Creator
+
+# Stackdriver
+
+- different projects, monitor a single report
+
+# BigTable
+
+- Cloud Bigtable, our scalable, low-latency time series database that’s reached 40 million
 
 <hr />
 
