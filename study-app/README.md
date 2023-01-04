@@ -5,7 +5,11 @@
 - Storage Admin
 - Bucket public -> a signed URL
 - failover
--
+- save sensitive data
+
+# log
+
+- Data access audit log - disable as a default
 
 # SA
 
@@ -23,6 +27,8 @@
 - disk - persistant disc Local SSD
 - MIGs - port 4443 HTTPS
 - MIGs - autoscaling- CPU, max/min,
+- Authentication - best practice
+- each VM that needs to call a Google API should run as a service account with the minimum permissions necessary.
 
 # VPC
 
@@ -104,6 +110,14 @@
 # BigTable
 
 - Cloud Bigtable, our scalable, low-latency time series database that’s reached 40 million
+
+**LB**
+
+- TCP, port 443, SSL offload -> SSL proxy LB
+
+**Spanner**
+
+- Autoscaling Cloud Spanner (this document)
 
 <hr />
 
