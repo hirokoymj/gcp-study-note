@@ -14,17 +14,49 @@
 
 <hr />
 
-- Data Loss Prevention API - automatically detect a sensitive data and mask. Los Angeles[LOCATION], HIROKO[PERSON_NAME],
-- Private Google Access - VM instances that only have internal IP addresses (no external IP addresses) can use Private Google Access. They can reach the external IP addresses of Google APIs and services. 2) No effect for public IP. https://cloud.google.com/vpc/docs/private-google-access#example
+**Data Loss Prevention API**
 
-- on-prem + VPC = Cloud VPN
-- Cloud VPN = internal IP(VM)
+- automatically detect a sensitive data and mask. Los Angeles[LOCATION], HIROKO[PERSON_NAME],
+
+**Private Google Access**
+
+- VM that only have internal IP addresses (no external IP addresses) can use Private Google Access.
+- They can reach the external IP addresses of Google APIs and services.
+- VM + internal IP
+- No effect public IP
 - Private Google Access -> Internal IP -> can access an external Google services
-- Billing notify == alert, Bill
+- subnet-a, Private Google Access ON, 10.240.0.2 ---> Can access
+- subnet-a, Private Google Access ON, 10.240.0.3 + public IP ---> CAN access
+- subnet-b, Private Google Access OFF, 192.168.1.2 ---> CANNOT access
+- subnet-b, Private Google Access OFF, 192.168.1.3 + public IP ---> CAN access
+- https://cloud.google.com/vpc/docs/private-google-access#example
+
+**Cloud VPN**
+
+- Virtual Private Network(VPN), Virtual Private Cloud(VPC)
+- on-prem + VPC = Cloud VPN
+- VPC: two subnets(us-east1, us-west1) => communicate internal IP with routing, Cloud gateway, on-prem gateway, two tunnels
+- Cloud VPN = static or dynamic routes=> set up Cloud Router with BGP(border gateway protocol)
+- Cloud VPN gateway with dynamic routing ---> HA VPN Border Gateway Protocol (BGP).
+- The highest level of availability, use HA VPN whenever possible.
+
+**Billing**
+
+- **Billing Account Administrator(Owner)**: can link/unlink, but cannot create billing accounts, create alert, Owner
+- **Project Billing Manager**: can link/unlink,
+- new billing account -> Project Billing Manager??
+- **Project Billing Manager + Billing User Account** = Project Owners can use this role to allow someone else to manage the billing for the project without granting them resource access.
+- Billing Account Costs Manager: create an alert
+- A billing account is assosicated with org.
+- Billing alert - Avoid surprises on your bill, who -> Billing Account Administrator, Billing Account Costs Manager
+- https://cloud.google.com/billing/docs/how-to/billing-access
+- https://cloud.google.com/billing/docs/how-to/budgets
+
+<hr />
+
 - microservices, automation
 - M1 machine type: "M" Memory-optimized - M, Compute-optimized - C, cost-optimized: E, Balanced price/performance: N
 - Cloud SQL Backup 1)automate backup is everyday setup only. 2) point-in-time(on-demand)
-- Cloud VPN - internet access, internal IP, on-prem-VM
 - Cross project - "Service accounts are both identities and resources. Because service accounts are identities, you can let a service account access resources in your project by granting it a role, just like you would for any other principal."
 - "without allowing other instances" , the other instances are created with default compute engine service account. So you must create a new independant service account
 - https://cloud.google.com/architecture/identity/migrating-consumer-accounts
@@ -154,13 +186,6 @@
 - gcloud deployment-manager deployments update example-deployment \
    --config configuration-file.yaml \
    --preview
-
-# Billing
-
-- Billing Account Admin: can link/unlink, but cannot create billing accounts.
-- Project Billing Manager: can link/unlink
-- A billing account is assosicated with org
-- new billing account -> Project Billing Manager
 
 # IAM
 
