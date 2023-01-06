@@ -53,6 +53,7 @@
 - https://cloud.google.com/billing/docs/how-to/budgets
 
 <hr />
+<hr />
 
 - microservices, automation
 - M1 machine type: "M" Memory-optimized - M, Compute-optimized - C, cost-optimized: E, Balanced price/performance: N
