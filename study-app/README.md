@@ -1,5 +1,42 @@
 # GCP Study App
 
+# API
+
+**IAP(Identity-Aware Proxy)**
+
+- Identity Aware Proxy API(IAP)- https://cloud.google.com/iap/docs/external-identities
+- Proxy(=dairi)
+- external identities with Identity-Aware Proxy (IAP) instead of Google accounts.
+- external identity: email/password, OAuth (Google, Facebook, Twitter, GitHub, Microsoft, etc.
+- This is useful if your application is already using an external authentication system,
+- your applications and VMs
+- IAP controls access to App Engine apps and VMs
+
+<hr />
+
+- Data Loss Prevention API - automatically detect a sensitive data and mask. Los Angeles[LOCATION], HIROKO[PERSON_NAME],
+- Private Google Access - VM instances that only have internal IP addresses (no external IP addresses) can use Private Google Access. They can reach the external IP addresses of Google APIs and services. 2) No effect for public IP. https://cloud.google.com/vpc/docs/private-google-access#example
+
+- on-prem + VPC = Cloud VPN
+- Cloud VPN = internal IP(VM)
+- Private Google Access -> Internal IP -> can access an external Google services
+- Billing notify == alert, Bill
+- microservices, automation
+- M1 machine type: "M" Memory-optimized - M, Compute-optimized - C, cost-optimized: E, Balanced price/performance: N
+- Cloud SQL Backup 1)automate backup is everyday setup only. 2) point-in-time(on-demand)
+- Cloud VPN - internet access, internal IP, on-prem-VM
+- Cross project - "Service accounts are both identities and resources. Because service accounts are identities, you can let a service account access resources in your project by granting it a role, just like you would for any other principal."
+- "without allowing other instances" , the other instances are created with default compute engine service account. So you must create a new independant service account
+- https://cloud.google.com/architecture/identity/migrating-consumer-accounts
+
+# Local SSD
+
+# FW
+
+- Request is egress and the Response is ingress.
+- egress is leaving
+-
+
 # Cloud Storage
 
 - Storage Admin
@@ -13,7 +50,7 @@
 
 # SA
 
-- Service account key: To use a service account from outside of Google Cloud, such as on other platforms or on-premises, you must first establish the identity of the service account
+- Service accohttps://cloud.google.com/iap/docs/external-identitiesunt key: To use a service account from outside of Google Cloud, such as on other platforms or on-premises, you must first establish the identity of the service account
 
 # VM
 
@@ -29,6 +66,7 @@
 - MIGs - autoscaling- CPU, max/min,
 - Authentication - best practice
 - each VM that needs to call a Google API should run as a service account with the minimum permissions necessary.
+- how to login using Cloud Identity Proxy for VMAccess a paticular instance
 
 # VPC
 
@@ -81,6 +119,34 @@
 - kubectl config use-context black
 - kubectl config view
 - replicas
+- A deployment is responsible for keeping a set of pods running. A service is responsible for enabling network access to a set of pods.
+- A deployment is responsible for keeping a set of pods running.
+- A service is responsible for enabling network access to a set of pods.
+- A Deployment to define your app.
+- A Service to define how to access your app.
+- A Deployment: define an app, deployment.yaml, cluster resource,
+
+  ```
+  //Deploy the resource to the cluster:
+  kubectl apply -f deployment.yaml
+  kubectl get deployments
+  kubectl get pods
+  ```
+
+- Service: access/NW, a set of pods, service.yaml,
+- https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters#default_cluster_kubectl
+
+  ```
+  gcloud config set container/cluster CLUSTER_NAME
+  ```
+
+- ClusterIP < NP < LB
+
+**Links:**
+
+1. https://matthewpalmer.net/kubernetes-app-developer/articles/service-kubernetes-example-tutorial.html#:~:text=What's%20the%20difference%20between%20a,running%20in%20the%20Kubernetes%20cluster.
+2. https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster
+3. https://cloud.google.com/kubernetes-engine/docs/quickstarts/deploy-app-container-image#node.js
 
 # Deployment Manager
 
@@ -117,11 +183,23 @@
 
 **Spanner**
 
-- Autoscaling Cloud Spanner (this document)
+- Spanner, CPU utilization, Cloud Monitoring, scaling
+- Spanner is used for global scaling.
+
+**Cloud SQL**
+
+- Transactional and single physical location = Cloud SQL.
+
+**GKE**
+
+- https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters
+- gcloud container clusters describe CLUSTER_NAME
+- gcloud container clusters list
+- gcloud config set container/cluster CLUSTER_NAME
 
 <hr />
 
-- **BigQ**
+**BigQ**
 
 5, 8, 11, 18, 20, 36, 46, 73, 89, 114, 117, 112, 135, 137, 151, 186, 192, 198
 
