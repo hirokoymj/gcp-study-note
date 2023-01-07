@@ -41,6 +41,8 @@
 - Billing data -> export BQ -> visualize = Data Studio
 - https://cloud.google.com/billing/docs/how-to/billing-access
 - https://cloud.google.com/billing/docs/how-to/budgets
+- Q: You need to create a new billing account and then link it with an existing Google Cloud Platform project. What should you do?
+- A: Billing Account Admin can NOT create a billing account,link/unlink is Project Billing Manager
 
 # microservices
 
@@ -96,13 +98,14 @@
 
 # Audit log
 
-| Audit Logs     | Logging.viewer | Logging.privateLogViewer |
-| -------------- | -------------- | ------------------------ |
-| Admin Activity | Yes            | Yes                      |
-| Data Access    | NO             | Yes                      |
-| Policy Denied  | Yes            | Yes                      |
-| System Event   | Yes            | Yes                      |
+| Role                     | Audit Log Name |
+| ------------------------ | -------------- |
+| Logging.viewer           | Admin Activity |
+| Logging.viewer           | Policy Denied  |
+| Logging.viewer           | System Event   |
+| Logging.privateLogViewer | Data Access    |
 
+- Has all permissions of Logging.privateLogViewer
 - Data access audit log - disable as a default
 - [Audit Logs: Querying Logs, Pricing and Retention](https://www.youtube.com/watch?v=dVBBKR3SgDQ&t=3s)
 
@@ -122,7 +125,8 @@
 
 # SA
 
-- Service accohttps://cloud.google.com/iap/docs/external-identitiesunt key: To use a service account from outside of Google Cloud, such as on other platforms or on-premises, you must first establish the identity of the service account
+- To use a service account outside of Google Cloud, such as on other platforms or on-premises, you must first establish the identity of the service account. Public/private key pairs provide a secure way of accomplishing this goal.
+- https://cloud.google.com/iam/docs/creating-managing-service-account-keys#iam-service-account-keys-create-rest
 
 # IAP(Identity-Aware Proxy)
 
@@ -181,6 +185,25 @@
 - ClusterIP < NP < LB
 - replicas
 
+**Reasons for a Pod Status Pending:[7]**
+
+- Troubleshooting Reason #1: Not enough CPU
+- Troubleshooting Reason #2: Not enough memory
+- Troubleshooting Reason #3: Not enough CPU and memory
+
+```
+kubectl get pods
+$ kubectl get pods
+NAME                                                   READY   STATUS             RESTARTS   AGE
+echoserver-657f6fb8f5-wmgj5        0/1     Pending            0          1d
+```
+
+```
+kubectl describe pod echoserver-657f6fb8f5-wmgj5
+kubectl get nodes
+kubectl describe node gke-gar-3-pool-1-9781becc-bdb3
+```
+
 **Commands**
 
 - kubectl create deployment hello-server --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
@@ -199,6 +222,7 @@
 4. [Kubernetes Service vs Deployment](https://matthewpalmer.net/kubernetes-app-developer/articles/service-kubernetes-example-tutorial.html#:~:text=What's%20the%20difference%20between%20a,running%20in%20the%20Kubernetes%20cluster.)
 5. [Commands for Cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters)
 6. [ClusterIP-NodePort-LB](https://stackoverflow.com/questions/41509439/whats-the-difference-between-clusterip-nodeport-and-loadbalancer-service-types)
+7. https://managedkube.com/kubernetes/k8sbot/troubleshooting/pending/pod/2019/02/22/pending-pod.html
 
 # Stackdriver
 
@@ -208,12 +232,19 @@
 
 - time series database
 
+# MIGs
+
+- gradually deploy - maxUnavailable(How many instanes can be offline), maxSurge(How many extra instances to temporarily create)
+- gcloud compute instance-groups managed rolling-action start-update INSTANCE_GROUP_NAME --version=template=INSTANCE_TEMPLATE_NAME
+
 # LB/MIGs
 
 - HTTP(s), SSL, TCP, Network TCP/UDP, Internal TCP/UDP, Internal HTTP(s)
 - httpST, N, IH
+- Traffic type: HTTP(s), TCP, UDP
 - TCP, port 443, SSL offload -> SSL proxy
-- IPv6 - httpsST(HTTP, SSL proxy, TCP proxy)
+- SSL Proxy LB == non-HTTP(S) traffic.
+- IPv6 - httpST(HTTP, SSL proxy, TCP proxy)
 - Autoscaling policies: CPU utilization, Monitoring metrics, Queue-based workload, Load balancing capacity
 
 # gcloud commands
