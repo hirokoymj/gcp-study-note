@@ -11,8 +11,7 @@
 - This is useful if your application is already using an external authentication system,
 - your applications and VMs
 - IAP controls access to App Engine apps and VMs
-
-<hr />
+- https://cloud.google.com/architecture/identity/migrating-consumer-accounts
 
 **Data Loss Prevention API**
 
@@ -42,7 +41,7 @@
 
 **Billing**
 
-|                               |                                                                                                                   |
+| Role                          | Description                                                                                                       |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | Billing Account Creator       | create a new Cloud Billing Account                                                                                |
 | Billing Account Creator       | Use Billing Account Creator's role for initial billing setup or to allow creation of additional billing accounts. |
@@ -58,23 +57,55 @@
 - https://cloud.google.com/billing/docs/how-to/billing-access
 - https://cloud.google.com/billing/docs/how-to/budgets
 
-<hr />
-<hr />
+**microservices**
 
 - microservices, automation
-- M1 machine type: "M" Memory-optimized - M, Compute-optimized - C, cost-optimized: E, Balanced price/performance: N
-- Cloud SQL Backup 1)automate backup is everyday setup only. 2) point-in-time(on-demand)
-- Cross project - "Service accounts are both identities and resources. Because service accounts are identities, you can let a service account access resources in your project by granting it a role, just like you would for any other principal."
-- "without allowing other instances" , the other instances are created with default compute engine service account. So you must create a new independant service account
-- https://cloud.google.com/architecture/identity/migrating-consumer-accounts
 
-# Local SSD
+**Machine Family**
+
+- M1 machine type: "M" Memory-optimized - M, Compute-optimized - C, cost-optimized: E, Balanced price/performance: N
+- Local SSD - When you stop a VM, all data on the local SSD is discarded.
+- Unlike Persistent Disks, Local SSDs are physically attached to the server on VM.
+
+**Cloud SQL**
+
+- Backup(Data Protection) 1)automate backup is everyday setup only. 2) point-in-time(on-demand)
+- Transactional and a single physical location = Cloud SQL.
+- Region: us-central1, Single zone - in case of outage, no failover no recommended.
+- Region: us-central1, dMultiple zones Automatic failover to another zone - recommended.
+
+**Spanner**
+
+- Spanner, CPU utilization, Cloud Monitoring, scaling
+- Spanner is used for global scaling.
+
+**Cross project**
+
+- "Service accounts are both identities and resources. Because service accounts are identities, you can let a service account access resources in your project by granting it a role, just like you would for any other principal."
+
+# VM
+
+- SSH connection/VM: **enable-osLogin=true** with roles/compute.osLogin or roles/compute.osAdminLogin.
+- https://medium.com/infrastructure-adventures/centralized-ssh-login-to-google-compute-engine-instances-d00f8654f379
+- RDP: Windows login, reset password, download RDP client
+- Network tags: it makes FW enable in a vm.
+- batch job, preemptible vm
+- Maintenance occurs - On host maintenance=Migrate VM instance, Automatic restart=ON
+- Stop VM when increasing the memeory 4GB -> 8GB
+- disk - persistant disc Local SSD
+- MIGs - port 4443 HTTPS
+- MIGs - autoscaling- CPU, max/min,
+- Authentication - best practice
+- each VM that needs to call a Google API should run as a service account with the minimum permissions necessary.(Create new SA)
+- how to login using Cloud Identity Proxy for VM Access a paticular instance
+- "without allowing other instances" , the other instances are created with default compute engine service account. So you must create a new independant service account
+
+<hr />
 
 # FW
 
-- Request is egress and the Response is ingress.
+- Request -> egress, Response -> ingress.
 - egress is leaving
--
 
 # Cloud Storage
 
@@ -91,34 +122,12 @@
 
 - Service accohttps://cloud.google.com/iap/docs/external-identitiesunt key: To use a service account from outside of Google Cloud, such as on other platforms or on-premises, you must first establish the identity of the service account
 
-# VM
-
-- SSH connection/VM: **enable-osLogin=true** with roles/compute.osLogin or roles/compute.osAdminLogin.
-- https://medium.com/infrastructure-adventures/centralized-ssh-login-to-google-compute-engine-instances-d00f8654f379
-- RDP: Windows login, reset password, download RDP client
-- Network tags: it makes FW enable in a vm.
-- batch job, preemptible vm
-- Maintenance occurs - On host maintenance=Migrate VM instance, Automatic restart=ON
-- Stop VM when increasing the memeory 4GB -> 8GB
-- disk - persistant disc Local SSD
-- MIGs - port 4443 HTTPS
-- MIGs - autoscaling- CPU, max/min,
-- Authentication - best practice
-- each VM that needs to call a Google API should run as a service account with the minimum permissions necessary.
-- how to login using Cloud Identity Proxy for VMAccess a paticular instance
-
 # VPC
 
-- auto mode/custom mode
+- auto or custom mode
 - auto mode - one subnet from each region is automatically created within it.
 - custom mode: you have to create a subnet
-- VPC and the 2 subnets - custom
-
-# Cloud VPN
-
-- on-promise and GCP
-- GCP: private IPs
--
+- VPC and the 2 subnets -> custom
 
 # BigQuery
 
@@ -126,9 +135,31 @@
 - External table (source: Cloud Storage)
 - BigQuery jobUser - query
 
+# App Engine
+
+- You specify the scaling type in your app's app.yaml.
+- app.yaml: runtime, URL, scaling
+- gradually deploy - a rolling-action start-update with maxSurge
+- --split
+- version in a same project
+
+# Deployment Manager
+
+- gcloud deployment-manager deployments update my-deployment --config=new_config.yaml
+- gcloud deployment-manager deployments update example-deployment \
+   --config configuration-file.yaml \
+   --preview ## Checking before deploy
+
+# IAM
+
+- Cloud Identity - verify thrid party authentication
+- G Suite
+- 'storage.objectCreator or 'storage.objectAdmin - carm down and check if admin role is wider permission.
+- Storage Admin, Storage Object Admin, Storage Object Creator
+
 # gcloud commands
 
-- Expand subnet|gcloud compute networks subnets expand-ip-range SUBNET --region=us-central1 --prefix-length=16
+- (Expand subnet) - gcloud compute networks subnets expand-ip-range SUBNET --region=us-central1 --prefix-length=16
 - GKE| gcloud container node-pools create node-pool-1 --cluster=example-cluster --preemptible
 - VM | gcloud compute instances create [INSTANCE_NAME] --deletion-protection
 - gcloud | gcloud config configurations create my-config
@@ -140,14 +171,6 @@
 - gcloud iam roles describe roles/spanner.databaseUser.
 - gcloud iam roles list
 - gcloud iam service-accounts list
-
-# App Engine
-
-- You specify the scaling type in your app's app.yaml.
-- app.yaml, runtime, URL, scaling
-- gradually deploy - a rolling-action start-update with maxSurge
-- --split
-- version in a same project
 
 # GKE
 
@@ -187,20 +210,6 @@
 2. https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster
 3. https://cloud.google.com/kubernetes-engine/docs/quickstarts/deploy-app-container-image#node.js
 
-# Deployment Manager
-
-- gcloud deployment-manager deployments update my-deployment --config=new_config.yaml
-- gcloud deployment-manager deployments update example-deployment \
-   --config configuration-file.yaml \
-   --preview
-
-# IAM
-
-- Cloud Identity - verify thrid party authentication
-- G Suite
-- 'storage.objectCreator or 'storage.objectAdmin - carm down and check if admin role is wider permission.
-- Storage Admin, Storage Object Admin, Storage Object Creator
-
 # Stackdriver
 
 - different projects, monitor a single report
@@ -212,15 +221,6 @@
 **LB**
 
 - TCP, port 443, SSL offload -> SSL proxy LB
-
-**Spanner**
-
-- Spanner, CPU utilization, Cloud Monitoring, scaling
-- Spanner is used for global scaling.
-
-**Cloud SQL**
-
-- Transactional and single physical location = Cloud SQL.
 
 **GKE**
 
