@@ -42,13 +42,19 @@
 
 **Billing**
 
-- **Billing Account Administrator(Owner)**: can link/unlink, but cannot create billing accounts, create alert, Owner
-- **Project Billing Manager**: can link/unlink,
-- new billing account -> Project Billing Manager??
-- **Project Billing Manager + Billing User Account** = Project Owners can use this role to allow someone else to manage the billing for the project without granting them resource access.
-- Billing Account Costs Manager: create an alert
+|                               |                                                                                                                   |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Billing Account Creator       | create a new Cloud Billing Account                                                                                |
+| Billing Account Creator       | Use Billing Account Creator's role for initial billing setup or to allow creation of additional billing accounts. |
+| Project Billing Manager       | link/unlink the project to/from a billing.                                                                        |
+| Project Billing Manager       | attach the project to the billing account, but does not grant any rights over resources.                          |
+| Billing Account User          | Create new projects linked to the billing account                                                                 |
+| Billing Account Administrator | Owner, can link/unlink, but cannot create billing accounts, create alert                                          |
+
 - A billing account is assosicated with org.
 - Billing alert - Avoid surprises on your bill, who -> Billing Account Administrator, Billing Account Costs Manager
+- Moving projects under an organisation doesn't change their linked billing project.
+- Billing data -> export BQ -> visualize = Data Studio
 - https://cloud.google.com/billing/docs/how-to/billing-access
 - https://cloud.google.com/billing/docs/how-to/budgets
 
@@ -224,81 +230,6 @@
 - gcloud config set container/cluster CLUSTER_NAME
 
 <hr />
-
-**BigQ**
-
-5, 8, 11, 18, 20, 36, 46, 73, 89, 114, 117, 112, 135, 137, 151, 186, 192, 198
-
-**Billing**
-
-7, 28, 56, 80, 87, 109, 120, 162, 177, 185
-
-**LB**
-
-10, 12, 25, 61, 75, 78, 81, 84, 99, 148, 168, 188
-
-**MIGs**
-
-10, 37, 64, 72, 78, 142, 168
-
-preemptive VM
-171
-
-**Scale**
-
-30, 37, 51, 64, 79
-
-**Instance template**
-
-10, 37, 68, 72, 78, 133, 142, 157, 158
-
-**Health check**
-
-25, 64, 68, 72, 64, 72, 153, 168
-
-**Shared VPC**
-
-53, 100, 103, 112, 154
-
-**on-premises/Cloud NAT**
-
-6, 84, 91, 110, 112, 143, 157, 163, 183, 199
-
-**peering**
-
-91, 112, 150, 170
-
-**Network/LB**
-
-188
-
-**Subnet**
-
-103
-
-**Private Google Cloud**
-
-163
-
-**Cloud NAT**
-
-183
-
-**IAM**
-
-3, 4, 21, 22, 31, 46, 47, 49, 55, 59, 104, 116, 134, 136, 139, 198
-
-**Log**
-
-89, 134, 109, 138
-
-**SA**
-
-40, 47, 52, 53, 57, 74, 85, 89, 91, 92, 95, 107, 115, 127, 137, 138, 151, 154, 155, 176, 186, 190, 192, 196, 198
-
-**Cloud Storage**
-
-9, 27, 38, 39, 47, 48, 50, 106, 111, 128, 167, 174, 176, 189, 191
 
 **Other Topics**
 
