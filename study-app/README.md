@@ -208,9 +208,13 @@
 
 - time series database
 
-**LB**
+# LB/MIGs
 
-- TCP, port 443, SSL offload -> SSL proxy LB
+- HTTP(s), SSL, TCP, Network TCP/UDP, Internal TCP/UDP, Internal HTTP(s)
+- httpST, N, IH
+- TCP, port 443, SSL offload -> SSL proxy
+- IPv6 - httpsST(HTTP, SSL proxy, TCP proxy)
+- Autoscaling policies: CPU utilization, Monitoring metrics, Queue-based workload, Load balancing capacity
 
 # gcloud commands
 
