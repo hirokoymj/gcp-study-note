@@ -1,23 +1,8 @@
-# GCP Study App
-
-# API
-
-**IAP(Identity-Aware Proxy)**
-
-- Identity Aware Proxy API(IAP)- https://cloud.google.com/iap/docs/external-identities
-- Proxy(=dairi)
-- external identities with Identity-Aware Proxy (IAP) instead of Google accounts.
-- external identity: email/password, OAuth (Google, Facebook, Twitter, GitHub, Microsoft, etc.
-- This is useful if your application is already using an external authentication system,
-- your applications and VMs
-- IAP controls access to App Engine apps and VMs
-- https://cloud.google.com/architecture/identity/migrating-consumer-accounts
-
-**Data Loss Prevention API**
+# Data Loss Prevention API
 
 - automatically detect a sensitive data and mask. Los Angeles[LOCATION], HIROKO[PERSON_NAME],
 
-**Private Google Access**
+# Private Google Access
 
 - VM that only have internal IP addresses (no external IP addresses) can use Private Google Access.
 - They can reach the external IP addresses of Google APIs and services.
@@ -30,7 +15,7 @@
 - subnet-b, Private Google Access OFF, 192.168.1.3 + public IP ---> CAN access
 - https://cloud.google.com/vpc/docs/private-google-access#example
 
-**Cloud VPN**
+# Cloud VPN
 
 - Virtual Private Network(VPN), Virtual Private Cloud(VPC)
 - on-prem + VPC = Cloud VPN
@@ -39,7 +24,7 @@
 - Cloud VPN gateway with dynamic routing ---> HA VPN Border Gateway Protocol (BGP).
 - The highest level of availability, use HA VPN whenever possible.
 
-**Billing**
+# Billing
 
 | Role                          | Description                                                                                                       |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -57,31 +42,27 @@
 - https://cloud.google.com/billing/docs/how-to/billing-access
 - https://cloud.google.com/billing/docs/how-to/budgets
 
-**microservices**
+# microservices
 
 - microservices, automation
 
-**Machine Family**
+# Machine Family
 
 - M1 machine type: "M" Memory-optimized - M, Compute-optimized - C, cost-optimized: E, Balanced price/performance: N
 - Local SSD - When you stop a VM, all data on the local SSD is discarded.
 - Unlike Persistent Disks, Local SSDs are physically attached to the server on VM.
 
-**Cloud SQL**
+# Cloud SQL
 
 - Backup(Data Protection) 1)automate backup is everyday setup only. 2) point-in-time(on-demand)
 - Transactional and a single physical location = Cloud SQL.
 - Region: us-central1, Single zone - in case of outage, no failover no recommended.
 - Region: us-central1, dMultiple zones Automatic failover to another zone - recommended.
 
-**Spanner**
+# Spanner
 
 - Spanner, CPU utilization, Cloud Monitoring, scaling
 - Spanner is used for global scaling.
-
-**Cross project**
-
-- "Service accounts are both identities and resources. Because service accounts are identities, you can let a service account access resources in your project by granting it a role, just like you would for any other principal."
 
 # VM
 
@@ -100,8 +81,6 @@
 - how to login using Cloud Identity Proxy for VM Access a paticular instance
 - "without allowing other instances" , the other instances are created with default compute engine service account. So you must create a new independant service account
 
-<hr />
-
 # FW
 
 - Request -> egress, Response -> ingress.
@@ -113,14 +92,48 @@
 - Bucket public -> a signed URL
 - failover
 - save sensitive data
+- lifecycle
 
-# log
+# Audit log
+
+| Audit Logs     | Logging.viewer | Logging.privateLogViewer |
+| -------------- | -------------- | ------------------------ |
+| Admin Activity | Yes            | Yes                      |
+| Data Access    | NO             | Yes                      |
+| Policy Denied  | Yes            | Yes                      |
+| System Event   | Yes            | Yes                      |
 
 - Data access audit log - disable as a default
+- [Audit Logs: Querying Logs, Pricing and Retention](https://www.youtube.com/watch?v=dVBBKR3SgDQ&t=3s)
+
+# IAM
+
+- 4 Members: Google Account, SA, Google Group, Google Workspace /Cloud Identity
+
+| Member                           | Email                                      |
+| -------------------------------- | ------------------------------------------ |
+| Google Account                   | userid@gmail.com                           |
+| SA                               | 12345678@cloudservices.gserviceaccount.com |
+| Google Group                     | groupname@googlegroups.com                 |
+| Google Workspace /Cloud Identity | test@example.com                           |
+
+- Cloud Identity - verify thrid party authentication
+- G Suite = Google Workspace
 
 # SA
 
 - Service accohttps://cloud.google.com/iap/docs/external-identitiesunt key: To use a service account from outside of Google Cloud, such as on other platforms or on-premises, you must first establish the identity of the service account
+
+# IAP(Identity-Aware Proxy)
+
+- Identity Aware Proxy API(IAP)- https://cloud.google.com/iap/docs/external-identities
+- Proxy(=dairi)
+- external identities with Identity-Aware Proxy (IAP) instead of Google accounts.
+- external identity: email/password, OAuth (Google, Facebook, Twitter, GitHub, Microsoft, etc.
+- This is useful if your application is already using an external authentication system,
+- your applications and VMs
+- IAP controls access to App Engine apps and VMs
+- https://cloud.google.com/architecture/identity/migrating-consumer-accounts
 
 # VPC
 
@@ -148,67 +161,44 @@
 - gcloud deployment-manager deployments update my-deployment --config=new_config.yaml
 - gcloud deployment-manager deployments update example-deployment \
    --config configuration-file.yaml \
-   --preview ## Checking before deploy
-
-# IAM
-
-- Cloud Identity - verify thrid party authentication
-- G Suite
-- 'storage.objectCreator or 'storage.objectAdmin - carm down and check if admin role is wider permission.
-- Storage Admin, Storage Object Admin, Storage Object Creator
-
-# gcloud commands
-
-- (Expand subnet) - gcloud compute networks subnets expand-ip-range SUBNET --region=us-central1 --prefix-length=16
-- GKE| gcloud container node-pools create node-pool-1 --cluster=example-cluster --preemptible
-- VM | gcloud compute instances create [INSTANCE_NAME] --deletion-protection
-- gcloud | gcloud config configurations create my-config
-- gcloud | gcloud config set compute/zone Z
-- gcloud | gcloud projects get-iam-policy react-app-demo
-- Cloud Function | gcloud functions deploy Hello --http-trigger (--trigger-topic=mytopic)
-- gcloud iam roles copy --source="roles/spanner.databaseAdmin" --destination=CustomSpannerDbAdmin --dest-project=PROJECT_ID
-- gcloud config list -> view project id
-- gcloud iam roles describe roles/spanner.databaseUser.
-- gcloud iam roles list
-- gcloud iam service-accounts list
+   --preview
+- **--preview**:Preview the requested create without actually instantiating the underlying resources. (default=False)
 
 # GKE
 
-- Deploy docker file| deokubectl create deployment hello-server --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
-- https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster
-- gcloud container clusters create-auto hello-cluster --region=us-central1
+- Cluster -> Nodes(VM) -> Pod(container), Pod(container), Pod(container) [1]
+- a cluster consists of at least one control plane and multiple worker machines called nodes.[1]
+- Cluster type: Autopilot and Standard
+- To deploy your app to the GKE cluster you created, you need two Kubernetes objects.[3]
+
+| Kubernetes objects | Description                      |
+| ------------------ | -------------------------------- |
+| Deployment         | to define your app.              |
+| Service            | to define how to access your app |
+
+- A deployment is responsible for keeping a set of pods running.[4]
+- A service is responsible for enabling network access to a set of pods.[4]
+- ClusterIP < NP < LB
+- replicas
+
+**Commands**
+
 - kubectl create deployment hello-server --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
+- gcloud container clusters create-auto hello-cluster --region=us-central1
 - kubectl config use-context black
 - kubectl config view
-- replicas
-- A deployment is responsible for keeping a set of pods running. A service is responsible for enabling network access to a set of pods.
-- A deployment is responsible for keeping a set of pods running.
-- A service is responsible for enabling network access to a set of pods.
-- A Deployment to define your app.
-- A Service to define how to access your app.
-- A Deployment: define an app, deployment.yaml, cluster resource,
+- gcloud container clusters describe CLUSTER_NAME
+- gcloud container clusters list
+- gcloud config set container/cluster CLUSTER_NAME
 
-  ```
-  //Deploy the resource to the cluster:
-  kubectl apply -f deployment.yaml
-  kubectl get deployments
-  kubectl get pods
-  ```
+**GKE Links:**
 
-- Service: access/NW, a set of pods, service.yaml,
-- https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters#default_cluster_kubectl
-
-  ```
-  gcloud config set container/cluster CLUSTER_NAME
-  ```
-
-- ClusterIP < NP < LB
-
-**Links:**
-
-1. https://matthewpalmer.net/kubernetes-app-developer/articles/service-kubernetes-example-tutorial.html#:~:text=What's%20the%20difference%20between%20a,running%20in%20the%20Kubernetes%20cluster.
-2. https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster
-3. https://cloud.google.com/kubernetes-engine/docs/quickstarts/deploy-app-container-image#node.js
+1. [Standard cluster architecture](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture)
+2. [Quickstart-1](https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster)
+3. [Quickstart-2](https://cloud.google.com/kubernetes-engine/docs/quickstarts/deploy-app-container-image)
+4. [Kubernetes Service vs Deployment](https://matthewpalmer.net/kubernetes-app-developer/articles/service-kubernetes-example-tutorial.html#:~:text=What's%20the%20difference%20between%20a,running%20in%20the%20Kubernetes%20cluster.)
+5. [Commands for Cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters)
+6. [ClusterIP-NodePort-LB](https://stackoverflow.com/questions/41509439/whats-the-difference-between-clusterip-nodeport-and-loadbalancer-service-types)
 
 # Stackdriver
 
@@ -216,21 +206,29 @@
 
 # BigTable
 
-- Cloud Bigtable, our scalable, low-latency time series database that’s reached 40 million
+- time series database
 
 **LB**
 
 - TCP, port 443, SSL offload -> SSL proxy LB
 
-**GKE**
+# gcloud commands
 
-- https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters
-- gcloud container clusters describe CLUSTER_NAME
-- gcloud container clusters list
-- gcloud config set container/cluster CLUSTER_NAME
-
-<hr />
-
-**Other Topics**
-
-[other-topics](./other-topics.md)
+- (Subnet) gcloud compute networks subnets expand-ip-range SUBNET --region=us-central1 --prefix-length=16
+- (GKE) gcloud container node-pools create node-pool-1 --cluster=example-cluster --preemptible
+- (VM) gcloud compute instances create [INSTANCE_NAME] --deletion-protection
+- (Config) gcloud config configurations create my-config
+- (Config) gcloud config set compute/region us-west4
+- (Config) gcloud config set compute/zone us-west4-b
+- gcloud compute regions list
+- gcloud compute zones list
+- gcloud config unset compute/zone
+- gcloud config unset compute/region
+- (Config) gcloud config list -> view project id
+- (IAM) gcloud projects get-iam-policy react-app-demo
+- (IAM) gcloud iam roles copy --source="roles/spanner.databaseAdmin" --destination=CustomSpannerDbAdmin --dest-project=PROJECT_ID
+- (IAM) gcloud iam roles describe roles/spanner.databaseUser
+- (IAM) gcloud iam roles list
+- (IAM) gcloud iam service-accounts list
+- (Cloud Function) gcloud functions deploy Hello --http-trigger
+- (Cloud Function) gcloud functions deploy Hello --trigger-topic=mytopic
