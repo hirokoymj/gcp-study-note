@@ -92,6 +92,11 @@
 - how to login using Cloud Identity Proxy for VM Access a paticular instance
 - "without allowing other instances" , the other instances are created with default compute engine service account. So you must create a new independant service account
 
+- Q: multiple VMs without public IP, you want to access all VMs without having to configure specific access on the existing and new instances-->
+- A: You can connect to Linux instances that don't have an external IP address by tunneling SSH traffic through IAP.[1]
+
+1. [Tunneling SSH connections](https://cloud.google.com/iap/docs/using-tcp-forwarding#tunneling_ssh_connections)
+
 # MIGs
 
 - gradually deploy - maxUnavailable(How many instanes can be offline), maxSurge(How many extra instances to temporarily create)
@@ -171,6 +176,9 @@ For System Event audit logs, select system_event.
 For Policy Denied audit logs, select policy.
 ```
 
+- Q: You are storing sensitive information in a Cloud Storage bucket. For legal reasons, you need to be able to record all requests that read any of the stored data. You want to make sure you comply with these requirements. What should you do?
+- A: Enable Data Access audit logs for the Cloud Storage API.
+
 # IAM
 
 - 4 Members: Google Account, SA, Google Group, Google Workspace /Cloud Identity
@@ -198,9 +206,14 @@ For Policy Denied audit logs, select policy.
 - external identities with Identity-Aware Proxy (IAP) instead of Google accounts.
 - external identity: email/password, OAuth (Google, Facebook, Twitter, GitHub, Microsoft, etc.
 - This is useful if your application is already using an external authentication system,
-- your applications and VMs
 - IAP controls access to App Engine apps and VMs
-- https://cloud.google.com/architecture/identity/migrating-consumer-accounts
+
+- Q: Your company runs its Linux workloads on Compute Engine instances. Your company will be working with a new operations partner that does not use Google
+  Accounts. You need to grant access to the instances to your operations partner so they can maintain the installed tooling.
+- A:Enable Cloud IAP for the Compute Engine instances, and add the operations partner as a Cloud IAP Tunnel User.
+
+1. [Youtube - #GCP #IAP](https://www.youtube.com/watch?v=jZdXyWQuIW0)
+2. https://cloud.google.com/architecture/identity/migrating-consumer-accounts
 
 # VPC
 
@@ -247,6 +260,17 @@ For Policy Denied audit logs, select policy.
 - Important: Each Cloud project can contain only a single App Engine application, and once created you cannot change the location of your App Engine application.[1]
 
 1. https://cloud.google.com/appengine/docs/flexible/managing-projects-apps-billing#create
+
+# Pub/Sub
+
+- Q: You have created a **code snippet** that should be triggered **whenever a new file** is uploaded to a Cloud Storage bucket. You want to deploy this code snippet. What should you do?
+
+# Cross projects
+
+- Q: You manage an App Engine Service that aggregates and visualizes data from BigQuery. The application is deployed with the default App Engine Service account.
+  The data that needs to be visualized resides in a different project managed by another team. You do not have access to this project, but you want your application to be able to read data from the BigQuery dataset. What should you do?
+
+- A: Ask the other team to grant your default App Engine Service account the role of BigQuery Data Viewer.
 
 # gcloud commands
 
