@@ -69,6 +69,9 @@
 
 - Spanner, CPU utilization, Cloud Monitoring, scaling
 - Spanner is used for global scaling.
+- primary key -> automatically created
+- Secondary Index -> it more efficient to look up
+- CREATE INDEX SongsBySongName ON Songs(SongName)
 
 # VM
 
@@ -93,16 +96,36 @@
 
 - gradually deploy - maxUnavailable(How many instanes can be offline), maxSurge(How many extra instances to temporarily create)
 - gcloud compute instance-groups managed rolling-action start-update INSTANCE_GROUP_NAME --version=template=INSTANCE_TEMPLATE_NAME
-
-# LB/MIGs
-
-- HTTP(s), SSL, TCP, Network TCP/UDP, Internal TCP/UDP, Internal HTTP(s)
-- httpST, N, IH
-- Traffic type: HTTP(s), TCP, UDP
-- TCP, port 443, SSL offload -> SSL proxy
-- SSL Proxy LB == non-HTTP(S) traffic.
-- IPv6 - httpST(HTTP, SSL proxy, TCP proxy)
 - Autoscaling policies: CPU utilization, Monitoring metrics, Queue-based workload, Load balancing capacity
+
+# LB
+
+- HTTP LB --> global, HTTP or Port(80/8080), HTTPs on port 443, URL maps
+- SSL Proxy LB --> global, encrypted, non-HTTP(s) traffic,
+- TCP proxy LB --> glocal, unencrypted, non-HTTP traffic,
+- Network LB --> regional, non-proxied LB, Traffic: UDP, TCP/UDP ports.
+- Internal TCP/UDP --> regional, private LB, VM in same region, TCP/UDP traffic
+
+> Q61:You have an instance group that you want to load balance. You want the load balancer to terminate the client SSL session. The instance group is used to serve a public web application over HTTPS.
+
+- A: Configure an HTTP(S) load balancer -> global, HTTP or Port(80, 8080), HTTPs port 443, URL map\*\*
+- B: Configure an internal TCP load balancer. -> regional, private LB, TCP/UDP
+- C: Configure an external SSL proxy load balancer.-> global, encrypted, non-HTTP(s)
+- D: Configure an external TCP proxy load balancer. ->global, unencrypted, non-HTTP traffi
+
+> Q148: You have an application that receives SSL-encrypted TCP traffic on port 443. Clients for this application are located all over the world. You want to minimize latency for the clients. Which load balancing option should you use?
+
+- A: HTTPS Load Balancer -> global, HTTP or port - 80, 8080, HTTPS on 443, url map
+- B: Network Load Balancer ->regional, non-proxied LB, UDP, TCP/SSL ports
+- C: SSL Proxy Load Balancer --> global, encrypted, non-HTTP(s).\*\*
+- D: Internal TCP/UDP Load Balancer. -> regional, private LB, VM in same region, TCP/UDP traffic
+
+> Q188: Your company developed a mobile game that is deployed on Google Cloud. Gamers are connecting to the game with their personal phones over the Internet. The game sends UDP packets to update the servers about the gamers actions while they are playing in multiplayer mode. Your game backend can scale over multiple virtual machines (VMs), and you want to expose the VMs over a single IP address. What should you do?
+
+- A: Configure an SSL Proxy load balancer in front of the application servers.-> global, encrypted, non-HTTP(s)
+- B: Configure an Internal UDP load balancer in front of the application servers.-> regional, private LB, VM in same region. TCP/UDP
+- C: Configure an External HTTP(s) load balancer in front of the application servers.-> global, HTTP 80/8080, HTTPS 443, URL map
+- D: Configure an External Network load balancer in front of the application servers. -> UDP, TCP/UDP ports,\*\*
 
 # FW
 
