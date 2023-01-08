@@ -101,8 +101,8 @@
 # LB
 
 - HTTP LB --> global, HTTP or Port(80/8080), HTTPs on port 443, URL maps
-- SSL Proxy LB --> global, encrypted, non-HTTP(s) traffic,
-- TCP proxy LB --> glocal, unencrypted, non-HTTP traffic,
+- SSL Proxy LB --> global, encrypted, non-HTTP(s) traffic, TCP with SSL offload.
+- TCP proxy LB --> glocal, unencrypted, non-HTTP traffic, TCP.
 - Network LB --> regional, non-proxied LB, Traffic: UDP, TCP/UDP ports.
 - Internal TCP/UDP --> regional, private LB, VM in same region, TCP/UDP traffic
 
@@ -117,7 +117,7 @@
 
 - A: HTTPS Load Balancer -> global, HTTP or port - 80, 8080, HTTPS on 443, url map
 - B: Network Load Balancer ->regional, non-proxied LB, UDP, TCP/SSL ports
-- C: SSL Proxy Load Balancer --> global, encrypted, non-HTTP(s).\*\*
+- C: SSL Proxy Load Balancer --> global, encrypted, non-HTTP(s), TCP.\*\*
 - D: Internal TCP/UDP Load Balancer. -> regional, private LB, VM in same region, TCP/UDP traffic
 
 > Q188: Your company developed a mobile game that is deployed on Google Cloud. Gamers are connecting to the game with their personal phones over the Internet. The game sends UDP packets to update the servers about the gamers actions while they are playing in multiplayer mode. Your game backend can scale over multiple virtual machines (VMs), and you want to expose the VMs over a single IP address. What should you do?
