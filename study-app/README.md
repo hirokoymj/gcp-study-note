@@ -312,6 +312,8 @@ gcloud functions deploy Hello
 
 # Cross projects
 
+- **Service accounts are both identities and resources**. Because service accounts are identities, you can let a service account access resources in your project by granting it a role, just like you would for any other principal.
+
 - Q: You manage an App Engine Service that aggregates and visualizes data from BigQuery. The application is deployed with the default App Engine Service account.
   The data that needs to be visualized resides in a different project managed by another team. You do not have access to this project, but you want your application to be able to read data from the BigQuery dataset. What should you do?
 

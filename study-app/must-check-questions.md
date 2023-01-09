@@ -1,3 +1,107 @@
+Question #7 (Page 2)
+
+Several employees at your company have been creating projects with Cloud Platform and paying for it with their personal credit cards, which the company reimburses. The company wants to centralize all these projects under a single, new billing account. What should you do?
+
+- A. Contact cloud-billing@google.com with your bank account details and request a corporate billing account for your company.
+- B. Create a ticket with Google Support and wait for their call to share your credit card details over the phone.
+- C. In the Google Platform Console, go to the Resource Manage and move all projects to the root Organizarion.
+- D. In the Google Cloud Platform Console, create a new billing account and set up a payment method.
+
+Correct Answer: D
+
+- C is incomplete. Moving projects under an organisation doesn't change their linked billing project.
+  https://cloud.google.com/resource-manager/docs/migrating-projects-billing
+
+<hr />
+
+Question #27 (Page 7)
+
+You have sensitive data stored in three Cloud Storage buckets and have enabled data access logging. You want to verify activities for a particular user for these buckets, using the fewest possible steps. You need to verify the addition of metadata labels and which files have been viewed from those buckets. What should you do?
+
+- A. Using the GCP Console, filter the Activity log to view the information.
+- B. Using the GCP Console, filter the Stackdriver log to view the information.
+- C. View the bucket in the Storage section of the GCP Console.
+- D. Create a trace in Stackdriver to view the information.
+
+Correct Answer: A
+
+- Answer is A. Activity log does indeed show information about metadata.
+I agree with Eshkrkrkr based on https://cloud.google.com/storage/docs/audit-logs Admin Activity logs: Entries for operations that modify the configuration or metadata of a project, bucket, or object.
+<hr />
+
+Question #40 (Page 10)
+
+You have an instance group that you want to load balance. You want the load balancer to terminate the client SSL session. The instance group is used to serve a public web application over HTTPS. You want to follow Google-recommended practices. What should you do?
+
+- A. Configure an HTTP(S) load balancer.
+- B. Configure an internal TCP load balancer.
+- C. Configure an external SSL proxy load balancer.
+- D. Configure an external TCP proxy load balancer.
+
+Correct Answer: A
+
+<hr />
+
+Question #57 (Page 15)
+
+You have a web application deployed as a managed instance group. You have a new version of the application to gradually deploy. Your web application is currently receiving live web traffic. You want to ensure that the available capacity does not decrease during the deployment. What should you do?
+
+- A. Perform a rolling-action start-update with maxSurge set to 0 and maxUnavailable set to 1.
+- B. Perform a rolling-action start-update with maxSurge set to 1 and maxUnavailable set to 0.
+- C. Create a new managed instance group with an updated instance template. Add the group to the backend service for the load balancer. When all instances in the new managed instance group are healthy, delete the old managed instance group.
+- D. Create a new instance template with the new application version. Update the existing managed instance group with the new instance template. Delete the instances in the managed instance group to allow the managed instance group to recreate the instance using the new instance template.
+
+Correct Answer: C
+
+- If you do not want any unavailable machines during an update, set the maxUnavailable value to 0 and the maxSurge value to greater than 0. With these settings, Compute Engine removes each old machine only after its replacement new machine is created and running.[1]
+- maxSurge- configure how many new instances the MIG can create above its targetSize during an automated update.
+
+**Links:**
+
+1. https://cloud.google.com/compute/docs/instance-groups/rolling-out-updates-to-managed-instance-groups#max_unavailable
+
+<hr />
+
+Question #70 (Page 18)
+
+You are building an application that will run in your data center. The application will use Google Cloud Platform (GCP) services like AutoML. You created a service account that has appropriate access to AutoML. You need to enable authentication to the APIs from your on-premises environment. What should you do?
+
+- A. Use service account credentials in your on-premises application.
+- B. Use gcloud to create a key file for the service account that has appropriate permissions.
+- C. Set up direct interconnect between your data center and Google Cloud Platform to enable authentication for your on-premises applications.
+- D. Go to the IAM & admin console, grant a user account permissions similar to the service account permissions, and use this user account for authentication from your data center.
+
+Correct Answer: B
+
+- Correct answer should be (B):
+
+To use a service account outside of Google Cloud, such as on other platforms or on-premises, you must first establish the identity of the service account. Public/private key pairs provide a secure way of accomplishing this goal.
+
+https://cloud.google.com/iam/docs/creating-managing-service-account-keys
+
+<hr />
+
+Question #94 (Page 24)
+
+You create a Deployment with 2 replicas in a Google Kubernetes Engine cluster that has a single preemptible node pool. After a few minutes, you use kubectl to examine the status of your Pod and observe that one of them is still in Pending status:
+
+What is the most likely cause?
+
+- A. The pending Pod's resource requests are too large to fit on a single node of the cluster.
+- B. Too many Pods are already running in the cluster, and there are not enough resources left to schedule the pending Pod.
+- C. The node pool is configured with a service account that does not have permission to pull the container image used by the pending Pod.
+- D. The pending Pod was originally scheduled on a node that has been preempted between the creation of the Deployment and your verification of the Pods' status. It is currently being rescheduled on a new node.
+
+Correct Answer: B
+
+- Reasons for a Pod Status Pending:
+  - Troubleshooting Reason #1: Not enough CPU
+  - Troubleshooting Reason #2: Not enough memory
+  - Troubleshooting Reason #3: Not enough CPU and memory
+    https://managedkube.com/kubernetes/k8sbot/troubleshooting/pending/pod/2019/02/22/pending-pod.html
+
+<hr />
+
 Question #191 (Page:48)
 
 You have deployed multiple Linux instances on Compute Engine. You plan on adding more instances in the coming weeks. You want to be able to access all of these instances through your SSH client over the internet without having to configure specific access on the existing and new instances. You do not want the
