@@ -26,14 +26,29 @@
 
 # Billing
 
-| Role                          | Description                                                                                                       |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Billing Account Creator       | create a new Cloud Billing Account                                                                                |
-| Billing Account Creator       | Use Billing Account Creator's role for initial billing setup or to allow creation of additional billing accounts. |
-| Project Billing Manager       | link/unlink the project to/from a billing.                                                                        |
-| Project Billing Manager       | attach the project to the billing account, but does not grant any rights over resources.                          |
-| Billing Account User          | Create new projects linked to the billing account                                                                 |
-| Billing Account Administrator | Owner, can link/unlink, but cannot create billing accounts, create alert                                          |
+**Billing Accout Administrator**
+
+- Manage billing accounts (but not create them).
+- Who can create? billing.accounts.create role. -> Billing Account Creator
+
+**Billing Account User**
+
+- Link projects to billing accounts.
+
+  > This role has very restricted permissions, so you can grant it broadly. When granted in combination with Project Creator, the two roles allow a user to create new projects linked to the billing account on which the Billing Account User role is granted. Or, when granted in combination with the Project Billing Manager role, the two roles allow a user to link and unlink projects on the billing account on which the Billing Account User role is granted.
+
+- With Project Creator ==> create new projects linked to the billing account
+- With Project Billing Manager ==> link/unlink projects on the billing account
+
+**Project Billing Manager**
+
+- resourcemanager.projects.createBillingAssignment
+- resourcemanager.projects.deleteBillingAssignment
+- Link/unlink the project to/from a billing account.
+- When granted in conjunction with the Billing Account User role, provides access to assign a project's billing account or disable its billing.
+  > When granted in combination with the Billing Account User role, the Project Billing Manager role allows a user to attach the project to the billing account, but does not grant any rights over resources. Project Owners can use this role to allow someone else to manage the billing for the project without granting them resource access.
+
+<hr />
 
 - A billing account is assosicated with org.
 - Billing alert - Avoid surprises on your bill, who -> Billing Account Administrator, Billing Account Costs Manager
@@ -54,7 +69,7 @@
 
 # Machine Family
 
-- M1 machine type: "M" Memory-optimized - M, Compute-optimized - C, cost-optimized: E, Balanced price/performance: N
+- M1 machine type: Memory-optimized - "M", Compute-optimized - "C", cost-optimized: "E", Balanced price/performance: "N"
 - Local SSD - When you stop a VM, all data on the local SSD is discarded.
 - Unlike Persistent Disks, Local SSDs are physically attached to the server on VM.
 
@@ -85,13 +100,10 @@
 
 - Stop VM when increasing the memeory 4GB -> 8GB
 - disk - persistant disc Local SSD
-- MIGs - port 4443 HTTPS
 - MIGs - autoscaling- CPU, max/min,
-- Authentication - best practice
-- each VM that needs to call a Google API should run as a service account with the minimum permissions necessary.(Create new SA)
-- how to login using Cloud Identity Proxy for VM Access a paticular instance
-- "without allowing other instances" , the other instances are created with default compute engine service account. So you must create a new independant service account
-
+- (best practice)each VM + SA with with the minimum permissions necessary.(Create a new SA instead of default SA)
+- Q:how to login using Cloud Identity Proxy for VM Access a paticular instance
+- A:"without allowing other instances" , the other instances are created with default compute engine service account. So you must create a new independant service account
 - Q: multiple VMs without public IP, you want to access all VMs without having to configure specific access on the existing and new instances-->
 - A: You can connect to Linux instances that don't have an external IP address by tunneling SSH traffic through IAP.[1]
 
@@ -100,7 +112,14 @@
 # MIGs
 
 - gradually deploy - maxUnavailable(How many instanes can be offline), maxSurge(How many extra instances to temporarily create)
-- gcloud compute instance-groups managed rolling-action start-update INSTANCE_GROUP_NAME --version=template=INSTANCE_TEMPLATE_NAME
+
+```
+gcloud compute instance-groups managed rolling-action start-update INSTANCE_GROUP_NAME
+--version=template=[INSTANCE_TEMPLATE_NAME]
+--max-surge=[MAX_SURGE]
+--max-unavailable=[MAX_UNAVAILABLE]
+```
+
 - Autoscaling policies: CPU utilization, Monitoring metrics, Queue-based workload, Load balancing capacity
 
 # LB
@@ -136,22 +155,20 @@
 
 - Request -> egress, Response -> ingress.
 - egress is leaving
+- priority: 0 to 65535
+- Highest priority: 65535
+- Default priority: 1000
 
 # Cloud Storage
 
-- Storage Admin
+- Storage Admin - Grants full control of buckets and objects.
+- Storage Object Admin - Grants full control over objects.
+- Storage Object Creator - create objects in a bucket.
 - Bucket public -> a signed URL
 - failover
 - save sensitive data
 - lifecycle
 - enable them to write data into a particular Cloud Storage bucket --> Storage Object Creator
-
-| Role                   | Description                                                                                   |
-| ---------------------- | --------------------------------------------------------------------------------------------- |
-| Storage Object Creator | Allows users to create objects. Does not give permission to view, delete, or replace objects. |
-| Storage Object Viewer  | view objects                                                                                  |
-| Storage Object Admin   | Grants full control over objects                                                              |
-| Storage Admin          | Grants full control of buckets and objects.                                                   |
 
 - [IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles)
 
@@ -165,16 +182,10 @@
 | Logging.privateLogViewer | Data Access    |
 
 - Has all permissions of Logging.privateLogViewer
-- Data access audit log - disable as a default
+- Data access audit log - disable as a default because it can be quite large
+- except for BigQuery Data Access audit logs
 
 - [Audit Logs: Querying Logs, Pricing and Retention](https://www.youtube.com/watch?v=dVBBKR3SgDQ&t=3s)
-
-```
-For Admin Activity audit logs, select activity.
-For Data Access audit logs, select data_access.
-For System Event audit logs, select system_event.
-For Policy Denied audit logs, select policy.
-```
 
 - Q: You are storing sensitive information in a Cloud Storage bucket. For legal reasons, you need to be able to record all requests that read any of the stored data. You want to make sure you comply with these requirements. What should you do?
 - A: Enable Data Access audit logs for the Cloud Storage API.
@@ -237,6 +248,9 @@ For Policy Denied audit logs, select policy.
 - gradually deploy - a rolling-action start-update with maxSurge
 - --split
 - version in a same project
+- Important: Each Cloud project can contain only a single App Engine application, and once created you cannot change the location of your App Engine application.[1]
+
+1. https://cloud.google.com/appengine/docs/flexible/managing-projects-apps-billing#create
 
 # Deployment Manager
 
@@ -254,12 +268,6 @@ For Policy Denied audit logs, select policy.
 # BigTable
 
 - time series database
-
-**App Engine**
-
-- Important: Each Cloud project can contain only a single App Engine application, and once created you cannot change the location of your App Engine application.[1]
-
-1. https://cloud.google.com/appengine/docs/flexible/managing-projects-apps-billing#create
 
 # Pub/Sub
 
