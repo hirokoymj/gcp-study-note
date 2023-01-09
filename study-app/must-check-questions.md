@@ -40,6 +40,10 @@ You have an instance group that you want to load balance. You want the load bala
 
 Correct Answer: A
 
+- B. Configure an internal TCP load balancer. - internal, TCP/UDP traffic, software-defined
+- C. Configure an external SSL proxy load balancer. Non-HTTP
+- D. Configure an external TCP proxy load balancer. Non-HTTP
+
 <hr />
 
 Question #57 (Page 15)
@@ -51,7 +55,7 @@ You have a web application deployed as a managed instance group. You have a new 
 - C. Create a new managed instance group with an updated instance template. Add the group to the backend service for the load balancer. When all instances in the new managed instance group are healthy, delete the old managed instance group.
 - D. Create a new instance template with the new application version. Update the existing managed instance group with the new instance template. Delete the instances in the managed instance group to allow the managed instance group to recreate the instance using the new instance template.
 
-Correct Answer: C
+Correct Answer: B
 
 - If you do not want any unavailable machines during an update, set the maxUnavailable value to 0 and the maxSurge value to greater than 0. With these settings, Compute Engine removes each old machine only after its replacement new machine is created and running.[1]
 - maxSurge- configure how many new instances the MIG can create above its targetSize during an automated update.
@@ -114,8 +118,8 @@ Compute Engine instances to have a public IP. What should you do?
 
 Correct Answer: B
 
-- B is correct as question say no public IP on the instance.
-- https://cloud.google.com/iap/docs/using-tcPage:forwarding#tunneling_ssh_connections
+- Use IAP TCP to enable access to VM instances that do not have external IP addresses or do not permit direct access over the internet.
+- https://cloud.google.com/iap/docs/using-tcp-forwarding
 
 <hr />
 

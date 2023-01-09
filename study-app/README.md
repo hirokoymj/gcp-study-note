@@ -354,8 +354,79 @@ gcloud functions deploy Hello
 
 - A deployment is responsible for keeping a set of pods running.[4]
 - A service is responsible for enabling network access to a set of pods.[4]
-- ClusterIP < NP < LB
+- ClusterIP(default) < NP < LB
+- ClusterIP: Exposes the service on a cluster-internal IP.
+- NodePort: Exposes the service on each Node’s IP at a static port (the NodePort).
+- LoadBalancer: Exposes the service externally using a cloud provider’s load balancer.
 - replicas
+
+**HelloApp**
+
+1. Create a GKE cluster
+2. Deploy an app to the cluster
+3. Expose the Deployment (Service)
+4. Instect the app
+5. View the app - http://EXTERNAL_IP
+
+```
+gcloud container clusters create-auto hello-cluster
+
+kubectl create deployment hello-server --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
+
+kubectl expose deployment hello-server --type LoadBalancer --port 80 --target-port 8080
+
+kubectl get pods
+
+kubectl get service hello-server
+```
+
+**HelloApp using Node.js**
+
+1. Node.js Hello App (index.js)
+2. Containerizing an app with Cloud Build
+   - Dockerfile
+   - get Project ID
+   - Store your container in Artifact Registry with --repository-format=docker
+   - Build your container image using Cloud Build
+3. Create a GKE cluster
+4. Deploying to GKE using Deployment and Service
+   - deployment.yaml
+   - service.yaml
+5. View the app - http://EXTERNAL_IP
+
+```
+gcloud config get-value project
+
+gcloud artifacts repositories create hello-repo \
+    --project=PROJECT_ID \
+    --repository-format=docker \
+    --location=REGION \
+
+gcloud builds submit \
+  --tag REGION-docker.pkg.dev/PROJECT_ID/hello-repo/helloworld-gke .
+
+gcloud container clusters create-auto helloworld-gke \
+  --region REGION
+
+kubectl get nodes
+
+kubectl apply -f deployment.yaml
+
+kubectl get deployments
+
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+hello-deployment   1/1     1            1           20s
+
+kubectl get pods
+kubectl apply -f service.yaml
+kubectl get services
+
+NAME         TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)        AGE
+hello        LoadBalancer   10.22.222.222   35.111.111.11   80:32341/TCP   1m
+kubernetes   ClusterIP      10.22.222.1     <none>          443/TCP        20m
+
+//http://EXTERNAL_IP
+```
 
 **DaemonSets**
 
@@ -391,15 +462,20 @@ kubectl describe node gke-gar-3-pool-1-9781becc-bdb3
 - GKE Sandbox on your cluster to isolate untrusted workloads in sandboxes on the node. GKE Sandbox is built using gVisor, an open source project.[8]
 - click Security and select the Enable sandbox with gVisor checkbox.
 
-**Commands**
+**Commands - Cluster**
 
-- kubectl create deployment hello-server --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
-- gcloud container clusters create-auto hello-cluster --region=us-central1
-- kubectl config use-context black
-- kubectl config view
-- gcloud container clusters describe CLUSTER_NAME
-- gcloud container clusters list
-- gcloud config set container/cluster CLUSTER_NAME
+```
+gcloud container clusters create-auto hello-cluster
+kubectl get nodes
+gcloud config set container/cluster hello-cluster
+```
+
+**Command - Config**
+
+```
+kubectl config use-context black
+kubectl config view
+```
 
 **GKE Links:**
 
@@ -409,5 +485,6 @@ kubectl describe node gke-gar-3-pool-1-9781becc-bdb3
 4. [Kubernetes Service vs Deployment](https://matthewpalmer.net/kubernetes-app-developer/articles/service-kubernetes-example-tutorial.html#:~:text=What's%20the%20difference%20between%20a,running%20in%20the%20Kubernetes%20cluster.)
 5. [Commands for Cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters)
 6. [ClusterIP-NodePort-LB](https://stackoverflow.com/questions/41509439/whats-the-difference-between-clusterip-nodeport-and-loadbalancer-service-types)
-7. https://managedkube.com/kubernetes/k8sbot/troubleshooting/pending/pod/2019/02/22/pending-pod.html
-8. https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods?hl=en
+7. [Kubernetes Troubleshooting Walkthrough - Pending Pods](https://managedkube.com/kubernetes/k8sbot/troubleshooting/pending/pod/2019/02/22/pending-pod.html)
+8. [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods?hl=en)
+9. [Service vs Deployment](https://matthewpalmer.net/kubernetes-app-developer/articles/service-kubernetes-example-tutorial.html#:~:text=What's%20the%20difference%20between%20a,running%20in%20the%20Kubernetes%20cluster.)
