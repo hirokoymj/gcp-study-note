@@ -106,6 +106,10 @@
 - A:"without allowing other instances" , the other instances are created with default compute engine service account. So you must create a new independant service account
 - Q: multiple VMs without public IP, you want to access all VMs without having to configure specific access on the existing and new instances-->
 - A: You can connect to Linux instances that don't have an external IP address by tunneling SSH traffic through IAP.[1]
+- "Risks of manual key management
+
+  > If you create and manage public SSH keys yourself through the Cloud Console, the gcloud command-line tool, or the API, you must keep track of the used keys and delete the public SSH keys for users who no longer have access. For example, if a team member leaves your project, remove their public SSH keys from metadata, so they can't continue to access your instances.
+  > https://cloud.google.com/compute/docs/instances/access-overview
 
 1. [Tunneling SSH connections](https://cloud.google.com/iap/docs/using-tcp-forwarding#tunneling_ssh_connections)
 
@@ -166,11 +170,15 @@ gcloud compute instance-groups managed rolling-action start-update INSTANCE_GROU
 - Storage Object Creator - create objects in a bucket.
 - Bucket public -> a signed URL
 - failover
-- save sensitive data
+- Sensitive data -> Enable Data Access audit log[2]
+- Google Cloud services write audit logs ->"Who did what, where, and when?" -> Admin Activity audit log/Data Access audit log
 - lifecycle
 - enable them to write data into a particular Cloud Storage bucket --> Storage Object Creator
+- Cloud Audit Logs with Cloud Storage
+- gsutil rsync <source_location> <destination_location>.
 
-- [IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles)
+1. [IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles)
+2. [Cloud Audit Logs with Cloud Storage](https://cloud.google.com/storage/docs/audit-logging#types)
 
 # Audit log
 
@@ -185,10 +193,7 @@ gcloud compute instance-groups managed rolling-action start-update INSTANCE_GROU
 - Data access audit log - disable as a default because it can be quite large
 - except for BigQuery Data Access audit logs
 
-- [Audit Logs: Querying Logs, Pricing and Retention](https://www.youtube.com/watch?v=dVBBKR3SgDQ&t=3s)
-
-- Q: You are storing sensitive information in a Cloud Storage bucket. For legal reasons, you need to be able to record all requests that read any of the stored data. You want to make sure you comply with these requirements. What should you do?
-- A: Enable Data Access audit logs for the Cloud Storage API.
+1. [Audit Logs: Querying Logs, Pricing and Retention](https://www.youtube.com/watch?v=dVBBKR3SgDQ&t=3s)
 
 # IAM
 
@@ -260,6 +265,26 @@ gcloud compute instance-groups managed rolling-action start-update INSTANCE_GROU
    --preview
 - **--preview**:Preview the requested create without actually instantiating the underlying resources. (default=False)
 - A type provider exposes all of the resources of a third-party API to Deployment Manager as base types that you can use in your configurations. These types must be directly served by a **RESTful API** that supports Create, Read, Update, and Delete (CRUD).
+  [Youtube - Cloud Deployment Manager](https://www.youtube.com/watch?v=gEzlEg-XtsE)
+- gcloud deployment-manager deployments create quickstart-deployment --config vm.yaml
+
+```
+resources:
+- name: vm-created-by-deployment-manager
+  type: compute.v1.instance
+  properties:
+    zone: us-central1-a
+    machineType: zones/us-central1-a/machineTypes/n1-standard-1
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: projects/debian-cloud/global/images/family/debian-11
+    networkInterfaces:
+    - network: global/networks/default
+```
 
 # Stackdriver
 
@@ -269,9 +294,21 @@ gcloud compute instance-groups managed rolling-action start-update INSTANCE_GROU
 
 - time series database
 
-# Pub/Sub
+# Cloud Function
+
+```
+gcloud functions deploy Hello
+   --trigger-bucket=STORAGE_BUCKET  #Cloud Storage trigger
+   --trigger-http                   #HTTP trigger
+   --trigger-topic=TOPIC_NAME [1]   #PubSub trigger
+```
 
 - Q: You have created a **code snippet** that should be triggered **whenever a new file** is uploaded to a Cloud Storage bucket. You want to deploy this code snippet. What should you do?
+- A:Use Cloud Functions and configure the bucket as a trigger resource.
+
+**Links:**
+
+1. https://cloud.google.com/functions/docs/calling/storage#event_types
 
 # Cross projects
 
