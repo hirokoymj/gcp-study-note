@@ -107,8 +107,7 @@
 
 - Stop VM when increasing the memeory 4GB -> 8GB
 - disk - persistant disc Local SSD
-- MIGs - autoscaling- CPU, max/min,
-- (best practice)each VM + SA with with the minimum permissions necessary.(Create a new SA instead of default SA)
+
 - Q:how to login using Cloud Identity Proxy for VM Access a paticular instance
 - A:"without allowing other instances" , the other instances are created with default compute engine service account. So you must create a new independant service account
 - Q: multiple VMs without public IP, you want to access all VMs without having to configure specific access on the existing and new instances-->
@@ -118,7 +117,10 @@
   > If you create and manage public SSH keys yourself through the Cloud Console, the gcloud command-line tool, or the API, you must keep track of the used keys and delete the public SSH keys for users who no longer have access. For example, if a team member leaves your project, remove their public SSH keys from metadata, so they can't continue to access your instances.
   > https://cloud.google.com/compute/docs/instances/access-overview
 
-- Create a new service account rather than using the Compute Engine default service account.[2]
+- (SA)Create a new service account rather than using the Compute Engine default service account.[2]
+- (SA)each VM + SA with with the minimum permissions necessary.[2]
+
+https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#best_practices
 
 1. [Tunneling SSH connections](https://cloud.google.com/iap/docs/using-tcp-forwarding#tunneling_ssh_connections)
 2. [Authenticate workloads using service accounts](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#best_practices)
@@ -140,6 +142,7 @@ gcloud compute instance-groups managed rolling-action start-update INSTANCE_GROU
 - Pro Tip: Use separate health checks for load balancing and for autohealing. Health checks for load balancing detect unresponsive instances and direct traffic away from them. Health checks for autohealing detect and recreate failed instances. [1]
 - If your MIG cannot create or recreate instances - 1. The boot disk already exists, 2. The instance template is not valid[2]
 - Rolling Update in MIG - gradually update a template in MIG
+- Canary update - We roll out a software update to a small part of the users first,
 
 1. https://cloud.google.com/compute/docs/tutorials/high-availability-autohealing#create_the_health_check
 2. https://cloud.google.com/compute/docs/troubleshooting/troubleshooting-migs
