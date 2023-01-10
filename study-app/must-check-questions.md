@@ -85,6 +85,14 @@ https://cloud.google.com/iam/docs/creating-managing-service-account-keys
 
 <hr />
 
+Your organization uses G Suite for communication and collaboration. All users in your organization have a G Suite account. You want to grant some G Suite users access to your Cloud Platform project. What should you do?
+A. Enable Cloud Identity in the GCP Console for your domain.
+B. Grant them the required IAM roles using their G Suite email address.
+C. Create a CSV sheet with all users' email addresses. Use the gcloud command line tool to convert them into Google Cloud Platform accounts.
+D. In the G Suite console, add the users to a special group called cloud-console-users@yourdomain.com. Rely on the default behavior of the Cloud Platform to grant users access if they are members of this group.
+
+<hr />
+
 Question #94 (Page 24)
 
 You create a Deployment with 2 replicas in a Google Kubernetes Engine cluster that has a single preemptible node pool. After a few minutes, you use kubectl to examine the status of your Pod and observe that one of them is still in Pending status:
@@ -103,6 +111,26 @@ Correct Answer: B
   - Troubleshooting Reason #2: Not enough memory
   - Troubleshooting Reason #3: Not enough CPU and memory
     https://managedkube.com/kubernetes/k8sbot/troubleshooting/pending/pod/2019/02/22/pending-pod.html
+
+<hr />
+
+Question #98 (Page 25)
+
+Your customer has implemented a solution that uses Cloud Spanner and notices some read latency-related performance issues on one table. This table is accessed only by their users using a primary key. The table schema is shown below.
+
+You want to resolve the issue. What should you do?
+
+- A. Remove the profile_picture field from the table.
+- B. Add a secondary index on the person_id column.
+- C. Change the primary key to not have monotonically increasing values.
+- D. Create a secondary index using the following Data Definition Language (DDL):
+
+Correct Answer: C
+
+- C is the right answer. Why? "This table is accessed only by their users using a primary key." So adding additional indexes on firstname and lastname won't help.
+- Choose a primary key to prevent hotspots
+  > As mentioned in Schema and data model, you should be careful when choosing a primary key to not accidentally create hotspots in your database. One cause of hotspots is having a column whose value monotonically increases as the first key part, because this results in all inserts occurring at the end of your key space. This pattern is undesirable because Spanner divides data among servers by key ranges, which means all your inserts will be directed at a single server that will end up doing all the work.
+- https://cloud.google.com/spanner/docs/schema-design#primary-key-prevent-hotspots
 
 <hr />
 
@@ -242,3 +270,26 @@ Correct Answer: D
 - Service Account User (roles/iam.serviceAccountUser): Includes permissions to list service accounts, get details about a service account, and impersonate a service account.
 
 - Service Account Admin (roles/iam.serviceAccountAdmin): Includes permissions to list service accounts and get details about a service account. Also includes permissions to create, update, and delete service accounts, and to view or change the IAM policy on a service account.
+
+<hr />
+
+Question #121(page 31)
+
+Your managed instance group raised an alert stating that new instance creation has failed to create new instances. You need to maintain the number of running instances specified by the template to be able to process expected application traffic. What should you do?
+
+- A. Create an instance template that contains valid syntax which will be used by the instance group. Delete any persistent disks with the same name as instance names. Most Voted
+- B. Create an instance template that contains valid syntax that will be used by the instance group. Verify that the instance name and persistent disk name values are not the same in the template.
+- C. Verify that the instance template being used by the instance group contains valid syntax. Delete any persistent disks with the same name as instance names. Set the disks.autoDelete property to true in the instance template.
+- D. Delete the current instance template and replace it with a new instance template. Verify that the instance name and persistent disk name values are not the same in the template. Set the disks.autoDelete property to true in the instance template.
+
+Correct Answer: A
+
+1. create new template, while creating ensure that in the new template disks.autoDelete=true, 3. delete existing persistent disks, 4. make rolling update ...
+   In order to switch to new template we need "Rolling update". Unfortunately, it is not mentioned.
+
+With current options
+C - not correct, we cannot update existing template
+D - not correct, we cannot delete existing template when it is in use (just checked in GCP) (We need rolling update)
+B - will not solve our problem without Rolling update
+A - This is the only option (I know that it can be temporary) that will work without Rolling update according to
+https://cloud.google.com/compute/docs/troubleshooting/troubleshooting-migs

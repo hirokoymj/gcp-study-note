@@ -24,6 +24,10 @@
 - Cloud VPN gateway with dynamic routing ---> HA VPN Border Gateway Protocol (BGP).
 - The highest level of availability, use HA VPN whenever possible.
 
+- Cloud DNS offers DNS forwarding zones and DNS server policies to allow lookups of DNS names between your on-premises and Google Cloud environment. [1]
+
+1. [DNS forwarding zones](https://cloud.google.com/dns/docs/best-practices#best_practices_for_dns_forwarding_zones_and_server_policies)
+
 # Billing
 
 **Billing Accout Administrator**
@@ -85,8 +89,11 @@
 - Spanner, CPU utilization, Cloud Monitoring, scaling
 - Spanner is used for global scaling.
 - primary key -> automatically created
-- Secondary Index -> it more efficient to look up
-- CREATE INDEX SongsBySongName ON Songs(SongName)
+- you should be careful when choosing a primary key in the schema design to not accidentally create hotspots in your database. One cause of hotspots is having a column whose value **monotonically** increases as the first key part,
+- AutoScaling - Alerts for high CPU utilization.(45%, 65%)
+
+1. [Choose a primary key to prevent hotspots](https://cloud.google.com/spanner/docs/schema-design#primary-key-prevent-hotspots)
+2. https://cloud.google.com/architecture/autoscaling-cloud-spanner
 
 # VM
 
@@ -111,7 +118,10 @@
   > If you create and manage public SSH keys yourself through the Cloud Console, the gcloud command-line tool, or the API, you must keep track of the used keys and delete the public SSH keys for users who no longer have access. For example, if a team member leaves your project, remove their public SSH keys from metadata, so they can't continue to access your instances.
   > https://cloud.google.com/compute/docs/instances/access-overview
 
+- Create a new service account rather than using the Compute Engine default service account.[2]
+
 1. [Tunneling SSH connections](https://cloud.google.com/iap/docs/using-tcp-forwarding#tunneling_ssh_connections)
+2. [Authenticate workloads using service accounts](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#best_practices)
 
 # MIGs
 
@@ -125,6 +135,14 @@ gcloud compute instance-groups managed rolling-action start-update INSTANCE_GROU
 ```
 
 - Autoscaling policies: CPU utilization, Monitoring metrics, Queue-based workload, Load balancing capacity
+- Autohealing - Autohealing recreates VM instances
+- Initial delay - 300 seconds (5 min)
+- Pro Tip: Use separate health checks for load balancing and for autohealing. Health checks for load balancing detect unresponsive instances and direct traffic away from them. Health checks for autohealing detect and recreate failed instances. [1]
+- If your MIG cannot create or recreate instances - 1. The boot disk already exists, 2. The instance template is not valid[2]
+- Rolling Update in MIG - gradually update a template in MIG
+
+1. https://cloud.google.com/compute/docs/tutorials/high-availability-autohealing#create_the_health_check
+2. https://cloud.google.com/compute/docs/troubleshooting/troubleshooting-migs
 
 # LB
 
@@ -162,6 +180,8 @@ gcloud compute instance-groups managed rolling-action start-update INSTANCE_GROU
 - priority: 0 to 65535
 - Highest priority: 65535
 - Default priority: 1000
+- you always need to enable the ingress traffic as this is **never** enabled by default.
+- Implied rules - allow all egress, and **deney** all ingress
 
 # Cloud Storage
 
@@ -172,7 +192,7 @@ gcloud compute instance-groups managed rolling-action start-update INSTANCE_GROU
 - failover
 - Sensitive data -> Enable Data Access audit log[2]
 - Google Cloud services write audit logs ->"Who did what, where, and when?" -> Admin Activity audit log/Data Access audit log
-- lifecycle
+- lifecycle - Nearline, Coldline, and Archive
 - enable them to write data into a particular Cloud Storage bucket --> Storage Object Creator
 - Cloud Audit Logs with Cloud Storage
 - gsutil rsync <source_location> <destination_location>.
@@ -199,16 +219,22 @@ gcloud compute instance-groups managed rolling-action start-update INSTANCE_GROU
 
 - 4 Members: Google Account, SA, Google Group, Google Workspace /Cloud Identity
 
-| Member                           | Email                                      |
-| -------------------------------- | ------------------------------------------ |
-| Google Account                   | userid@gmail.com                           |
-| SA                               | 12345678@cloudservices.gserviceaccount.com |
-| Google Group                     | groupname@googlegroups.com                 |
-| Google Workspace /Cloud Identity | test@example.com                           |
+| Member                                 | Email                                      |
+| -------------------------------------- | ------------------------------------------ |
+| Google Account                         | userid@gmail.com                           |
+| SA                                     | 12345678@cloudservices.gserviceaccount.com |
+| Google Group                           | groupname@googlegroups.com                 |
+| Google Workspace Domain/Cloud Identity | test@example.com                           |
 
 - Cloud Identity - verify thrid party authentication
 - G Suite = Google Workspace
 - use predefined roles and create groups to control access to multiple users
+
+- A Google group is a named collection of Google accounts
+- A service account is an account that belongs to your application instead of to an individual end user
+- A Google group is a named collection of Google accounts.
+- A Workspace domain represents a virtual group of all the Google accounts
+- Google Cloud customers who are not Workspace customers can get these same capabilities through Cloud Identity. Cloud Identity lets you manage users and groups using the Google Admin Console, but you do not pay for or receive Workspace’s collaboration products such as Gmail, Docs, Drive, and Calendar.
 
 # SA
 
@@ -237,6 +263,10 @@ gcloud compute instance-groups managed rolling-action start-update INSTANCE_GROU
 - auto mode - one subnet from each region is automatically created within it.
 - custom mode: you have to create a subnet
 - VPC and the 2 subnets -> custom
+- they need to communicate via private addresses which cannot be achieved with 2 VPCs without Network Peering)
+- Two VPCs -> Network Peering
+- Shared VPC - > a host project and service projects are using same VPC.
+- you always need to enable the ingress traffic as this is never enabled by default.
 
 # BigQuery
 
@@ -289,6 +319,14 @@ resources:
 # Stackdriver
 
 - different projects, monitor a single report
+- Monitoring, Error Reporting, Tracing, Cloud Debugger
+- Cloud Debugging - Inspect an application without stopping it or slowing it down significantly.
+- Error Reporting - Aggregate and display errors for running cloud services
+
+# Monitoring
+
+- Installing Logging agent
+- Installing Monitoring agent
 
 # BigTable
 
@@ -316,8 +354,9 @@ gcloud functions deploy Hello
 
 - Q: You manage an App Engine Service that aggregates and visualizes data from BigQuery. The application is deployed with the default App Engine Service account.
   The data that needs to be visualized resides in a different project managed by another team. You do not have access to this project, but you want your application to be able to read data from the BigQuery dataset. What should you do?
-
 - A: Ask the other team to grant your default App Engine Service account the role of BigQuery Data Viewer.
+- Q:An application generates daily reports in a Compute Engine virtual machine (VM). The VM is in the project corp-iot-insights. Your team operates only in the project corp-aggregate-reports and needs a copy of the daily exports in the bucket corp-aggregate-reports-storage. You want to configure access so that the daily reports from the VM are available in the bucket corp-aggregate-reports-storage and use as few steps as possGrant the VM Service Account the role Storage Object Creator on corp-aggregate-reports-storage. ible while following Google-recommended practices. What should you do?
+- A:Grant the VM Service Account the role Storage Object Creator on corp-aggregate-reports-storage.
 
 # gcloud commands
 
@@ -339,6 +378,7 @@ gcloud functions deploy Hello
 - (IAM) gcloud iam service-accounts list
 - (Cloud Function) gcloud functions deploy Hello --http-trigger
 - (Cloud Function) gcloud functions deploy Hello --trigger-topic=mytopic
+- “sudo apt-get install“? sudo apt-get install command is used to download the latest version of your desired application from an online software repository pointed to by your sources.list configuration file and and install that application on your Linux machine.
 
 # GKE
 
@@ -352,41 +392,13 @@ gcloud functions deploy Hello
 | Deployment         | to define your app.              |
 | Service            | to define how to access your app |
 
-- A deployment is responsible for keeping a set of pods running.[4]
-- A service is responsible for enabling network access to a set of pods.[4]
-- ClusterIP(default) < NP < LB
-- ClusterIP: Exposes the service on a cluster-internal IP.
-- NodePort: Exposes the service on each Node’s IP at a static port (the NodePort).
-- LoadBalancer: Exposes the service externally using a cloud provider’s load balancer.
-- replicas
-
-**HelloApp**
-
-1. Create a GKE cluster
-2. Deploy an app to the cluster
-3. Expose the Deployment (Service)
-4. Instect the app
-5. View the app - http://EXTERNAL_IP
-
-```
-gcloud container clusters create-auto hello-cluster
-
-kubectl create deployment hello-server --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
-
-kubectl expose deployment hello-server --type LoadBalancer --port 80 --target-port 8080
-
-kubectl get pods
-
-kubectl get service hello-server
-```
-
 **HelloApp using Node.js**
 
 1. Node.js Hello App (index.js)
 2. Containerizing an app with Cloud Build
    - Dockerfile
    - get Project ID
-   - Store your container in Artifact Registry with --repository-format=docker
+   - Store your container in Artifact Registry
    - Build your container image using Cloud Build
 3. Create a GKE cluster
 4. Deploying to GKE using Deployment and Service
@@ -418,14 +430,15 @@ NAME               READY   UP-TO-DATE   AVAILABLE   AGE
 hello-deployment   1/1     1            1           20s
 
 kubectl get pods
-kubectl apply -f service.yaml
-kubectl get services
 
+kubectl apply -f service.yaml
+
+kubectl get services
 NAME         TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)        AGE
 hello        LoadBalancer   10.22.222.222   35.111.111.11   80:32341/TCP   1m
 kubernetes   ClusterIP      10.22.222.1     <none>          443/TCP        20m
 
-//http://EXTERNAL_IP
+//http://35.111.111.11
 ```
 
 **DaemonSets**
@@ -476,6 +489,9 @@ gcloud config set container/cluster hello-cluster
 kubectl config use-context black
 kubectl config view
 ```
+
+- Why use node auto-provisioning
+  Node auto-provisioning automatically manages and auto scales a set of node pools on the user's behalf. Without node auto-provisioning, GKE starts new nodes only from user-created node pools. With node auto-provisioning, new node pools are created and deleted automatically.https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning
 
 **GKE Links:**
 
