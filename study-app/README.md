@@ -316,6 +316,8 @@ resources:
     - network: global/networks/default
 ```
 
+<hr />
+
 # Stackdriver
 
 - different projects, monitor a single report
