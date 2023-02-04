@@ -86,15 +86,24 @@ app.listen(PORT, () => {
 - The page provides basic ideas for user authentication.
 - https://cloud.google.com/appengine/docs/flexible/authenticating-users
 
-**Mapping Custom Domains**
+## Mapping Custom Domains
 
 - The page illustrates necessary steps to set up a custom domain.
 - https://cloud.google.com/appengine/docs/flexible/mapping-custom-domains
+- [49. Using Custom Domains with App Engine | Google Quick Tutorials](https://www.youtube.com/watch?v=CvSR_8pxcGk&list=PLuJRcdtonlDAN73rZsRk_eiJ0NU9h1Cms&index=50)
+  ![](custom-domain.png)
 
-**Securing Custom Domains with SSL**
+## Securing Custom Domains with SSL
 
 - The page help you use and set up SSL certs for your custom domain.
 - https://cloud.google.com/appengine/docs/flexible/securing-custom-domains-with-ssl
+
+**Verify a managed certificate**
+
+- After you set up your custom domain and update the DNS records, a managed SSL certificate is automatically provided within a few minutes.
+
+1. In the Google Cloud console, go to App Engine > Settings > Custom Domains:
+2. The SSL security displays as Google-managed.
 
 ## GAE Flex Quickstarts (Node.js)
 
