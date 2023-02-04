@@ -18,14 +18,20 @@
 - In this doc, you'll learn how GAE Flex usage is charged.
 - https://cloud.google.com/appengine/pricing#flexible-environment-pricing
 
-**Structuring Web Services in App Engine**
+## Structuring Web Services in App Engine
 
 - This page helps you understand how to structure the services and related resources of your app for App Engine.
-- https://cloud.google.com/appengine/docs/flexible/configuration-files
+- [Structuring web services in App Engine](https://cloud.google.com/appengine/docs/flexible/configuration-files)
+- [Microservices (Instagram API Live Demo) - Episode 1.4 | Google Cloud ~ App Engine](https://www.youtube.com/watch?v=HCHXZAowMQg&list=PL42xwJRIG3xCtmOrJAQFR5sIJFKIJ9MEn&index=6)
 
-https://cloud.google.com/appengine/docs/flexible/reference/app-yaml?tab=node.js
+  - 06:22 - start coding
+  - 12:08 - app.yaml
+  - 13:11 - deploy
+  - 17:03 - two services
 
-- https://www.serversus.work/topics/vyly8dwer5uql5ra5xdg/
+- [An Overview of App Engine](https://cloud.google.com/appengine/docs/legacy/standard/python/an-overview-of-app-engine#components_of_an_application)
+
+![](modules_hierarchy.svg)
 
 **Handling Requests**
 
@@ -67,20 +73,14 @@ https://cloud.google.com/appengine/docs/flexible/reference/app-yaml?tab=node.js
 - The page help you use and set up SSL certs for your custom domain.
 - https://cloud.google.com/appengine/docs/flexible/securing-custom-domains-with-ssl
 
-**GAE Flex Quickstarts (Python)**
+## GAE Flex Quickstarts (Node.js)
 
 - Going through this quickstart will help you grasp the basic features and deployment process.
+- [Create a Node.js app in the App Engine flexible environment](https://cloud.google.com/appengine/docs/flexible/nodejs/create-app)
 
-- https://cloud.google.com/appengine/docs/flexible/python/create-app
+## [Lab] Qwiklabs
 
-**GAE Flex Quickstarts (Java)**
-
-- Going through this quickstart will help you grasp the basic features and deployment process.
-- https://cloud.google.com/appengine/docs/flexible/java/create-app
-
-**[Lab] Qwiklabs**
-
-- https://partner.cloudskillsboost.google/focuses/13499?catalog_rank=%7B%22rank%22%3A1%2C%22num_filters%22%3A0%2C%22has_search%22%3Atrue%7D&parent=catalog&search_id=7249279
+- [Node.js Google Cloud Storage sample for Google App Engine](https://github.com/GoogleCloudPlatform/nodejs-docs-samples/tree/main/appengine/storage/flexible)
 
 ## Configuring your App with app.yaml
 
