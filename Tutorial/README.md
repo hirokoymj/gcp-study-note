@@ -33,10 +33,33 @@
 
 ![](modules_hierarchy.svg)
 
-**Handling Requests**
+## Handling Requests
 
 - This doc describes how your App Engine application receives requests and sends responses.
-- https://cloud.google.com/appengine/docs/flexible/how-requests-are-handled?tab=python
+- [How requests are handled](https://cloud.google.com/appengine/docs/flexible/how-requests-are-handled?tab=node.js#top)
+
+**Handling requests**
+
+```
+const express = require('express');
+
+const app = express();
+
+app.get('/', (req, res) => {
+  res.status(200).send('Hello, world!').end();
+});
+
+// Start the server
+const PORT = parseInt(process.env.PORT) || 8080;
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+  console.log('Press Ctrl+C to quit.');
+});
+```
+
+**Handling asynchronous background work**
+
+- For long-running jobs, we recommend using Cloud Tasks. With Cloud Tasks, HTTP requests are long-lived and return a response only after any asynchronous work ends.
 
 **Routing Requests**
 
