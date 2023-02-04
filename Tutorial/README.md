@@ -23,6 +23,10 @@
 - This page helps you understand how to structure the services and related resources of your app for App Engine.
 - https://cloud.google.com/appengine/docs/flexible/configuration-files
 
+https://cloud.google.com/appengine/docs/flexible/reference/app-yaml?tab=node.js
+
+- https://www.serversus.work/topics/vyly8dwer5uql5ra5xdg/
+
 **Handling Requests**
 
 - This doc describes how your App Engine application receives requests and sends responses.
@@ -78,10 +82,60 @@
 
 - https://partner.cloudskillsboost.google/focuses/13499?catalog_rank=%7B%22rank%22%3A1%2C%22num_filters%22%3A0%2C%22has_search%22%3Atrue%7D&parent=catalog&search_id=7249279
 
-**Configuring your App with app.yaml**
+## Configuring your App with app.yaml
 
 - This doc explains how to customize resource, health-check, and scaling settings. Adjust these parameters and get familiar with resource settings.
-- https://cloud.google.com/appengine/docs/flexible/custom-runtimes/configuring-your-app-with-app-yaml
+- [app.yaml Configuration File](https://cloud.google.com/appengine/docs/flexible/reference/app-yaml?tab=node.js#top)
+- [Configuring your app with app.yaml - Node.js](https://cloud.google.com/appengine/docs/flexible/nodejs/configuring-your-app-with-app-yaml)
+
+**app.yaml example**
+
+- This sample incurs costs to run on the App Engine flexible environment.
+- The settings below are to reduce costs during testing.
+
+```
+runtime: nodejs
+env: flex
+manual_scaling:
+  instances: 1
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
+```
+
+```
+gcloud app deploy service-name-app.yaml
+gcloud app deploy app.flexible.yaml
+```
+
+**Automatic scaling**
+
+The default is automatic scaling.
+
+```
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 15
+  cool_down_period_sec: 180
+  cpu_utilization:
+    target_utilization: 0.6
+  target_concurrent_requests: 100
+```
+
+- min_num_instances
+
+  > The minimum number of instances given to your service. When a service is deployed, it is given this many instances and scales according to traffic. Must be 1 or greater, default is 2 to reduce latency.
+
+- max_num_instances
+  > The maximum number of instances that your service can scale up to. The maximum number of instances in your project is limited by your project's resource quota. Default is 20.
+
+**Manual scaling**
+
+```
+manual_scaling:
+  instances: 5
+```
 
 **Controlling Access with Firewalls**
 
