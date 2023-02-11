@@ -1,4 +1,4 @@
-# VM Startup script
+# App Engine Flex
 
 **App Engine Overview**
 
@@ -61,10 +61,19 @@ app.listen(PORT, () => {
 
 - For long-running jobs, we recommend using Cloud Tasks. With Cloud Tasks, HTTP requests are long-lived and return a response only after any asynchronous work ends.
 
-**Routing Requests**
+## Routing Requests
 
 - This page describes how HTTP requests from users reach the appropriate version of a service.
-- https://cloud.google.com/appengine/docs/flexible/how-requests-are-routed
+- [How requests are routed](https://cloud.google.com/appengine/docs/flexible/how-requests-are-routed)
+
+**Default service URLs**
+
+- `https://PROJECT_ID.REGION_ID.r.appspot.com`
+- This URL sends requests to your app's default service at the version that you have configured to receive traffic.
+
+**URLs for services and versions**
+
+- `VERSION-dot-SERVICE-dot-PROJECT_ID.REGION_ID.r.appspot.com`
 
 **Overview of App Security**
 
@@ -76,15 +85,20 @@ app.listen(PORT, () => {
 - This page describes the logs that are available for App Engine apps, and how to write and view log entries.
 - https://cloud.google.com/appengine/docs/flexible/writing-application-logs?tab=node.js
 
-**Serving Static Files**
+## Serving Static Files
 
 - The page explains how to serve static files in GAE Flex.
 - https://cloud.google.com/appengine/docs/flexible/serving-static-files?tab=node.js
 
-**Authenticating Users**
+- https://github.com/GoogleCloudPlatform/nodejs-docs-samples/blob/HEAD/appengine/static-files/app.js
+
+- https://github.com/GoogleCloudPlatform/nodejs-docs-samples/tree/5790b3eb6c57cf885de0fc1043408b25dedd0e32/appengine/storage/flexible
+
+## Authenticating Users
 
 - The page provides basic ideas for user authentication.
 - https://cloud.google.com/appengine/docs/flexible/authenticating-users
+- Firebase Authentication
 
 ## Mapping Custom Domains
 
@@ -183,3 +197,108 @@ manual_scaling:
 
 - This doc explains how to create a custom runtime and deploy it in GAE Flex.
 - https://cloud.google.com/appengine/docs/flexible/custom-runtimes/build
+
+# Advanced
+
+## Debugging and Instance
+
+https://cloud.google.com/appengine/docs/flexible/debugging-an-instance
+
+You can enable debug mode for a VM. In debug mode, principals who have the Owner, Editor, and App Engine Admin roles on the project have root access to the VM
+
+```
+gcloud app --project PROJECT-ID instances enable-debug
+gcloud app --project PROJECT-ID instances disable-debug
+```
+
+**SSH**
+
+1. Go to the instance page
+2. Click SSH
+3. `sudo docker ps`
+   List containers
+   https://docs.docker.com/engine/reference/commandline/ps/
+
+## Troubleshooting deploys
+
+```
+gcloud app deploy --verbosity debug
+```
+
+## HTTPS Load Balancer Playbook
+
+broken link
+
+## Troubleshooting Firewall issues
+
+This page helps you check if your requests are accepted or rejected based on L2 GFE logs
+
+## Compute Engine Playbook
+
+GAE Flex uses GCE machines.
+
+- https://stackoverflow.com/questions/48982216/does-google-app-engine-flexible-environment-use-only-one-container-on-one-vm-ins
+
+> Google App Engine (GAE) Flexible runs only one container per VM and does not support multiple containers at the moment. There was a feature request issued and for now it is not on a roadmap of Google's engineering team. You can track and star this issue here.
+
+The reason for this is that GAE Flexible is intended to be an automatized environment so that you can focus on actual coding while it takes care of scaling and load-balancing in the background for you. If you want to use more than one container you can deploy it as a separate service in the same app. More advanced control and customization can be done using Kubernetes Engine:
+
+- [Google App Engine Comparison — Standard vs Flexible Environment](https://medium.com/10decoders/how-to-choose-app-engine-environment-standard-flexible-9f4c26a723b0)
+
+**GAE flex Advantages:**
+
+- SSH access and support for docker . This is a key difference which opens a lot of possibilities.
+
+## Autoscaler Playbook
+
+Dremel query in the page is also useful to check GAE scaling activities.
+
+[Dremel](<https://en.wikipedia.org/wiki/Dremel_(software)>)
+
+- Dremel is a distributed system developed at Google for interactively querying large datasets.
+- Dremel is the query engine used in Google's BigQuery service.[1]
+
+## Using the App Engine flexible environment on a Shared VPC network
+
+- [Using the App Engine flexible environment on a Shared VPC network](https://cloud.google.com/appengine/docs/flexible/using-shared-vpc)
+- [YouTube](https://www.youtube.com/watch?v=0spXlh_VLxg)
+- [Provision Shared VPC](https://cloud.google.com/vpc/docs/provisioning-shared-vpc)
+
+**Add Firewall rule in HOST PROJECT**
+
+| FW item                     | values                        |
+| --------------------------- | ----------------------------- |
+| Network: shared-vpc-network |                               |
+| Direction:                  | Ingress                       |
+| Action on match:            | Allow                         |
+| Targets:                    | target tags                   |
+| Target tags:                | aef-instance                  |
+| Source filter:              | IP ranges                     |
+| Source IP ranges:           | 35.191.0.0/16, 130.211.0.0/22 |
+| Protocols and ports:        | tcp: 8443, 10402              |
+
+**Setting up permission**
+
+1. Host-Project: a host project in a Shared VPC
+2. Service-Project-B: Deploying GAE flex
+3. Add below two service accounts in Service-Project-B in a HOST PROJECT and added `Compute Network User` role.
+
+- <service-project-B-project-num>@cloudservices.gserviceaccount.com
+- service-<service-project-B-project-num>@gae-api-prod.google.com.iam.gserviceaccount.com
+
+**Configuring and deploying your service**
+
+1. Add the network setting in app.yaml
+
+```
+network:
+  name: projects/HOST_PROJECT_ID/global/networks/NETWORK_NAME
+  subnetwork_name: SUBNETWORK_NAME
+```
+
+2. Deploy app
+   ```
+   gcloud app deploy
+   ```
+
+![](GKE/vpc-network.png)
