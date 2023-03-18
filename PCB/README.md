@@ -8,9 +8,8 @@
 | June 18   | 3     |           |          |
 
 - [ExamTopic Professional Cloud Database](https://www.examtopics.com/exams/google/professional-cloud-database-engineer/view/)
-  - Viewing page 1 out of 30 pages.
-  - Viewing questions 1-4 out of 123 questions
-- QuickLab
+- [Q1-Q123](./questions.md)
+- [QuickLab]()
 - [youtube - Google Cloud Quick Tutorials](https://www.youtube.com/playlist?list=PLuJRcdtonlDAN73rZsRk_eiJ0NU9h1Cms)
 
 - [Professional Cloud Database Engineer](https://cloud.google.com/certification/cloud-database-engineer)
@@ -23,7 +22,7 @@
   **Question #[1-5]:**
 
 ```
-Question #(\d)
+Question #(\d\d)
 **Question #$1:**
 
 Topic 1
