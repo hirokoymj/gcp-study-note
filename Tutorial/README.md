@@ -198,6 +198,8 @@ manual_scaling:
 - This doc explains how to create a custom runtime and deploy it in GAE Flex.
 - https://cloud.google.com/appengine/docs/flexible/custom-runtimes/build
 
+<hr />
+
 # Advanced
 
 ## Debugging and Instance
@@ -227,6 +229,8 @@ gcloud app deploy --verbosity debug
 
 ## HTTPS Load Balancer Playbook
 
+- [Global HTTP(S) Load Balancing and CDN now support serverless compute](https://cloud.google.com/blog/products/networking/better-load-balancing-for-app-engine-cloud-run-and-functions)
+
 broken link
 
 ## Troubleshooting Firewall issues
@@ -251,12 +255,27 @@ The reason for this is that GAE Flexible is intended to be an automatized enviro
 
 ## Autoscaler Playbook
 
-Dremel query in the page is also useful to check GAE scaling activities.
-
-[Dremel](<https://en.wikipedia.org/wiki/Dremel_(software)>)
-
+- Dremel query in the page is also useful to check GAE scaling activities.
+- [Dremel](<https://en.wikipedia.org/wiki/Dremel_(software)>)
 - Dremel is a distributed system developed at Google for interactively querying large datasets.
 - Dremel is the query engine used in Google's BigQuery service.[1]
+
+**GAE Flex - app.yaml**
+
+- [GAE flex - app.yaml](https://cloud.google.com/appengine/docs/flexible/reference/app-yaml?tab=node.js#network_settings)
+
+- The keys used to control scaling of a service depend on the type of scaling you assign to the service.
+- You can use either automatic or manual scaling. The default is automatic scaling.
+
+```
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 15
+  cool_down_period_sec: 180
+  cpu_utilization:
+    target_utilization: 0.6
+  target_concurrent_requests: 100
+```
 
 ## Using the App Engine flexible environment on a Shared VPC network
 
