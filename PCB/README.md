@@ -1,14 +1,14 @@
 # PLAN
 
-| Month     | count | holidays  | Weekends |
-| --------- | ----- | --------- | -------- |
-| March 18  | 0     | 3/21      | sundays  |
-| April 18, | 1     |           | sundays  |
-| May 18    | 2     | 5/3, 4, 5 | sundays  |
-| June 18   | 3     |           |          |
+| Month     | count | holidays  | Weekends | commute |
+| --------- | ----- | --------- | -------- | ------- |
+| March 18  | 0     | 3/21      | sundays  | tue/wed |
+| April 18, | 1     |           | sundays  | tue/wed |
+| May 18    | 2     | 5/3, 4, 5 | sundays  | tue/wed |
+| June 18   | 3     |           |          |         |
 
 - [ExamTopic Professional Cloud Database](https://www.examtopics.com/exams/google/professional-cloud-database-engineer/view/)
-- [Q1-Q123](./questions.md)
+- [Q1-Q123 in 30 pages](./questions.md)
 - [QuickLab]()
 - [youtube - Google Cloud Quick Tutorials](https://www.youtube.com/playlist?list=PLuJRcdtonlDAN73rZsRk_eiJ0NU9h1Cms)
 
