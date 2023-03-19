@@ -31,8 +31,6 @@ Your customer has a global chat application that uses a multi-regional Cloud Spa
 - C. Use SQL statements to analyze SPANNER_SYS.READ_STATS\* tables.
 - D. Use SQL statements to analyze SPANNER_SYS.QUERY_STATS\* tables.
 
-<hr />
-
 **Question #5:**
 Your company has PostgreSQL databases on-premises and on Amazon Web Services (AWS). You are planning multiple database migrations to Cloud SQL in an effort to reduce costs and downtime. You want to follow Google-recommended practices and use Google native data migration tools. You also want to closely monitor the migrations as part of the cutover strategy. What should you do?
 
@@ -64,8 +62,6 @@ You work for a large retail and ecommerce company that is starting to extend the
 - B. Deploy Cloud Spanner using a multi-region instance, and place your compute resources close to the default leader region.
 - C. Build an in-memory cache in Memorystore, and deploy to the specific geographic regions where your application resides.
 - D. Deploy a Bigtable instance with a cluster in one region and a replica cluster in another geographic region.
-
-<hr />
 
 **Question #9:**
 You host an application in Google Cloud. The application is located in a single region and uses Cloud SQL for transactional data. Most of your users are located in the same time zone and expect the application to be available 7 days a week, from 6 AM to 10 PM. You want to ensure regular maintenance updates to your Cloud SQL instance without creating downtime for your users. What should you do?
@@ -112,7 +108,6 @@ You are designing an augmented reality game for iOS and Android devices. You pla
 - C. Use the Cloud Spanner query optimizer to determine the most efficient way to execute the SQL query.
 - D. Use granular instance sizing in Cloud Spanner and Autoscaler.
 
-<hr />
 **Question #13:**
 You recently launched a new product to the US market. You currently have two Bigtable clusters in one US region to serve all the traffic. Your marketing team is planning an immediate expansion to APAC. You need to roll out the regional expansion while implementing high availability according to Google-recommended practices. What should you do?
 
@@ -166,8 +161,6 @@ You are managing multiple applications connecting to a database on Cloud SQL for
 - C. Use the Cloud Monitoring dashboard with available metrics from Cloud SQL.
 - D. Use Cloud SQL instance monitoring in the Google Cloud Console.
 
-<hr />
-
 **Question #17:**
 You are building an application that allows users to customize their website and mobile experiences. The application will capture user information and preferences. User profiles have a dynamic schema, and users can add or delete information from their profile. You need to ensure that user changes automatically trigger updates to your downstream BigQuery data warehouse. What should you do?
 
@@ -202,7 +195,6 @@ Your customer is running a MySQL database on-premises with read replicas. The ni
 - C. Create a Compute Engine VM, install MySQL on the VM, and then import the dump file.
 - D. Create an external replica, and use Cloud SQL to synchronize the data to the replica.
 
-<hr />
 **Question #21:**
 Your team uses thousands of connected IoT devices to collect device maintenance data for your oil and gas customers in real time. You want to design inspection routines, device repair, and replacement schedules based on insights gathered from the data produced by these devices. You need a managed solution that is highly scalable, supports a multi-cloud strategy, and offers low latency for these IoT devices. What should you do?
 
@@ -480,3 +472,76 @@ Your team is running a Cloud SQL for MySQL instance with a 5 TB database that mu
 - B. Create a read replica, and then use the mysqldump utility to export each table.
 - C. Clone the Cloud SQL instance, and then use the mysqldump utlity to export the data.
 - D. Use the mysqldump utility on the primary database instance to export the backup.
+
+**Question #51:**
+You are deploying a new Cloud SQL instance on Google Cloud using the Cloud SQL Auth proxy. You have identified snippets of application code that need to access the new Cloud SQL instance. The snippets reside and execute on an application server running on a Compute Engine machine. You want to follow Google-recommended practices to set up Identity and Access Management (IAM) as quickly and securely as possible. What should you do?
+
+- A. For each application code, set up a common shared user account.
+- B. For each application code, set up a dedicated user account.
+- C. For the application server, set up a service account.
+- D. For the application server, set up a common shared user account.
+
+**Question #52:**
+Your organization is running a low-latency reporting application on Microsoft SQL Server. In addition to the database engine, you are using SQL Server Analysis Services (SSAS), SQL Server Reporting Services (SSRS), and SQL Server Integration Services (SSIS) in your on-premises environment. You want to migrate your Microsoft SQL Server database instances to Google Cloud. You need to ensure minimal disruption to the existing architecture during migration. What should you do?
+
+- A. Migrate to Cloud SQL for SQL Server.
+- B. Migrate to Cloud SQL for PostgreSQL.
+- C. Migrate to Compute Engine.
+- D. Migrate to Google Kubernetes Engine (GKE).
+
+**Question #53:**
+
+- A. analytics team needs to read data out of Cloud SQL for SQL Server and update a table in Cloud Spanner. You need to create a service account and grant least privilege access using predefined roles. What roles should you assign to the service account?
+
+- A. roles/cloudsql.viewer and roles/spanner.databaseUser
+- B. roles/cloudsql.editor and roles/spanner.admin
+- C. roles/cloudsql.client and roles/spanner.databaseReader
+- D. roles/cloudsql.instanceUser and roles/spanner.databaseUser
+
+**Question #54:**
+You are responsible for designing a new database for an airline ticketing application in Google Cloud. This application must be able to:
+Work with transactions and offer strong consistency.
+Work with structured and semi-structured (JSON) data.
+Scale transparently to multiple regions globally as the operation grows.
+You need a Google Cloud database that meets all the requirements of the application. What should you do?
+
+- A. Use Cloud SQL for PostgreSQL with both cross-region read replicas.
+- B. Use Cloud Spanner in a multi-region configuration.
+- C. Use Firestore in Datastore mode.
+- D. Use a Bigtable instance with clusters in multiple regions.
+
+**Question #55:**
+You are writing an application that will run on Cloud Run and require a database running in the Cloud SQL managed service. You want to secure this instance so that it only receives connections from applications running in your VPC environment in Google Cloud. What should you do?
+
+- A.
+
+  - 1. Create your instance with a specified external (public) IP address.
+  - 2. Choose the VPC and create firewall rules to allow only connections from Cloud Run into your instance.
+  - 3. Use Cloud SQL Auth proxy to connect to the instance.
+
+- B.
+
+  - 1. Create your instance with a specified external (public) IP address.
+  - 2. Choose the VPC and create firewall rules to allow only connections from Cloud Run into your instance.
+  - 3. Connect to the instance using a connection pool to best manage connections to the instance.
+
+- C.
+
+  - 1. Create your instance with a specified internal (private) IP address.
+  - 2. Choose the VPC with private service connection configured.
+  - 3. Configure the Serverless VPC Access connector in the same VPC network as your Cloud SQL instance.
+  - 4. Use Cloud SQL Auth proxy to connect to the instance.
+
+- D.
+  - 1. Create your instance with a specified internal (private) IP address.
+  - 2. Choose the VPC with private service connection configured.
+  - 3. Configure the Serverless VPC Access connector in the same VPC network as your Cloud SQL instance.
+  - 4. Connect to the instance using a connection pool to best manage connections to the instance.
+
+**Question #56:**
+You are troubleshooting a connection issue with a newly deployed Cloud SQL instance on Google Cloud. While investigating the Cloud SQL Proxy logs, you see the message Error 403: Access Not Configured. What should you do?
+
+- A. Check the app.yaml value cloud_sql_instances for a misspelled or incorrect instance connection name.
+- B. Check whether your service account has cloudsql.instances.connect permission.
+- C. Enable the Cloud SQL Admin API.
+- D. Ensure that you are using an external (public) IP address interface.
