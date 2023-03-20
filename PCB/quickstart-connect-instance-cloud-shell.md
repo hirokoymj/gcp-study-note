@@ -31,6 +31,7 @@ SELECT * FROM entries;
 - Enter a password for the postgres user.
 - The psql prompt appears.
 - https://www.tutorialspoint.com/postgresql/postgresql_create_table.htm
+- https://www.pgadmin.org/
 
 ```
 gcloud sql connect myinstance --user=postgres
