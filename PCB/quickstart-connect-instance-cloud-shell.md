@@ -24,3 +24,15 @@ CREATE TABLE entries (guestName VARCHAR(255), content VARCHAR(255),
     INSERT INTO entries (guestName, content) values ("second guest", "Me too!");
 SELECT * FROM entries;
 ```
+
+
+## Postgres
+- [quickStart:Postgres](https://cloud.google.com/sql/docs/postgres/connect-instance-cloud-shell)
+- Enter a password for the postgres user.
+- The psql prompt appears.
+- https://www.tutorialspoint.com/postgresql/postgresql_create_table.htm
+- https://www.pgadmin.org/
+
+```
+gcloud sql connect myinstance --user=postgres
+```
