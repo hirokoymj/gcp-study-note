@@ -7,6 +7,18 @@
 | May 18    | 2     | 5/3, 4, 5 | sundays  | tue/wed |
 | June 18   | 3     |           |          |         |
 
+# Cloud SQL Quickstart
+
+- [Connect to Cloud SQL for MySQL from Cloud Shell](./cloud-sql-cloud-shell.md)
+- [Connect to a Cloud SQL for MySQL instance with private IP]()
+- [Connect to Cloud SQL for MySQL using the Cloud SQL Auth proxy]()
+- [Connect to Cloud SQL for MySQL from Cloud Run](./cloud-sql-run.md)
+- [Connect to Cloud SQL for MySQL from Cloud Functions]()
+- [Connect to Cloud SQL for MySQL from App Engine standard environment](./cloud-sql-gae.md)
+- [Connect to Cloud SQL for MySQL from App Engine flexible environment]()
+- [Connect to Cloud SQL for MySQL from your local computer]()
+- [Connect to Cloud SQL for MySQL from Compute Engine]()
+
 # Material
 
 - [ExamTopic Professional Cloud Database](https://www.examtopics.com/exams/google/professional-cloud-database-engineer/view/)
@@ -15,9 +27,6 @@
 - [youtube - Google Cloud Quick Tutorials](https://www.youtube.com/playlist?list=PLuJRcdtonlDAN73rZsRk_eiJ0NU9h1Cms)
 
 - [Professional Cloud Database Engineer](https://cloud.google.com/certification/cloud-database-engineer)
-
-- Quickstart
-  https://cloud.google.com/sql/docs/mysql/connect-instance-cloud-shell
 
 - regular expression
   Question #[1-5]
