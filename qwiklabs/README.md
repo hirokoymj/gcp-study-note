@@ -24,12 +24,16 @@
 | -------------------- | -------------------------------------------------------------------------------------- |
 | IAM                  | [Demo: Custom roles](./demo-Custom-roles.md)                                           |
 |                      | [Lab Intro: Cloud IAM ](./lab-IAM.md)                                                  |
-| Storage              | [Lab: Cloud Storage](./lab-Cloud-Storage.md)                                           |
+| Storage              | [Lab: Cloud Storage](./lab-Cloud-Storage.md)                                         |
 |                      | [Lab: Intro: Cloud SQL](./lab-Cloud-SQL.md)                                            |
 | Resource Management  | [Demo: Billing Administration](./demo-Billing-Administration.md)                       |
 |                      | [Lab: Examining Billing data with BigQuery](./lab-Examining-Billing-data-with-BigQ.md) |
 | Resource Monitorning | [Lab: Resource Monitoring](./lab-Resource-Monitoring.md)                               |
 |                      | [Lab: Error Reporting and Debugging](./lab-Error-Reporting-and-Debugging.md)           |
+
+
+ https://www.youtube.com/watch?v=kJjJ1vi0N0I 
+
 
 ## 1-4. Elastic Cloud Infrastructure: Scaling and Automation
 
