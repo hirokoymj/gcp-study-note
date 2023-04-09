@@ -21,9 +21,35 @@
 
 # App Engine Standard
 
-https://cloud.google.com/appengine/docs/standard/nodejs/building-app
+## Building a Node.js app on App Engine
 
-- Builing an app
+**Summary**
+
+- [Tutorial](https://cloud.google.com/appengine/docs/standard/nodejs/)
+- [Github Repo](https://github.com/GoogleCloudPlatform/nodejs-docs-samples/tree/3bb14ef7c23305613bbfe04f03d3b83f6a120e1a/appengine/building-an-app/build)
+- Service: GAE standard with Node.js
+- Date: 04/09/2023
+- Result:
+  - [HelloWorld](https://drive.google.com/file/d/1-MCD6Mj1tsdmzotkSM08aFcGDnEQrbhU/view?usp=share_link)
+  - [GCP -> Services -> default](https://drive.google.com/file/d/1-NXiNJKREb5z2v2BKC4dw9L-6wr__8Kx/view?usp=share_link)
+
+**how to clean up the project**
+
+- App Engine -> Settings -> disable application
+- Disable Cloud Build API
+
+## Building an App - Updating your web service
+
+**Summary**
+
+- [Tutorial](https://cloud.google.com/appengine/docs/standard/nodejs/building-app/updating-web-service)
+- [Github Repo](https://github.com/GoogleCloudPlatform/nodejs-docs-samples/tree/3bb14ef7c23305613bbfe04f03d3b83f6a120e1a/appengine/building-an-app/update)
+- Service: GAE standard with Node.js
+- Date: 04/09/2023
+- Result:
+  - [GCP -> Services -> myform](https://drive.google.com/file/d/1-NXiNJKREb5z2v2BKC4dw9L-6wr__8Kx/view?usp=share_link)
+
+<hr />
 
 # Compute Engine
 
@@ -58,9 +84,7 @@ gcloud config set accessibility/screen_reader false
 - [Q1-Q123 in 30 pages](./questions.md)
 - [QuickLab]()
 - [youtube - Google Cloud Quick Tutorials](https://www.youtube.com/playlist?list=PLuJRcdtonlDAN73rZsRk_eiJ0NU9h1Cms)
-
 - [Professional Cloud Database Engineer](https://cloud.google.com/certification/cloud-database-engineer)
-
 - regular expression
   Question #[1-5]
   **Question #[1-5]:**
