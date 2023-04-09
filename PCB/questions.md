@@ -185,6 +185,16 @@ Person B is an analyst who generates metric reports.
   roles/spanner.databaseUser for Person B
   roles/spanner.backupWriter for Application C
 
+
+**Question #11:A**
+- A.
+- B and C are obviously wrong because application only needs backupWriter permissions.
+- D is wrong because roles/spanner.databaseUser contains write permissions, and we don't need that.
+- https://cloud.google.com/spanner/docs/iam#roles
+ > roles/spanner.databaseUser contains the permissions spanner.databases.read and spanner.databases.write.
+
+<hr />
+
 **Question #12:**
 You are designing an augmented reality game for iOS and Android devices. You plan to use Cloud Spanner as the primary backend database for game state storage and player authentication. You want to track in-game rewards that players unlock at every stage of the game. During the testing phase, you discovered that costs are much higher than anticipated, but the query response times are within the SLA. You want to follow Google-recommended practices. You need the database to be performant and highly available while you keep costs low. What should you do?
 
