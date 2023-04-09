@@ -7,7 +7,7 @@
 | May 18    | 2     | 5/3, 4, 5 | sundays  | tue/wed |
 | June 18   | 3     |           |          |         |
 
-# Cloud SQL Quickstart
+# Cloud SQL
 
 - [Connect to Cloud SQL for MySQL from Cloud Shell](./cloud-sql-cloud-shell.md)
 - [Connect to a Cloud SQL for MySQL instance with private IP]()
@@ -18,6 +18,30 @@
 - [Connect to Cloud SQL for MySQL from App Engine flexible environment]()
 - [Connect to Cloud SQL for MySQL from your local computer]()
 - [Connect to Cloud SQL for MySQL from Compute Engine]()
+
+# App Engine Standard
+
+https://cloud.google.com/appengine/docs/standard/nodejs/building-app
+
+- Builing an app
+
+# Compute Engine
+
+https://cloud.google.com/compute/docs/instances/sql-server/setup-mysql#gcloud
+
+# Cloud SDK
+
+- [gcloud components](https://cloud.google.com/sdk/gcloud/reference/components)
+
+```
+gcloud components list
+gcloud components install COMPONENT
+gcloud components update
+```
+
+```
+gcloud config set accessibility/screen_reader false
+```
 
 # Material
 
