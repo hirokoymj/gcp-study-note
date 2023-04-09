@@ -31,7 +31,7 @@ https://cloud.google.com/compute/docs/instances/sql-server/setup-mysql#gcloud
 
 # Cloud SDK
 
-- [gcloud components](https://cloud.google.com/sdk/gcloud/reference/components)
+- [output of gcloud components list](https://drive.google.com/file/d/1-GQviZahBgyUzVwNAizeA_j84hcx765N/view?usp=share_link)
 
 ```
 gcloud components list
@@ -39,9 +39,18 @@ gcloud components install COMPONENT
 gcloud components update
 ```
 
+- How to output gcloud list commands showing in table form.
+
 ```
 gcloud config set accessibility/screen_reader false
 ```
+
+**References:**
+
+- [gcloud components](https://cloud.google.com/sdk/gcloud/reference/components)
+- [stackoverflow](https://stackoverflow.com/questions/70674524/output-of-gcloud-list-commands-not-displaying-in-table-form)
+
+<hr />
 
 # Material
 
