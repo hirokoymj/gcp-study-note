@@ -6,6 +6,13 @@ You are developing a new application on a VM that is on your corporate network. 
 - C. Define a connection string using Cloud SQL Auth proxy configured with a service account to point to the internal (private) IP address of your Cloud SQL instance.
 - D. Define a connection string using Cloud SQL Auth proxy configured with a service account to point to the external (public) IP address of your Cloud SQL instance.
 
+**Question #1A:**
+
+- C.
+  > The IP address given is a private IP address and not routable via the internet. Therefore any answer which references a public IP is wrong by definition (A, D). That leaves B and C. B cannot be correct because the app is on a corporate network and thus not on a Google VPC network. Good security practices dictate using Cloud SQL Auth Proxy and a service account which access the Cloud SQL instance via its private IP address.
+
+<hr />
+
 **Question #2:**
 Your digital-native business runs its database workloads on Cloud SQL. Your website must be globally accessible 24/7. You need to prepare your Cloud SQL instance for high availability (HA). You want to follow Google-recommended practices. What should you do? (Choose two.)
 
@@ -13,7 +20,23 @@ Your digital-native business runs its database workloads on Cloud SQL. Your webs
 - B. Create a PostgreSQL database on-premises as the HA option.
 - C. Configure single zone availability for automated backups.
 - D. Enable point-in-time recovery.
-  E. Schedule automated bac
+- E. Schedule automated backups.
+
+**Question #2A:**
+
+- D,E.
+
+  > A is wrong because why bother configuring manual backups when Cloud SQL will automate that for you.
+
+  > B seems attractive, but why bother replicating back to on-prem when you can configure a Cloud SQL for HA.
+
+  > C is wrong because a single zone failure would not give you HA.
+
+  > That leaves D & E.
+
+- [About high availability](https://cloud.google.com/sql/docs/postgres/connect-auth-proxy)
+
+<hr />
 
 **Question #3:**
 Your company wants to move to Google Cloud. Your current data center is closing in six months. You are running a large, highly transactional Oracle application footprint on VMWare. You need to design a solution with minimal disruption to the current architecture and provide ease of migration to Google Cloud. What should you do?
@@ -23,6 +46,14 @@ Your company wants to move to Google Cloud. Your current data center is closing 
 - C. Migrate applications to Cloud SQL.
 - D. Migrate applications and Oracle databases to Google Kubernetes Engine (GKE).
 
+**Question #3A:**
+
+- [Migrate databases to Google Cloud VMware Engine (GCVE)](https://cloud.google.com/blog/products/databases/migrate-databases-to-google-cloud-vmware-engine-gcve)
+
+> The following blog covers some common processes and tools used to migrate databases from on-premises (Physical or VMware) to Google Cloud VMware Engine (GCVE). Many customers choose this lift-and-shift migration approach as a first step to quickly migrate databases into Google Cloud before beginning database upgrade and modernization workstreams.
+
+<hr />
+
 **Question #4:**
 Your customer has a global chat application that uses a multi-regional Cloud Spanner instance. The application has recently experienced degraded performance after a new version of the application was launched. Your customer asked you for assistance. During initial troubleshooting, you observed high read latency. What should you do?
 
@@ -31,6 +62,14 @@ Your customer has a global chat application that uses a multi-regional Cloud Spa
 - C. Use SQL statements to analyze SPANNER_SYS.READ_STATS\* tables.
 - D. Use SQL statements to analyze SPANNER_SYS.QUERY_STATS\* tables.
 
+**Question #4A:**
+
+- [Read statistics](https://cloud.google.com/spanner/docs/introspection/read-statistics)
+
+> Cloud Spanner provides built-in tables that store statistics about reads. You can retrieve statistics from these SPANNER_SYS.READ_STATS\* tables using SQL statements.
+
+<hr />
+
 **Question #5:**
 Your company has PostgreSQL databases on-premises and on Amazon Web Services (AWS). You are planning multiple database migrations to Cloud SQL in an effort to reduce costs and downtime. You want to follow Google-recommended practices and use Google native data migration tools. You also want to closely monitor the migrations as part of the cutover strategy. What should you do?
 
@@ -38,6 +77,17 @@ Your company has PostgreSQL databases on-premises and on Amazon Web Services (AW
 - B. Use Database Migration Service for one-time migrations, and use third-party or partner tools for change data capture (CDC) style migrations.
 - C. Use data replication tools and CDC tools to enable migration.
 - D. Use a combination of Database Migration Service and partner tools to support the data migration strategy.
+
+**Question #5A:**
+
+- A.
+
+  > The question says to use Google native data migration tools. That eliminates B and D. C doesn't specify the data replication tool in question so it's a reasonable assumption its referring to database native replication which wouldn't be a Google native solution. That eliminates C. That leave A.
+
+- [Best practices for homogeneous database migrations](https://cloud.google.com/blog/products/databases/tips-for-migrating-across-compatible-database-engines)
+- [Database Migration Service](https://cloud.google.com/database-migration/)
+
+<hr />
 
 **Question #6:**
 You are setting up a Bare Metal Solution environment. You need to update the operating system to the latest version. You need to connect the Bare Metal Solution environment to the internet so you can receive software updates. What should you do?
