@@ -97,6 +97,19 @@ You are setting up a Bare Metal Solution environment. You need to update the ope
 - C. Set up a Cloud NAT gateway on the Compute Engine VM.
 - D. Set up Cloud NAT service.
 
+**Question #6A:**
+
+- C or D (67%, 33%)
+- D
+
+  > The BMS documentation mentions the Cloud NAT service as an option but the provided example involves manually deploying a NAT gateway on a GCE machine, without explaining why you would need this option as opposed to the managed NAT service. However there are no limitations mentioned, so I take it both options are valid.
+
+  > In this question, there is no mention of an existing GCE machine, therefore a managed NAT service is the simplest option, which avoids additional infrastructure - hence D is my choice.
+
+- https://cloud.google.com/bare-metal/docs/bms-setup#bms-access-internet
+
+<hr />
+
 **Question #7:**
 Your organization is running a MySQL workload in Cloud SQL. Suddenly you see a degradation in database performance. You need to identify the root cause of the performance degradation. What should you do?
 
@@ -104,6 +117,14 @@ Your organization is running a MySQL workload in Cloud SQL. Suddenly you see a d
 - B. Use Cloud Monitoring to monitor CPU, memory, and storage utilization metrics.
 - C. Use Error Reporting to count, analyze, and aggregate the data.
 - D. Use Cloud Debugger to inspect the state of an application.
+
+**Question #7A:**
+
+- B.
+
+> No actual errors are mentioned so using Error reporting would be irrelevant. That eliminates C. Inspecting the state of an application is also irrelevant since so mention of any application changes is made. Eliminate D. That leave A and B and B is the best answer. In Cloud SQL you get monitoring built right in (which you don't by default with GCE VMs). Cloud SQL monitoring metrics include CPU utilization, storage usage, memory usage, r/w operations and egress/ingress bytes. Has to be B.
+
+<hr />
 
 **Question #8:**
 You work for a large retail and ecommerce company that is starting to extend their business globally. Your company plans to migrate to Google Cloud. You want to use platforms that will scale easily, handle transactions with the least amount of latency, and provide a reliable customer experience. You need a storage layer for sales transactions and current inventory levels. You want to retain the same relational schema that your existing platform uses. What should you do?
@@ -113,6 +134,13 @@ You work for a large retail and ecommerce company that is starting to extend the
 - C. Build an in-memory cache in Memorystore, and deploy to the specific geographic regions where your application resides.
 - D. Deploy a Bigtable instance with a cluster in one region and a replica cluster in another geographic region.
 
+**Question #8A:**
+
+- B.
+  > The clues are "globally" and "relational schema". Relational rules out Firestore (A) and Bigtable (D). Cloud Spanner is both global in scale and relational, so it fits. So B.
+
+<hr />
+
 **Question #9:**
 You host an application in Google Cloud. The application is located in a single region and uses Cloud SQL for transactional data. Most of your users are located in the same time zone and expect the application to be available 7 days a week, from 6 AM to 10 PM. You want to ensure regular maintenance updates to your Cloud SQL instance without creating downtime for your users. What should you do?
 
@@ -120,6 +148,13 @@ You host an application in Google Cloud. The application is located in a single 
 - B. Create your database with one primary node and one read replica in the region.
 - C. Enable maintenance notifications for users, and reschedule maintenance activities to a specific time after notifications have been sent.
 - D. Configure your Cloud SQL instance with high availability enabled.
+
+**Question #9A:**
+
+- A
+  > Since we don't really need HA and we have a window that users are not need our app - A is fine, and D looks like an overkill
+
+<hr />
 
 **Question #10:**
 Your team recently released a new version of a highly consumed application to accommodate additional user traffic. Shortly after the release, you received an alert from your production monitoring team that there is consistently high replication lag between your primary instance and the read replicas of your Cloud SQL for MySQL instances. You need to resolve the replication lag. What should you do?
