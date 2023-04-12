@@ -164,6 +164,9 @@ Your team recently released a new version of a highly consumed application to ac
 - C. Edit the primary instance to upgrade to a larger disk, and increase vCPU count.
 - D. Edit the primary instance to add additional memory.
 
+correct answer - A
+https://cloud.google.com/sql/docs/mysql/replication/manage-replicas#:~:text=Replication%20lag%20is%20consistently,Find%20and%20fix%20them.
+
 **Question #11:**
 Your organization operates in a highly regulated industry. Separation of concerns (SoC) and security principle of least privilege (PoLP) are critical. The operations team consists of:
 Person A is a database administrator.
