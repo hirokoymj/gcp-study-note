@@ -82,6 +82,8 @@ gcloud compute networks create management --project=local-alignment-381806 --sub
 gcloud compute networks subnets create managementsubnet-us --project=local-alignment-381806 --range=10.130.0.0/20 --stack-type=IPV4_ONLY --network=management --region=us-central1
 ```
 
+- [vpn-management](https://drive.google.com/file/d/10QshD426PyZoJdZ5-XwoeZzsTRd9jJQW/view?usp=share_link)
+
 ## 8. Create a custom network (name: privatenet)
 
 - A custom network name: privatenet
@@ -125,6 +127,44 @@ gcloud compute --project=local-alignment-381806 firewall-rules create privatenet
 - gcloud compute firewall-rules list --sort-by=NETWORK
 
 ```
+hiroko@cloudshell:~ (local-alignment-381806)$ gcloud compute firewall-rules list --sort-by=NETWORK
+NAME NETWORK DIRECTION PRIORITY ALLOW DENY DISABLED
+management-allow-icmp-ssh-rdp management INGRESS 1000 tcp:22,tcp:3389,icmp False
+privatenet-allow-icmp-ssh-rdp management INGRESS 1000 tcp:22,tcp:3389,icmp False
+mynetwork-allow-custom mynetwork INGRESS 65534 all False
+mynetwork-allow-icmp mynetwork INGRESS 65534 icmp False
+mynetwork-allow-rdp mynetwork INGRESS 65534 tcp:3389 False
+mynetwork-allow-ssh mynetwork INGRESS 65534 tcp:22 False
+```
+
+- [FW](https://drive.google.com/file/d/10Yz6944aX6L6MF_yFKKHfeYKkh0FKdh0/view?usp=share_link)
+
+## Take4. Explore the connectivity accross networks
+
+- management-us-vm
+- Network interface: management:management-us-subnet
+
+```
+gcloud compute instances create privatenet-us-vm --zone=us-central1-c --machine-type=f1-micro --subnet=privatesubnet-us
+```
+
+```
+gcloud compute instances list --sort-by=ZONE
+```
+
+## Take5. Review
+
+https://www.youtube.com/watch?v=0UOu5XZlucg&t=245s
+
+[Lab:VPC Networking](https://www.cloudskillsboost.google/course_sessions/1685038/labs/314345)
+
+![](images/vpc-1.png)
+
+![](images/vpc-2.png)
+
+**Cloud Shell**
+
+```
 hiroko@cloudshell:~ (local-alignment-381806)$ gcloud compute networks create privatenet --subnet-mode=custom
 Created [https://www.googleapis.com/compute/v1/projects/local-alignment-381806/global/networks/privatenet].
 NAME: privatenet
@@ -160,40 +200,10 @@ mynetwork            us-west1                 mynetwork   10.138.0.0/20  IPV4_ON
 privatesubnet-us     us-central1              privatenet  172.16.0.0/24  IPV4_ONLY
 privatesubnet-eu     europe-west1             privatenet  172.20.0.0/20  IPV4_ONLY
 
-hiroko@cloudshell:~ (local-alignment-381806)$ gcloud compute firewall-rules list --sort-by=NETWORK
-NAME                           NETWORK     DIRECTION  PRIORITY  ALLOW                 DENY  DISABLED
-management-allow-icmp-ssh-rdp  management  INGRESS    1000      tcp:22,tcp:3389,icmp        False
-privatenet-allow-icmp-ssh-rdp  management  INGRESS    1000      tcp:22,tcp:3389,icmp        False
-mynetwork-allow-custom         mynetwork   INGRESS    65534     all                         False
-mynetwork-allow-icmp           mynetwork   INGRESS    65534     icmp                        False
-mynetwork-allow-rdp            mynetwork   INGRESS    65534     tcp:3389                    False
-mynetwork-allow-ssh            mynetwork   INGRESS    65534     tcp:22                      False
+
 
 To show all fields of the firewall, please show in JSON format: --format=json
 To show all fields in table format, please see the examples in --help.
 
 hiroko@cloudshell:~ (local-alignment-381806)$
 ```
-
-## Take4. Explore the connectivity accross networks
-
-- management-us-vm
-- Network interface: management:management-us-subnet
-
-```
-gcloud compute instances create privatenet-us-vm --zone=us-central1-c --machine-type=f1-micro --subnet=privatesubnet-us
-```
-
-```
-gcloud compute instances list --sort-by=ZONE
-```
-
-## Take5. Review
-
-https://www.youtube.com/watch?v=0UOu5XZlucg&t=245s
-
-[Lab:VPC Networking](https://www.cloudskillsboost.google/course_sessions/1685038/labs/314345)
-
-![](images/vpc-1.png)
-
-![](images/vpc-2.png)
