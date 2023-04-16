@@ -1,5 +1,21 @@
 # Lab:VPC Networking
 
+
+
+https://www.youtube.com/watch?v=CmSBvw2SXUY
+https://youtu.be/TXco0dYF_zU
+
+Explore the default VPC network
+Create an auto mode network with firewall rules
+Convert an auto mode network to a custom mode network
+Create custom mode VPC networks with firewall rules
+Create VM instances using Compute Engine
+Explore the connectivity for VM instances across VPC networks
+
+
+ping -c 3 <Enter mynet-eu-vm's internal IP here>
+
+
 ## Take1. Explore the default network
 
 ## Take2. Create an auto mode network
@@ -7,6 +23,9 @@
 ## Take3. Create custom mode networks
 
 ## Take4. Explore the connectivity accross networks
+
+ping -c 3 <Enter mynet-eu-vm's external IP here>
+
 
 ## Take5. Review
 
