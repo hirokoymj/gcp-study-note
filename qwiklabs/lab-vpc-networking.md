@@ -62,11 +62,12 @@ PING 10.132.0.2 (10.132.0.2) 56(84) bytes of data.
 
 - VPC-> mynetwork -> Create -> Select auto mode network
 
-## Take3. Create custom mode networks
+## Take3. Convert auto mode to custom mode
 
 - VPC-> mynetwork -> Edit -> Change auto to custom
+- [FW-mynetwork](https://drive.google.com/file/d/10K5cHRO2iiwHdDSl1GYDFKYsaqJlCpuh/view)
 
-## Take3. Create custom mode networks
+## Take3. Create custom mode networks (name: management)
 
 7. Create the management network
 
@@ -81,17 +82,19 @@ gcloud compute networks create management --project=local-alignment-381806 --sub
 gcloud compute networks subnets create managementsubnet-us --project=local-alignment-381806 --range=10.130.0.0/20 --stack-type=IPV4_ONLY --network=management --region=us-central1
 ```
 
-8. Create the privatenet network
+## 8. Create a custom network (name: privatenet)
 
-- To create the **privatenet** network.
-- To create the **privatesubnet-us** subnet, run the following command.
-- To create the **privatesubnet-eu** subnet, run the following command
+- A custom network name: privatenet
+- two subnets: us-central1, europe-west1
 
 ```
+// To create the **privatenet** network.
 gcloud compute networks create privatenet --subnet-mode=custom
 
+// To create the **privatesubnet-us** subnet, run the following command.
 gcloud compute networks subnets create privatesubnet-us --network=privatenet --region=us-central1 --range=172.16.0.0/24
 
+// To create the **privatesubnet-eu** subnet, run the following command
 gcloud compute networks subnets create privatesubnet-eu --network=privatenet --region=europe-west1 --range=172.20.0.0/20
 
 gcloud compute networks list
@@ -99,8 +102,27 @@ gcloud compute networks subnets list --sort-by=NETWORK
 
 gcloud compute instances create privatenet-us-vm --zone=us-central1-c --machine-type=f1-micro --subnet=privatesubnet-us --image-family=debian-10 --image-project=debian-cloud --boot-disk-size=10GB --boot-disk-type=pd-standard --boot-disk-device-name=privatenet-us-vm
 
-gcloud compute instances list --sort-by=ZONE*
+gcloud compute instances list --sort-by=ZONE
 ```
+
+- [vpc-privatenet-subnets](https://drive.google.com/file/d/10L_4F8TEEFxOjaTPQ94z5gITo2W62p2S/view?usp=share_link)
+
+## 9. Create FW
+
+- management-allow-icmp-ssh-rdp
+- Targets: All instances in the network
+- Subnet filter: IP ranges
+- Subnet IP range:0.0.0.0/0
+- Protocol: other protocols: icmp
+- Protocol: tcp: 22, 3389
+
+```
+gcloud compute --project=local-alignment-381806 firewall-rules create management-allow-icmp-ssh-rdp --direction=INGRESS --priority=1000 --network=management --action=ALLOW --rules=tcp:22,tcp:3389,icmp --source-ranges=0.0.0.0/0
+
+gcloud compute --project=local-alignment-381806 firewall-rules create privatenet-allow-icmp-ssh-rdp --direction=INGRESS --priority=1000 --network=management --action=ALLOW --rules=tcp:22,tcp:3389,icmp --source-ranges=0.0.0.0/0
+```
+
+- gcloud compute firewall-rules list --sort-by=NETWORK
 
 ```
 hiroko@cloudshell:~ (local-alignment-381806)$ gcloud compute networks create privatenet --subnet-mode=custom
@@ -120,7 +142,6 @@ $ gcloud compute firewall-rules create <FIREWALL_NAME> --network privatenet --al
 
 hiroko@cloudshell:~ (local-alignment-381806)$
 
-
 hiroko@cloudshell:~ (local-alignment-381806)$ gcloud compute networks list
 NAME        SUBNET_MODE  BGP_ROUTING_MODE  IPV4_RANGE  GATEWAY_IPV4
 management  CUSTOM       REGIONAL
@@ -138,26 +159,7 @@ mynetwork            us-west1                 mynetwork   10.138.0.0/20  IPV4_ON
 ----(...)---
 privatesubnet-us     us-central1              privatenet  172.16.0.0/24  IPV4_ONLY
 privatesubnet-eu     europe-west1             privatenet  172.20.0.0/20  IPV4_ONLY
-```
 
-9. Create FW
-
-- management-allow-icmp-ssh-rdp
-- Targets: All instances in the network
-- Subnet filter: IP ranges
-- Subnet IP range:0.0.0.0/0
-- Protocol: other protocols: icmp
-- Protocol: tcp: 22, 3389
-
-```
-gcloud compute --project=local-alignment-381806 firewall-rules create management-allow-icmp-ssh-rdp --direction=INGRESS --priority=1000 --network=management --action=ALLOW --rules=tcp:22,tcp:3389,icmp --source-ranges=0.0.0.0/0
-
-gcloud compute --project=local-alignment-381806 firewall-rules create privatenet-allow-icmp-ssh-rdp --direction=INGRESS --priority=1000 --network=management --action=ALLOW --rules=tcp:22,tcp:3389,icmp --source-ranges=0.0.0.0/0
-```
-
-- gcloud compute firewall-rules list --sort-by=NETWORK
-
-```
 hiroko@cloudshell:~ (local-alignment-381806)$ gcloud compute firewall-rules list --sort-by=NETWORK
 NAME                           NETWORK     DIRECTION  PRIORITY  ALLOW                 DENY  DISABLED
 management-allow-icmp-ssh-rdp  management  INGRESS    1000      tcp:22,tcp:3389,icmp        False
