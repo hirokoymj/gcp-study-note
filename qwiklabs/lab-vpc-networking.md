@@ -2,8 +2,8 @@
 
 
 
-https://www.youtube.com/watch?v=CmSBvw2SXUY
-https://youtu.be/TXco0dYF_zU
+- https://www.youtube.com/watch?v=CmSBvw2SXUY
+- https://youtu.be/TXco0dYF_zU
 
 Explore the default VPC network
 Create an auto mode network with firewall rules
