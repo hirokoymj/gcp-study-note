@@ -8,6 +8,17 @@ https://cloud.google.com/sql/docs/mysql/connect-instance-cloud-run
 
 For private IP paths, your application connects directly to your instance through Serverless VPC Access. This method uses a TCP socket to connect directly to the Cloud SQL instance without using the Cloud SQL Auth proxy.
 
+Create a Serverless VPC Connection for connections to the instance via Private IP
+In the Google Cloud console, go to the Serverless VPC access - Create connector page.
+
+Create Serverless VPC connector
+
+Enter quickstart-connector for the Name.
+Select default from the Network drop-down menu
+Select Custom IP range from the Subnet drop-down menu
+Enter 10.8.0.0 in the IP range input box
+Click Create to create the connector.
+
 ```
 gcloud run deploy run-sql --image gcr.io/local-alignment-381806/run-sql \
   --add-cloudsql-instances local-alignment-381806:us-central1:quickstart-instance \
