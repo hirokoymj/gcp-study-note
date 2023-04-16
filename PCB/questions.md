@@ -188,13 +188,13 @@ Person B is an analyst who generates metric reports.
   roles/spanner.databaseUser for Person B
   roles/spanner.backupWriter for Application C
 
-
 **Question #11:A**
+
 - A.
 - B and C are obviously wrong because application only needs backupWriter permissions.
 - D is wrong because roles/spanner.databaseUser contains write permissions, and we don't need that.
 - https://cloud.google.com/spanner/docs/iam#roles
- > roles/spanner.databaseUser contains the permissions spanner.databases.read and spanner.databases.write.
+  > roles/spanner.databaseUser contains the permissions spanner.databases.read and spanner.databases.write.
 
 <hr />
 
@@ -205,6 +205,14 @@ You are designing an augmented reality game for iOS and Android devices. You pla
 - B. Use interleaving to co-locate parent and child rows.
 - C. Use the Cloud Spanner query optimizer to determine the most efficient way to execute the SQL query.
 - D. Use granular instance sizing in Cloud Spanner and Autoscaler.
+
+**Question #12A:**
+
+- D.
+  > A is nonsense. Using interleaved tables can help speed up queries, but the question says query response times are OK. So B is wrong. C is wrong for the same reason. That leaves D. The question is about which factors determine the cost of running Spanner. They include region vs. multi-region, compute unit (nodes or processing units), how much storage and how much backup space. From the Google docs, it says “When you create a Cloud Spanner instance, you choose the number of compute capacity nodes or processing units to serve your data. However, if the workload of an instance changes, Cloud Spanner doesn't automatically adjust the size of the instance. This document introduces the Autoscaler tool for Cloud Spanner (Autoscaler), an open source tool that you can use as a companion tool to Cloud Spanner. This tool lets you automatically increase or reduce the number of nodes or processing units in one or more Spanner instances based on how their capacity is being used.”
+  > https://cloud.google.com/spanner/docs/autoscaling-overview
+
+<hr />
 
 **Question #13:**
 You recently launched a new product to the US market. You currently have two Bigtable clusters in one US region to serve all the traffic. Your marketing team is planning an immediate expansion to APAC. You need to roll out the regional expansion while implementing high availability according to Google-recommended practices. What should you do?
@@ -234,6 +242,12 @@ You recently launched a new product to the US market. You currently have two Big
   - cluster-c in zone asia-northeast1-b
   - cluster-d in zone asia-east1-b
 
+**Question #13A:**
+
+- Looks like D to me - it's the only one with 2 US and 2 Asia regions. Also https://cloud.google.com/bigtable/docs/replication-settings#regional-failover
+
+<hr />
+
 **Question #14:**
 Your ecommerce website captures user clickstream data to analyze customer traffic patterns in real time and support personalization features on your website. You plan to analyze this data using big data tools. You need a low-latency solution that can store 8 TB of data and can scale to millions of read and write requests per second. What should you do?
 
@@ -241,6 +255,11 @@ Your ecommerce website captures user clickstream data to analyze customer traffi
 - B. Deploy a Cloud SQL environment with read replicas for improved performance. Use Datastream to export data to Cloud Storage and analyze with Dataproc and the Cloud Storage connector.
 - C. Use Memorystore to handle your low-latency requirements and for real-time analytics.
 - D. Stream your data into BigQuery and use Dataproc and the BigQuery Storage API to analyze large volumes of data.
+
+- A.
+  > Cloud SQL could not handle the load, so B is wrong. Memorystore can scale up to 300 GB. The question mentions needing 8 TB, so C must be wrong. BigQuery could not handle the latency requirements of the question, which leaves A. Bigtable could handle the volume of writes at the speeds required.
+
+<hr />
 
 **Question #15:**
 Your company uses Cloud Spanner for a mission-critical inventory management system that is globally available. You recently loaded stock keeping unit (SKU) and product catalog data from a company acquisition and observed hotspots in the Cloud Spanner database. You want to follow Google-recommended schema design practices to avoid performance degradation. What should you do? (Choose two.)
@@ -258,6 +277,14 @@ You are managing multiple applications connecting to a database on Cloud SQL for
 - B. Use Query Insights for Cloud SQL.
 - C. Use the Cloud Monitoring dashboard with available metrics from Cloud SQL.
 - D. Use Cloud SQL instance monitoring in the Google Cloud Console.
+
+**Question #16A:**
+
+- Selected Answer: D
+  > The Cloud SQL System insights dashboard helps you detect and analyze system performance problems.
+  > https://cloud.google.com/sql/docs/postgres/monitor-instance#sql-system-insights
+
+<hr />
 
 **Question #17:**
 You are building an application that allows users to customize their website and mobile experiences. The application will capture user information and preferences. User profiles have a dynamic schema, and users can add or delete information from their profile. You need to ensure that user changes automatically trigger updates to your downstream BigQuery data warehouse. What should you do?
