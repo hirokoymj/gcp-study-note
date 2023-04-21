@@ -1,36 +1,52 @@
-# Connect to Cloud SQL for MySQL from Cloud Run
+# Connect to Cloud SQL for MySQL from Cloud Run with a private IP
 
-https://cloud.google.com/sql/docs/mysql/connect-instance-cloud-run
+- [Quickstart:](https://cloud.google.com/sql/docs/mysql/connect-instance-cloud-run)
 
-## Configure a Cloud SQL sample app
+## SSL Enabled
 
-**Private IP**
+- [Create a Cloud SQL instance - Private IP](https://cloud.google.com/sql/docs/mysql/connect-instance-cloud-run#expandable-2)
+- Allocate an IP address range and create a private connection to configure private services access for Cloud SQL
 
-For private IP paths, your application connects directly to your instance through Serverless VPC Access. This method uses a TCP socket to connect directly to the Cloud SQL instance without using the Cloud SQL Auth proxy.
+  - [vpc-private-service-connection-1.png](https://drive.google.com/file/d/10cS6WRpSDFt1FvOSh0YDdxyGD17EEZW7/view?usp=share_link)
+  - [vpc-private-service-connection-2.png](https://drive.google.com/file/d/10daY-ir2Q9BtbgIQQogj1lren_BvF_AX/view?usp=share_link)
 
-Create a Serverless VPC Connection for connections to the instance via Private IP
-In the Google Cloud console, go to the Serverless VPC access - Create connector page.
+- Run the gcloud sql instances patch command to enable only allow SSL connections for the instance.
 
-Create Serverless VPC connector
+  - [cloud-sql-connection.png](https://drive.google.com/file/d/10fur_Z4IKurCHN5qv-DmbAR2HCQctGvE/view?usp=share_link)
 
-Enter quickstart-connector for the Name.
-Select default from the Network drop-down menu
-Select Custom IP range from the Subnet drop-down menu
-Enter 10.8.0.0 in the IP range input box
-Click Create to create the connector.
+  ```
+  gcloud sql instances patch quickstart-instance --require-ssl
+  ```
+
+- Final command
+
+  ```
+  gcloud run deploy run-sql --image gcr.io/local-alignment-381806/run-sql \
+    --add-cloudsql-instances local-alignment-381806:us-central1:quickstart-instance \
+    --vpc-connector="quickstart-connector" --vpc-egress=all-traffic \
+    --set-env-vars DB_NAME="quickstart_db" \
+    --set-env-vars DB_USER="quickstart-user" \
+    --set-env-vars DB_PASS="root" \
+    --set-env-vars INSTANCE_CONNECTION_NAME="local-alignment-381806:us-central1:quickstart-instance" \
+    --set-env-vars DB_PORT="5432" \
+    --set-env-vars INSTANCE_HOST="172.30.0.3" \
+    --set-env-vars DB_ROOT_CERT="certs/server-ca.pem" \
+    --set-env-vars DB_CERT="certs/client-cert.pem" \
+    --set-env-vars DB_KEY="certs/client-key.pem" \
+    --set-env-vars PRIVATE_IP="TRUE"
+  ```
+
+## No SSL enabled
 
 ```
-gcloud run deploy run-sql --image gcr.io/local-alignment-381806/run-sql \
-  --add-cloudsql-instances local-alignment-381806:us-central1:quickstart-instance \
-  --vpc-connector="quickstart-connector" --vpc-egress=all-traffic \
-  --set-env-vars DB_NAME="quickstart_db" \
-  --set-env-vars DB_USER="quickstart-user" \
-  --set-env-vars DB_PASS="root" \
-  --set-env-vars INSTANCE_CONNECTION_NAME="local-alignment-381806:us-central1:quickstart-instance" \
-  --set-env-vars DB_PORT="5432" \
-  --set-env-vars INSTANCE_HOST="172.30.0.3" \
-  --set-env-vars DB_ROOT_CERT="certs/server-ca.pem" \
-  --set-env-vars DB_CERT="certs/client-cert.pem" \
-  --set-env-vars DB_KEY="certs/client-key.pem" \
-  --set-env-vars PRIVATE_IP="TRUE"
+gcloud run deploy run-sql-no-ssl --image gcr.io/local-alignment-381806/run-sql \
+ --add-cloudsql-instances local-alignment-381806:us-central1:quickstart-instance \
+ --vpc-connector="quickstart-connector" --vpc-egress=all-traffic \
+ --set-env-vars DB_NAME="quickstart_db" \
+ --set-env-vars DB_USER="quickstart-user" \
+ --set-env-vars DB_PASS="root" \
+ --set-env-vars INSTANCE_CONNECTION_NAME="local-alignment-381806:us-central1:quickstart-instance" \
+ --set-env-vars DB_PORT="3306" \
+ --set-env-vars INSTANCE_HOST="10.145.0.3" \
+ --set-env-vars PRIVATE_IP="TRUE"
 ```

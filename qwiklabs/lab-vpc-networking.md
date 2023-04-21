@@ -205,5 +205,5 @@ privatesubnet-eu     europe-west1             privatenet  172.20.0.0/20  IPV4_ON
 To show all fields of the firewall, please show in JSON format: --format=json
 To show all fields in table format, please see the examples in --help.
 
-hiroko@cloudshell:~ (local-alignment-381806)$
+
 ```
