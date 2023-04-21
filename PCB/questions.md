@@ -294,6 +294,14 @@ You are building an application that allows users to customize their website and
 - C. Use Firestore in Native mode, and store user profile data as a document. Update the user profile with preferences specific to that user and use the user identifier to query.
 - D. Use Firestore in Datastore mode, and store user profile data as a document. Update the user profile with preferences specific to that user and use the user identifier to query.
 
+**Question #17:A**
+- C
+>Dynamic schema indicates this is a NoSQL solution (ruling out Cloud SQL) and the application use case specifically suits Firestore (the question even refers to storing data in documents) as opposed to BigTable.
+
+Firestore in Native supports realtime client updates, which is needed for the analytics requirement: https://cloud.google.com/firestore/docs/firestore-or-datastore#feature_comparison
+
+<hr />
+
 **Question #18:**
 Your application uses Cloud SQL for MySQL. Your users run reports on data that relies on near-real time; however, the additional analytics caused excessive load on the primary database. You created a read replica for the analytics workloads, but now your users are complaining about the lag in data changes and that their reports are still slow. You need to improve the report performance and shorten the lag in data replication without making changes to the current reports. Which two approaches should you implement? (Choose two.)
 
@@ -302,6 +310,19 @@ Your application uses Cloud SQL for MySQL. Your users run reports on data that r
 - C. Disable replication on the read replica, and set the flag for parallel replication on the read replica. Re-enable replication and optimize performance by setting flags on the primary instance.
 - D. Disable replication on the primary instance, and set the flag for parallel replication on the primary instance. Re-enable replication and optimize performance by setting flags on the read replica.
   E. Move your analytics workloads to BigQuery, and set up a streaming pipeline to move data and update BigQuery.
+
+
+- Vote for AC
+- A https://cloud.google.com/sql/docs/mysql/replication/read-replica-indexes increase performance on read operation
+- C https://cloud.google.com/sql/docs/mysql/replication/manage-replicas#basic-steps-to-change-parallel-replication-flags
+- BC
+- A. Create secondary indexes on the replica. - No indication that the reports will benefit from indexes.
+- B. Create additional read replicas, and partition your analytics users to use different read replicas. --> might rebalance the load.
+- C. Disable replication on the read replica, and set the flag for parallel replication on the read replica. Re-enable replication and optimize performance by setting flags on the primary instance. --> might add parallelism to the replication lag.
+- D. Disable replication on the primary instance, and set the flag for parallel replication on the primary instance. Re-enable replication and optimize performance by setting flags on the read replica. --> na
+- E. Move your analytics workloads to BigQuery, and set up a streaming pipeline to move data and update BigQuery.--> according to question statement , no SQL rewrite is possible
+
+<hr />
 
 **Question #19:**
 You are evaluating Cloud SQL for PostgreSQL as a possible destination for your on-premises PostgreSQL instances. Geography is becoming increasingly relevant to customer privacy worldwide. Your solution must support data residency requirements and include a strategy to: configure where data is stored control where the encryption keys are stored govern the access to data
@@ -312,6 +333,9 @@ What should you do?
 - C. Allow application access to data only if the users are in the same region as the Google Cloud region for the Cloud SQL for PostgreSQL database.
 - D. Use features like customer-managed encryption keys (CMEK), VPC Service Controls, and Identity and Access Management (IAM) policies.
 
+**Question #19:A**
+- D, https://cloud.google.com/blog/products/identity-security/meet-data-residency-requirements-with-google-cloud
+
 **Question #20:**
 Your customer is running a MySQL database on-premises with read replicas. The nightly incremental backups are expensive and add maintenance overhead. You want to follow Google-recommended practices to migrate the database to Google Cloud, and you need to ensure minimal downtime. What should you do?
 
@@ -319,6 +343,15 @@ Your customer is running a MySQL database on-premises with read replicas. The ni
 - B. Use the mysqldump utility to take a backup of the existing on-premises database, and then import it into Cloud SQL.
 - C. Create a Compute Engine VM, install MySQL on the VM, and then import the dump file.
 - D. Create an external replica, and use Cloud SQL to synchronize the data to the replica.
+
+
+- D.
+>The question says backups and maintenance are an issue, so moving to a managed service (Cloud SQL) would be the right thing to do. That eliminates C and A. Option B could (depending upon the DB size) require a lot of downtime to export, copy the dump file to Cloud Storage, then import into Cloud SQL. Therefore, the least amount of downtime would be D.
+https://cloud.google.com/sql/docs/mysql/replication/configure-replication-from-external
+- B
+- https://cloud.google.com/database-migration/docs/mysql/mysql-dump
+
+<hr />
 
 **Question #21:**
 Your team uses thousands of connected IoT devices to collect device maintenance data for your oil and gas customers in real time. You want to design inspection routines, device repair, and replacement schedules based on insights gathered from the data produced by these devices. You need a managed solution that is highly scalable, supports a multi-cloud strategy, and offers low latency for these IoT devices. What should you do?
