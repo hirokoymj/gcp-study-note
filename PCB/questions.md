@@ -378,6 +378,12 @@ Your application follows a microservices architecture and uses a single large Cl
 - C. Increase the storage size for the instance.
 - D. Use many smaller Cloud SQL instances.
 
+**Question #22:A**
+
+- Correct answer is D. https://cloud.google.com/sql/docs/mysql/best-practices#data-arch - Split your large instances into smaller instances, where possible.
+
+<hr />
+
 **Question #23:**
 You need to perform a one-time migration of data from a running Cloud SQL for MySQL instance in the us-central1 region to a new Cloud SQL for MySQL instance in the us-east1 region. You want to follow Google-recommended practices to minimize performance impact on the currently running instance. What should you do?
 
