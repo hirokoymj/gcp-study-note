@@ -295,8 +295,9 @@ You are building an application that allows users to customize their website and
 - D. Use Firestore in Datastore mode, and store user profile data as a document. Update the user profile with preferences specific to that user and use the user identifier to query.
 
 **Question #17:A**
+
 - C
->Dynamic schema indicates this is a NoSQL solution (ruling out Cloud SQL) and the application use case specifically suits Firestore (the question even refers to storing data in documents) as opposed to BigTable.
+  > Dynamic schema indicates this is a NoSQL solution (ruling out Cloud SQL) and the application use case specifically suits Firestore (the question even refers to storing data in documents) as opposed to BigTable.
 
 Firestore in Native supports realtime client updates, which is needed for the analytics requirement: https://cloud.google.com/firestore/docs/firestore-or-datastore#feature_comparison
 
@@ -310,7 +311,6 @@ Your application uses Cloud SQL for MySQL. Your users run reports on data that r
 - C. Disable replication on the read replica, and set the flag for parallel replication on the read replica. Re-enable replication and optimize performance by setting flags on the primary instance.
 - D. Disable replication on the primary instance, and set the flag for parallel replication on the primary instance. Re-enable replication and optimize performance by setting flags on the read replica.
   E. Move your analytics workloads to BigQuery, and set up a streaming pipeline to move data and update BigQuery.
-
 
 - Vote for AC
 - A https://cloud.google.com/sql/docs/mysql/replication/read-replica-indexes increase performance on read operation
@@ -334,6 +334,7 @@ What should you do?
 - D. Use features like customer-managed encryption keys (CMEK), VPC Service Controls, and Identity and Access Management (IAM) policies.
 
 **Question #19:A**
+
 - D, https://cloud.google.com/blog/products/identity-security/meet-data-residency-requirements-with-google-cloud
 
 **Question #20:**
@@ -344,10 +345,9 @@ Your customer is running a MySQL database on-premises with read replicas. The ni
 - C. Create a Compute Engine VM, install MySQL on the VM, and then import the dump file.
 - D. Create an external replica, and use Cloud SQL to synchronize the data to the replica.
 
-
 - D.
->The question says backups and maintenance are an issue, so moving to a managed service (Cloud SQL) would be the right thing to do. That eliminates C and A. Option B could (depending upon the DB size) require a lot of downtime to export, copy the dump file to Cloud Storage, then import into Cloud SQL. Therefore, the least amount of downtime would be D.
-https://cloud.google.com/sql/docs/mysql/replication/configure-replication-from-external
+  > The question says backups and maintenance are an issue, so moving to a managed service (Cloud SQL) would be the right thing to do. That eliminates C and A. Option B could (depending upon the DB size) require a lot of downtime to export, copy the dump file to Cloud Storage, then import into Cloud SQL. Therefore, the least amount of downtime would be D.
+  > https://cloud.google.com/sql/docs/mysql/replication/configure-replication-from-external
 - B
 - https://cloud.google.com/database-migration/docs/mysql/mysql-dump
 
@@ -360,6 +360,15 @@ Your team uses thousands of connected IoT devices to collect device maintenance 
 - B. Use Cloud Spanner with Data Studio.
 - C. Use MongoD8 Atlas with Charts.
 - D. Use Bigtable with Looker.
+
+**Question #21:A**
+
+- C
+- MongoDB Atlas supports "multi-cloud" https://www.mongodb.com/atlas/database
+- We are missing one key condition "multi-cloud strategy". MongoDB Atlas is the only multi-cloud data service available. So, Answer is C
+- Bigtable can't connect to Looker - https://cloud.google.com/looker/docs/dialects
+
+<hr />
 
 **Question #22:**
 Your application follows a microservices architecture and uses a single large Cloud SQL instance, which is starting to have performance issues as your application grows. in the Cloud Monitoring dashboard, the CPU utilization looks normal You want to follow Google-recommended practices to resolve and prevent these performance issues while avoiding any major refactoring. What should you do?

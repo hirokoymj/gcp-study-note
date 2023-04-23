@@ -21,19 +21,19 @@
 - Final command
 
   ```
-  gcloud run deploy run-sql --image gcr.io/local-alignment-381806/run-sql \
-    --add-cloudsql-instances local-alignment-381806:us-central1:quickstart-instance \
-    --vpc-connector="quickstart-connector" --vpc-egress=all-traffic \
-    --set-env-vars DB_NAME="quickstart_db" \
-    --set-env-vars DB_USER="quickstart-user" \
-    --set-env-vars DB_PASS="root" \
-    --set-env-vars INSTANCE_CONNECTION_NAME="local-alignment-381806:us-central1:quickstart-instance" \
-    --set-env-vars DB_PORT="5432" \
-    --set-env-vars INSTANCE_HOST="172.30.0.3" \
-    --set-env-vars DB_ROOT_CERT="certs/server-ca.pem" \
-    --set-env-vars DB_CERT="certs/client-cert.pem" \
-    --set-env-vars DB_KEY="certs/client-key.pem" \
-    --set-env-vars PRIVATE_IP="TRUE"
+gcloud run deploy run-sql-0419 --image gcr.io/local-alignment-381806/run-sql \
+  --add-cloudsql-instances local-alignment-381806:us-central1:quickstart-instance-default \
+  --vpc-connector="quickstart-connector" --vpc-egress=all-traffic \
+  --set-env-vars DB_NAME="quickstart_db" \
+  --set-env-vars DB_USER="quickstart-user" \
+  --set-env-vars DB_PASS="root" \
+  --set-env-vars INSTANCE_CONNECTION_NAME="local-alignment-381806:us-central1:quickstart-instance-default" \
+  --set-env-vars DB_PORT="3306" \
+  --set-env-vars INSTANCE_HOST="10.8.0.3" \
+  --set-env-vars DB_ROOT_CERT="certs/server-ca.pem" \
+  --set-env-vars DB_CERT="certs/client-cert.pem" \
+  --set-env-vars DB_KEY="certs/client-key.pem" \
+  --set-env-vars PRIVATE_IP="TRUE"
   ```
 
 ## No SSL enabled
