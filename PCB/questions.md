@@ -392,6 +392,13 @@ You need to perform a one-time migration of data from a running Cloud SQL for My
 - C. Create a SQL dump file in Cloud Storage using a temporary instance, and then use that file to import into a new instance.
 - D. Create a CSV file by running the SQL statement SELECT...INTO OUTFILE, copy the file to a Cloud Storage bucket, and import it into a new instance.
 
+**Question #23:A**
+
+- C.
+  > The only way to minimize performance impact of running an export on a Cloud SQL instance is to use a serverless export. The fact that no data synchronization is needed since it’s a one off eliminates every option apart from C.
+- C - serverless export https://cloud.google.com/sql/docs/mysql/import-export#serverless
+<hr />
+
 **Question #24:**
 You are running a mission-critical application on a Cloud SQL for PostgreSQL database with a multi-zonal setup. The primary and read replica instances are in the same region but in different zones. You need to ensure that you split the application load between both instances. What should you do?
 
