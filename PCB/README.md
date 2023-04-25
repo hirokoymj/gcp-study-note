@@ -25,3 +25,14 @@
 ## Other tutorials
 
 - [youtube - Google Cloud Quick Tutorials](https://www.youtube.com/playlist?list=PLuJRcdtonlDAN73rZsRk_eiJ0NU9h1Cms)
+
+
+
+## keywords
+
+- HA
+- Failover
+- read replicas
+- failover replicas
+
+
