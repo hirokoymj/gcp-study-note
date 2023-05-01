@@ -72,8 +72,59 @@ helm delete
 
 ## Managed Relational Databases
 
+- Create a database using CLI
+
+  ```
+  gcloud sql instances create db-server --database-version=MYSQL_5_7 --cpu=2 --memory=4GB --region=us-central1 --root-password=password123
+  ```
+
+- Backups
+- Point-in time recovery
+- Failover replica(HA):create a second db server in another zone.
+- scale up as needed by adding machine resources.
+- Cloud SQL Migration Assistant
+
 ### Lab intro: Creating a Cloud SQL Database
 
 ### Lab: Creating Cloud SQL Databases
+
+- Create a Cloud SQL PostgreSQL database.
+- SQL -> Create Instance -> PostgreSQL
+
+- Connect to the database using the Cloud SDK.
+
+  - Click the link of OPEN CLOUD SHELL
+
+  ```
+  \l
+  CREATE DATABASE petsdb;
+  \l
+  \c petsdb;
+  CREATE TABLE Pets(ID INT PRIMARY KEY NOT NULL, Name TEXT, Breed TEXT);
+  INSERT INTO Pets (ID, Name, Breed) Values (1, 'Noir', 'Schnoodle');
+  SELECT * FROM Pets;
+  ```
+
+- Create a Cloud SQL MySQL database using the CLI.
+
+```
+gcloud sql instances create mysql-db --tier=db-n1-standard-1 --zone=us-central1-a
+gcloud sql users set-password root --host=xx.xx.xx.xx --instance=mysql-db --password=your-password-here
+gcloud sql connect mysql-db --user=root --quiet
+SHOW DATABASES;
+```
+
+- Connect to the MySQL database from a virtual machine.
+
+  - SQL -> mysql-db -> Configuration -> Edit -> Connection -> Add Network -> Add VM's external IP -> Save
+
+  ```
+  gcloud compute instances create test-client --zone=us-central1-a --image=debian-9-stretch-v20200521 --image-project=debian-cloud
+  ## install mysql client
+  sudo apt-get update
+  sudo apt-get install -y mysql-client !!! ERROR !!!
+  mysql --host=[Database Public IP Address] --user=root --password
+  SHOW DATABASES;
+  ```
 
 ### Lab review: Creating a Cloud SQL Database
