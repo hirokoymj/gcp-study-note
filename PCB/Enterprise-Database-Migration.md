@@ -4,7 +4,14 @@
 
 ### Running Databases in a Kubernetes Cluster
 
+- Kubernetes is an open-source, cross-platform framework for running applications inside a cluster
+- Kubernetes automates the deployment of applications running in containers.
+
 ### Lab intro: Running Databases in GKE
+
+- Create a GKE cluster
+- Deploy MySQL on the cluster
+- Use Helm to deploy MySQL on the cluster
 
 ### Lab: Running Databases in GKE
 
@@ -58,3 +65,15 @@ helm delete
 ```
 
 ### Lab review: Running Databases in GKE
+
+- Created a GKE cluster
+- Deployed MySQL on the cluster
+- Used Helm to deploy MySQL on the cluster
+
+## Managed Relational Databases
+
+### Lab intro: Creating a Cloud SQL Database
+
+### Lab: Creating Cloud SQL Databases
+
+### Lab review: Creating a Cloud SQL Database
