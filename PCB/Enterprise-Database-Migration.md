@@ -194,3 +194,21 @@ resource "google_compute_firewall" "private-allow-ssh" {
 ```
 
 - [Lab github](https://github.com/GoogleCloudPlatform/training-data-analyst/tree/master/courses/db-migration/terraform-networks-completed)
+
+### Connecting Networks
+
+### Lab intro: Use Terraform to Create a Network Peering
+
+- [Module 5: page 25-](./qwiklab-pdfs/M5_Networking_for_Secure_Database_Connectivity.pdf)
+
+### Use Terraform to Create a Network Peering
+
+1. Create two vm instances with both has an internal/external IP address.
+2. ping 10.2.2.2 -> it shouldn't work at this point.
+3. Set up vpc-peering
+4. ping 10.2.2.2 works.
+5. Create vm without public IP.
+
+- [github:terraform-create-peering](https://github.com/GoogleCloudPlatform/training-data-analyst/tree/master/courses/db-migration/terraform-create-peering)
+
+### Lab review: Use Terraform to Create a Network Peering
