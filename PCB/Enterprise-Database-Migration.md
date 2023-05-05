@@ -128,3 +128,69 @@ SHOW DATABASES;
   ```
 
 ### Lab review: Creating a Cloud SQL Database
+
+### Bare Metal Solution
+
+## Networking for Secure Database Connectivity
+
+### Building Secure Networks
+
+- [Module 5: page 1-24](./qwiklab-pdfs/M5_Networking_for_Secure_Database_Connectivity.pdf)
+
+### Lab intro: Using Terraform to Create Networks and Firewalls
+
+### Lab Using Terraform to Create Networks and Firewalls
+
+### Lab review: Using Terraform to Create Networks and Firewalls
+
+1. provider.tf
+2. variables.tf
+3. terraform.tfvars
+4. vpc-network-public.tf
+5. terraform init/apply/destroy
+6. vpc-firewall-rules-public.tf
+7. terraform apply
+8. random-id-generator.tf
+9. test-server-linux.tf
+10. vpc-network-private.tf
+11. vpc-firewall-rules-private.tf
+
+**vpc-firewall-rules-public.tf**
+
+```
+# allow ssh
+resource "google_compute_firewall" "public-allow-ssh" {
+  name    = "${google_compute_network.public-vpc.name}-allow-ssh"
+  network = google_compute_network.public-vpc.name
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+  source_ranges = [ ### compare the source ranges with the private one.
+    "0.0.0.0/0"
+  ]
+  target_tags = ["allow-ssh"]
+}
+```
+
+**vpc-firewall-rules-private.tf**
+
+- In the source_ranges section, don't allow traffic from all sources: only allow traffic from the public subnet IP CIDR range.
+
+```
+# allow ssh only from public subnet
+resource "google_compute_firewall" "private-allow-ssh" {
+  name    = "${google_compute_network.private-vpc.name}-allow-ssh"
+  network = google_compute_network.private-vpc.name
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+  source_ranges = [
+    "${var.subnet_cidr_public}" ###
+  ]
+  target_tags = ["allow-ssh"]
+}
+```
+
+- [Lab github](https://github.com/GoogleCloudPlatform/training-data-analyst/tree/master/courses/db-migration/terraform-networks-completed)
