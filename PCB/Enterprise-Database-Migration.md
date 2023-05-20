@@ -212,3 +212,15 @@ resource "google_compute_firewall" "private-allow-ssh" {
 - [github:terraform-create-peering](https://github.com/GoogleCloudPlatform/training-data-analyst/tree/master/courses/db-migration/terraform-create-peering)
 
 ### Lab review: Use Terraform to Create a Network Peering
+
+## Migrating SQL Server DB to Google Cloud
+
+### SQL Server on Compute Engine
+
+### Lab intro: Creating SQL Server Databases on Compute Engine
+
+### Creating SQL Server Databases on Compute Engine
+
+### Lab review: Creating SQL Server Databases on Compute Engine
+
+<hr />
