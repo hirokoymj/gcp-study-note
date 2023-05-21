@@ -110,35 +110,43 @@ In this lab, you migrate an on-premises MySQL database (running on a virtual mac
   sudo nano /etc/postgresql/13/main/postgresql.conf
   # Alt + /
   # Add settings for extensions here
-  shared_preload_libraries = 'pglogical'
-  wal_level = 'logical'
-  wal_sender_timeout = 0
-  max_replication_slots = 10
-  max_wal_senders = 10
-  max_worker_processes = 10
-  listen_addresses = '*'
-  sudo nano /etc/postgresql/13/main/pg_hba.conf
-  host    all all 0.0.0.0/0   md5
-  sudo systemctl restart postgresql@13-main
-  sudo su - postgres
-  psql
-  \c postgres;
-  CREATE EXTENSION pglogical;
-  \c orders;
-  CREATE EXTENSION pglogical;
-  \l
   ```
+
+wal*level = logical # minimal, replica, or logical
+max_worker_processes = 10 # one per database needed on provider node # one per node needed on subscriber node
+max_replication_slots = 10 # one per node needed on provider node
+max_wal_senders = 10 # one per node needed on provider node
+shared_preload_libraries = 'pglogical'
+max_wal_size = 1GB
+min_wal_size = 80MB
+listen_addresses = '*' # what IP address(es) to listen on, '\_' is all
+
+sudo nano /etc/postgresql/13/main/pg_hba.conf
+host all all 0.0.0.0/0 md5
+sudo systemctl restart postgresql@13-main
+sudo su - postgres
+psql
+\c postgres;
+CREATE EXTENSION pglogical;
+\c orders;
+CREATE EXTENSION pglogical;
+\l
+
+```
 
 - Creating a migration_admin user (with Replication permissions) for database migration and granting the required permissions to schemata and relations to that user.
 
-  ```
-  psql
-  CREATE USER migration_admin PASSWORD 'DMS_1s_cool!';
-  ALTER DATABASE orders OWNER TO migration_admin;
-  ALTER ROLE migration_admin WITH REPLICATION;
-  ```
+```
+
+psql
+CREATE USER migration_admin PASSWORD 'DMS_1s_cool!';
+ALTER DATABASE orders OWNER TO migration_admin;
+ALTER ROLE migration_admin WITH REPLICATION;
 
 ```
+
+```
+
 \c postgres;
 GRANT USAGE ON SCHEMA pglogical TO migration_admin;
 GRANT ALL ON SCHEMA pglogical TO migration_admin;
@@ -154,9 +162,11 @@ GRANT SELECT ON pglogical.replication_set_seq TO migration_admin;
 GRANT SELECT ON pglogical.replication_set_table TO migration_admin;
 GRANT SELECT ON pglogical.sequence_state TO migration_admin;
 GRANT SELECT ON pglogical.subscription TO migration_admin;
+
 ```
 
 ```
+
 \c orders;
 GRANT USAGE ON SCHEMA pglogical TO migration_admin;
 GRANT ALL ON SCHEMA pglogical TO migration_admin;
@@ -179,9 +189,11 @@ GRANT SELECT ON public.inventory_items TO migration_admin;
 GRANT SELECT ON public.order_items TO migration_admin;
 GRANT SELECT ON public.products TO migration_admin;
 GRANT SELECT ON public.users TO migration_admin;
+
 ```
 
 ```
+
 \c orders;
 \dt
 ALTER TABLE public.distribution_centers OWNER TO migration_admin;
@@ -190,6 +202,7 @@ ALTER TABLE public.order_items OWNER TO migration_admin;
 ALTER TABLE public.products OWNER TO migration_admin;
 ALTER TABLE public.users OWNER TO migration_admin;
 \dt
+
 ```
 
 ALTER TABLE inventory_items ADD CONSTRAINT inventory_items_pkey PRIMARY KEY (id);
@@ -208,3 +221,50 @@ ALTER TABLE inventory_items ADD CONSTRAINT inventory_items_pkey PRIMARY KEY (id)
 | Describe a table           | \d <table-name>                    |
 | Quit psql                  | \q                                 |
 |                            |                                    |
+```
+
+# Creating and Populating a Bigtable Instance
+
+- Create a Bigtable instance and a Bigtable table with column families.
+- Use a Dataflow template to load SequenceFile files from Cloud Storage into Bigtable.
+- Verify the data loaded into Bigtable.
+- Delete the Bigtable table and instance.
+
+## Task 1. Create a Bigtable instance
+
+- Console
+
+## Task 2. Create a new Bigtable table
+
+- Console
+
+## Task 3. Load data files from Cloud Storage using a Dataflow template
+
+- Console
+
+## Task 4. Verify data loaded into Bigtable
+
+- To connect to Bigtable using cbt CLI commands, you first need to update the .cbtrc configuration file with your project ID and your Bigtable instance ID using Cloud Shell.
+
+```
+echo project = `gcloud config get-value project`  >> ~/.cbtrc
+
+echo instance = personalized-sales  >> ~/.cbtrc
+
+cat ~/.cbtrc
+project = <project-id>
+instance = personalized-sales
+
+//To see the data for the first ten rows of the table
+cbt read UserSessions count=10
+```
+
+## Task 5. Delete a Bigtable table and instance
+
+- Console
+
+![](./q1.png)
+
+![](./q1a.png)
+
+![](./q2.png)
