@@ -58,3 +58,17 @@ gcloud beta alloydb clusters delete gcloud-lab-cluster \
     --region=Default Region \
     --project=Project ID
 ```
+
+# Migrating to AlloyDB from PostgreSQL Using Database Migration Service
+
+
+- **Migration job name**: vm-to-cloudsql
+- **Source database engine**: PostgreSQL
+- **Destination database engine**: Cloud SQL for PostgreSQL
+- **Type**: Continuous
+- **Connection profile name**: postgres-vm
+- **Hostname:Port**: 10.128.0.2:5432
+- **data dump options**: Auto-generated dump
+- **Destination instance ID**: postgresql-cloudsql
+- **Region**: us-central1
+- **Connectivity method**: VPN peering
