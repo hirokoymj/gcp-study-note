@@ -57,9 +57,9 @@ USE guestbook;
 - Databases > SQL.
 - Replica Instance menu, click Databases.
 
-```
-gcloud sql connect mysql-cloudsql --user=root --quiet
-```
+  ```
+  gcloud sql connect mysql-cloudsql --user=root --quiet
+  ```
 
 ## Task 6. Test the continuous migration of data from the source to the destination instance
 
@@ -86,17 +86,35 @@ gcloud sql connect mysql-cloudsql --user=root --quiet
 
 ## Task 1. Configure a Database Migration Service connection profile for a stand-alone MySQL database
 
-- configure a connection profile
-
 ## Task 2. Perform a one-time migration of a stand-alone MySQL database to Cloud SQL
 
-- migrate this compute instance based MySQL database to a Cloud SQL
+- **Migration job name**: mysql-eng-400
+- **Source database engine**: MySQL
+- **Destination database engine**: Cloud SQL for MySQL
+- **Type**: one-time
+- **Conneciton profile display name**:tst-eng-837
+- **Hostname:Port**:10.128.0.2:3306
+- **Data dump options**: Auto-generated dump
+- **Destination instance ID**:mysql-eng-400
+- **Region**:us-central1
+- **Connectivity method**: VPC-peering
+
+![](./challenge-dms-one-time.png)
 
 ## Task 3. Create a continuous Database Migration Service migration job to migrate a stand-alone MySQL database to Cloud SQL
 
-- create a continuous Database Migration Service
-- VPC peering
-- Wait until the job is in the Running state
+- **Migration job name**: mysql-eng-226-cont
+- **Source database engine**: MySQL
+- **Destination database engine**: Cloud SQL for MySQL
+- **Type**: Continueous
+- **Conneciton profile display name**:tst-eng-837
+- **Hostname:Port**:10.128.0.2:3306
+- **Data dump options**: Auto-generated dump
+- **Destination instance ID**:mysql-eng-226-cont
+- **Region**:us-central1
+- **Connectivity method**: VPC-peering
+
+![](./challenge-dms-continuous.png)
 
 ## Task 4. Test that the continuous Database Migration Service job replicates updated source data
 
