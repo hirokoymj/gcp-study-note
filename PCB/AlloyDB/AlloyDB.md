@@ -291,8 +291,4 @@ gcloud beta alloydb backups create lab-backup \
 --cluster=lab-cluster \
 --region=us-central1 \
 --project=qwiklabs-gcp-02-fc0205cb654b
-
-
-
-
 ```
