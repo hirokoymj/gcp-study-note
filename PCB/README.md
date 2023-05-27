@@ -12,9 +12,9 @@
 3. [Enterprise Database Migration](./Qwiklab/Enterprise-Database-Migration/README.md)
 4. [Migrate MySQL data to Cloud SQL using Database Migration Service](./Qwiklab/MySQL/README.md)
 5. [Manage PostgreSQL Databases on Cloud SQL](./Qwiklab/PostgresSQL/README.md)
-6. ~~Create and Manage Cloud Spanner Databases~~
-7. ~~Manage Bigtable on Google Cloud~~
-8. ~~Create and Manage AlloyDB Databases~~
+6. [Create and Manage Cloud Spanner Databases](./Qwiklab/Spanner/README.md)
+7. [Manage Bigtable on Google Cloud](./Qwiklab/BigTable/README.md)
+8. [Create and Manage AlloyDB Databases](./Qwiklab/AlloyDB/README.md)
 
 ## ExamTopic
 
