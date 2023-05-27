@@ -61,7 +61,6 @@ gcloud beta alloydb clusters delete gcloud-lab-cluster \
 
 # Migrating to AlloyDB from PostgreSQL Using Database Migration Service
 
-
 - **Migration job name**: vm-to-cloudsql
 - **Source database engine**: PostgreSQL
 - **Destination database engine**: Cloud SQL for PostgreSQL
@@ -72,10 +71,13 @@ gcloud beta alloydb clusters delete gcloud-lab-cluster \
 - **Destination instance ID**: postgresql-cloudsql
 - **Region**: us-central1
 - **Connectivity method**: VPN peering
+
 # AlloyDB - Database Fundamentals
 
 ## Task 1. Create a cluster and instance
+
 ## Task 2. Create tables and insert data in your database
+
 ## Task 3. Use the Google Cloud CLI with AlloyDB
 
 ```
@@ -86,7 +88,6 @@ gcloud beta alloydb clusters create gcloud-lab-cluster \
     --project=Project ID
 ```
 
-
 ## Task 4. Deleting a cluster
 
 ```
@@ -95,9 +96,8 @@ gcloud beta alloydb clusters delete gcloud-lab-cluster \
     --region=Default Region \
     --project=Project ID
 
-gcloud beta alloydb clusters list    
+gcloud beta alloydb clusters list
 ```
-
 
 # Migrating to AlloyDB from PostgreSQL Using Database Migration Service
 
@@ -105,7 +105,6 @@ gcloud beta alloydb clusters list
 2. Create a destination - postgresql-cloudsql created
 3. Define connectivity method - VPC peering
 4. Test and create migratio job
-
 
 - **Migration job name**: vm-to-cloudsql
 - **Source database engine**: PostgreSQL
@@ -128,8 +127,10 @@ sudo -u postgres psql
 ```
 
 ## Task 2. Create a database DMP file using pg_dump
+
 - The pg_dump tool is installed by default with every PostgreSQL installation.
-- 
+-
+
 ```
 sudo -u postgres pg_dump -Fc postgres > pg14_source.DMP
 ls -l -h pg14_source.DMP
@@ -143,36 +144,37 @@ gsutil cp pg14_source.DMP gs://Project ID/pg14_source.DMP
 # Administering an AlloyDB Database
 
 ## Task 1. Examine a Database Flag
+
 - lab-cluster, lab-instance, Private IP
 - Enable pgaudit -> Add flag
 
 ## Task 2. Setup a Database Extension
+
 - enable the pgaudit feature for your AlloyDB cluster
 - Go to vm
   ```
    psql -h $ALLOYDB -U postgres
    CREATE EXTENSION IF NOT EXISTS PGAUDIT;
    select extname, extversion from pg_extension where extname = 'pgaudit';
-    extname | extversion 
+    extname | extversion
     ---------+------------
     pgaudit | 1.6.1
   ```
 
-
-
 ## Task 3. Create a Read Pool Instance for an Existing Cluster
+
 - A read pool instance increases your cluster’s read capacity by aggregating nodes, which you can scale, enabling highly available reads.
 - gcloud beta alloydb backups list
 - Recovery of a backup is very simple. Click the Restore
 
 ## Task 4. Setup Backups
-- Automatic backups are configured by default when every AlloyDB cluster is created. 
+
+- Automatic backups are configured by default when every AlloyDB cluster is created.
 - You can however create backups as needed, on-demand for additional recovery options.
 
-
 ## Task 5. Examine Monitoring in the AlloyDB Console
--  Top Queries and Tags
 
+- Top Queries and Tags
 
 # Create and Manage AlloyDB Databases - Challenge Lab
 
@@ -194,7 +196,6 @@ gcloud beta alloydb instances create lab-instance \
     --cluster=lab-cluster  \
     --project=qwiklabs-gcp-02-fc0205cb654b
 ```
-
 
 ## Task 2. Create tables in your instance
 
@@ -235,8 +236,6 @@ CREATE TABLE departments (
 ALTER TABLE departments ADD PRIMARY KEY (department_id);
 ```
 
-
-
 ## Task 3. Load simple datasets into tables
 
 - Table: regions
@@ -257,7 +256,7 @@ INSERT INTO countries VALUES ('US', 'United States of America', 2);
 INSERT INTO countries VALUES ('CA', 'Canada', 2);
 INSERT INTO countries VALUES ('CN', 'China', 3);
 INSERT INTO countries VALUES ('IN', 'India', 3);
-INSERT INTO countries VALUES ('AU', 'Australia', 3); 
+INSERT INTO countries VALUES ('AU', 'Australia', 3);
 INSERT INTO countries VALUES ('ZW', 'Zimbabwe', 4);
 INSERT INTO countries VALUES ('SG', 'Singapore', 3);
 ```
@@ -272,7 +271,6 @@ INSERT INTO departments VALUES(40, 'Human Resources', 203, 2400);
 INSERT INTO departments VALUES(50, 'Shipping', 121, 1500);
 INSERT INTO departments VALUES(60, 'IT', 103, 1400);
 ```
-
 
 ## Task 4. Create a Read Pool instance
 
@@ -297,3 +295,4 @@ gcloud beta alloydb backups create lab-backup \
 
 
 
+```
