@@ -308,10 +308,14 @@ nano manifest.json
 }
 ```
 
+**Create a bucket to upload manifest.json file**
+
 ```
 gsutil mb gs://Project ID
-gsutil cp manifest.json gs://Project ID/manifest.json
+gsutil cp manifest.json gs://Project ID/
 ```
+
+**Enable APIs**
 
 ```
 gcloud services disable dataflow.googleapis.com --force
@@ -325,8 +329,8 @@ gcloud services enable dataflow.googleapis.com
 - template: Text Files on Cloud Storage to Cloud
 - Cloud Spanner Instance id: banking-ops-instance
 - Cloud Spanner database id: banking-ops-db
-- Manifest file: gs://<Project ID>/manifest.json
-- Temporary location: gs://<Project ID>/temp
+- Manifest file: gs://Project ID/manifest.json
+- Temporary location: gs://Project ID/temp
 
 **Check Customer table in Spanner**
 
@@ -339,6 +343,11 @@ select count(*) from Customer;
 ## Task 6. Add a new column to an existing table
 
 - Table -> Category -> Click on Write DDL
+
+  ```
+  ALTER TABLE Category ADD COLUMN MarketingBudget INT64;
+  ```
+
 - or use gcloud command
 
   ```
