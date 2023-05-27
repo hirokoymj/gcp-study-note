@@ -125,3 +125,7 @@ USE guestbook;
 ## Task 5. Promote the destination Cloud SQL for MySQL database to a stand-alone database
 
 - promote the Cloud SQL for MySQL instance to a stand-alone database for reading and writing data.
+
+**youtube**
+
+- https://www.youtube.com/watch?v=LBooKzvw4To
