@@ -1,5 +1,22 @@
 # Cloud SQL for MySQL: Qwik Start
 
+## Task 1. Create a Cloud SQL instance
+
+- SQL -> MySQL -> Instance ID
+
+## Task 2. Connect to your instance using the mysql client in Cloud Shell
+
+```
+gcloud sql connect myinstance --user=root
+```
+
+## Task 3. Create a database and upload data
+
+```
+CREATE DATABASE guestbook;
+USE guestbook;
+```
+
 # Migrating On-premises MySQL Using a Continuous Database Migration Service Job
 
 ## Task 1. Get the connectivity information for the MySQL source instance
@@ -9,27 +26,40 @@
 
 ## Task 2. Create a new connection profile for the MySQL source instance
 
-- A connection profile stores information about the source database instance (e.g., on-premises MySQL)
 - Database Migration > Connection profiles.
-- Source database engine, select MySQL.
+- Source database engine:MySQL
 
 ## Task 3. Create and start a continuous migration job
 
-- When you create a new migration job, you first define the source database instance using a previously created connection **profile**. Then you create **a new destination database instance** and configure **connectivity** between the source and destination instances.
-
 ## Task 4. Review the status of the continuous migration job
 
-- Database Migration > Migration jobs.
-- Review the migration job status.
+- **Migration job name**: vm-to-cloudsql
+- **Source database engine**: MySQL
+- **Destination database engine**: Cloud SQL for MySQL
+- **Type**: Continuous
+- **Conneciton profile display name**:mysql-vm
+- **Hostname:Port**:10.128.1.2:3306
+- **Data dump options**: Auto-generated dump
+- **Destination instance ID**:mysql-cloudsql
+- **Region**:us-central1
+- **Connectivity method**: VPC-peering
+
+![](mysql-dms-job.png)
+
+**Status**
+
+- Not started
 - Running Full Dump
-- Running CDC in progress -> proceed to the next task
-- Note: Continuous migration jobs remain in a running status to ensure that the destination database continues to receive data updates from the source.
+- Running CDC in progress
 
 ## Task 5. Confirm the data in Cloud SQL for MySQL
 
 - Databases > SQL.
 - Replica Instance menu, click Databases.
-- gcloud sql connect mysql-cloudsql --user=root --quiet
+
+```
+gcloud sql connect mysql-cloudsql --user=root --quiet
+```
 
 ## Task 6. Test the continuous migration of data from the source to the destination instance
 
@@ -46,6 +76,11 @@
 - Click Promote.
 - Databases > SQL.
 - mysql-cloudsql is now a standalone instance
+  ![](./mysql-dms-result.png)
+
+**youtube**
+
+- https://www.youtube.com/watch?v=bK9xunQmmYs
 
 # Migrate MySQL Data to Cloud SQL using Database Migration Service: Challenge Lab
 
