@@ -181,7 +181,18 @@
 
 ## Q62
 
+- Cloud SQL, CMEK
+- When creating a Cloud SQL instance you get to choose the encryption method at the instance level, which would include databases.
+- https://cloud.google.com/sql/docs/postgres/configure-cmek#createcmekinstance
+
 ## Q65
+
+- Sqlcommenter, Query Insights
+- Cloud Trace doesn’t support Cloud SQL.
+- Cloud SQL recommenders for overprovisioned instances would tell you about Cloud SQL instances which are too large for their workload.
+- Monitoring CPU utilization wouldn’t tell you why microservice calls are failing.
+- SQLcommenter integrates with Query Insights.
+- https://cloud.google.com/blog/topics/developers-practitioners/introducing-sqlcommenter-open-source-orm-auto-instrumentation-library
 
 ## Q66
 
