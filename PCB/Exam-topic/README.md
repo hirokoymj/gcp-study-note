@@ -123,11 +123,42 @@
 
 ## Q40
 
+- sub-millisecond latency
+- To meet demands of low latency at increased scale and reduced cost you need an in-memory datastore. Redis and Memchaced are among the most popular.
+- https://cloud.google.com/blog/topics/developers-practitioners/what-memorystore/
+
 ## Q41
+
+- D is wrong since the IOPS would not improve based upon the edition of SQL Server. IOPS increases with the amount of storage,
+- When creating a Cloud SQL for SQL Server instance, you have several machine configurations to choose from based on your vCPU and memory requirements.
+- Lightweight
+  - 1 vCPU, 3.75 GB
+  - 2 vCPUs, 3.75 GB
+  - 4 vCPUs, 3.75 GB
+- Standard
+  - 1 vCPU, 3.75 GB
+  - 2 vCPUs, 7.50 GB
+  - 4 vCPUs, 15 GB
+- High Memory
+
+  - 4 vCPUs, 26 GB
+  - 8 vCPUs, 52 GB
+  - 16 vCPUs, 104 GB
+
+- https://cloud.google.com/sql/docs/sqlserver/create-instance#expandable-3
 
 ## Q47
 
+- Cloud Spanner
+- Avoiding user disruption if a regional failure occurs means you need to pick a multi-region service.
+
 ## Q48
+
+- Read replica
+
+- If replication is interrupted for a few hours, for example by a network or server outage, the replica falls behind the primary. The replica catches up once it reconnects to the primary and starts replicating again.
+- https://cloud.google.com/sql/docs/mysql/replication#:~:text=If%20replication%20is,a%20new%20one
+- https://cloud.google.com/sql/docs/mysql/replication#replication_use_cases
 
 ## Q51
 
