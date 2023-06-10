@@ -1,3 +1,37 @@
+## Q11
+
+- principle of least privilege (PoLP)
+- Cloud Spanner Backup Writer
+  - spanner.backups.create
+- Cloud Spanner Backup Admin
+  - spanner.backups.create
+  - spanner.backups.delete
+
+## Q12
+
+- The question is about which factors determine the cost of running Spanner. They include region vs. multi-region, compute unit (nodes or processing units), how much storage and how much backup space.
+- Parent-child table relationships: table interleaving and foreign keys.
+- Using interleaved tables can help speed up queries
+- https://cloud.google.com/spanner/docs/schema-and-data-model#parent-child
+- https://cloud.google.com/spanner/docs/autoscaling-overview
+
+## Q15
+
+- High Cardinality vs Low Cardinality
+- Low Cardinality: a gender, three distinct(male, female or other)
+- High Cardinality: email (a large number of distinct values (one for each person in the table)
+- Bit-reverse sequential values
+- https://cloud.google.com/spanner/docs/schema-design#bit_reverse_primary_key
+
+## Q20
+
+- MySQL on-premises with read replica
+- backups and maintenance are issue
+- Wants to migrate to GCP with minimum downtime
+- Create an external replica, and use Cloud SQL to synchronize the data to the replica.(GOOD)
+- Use the mysqldump utility to take a backup of the existing on-premises database, and then import it into Cloud SQL.(BAD)
+- https://cloud.google.com/sql/docs/mysql/replication/configure-replication-from-external#mysql
+
 ## Q108
 
 - D.
