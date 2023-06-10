@@ -725,3 +725,12 @@ You are troubleshooting a connection issue with a newly deployed Cloud SQL insta
 - B. Check whether your service account has cloudsql.instances.connect permission.
 - C. Enable the Cloud SQL Admin API.
 - D. Ensure that you are using an external (public) IP address interface.
+
+Your company is shutting down their data center and migrating several MySQL and PostgreSQL databases to Google Cloud. Your database operations team is severely constrained by ongoing production releases and the lack of capacity for additional on-premises backups. You want to ensure that the scheduled migrations happen with minimal downtime and that the Google Cloud databases stay in sync with the on-premises data changes until the applications can cut over.
+What should you do? (Choose two.)
+
+- A. Use an external read replica to migrate the databases to Cloud SQL.
+- B. Use a read replica to migrate the databases to Cloud SQL.
+- C. Use Database Migration Service to migrate the databases to Cloud SQL.
+- D. Use a cross-region read replica to migrate the databases to Cloud SQL.
+- E. Use replication from an external server to migrate the databases to Cloud SQL.
