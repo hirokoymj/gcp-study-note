@@ -174,6 +174,11 @@
 
 ## Q60
 
+- Cloud SQL, Primary instance, Standby instance, Read replica instance.
+- Cloud SQL is a regional service so the primary and standby instances must be in the same region. A recommended practice would have them in different zones.
+- HA standby instance can't be located in different region, and Google recommends to use different zones for all three.
+- https://cloud.google.com/sql/docs/postgres/high-availability#failover-overview
+
 ## Q62
 
 ## Q65
