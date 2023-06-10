@@ -162,7 +162,15 @@
 
 ## Q51
 
+- Cloud SQL instance with Cloud SQL Auth proxy
+- The Cloud SQL Auth proxy is a Cloud SQL connector that provides secure access to your instances without a need for Authorized networks or for configuring SSL.
+- https://cloud.google.com/sql/docs/mysql/sql-proxy#using-a-service-account
+
 ## Q55
+
+- Cloud Run, Cloud SQL
+- For private IP paths, your application will connect directly to your instance through Serverless VPC Access. This method uses TCP to connect directly to the Cloud SQL instance without using the Cloud SQL Auth proxy.
+- https://cloud.google.com/sql/docs/mysql/connect-run#public-ip-default
 
 ## Q60
 
