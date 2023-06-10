@@ -23,6 +23,16 @@
 - Bit-reverse sequential values
 - https://cloud.google.com/spanner/docs/schema-design#bit_reverse_primary_key
 
+## Q18
+
+- You have 2 problems. Replication lag and slow report performance.
+- Since excessive load is mentioned in the question, creating additional read replicas and spreading the analytics workload around makes B correct.
+- Cloud SQL enables single threaded replication by default, so it stands to reason enabling parallel replication would help the lag.
+- Basic steps to change parallel replication flags
+  1. On a read replica, disable replication.
+  2. On the read replica, set the flags for parallel replication. Use the gcloud command to set the flags.
+- https://cloud.google.com/sql/docs/mysql/replication/manage-replicas#configuring-parallel-replication
+
 ## Q20
 
 - MySQL on-premises with read replica
