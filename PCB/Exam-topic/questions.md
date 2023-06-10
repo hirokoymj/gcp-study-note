@@ -42,6 +42,39 @@
 - Use the mysqldump utility to take a backup of the existing on-premises database, and then import it into Cloud SQL.(BAD)
 - https://cloud.google.com/sql/docs/mysql/replication/configure-replication-from-external#mysql
 
+## Q22
+
+- Adding more storage would increase IOPS, but there’s no indication network throughput is an issue, so that eliminates C.
+- A microservice architecture is supposed to use a separate database for each microservice, rather than one big database.
+- https://cloud.google.com/sql/docs/mysql/best-practices#data-arch
+
+## Q23
+
+- Cloud SQL, serverless export
+- Serverless export
+
+  1. Cloud SQL creates a separate, temporary instance to offload the export operation.
+
+  2. Offloading the export operation allows databases on the primary instance to continue to serve queries and perform operations at the usual performance rate.
+  3. When the data export is complete, the temporary instance is deleted automatically.
+  4. Use the Google Cloud Console, gcloud with the offload flag, to perform a serverless export operation.
+
+  ```
+  gcloud sql export sql INSTANCE_NAME gs://BUCKET_NAME/sqldumpfile.gz \
+  --database=DATABASE_NAME \
+  --offload
+  ```
+
+- A serverless export takes longer to do than a standard export, because it takes time to create the temporary instance.
+- https://cloud.google.com/sql/docs/mysql/import-export#serverless
+- https://cloud.google.com/sql/docs/mysql/import-export/import-export-sql#gcloud
+
+## Q24
+
+- PosgresSQL, load balancer btw primary instance and read replica
+- For read-heavy workloads, add read replicas to offload traffic from the primary instance. Optionally, you can use a load balancer such as HAProxy to manage traffic to the replicas.
+- https://cloud.google.com/sql/docs/postgres/best-practices#admin
+
 ## Q108
 
 - D.
