@@ -327,9 +327,20 @@
 
 ## Q101
 
+- Backups reside in the region where the database is created
+- C. Disable automated backups, and create an on-demand backup routine to a regional Cloud Storage bucket.
+  You cannot configure a custom location for automatic backups. A is wrong. The default option for automatic backups is multi-region. B is wrong. The question specifically mentions backups not exports, so eliminate D. That leaves C which involves manual effort, but it does keep the data in the correct region.
+
 ## Q106
 
+- Recommender
+- This is a cost question, so eliminate anything that doesn’t address cost. Eliminate A, B and C. The right answer is to use Recommender.
+- https://cloud.google.com/recommender/docs/overview
+
 ## Q107
+
+- If you are using ext4, use the resize2fs command to extend the file system
+- https://cloud.google.com/compute/docs/disks/resize-persistent-disk#resize_partitions
 
 ## Q108
 
