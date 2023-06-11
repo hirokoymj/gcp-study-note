@@ -190,25 +190,67 @@
 - Sqlcommenter, Query Insights
 - Cloud Trace doesn’t support Cloud SQL.
 - Cloud SQL recommenders for overprovisioned instances would tell you about Cloud SQL instances which are too large for their workload.
+- Cloud SQL recommender is a service on Google Cloud that provides usage recommendations for Google Cloud resources.
 - Monitoring CPU utilization wouldn’t tell you why microservice calls are failing.
 - SQLcommenter integrates with Query Insights.
 - https://cloud.google.com/blog/topics/developers-practitioners/introducing-sqlcommenter-open-source-orm-auto-instrumentation-library
+- https://cloud.google.com/recommender/docs/recommenders
+- https://cloud.google.com/recommender/docs/recommenders
 
 ## Q66
 
+- SQL-compliant database
+- spanner supports
+- Cloud Spanner supports GoogleSQL and PostgreSQL.That’s not the same thing as a natively open source database.
+- https://cloud.google.com/spanner
+
 ## Q68
+
+- HA and can recover without data loss during a zonal or a regional failure.
+- MySQL read replicas use **asynchronous replication**.
+- https://cloud.google.com/sql/faq
 
 ## Q70
 
+- Spanner, Autoscaler
+- Autoscaler has 3 scaling methods. Stepwise, linear and direct.
+  1. Stepwise - Stepwise scaling is useful for workloads that have small or multiple peaks.
+  2. Linear - Linear scaling is best used with load patterns that change more gradually or have a few large peaks.
+  3. Direct - Direct scaling provides an immediate increase in capacity.
+- https://cloud.google.com/spanner/docs/autoscaling-overview
+- https://cloud.google.com/spanner/docs/autoscaling-overview#different_scaling_methods_for_different_workloads
+
 ## Q72
+
+- BigTable, performance issue->troubleshooting
+- First step of performance troubleshooting is to use Key Visualizer.
+- B might be of interest, but is not the primary tool to diagnose Bigtable performance problems.
+  > B.Check the Cloud Monitoring table/bytes_used metric from Bigtable.
+- https://cloud.google.com/bigtable/docs/performance#troubleshooting
 
 ## Q77
 
+- Cloud SQL, backup
+  -By default, for each instance, Cloud SQL retains seven automated backups, in addition to on-demand backups. You can configure how many automated backups to retain (from 1 to 365). We charge a lower rate for backup storage than for other types of instances.
+- https://cloud.google.com/sql/docs/mysql/backup-recovery/backups
+
 ## Q78
+
+- Query Insights, troubleshooting
+- First you need to add query tags to help identify application SQL. D is therefore correct.
+- To troubleshoot an application, you must first add tags to your SQL queries.
+- https://cloud.google.com/sql/docs/postgres/using-query-insights#filter_by_query_tags
 
 ## Q79
 
+- Cloud SQL or Spanner
+- Given the final objective is a massive user base on a global scale, it suggests Spanner. Therefore, starting with Cloud SQL then migrating to Cloud Spanner doesn’t seem like a smart move.
+- "You plan to start with a small pilot in one country" == small spanner ==> regional.
+
 ## Q80
+
+- Migration Oracle
+- Oracle is not licensed or supported in GCE.
 
 ## Q82
 
