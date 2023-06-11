@@ -254,13 +254,34 @@
 
 ## Q82
 
+- HA, test failover
+- Since primary instance is HA, it can failover between it's two intances
+
 ## Q84
+
+- Replicate some tables in Cloud SQL for MySQL into BigQuery
+- Anytime you see words like “develop” or “manually” be **suspicious** given this is cloud and everything is supposed to be automated and point-and-click easy. Eliminate A.
+- Federated queries are SQL queries initiated FROM BigQuery to Cloud Spanner or Cloud SQL databases. So B doesn’t make sense.
+- The Database Migration Service does not support BigQuery as a destination database engine. Eliminate C.
+- Datastream is a serverless and easy-to-use Change Data Capture (CDC) and replication service that allows you to synchronize data across heterogeneous databases, storage systems, and applications reliably and with minimal latency.
 
 ## Q85
 
+- An app in Intermittment connectivity
+- Intermittment connectivity -> Firestore
+- To use offline persistence, you don't need to make any changes to the code that you use to access Cloud Firestore data. With offline persistence enabled, the Cloud Firestore client library automatically manages online and offline data access and synchronizes local data when the device is back online.
+- An app with intermitted internet access meaning it does not HAVE to sync with the live data source must mean Firestore in Datastore mode.
+
 ## Q87
 
-## Q90
+- Migration
+- I don’t think you can physically move your own equipment into a Google DC. Eliminate B.
+
+## Q89
+
+- Bare Metal Solution for Oracle, backups
+- Answer B:D=50%:50%
+- I choose D.
 
 ## Q92
 
