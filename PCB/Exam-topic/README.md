@@ -325,6 +325,10 @@
   After a failover, the instance that received the failover continues to be the primary instance, even after the original instance comes back online. After the zone or instance that experienced an outage becomes available again, the original primary instance is destroyed and recreated.
 - https://cloud.google.com/sql/docs/mysql/high-availability#:~:text=After%20a%20failover,Initiating%20failover.
 
+- https://cloud.google.com/sql/docs/postgres/replication/cross-region-replicas#disaster_recovery
+
+  > If the primary instance (db-a-0) becomes unavailable, you can promote the replica in region B to become the primary. To again have additional replicas in regions A and C, delete the old instances (the former primary instance in A, and the replica in C), and create new read replicas from the new primary instance in B.
+
 ## Q101
 
 - Backups reside in the region where the database is created
@@ -344,28 +348,31 @@
 
 ## Q108
 
-- D.
-- A does not represent the minimum downtime. Read replicas in Cloud SQL depend upon a primary instance also in Cloud SQL. We’re talking about migrating to GCE, so B is wrong. The Database Migration Service migrates PostgreSQL to Cloud SQL or AlloyDB for PostgreSQL (Preview as of 3/16/23 which means it won’t be on the exam - yet). That makes C wrong. That leaves D. Pgbouncer is a connection pooler used to minimize application downtime.
+- Migrating on-premise PostgresSQL to VM.
+- The Database Migration Service migrates PostgreSQL to Cloud SQL or AlloyDB for PostgreSQL (Preview as of 3/16/23 which means it won’t be on the exam - yet).
+- **Pgbouncer** is a connection pooler used to minimize application downtime.
 - https://cloud.google.com/architecture/migrating-postgresql-to-gcp
 
 ## Q109
 
+- Bigtable, cluster, multi-region
 - The default app profile does not change when you add or remove clusters. You must manually update the default app profile to change its settings. However, as a best practice you should create and use a new app profile instead of changing the default app profile.
 - https://cloud.google.com/bigtable/docs/app-profiles#how-they-work
 
 ## Q113
 
-- The HA configuration provides data **redundancy**.
-- [Failover overview] - If an HA-configured instance becomes unresponsive, Cloud SQL **automatically switches** to serving data from the standby instance.
-- A Cloud SQL instance configured for HA is also called **a regional instance** and has a primary and secondary **zone** within the configured region. Within a regional instance, the configuration is made up of **a primary instance** and **a standby instance**.
+- HA
+- https://cloud.google.com/sql/docs/mysql/high-availability#HA-configuration
 
-- https://cloud.google.com/sql/docs/mysql/high-availability#failover
-- https://cloud.google.com/sql/docs/mysql/high-availability#failover-overview
+  > The HA configuration provides data **redundancy**.
+
+  > all **writes** made to the primary instance are replicated to disks in both zones before a transaction is reported as committed.
 
 ## Q121
 
-- C.
-- No need for restores if you have a read replica which you can promote to be the new primary. Eliminate A and B. Failovers do not happen automatically to read replicas. You have to promote them. Eliminate D. That leaves C which is supported by Google's documentation.
+- Restore, failover
+- No need for restores if you have a read replica which you can promote to be the new primary.
+- Failovers do not happen automatically to read replicas. You have to promote them.
   https://cloud.google.com/sql/docs/postgres/replication/cross-region-replicas#disaster_recovery
 
 **Disaster recovery**
@@ -374,7 +381,7 @@
 
 ## Q127
 
-- D.
+- SQL Server Always On Availability Group
 - Note, you cannot create a read replica in Cloud SQL for SQL Server unless you use an Enterprise Edition. Which is also a requirement for configuring SQL Server AG. That's not a coincidence. That's how Cloud SQL for SQL Server creates SQL Server read replicas. To find out about the replication, use the AG Dashboard in SSMS.
   https://cloud.google.com/sql/docs/sqlserver/replication/manage-replicas#promote-replica
 
