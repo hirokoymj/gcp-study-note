@@ -285,11 +285,45 @@
 
 ## Q92
 
+- Select db
+- Cloud SQL could not scale to 100s of TBs. Eliminate A. Neither Big Query nor Bigtable are relational (although BigQuery does support SQL). Eliminate B and D. That leaves C.
+- Cloud SQL has a double-digit TB storage limit so it's Cloud Spanner.
+- Big query is data warehouse not a relational database.
+
 ## Q93
+
+- write workloads faster in a multi-regional instance
+- For optimal write latency, place compute resources for write-heavy workloads within or close to the default leader region.
+- https://cloud.google.com/spanner/docs/instance-configurations#multi-region-best-practices
 
 ## Q94
 
-## Q96
+- cost-effective backup, Oracle
+- A doesn’t make sense. Oracle is neither licensed nor supported in GCE. Eliminate D. Standard storage is more expensive that Nearline storage. Eliminate C. That leaves B as the most cost effective solution.
+
+## Q96 \*\*\*
+
+- Failover, DB-1(primary), DB-2, DB-3(two cross-region read replicas), A failover happened and promote DB-2 as
+- A. Bring DB-1 back online.
+- B. Delete DB-1, and re-create DB-1 as a read replica in the same region as DB-1.
+- C. Delete DB-2 so that DB-1 automatically reverts to the primary instance.
+
+**Answer: A**
+
+- B. Delete DB-1, and re-create DB-1 as a read replica in the same region as DB-1.
+  > still will be a read replica
+- C. Delete DB-2 so that DB-1 automatically reverts to the primary instance.
+  > DB-1 wont be automatically reverts to the primary instance. As soon as you start DB-1 it will be the primary instance from DB-3, but it is manual
+- D. Create DB-4 as a read replica in the same region as DB-1, and promote DB-4 to primary.
+  > If you do that DB-2 and DB-3 needs to be rebuild
+- A- Bring DB-1 online.
+  > DB-3 is still a read replica of DB-1 and you only need to recreate DB-2
+
+**Answer: B**
+
+- B: Delete DB-1, and re-create DB-1 as a read replica in the same region as DB-1.
+  After a failover, the instance that received the failover continues to be the primary instance, even after the original instance comes back online. After the zone or instance that experienced an outage becomes available again, the original primary instance is destroyed and recreated.
+- https://cloud.google.com/sql/docs/mysql/high-availability#:~:text=After%20a%20failover,Initiating%20failover.
 
 ## Q101
 
