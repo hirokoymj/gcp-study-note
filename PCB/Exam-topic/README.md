@@ -341,9 +341,19 @@ gcloud sql instances create REGIONAL_INSTANCE_NAME \
 
 ## Q101
 
-- Backups reside in the region where the database is created
-- C. Disable automated backups, and create an on-demand backup routine to a regional Cloud Storage bucket.
-  You cannot configure a custom location for automatic backups. A is wrong. The default option for automatic backups is multi-region. B is wrong. The question specifically mentions backups not exports, so eliminate D. That leaves C which involves manual effort, but it does keep the data in the correct region.
+- A
+- B - defaul is multi-regional even if your instance is regional.
+- C and D - you don't need to disable automated backups, this will increase administrative efforts
+- All you need to do is to edit your backups and choose to store them in the region that you want instead of multi-regional. A is the answer.
+
+**Automated backups**
+![](cloud-sql-automated-backups.png)
+
+**Multi-region**
+![](cloud-sql-automated-backup-multi.png)
+
+**Region**
+![](cloud-sql-automated-backup-region.png)
 
 ## Q106
 
@@ -383,9 +393,12 @@ https://drive.google.com/file/d/11NXd80hNwuke0J4WTKFpEswnfJ_Fx5oN/view?usp=drive
 - HA
 - https://cloud.google.com/sql/docs/mysql/high-availability#HA-configuration
 
-  > The HA configuration provides data **redundancy**.
+- The HA configuration provides data **redundancy**.
 
-  > all **writes** made to the primary instance are replicated to disks in both zones before a transaction is reported as committed.
+- all **writes** made to the primary instance are replicated to disks in both zones before a transaction is reported as committed.
+
+**High availability**
+![](cloud-sql-HA.png)
 
 ## Q121
 
@@ -414,6 +427,7 @@ https://drive.google.com/file/d/11feWdqJZ-cHznPiWqzgI8xFoUcPIytzF/view?usp=drive
 
 - Update all of your clients to use the new information by copying the downloaded file to your client host machines, replacing the existing server-ca.pem files.
 
+**Security**
 ![](cloud-sql-certificate.png)
 
 ## Q127
@@ -428,3 +442,11 @@ https://drive.google.com/file/d/11feWdqJZ-cHznPiWqzgI8xFoUcPIytzF/view?usp=drive
 - https://cloud.google.com/sql/docs/sqlserver/replication/create-replica
 
 - ![](SQLServer-AG-dashboard.png)
+
+## Q128
+
+- HA (high availabity)
+- Enabling or disabling HA
+- Mission critical means make the instance HA. Nothing else makes sense apart from D.
+- zonal failure > enable HA to recover
+- then it will create a backup database in another zone within the region you have specified here and that will be your failover database. as long as your main db is running that's the one that will be used but if the main db ever fails it'll automatically switch over to the failover until the main is back up and running again.
