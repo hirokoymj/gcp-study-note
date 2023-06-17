@@ -360,6 +360,9 @@ gcloud sql instances create REGIONAL_INSTANCE_NAME \
 - Recommender
 - This is a cost question, so eliminate anything that doesn’t address cost. Eliminate A, B and C. The right answer is to use Recommender.
 - https://cloud.google.com/recommender/docs/overview
+  > Recommender is a service that provides recommendations and insights for using resources on Google Cloud.
+- https://cloud.google.com/sql/docs/mysql/recommender-sql-overprovisioned
+  > The Cloud SQL overprovisioned instance recommender helps you detect instances that are unnecessarily large for a given workload. It then provides recommendations on how to resize such instances and reduce cost.
 
 ## Q107
 
