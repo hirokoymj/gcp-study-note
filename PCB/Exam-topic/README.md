@@ -329,6 +329,16 @@
 
   > If the primary instance (db-a-0) becomes unavailable, you can promote the replica in region B to become the primary. To again have additional replicas in regions A and C, delete the old instances (the former primary instance in A, and the replica in C), and create new read replicas from the new primary instance in B.
 
+## Q100
+
+```
+gcloud sql instances create REGIONAL_INSTANCE_NAME \
+--availability-type=REGIONAL \
+--database-version=DATABASE_VERSION \
+--tier=MACHINE_TYPE \
+--enable-bin-log
+```
+
 ## Q101
 
 - Backups reside in the region where the database is created
