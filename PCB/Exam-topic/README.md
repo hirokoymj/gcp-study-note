@@ -427,8 +427,4 @@ https://drive.google.com/file/d/11feWdqJZ-cHznPiWqzgI8xFoUcPIytzF/view?usp=drive
   - SQL Server 2019 Enterprise
 - https://cloud.google.com/sql/docs/sqlserver/replication/create-replica
 
-**Promote a replica(SQL Server)**
-
-> A read replica stops replication and converts the primary instance.
-
-> When promoted, read replicas are automatically configured with backups, but they aren't automatically configured as high availability (HA) instances.
+- ![](SQLServer-AG-dashboard.png)
