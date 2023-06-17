@@ -359,6 +359,15 @@
 - The default app profile does not change when you add or remove clusters. You must manually update the default app profile to change its settings. However, as a best practice you should create and use a new app profile instead of changing the default app profile.
 - https://cloud.google.com/bigtable/docs/app-profiles#how-they-work
 
+**Create an app profile**
+
+- https://cloud.google.com/bigtable/docs/configuring-app-profiles#creating-app-profile
+
+https://drive.google.com/drive/folders/1-1FhPg3mtbIzoOYBb_4yQegfCBgj63Sh
+
+https://drive.google.com/file/d/11MAjHX9GmHt08XG42bhbey-AdyCeEI5E/view?usp=drive_link
+https://drive.google.com/file/d/11NXd80hNwuke0J4WTKFpEswnfJ_Fx5oN/view?usp=drive_link
+
 ## Q113
 
 - HA
@@ -379,11 +388,34 @@
 
 > Cross-region replicas can be used as part of a disaster recovery procedure. You can promote a cross-region replica to fail over to another region should the primary's region become unavailable for an extended period of time.
 
+https://drive.google.com/file/d/11feWdqJZ-cHznPiWqzgI8xFoUcPIytzF/view?usp=drive_link
+
+## Q122
+
+- Cloud SQL Server certificates
+- Vaid for 10 yrs
+- Cloud SQL -> Overview -> Connections -> Security -> Download CERTIFICATES
+- Download server-ca.pem files
+
+  ```
+  gcloud beta sql ssl server-ca-certs list \
+  --instance=INSTANCE_NAME
+  ```
+
+- Update all of your clients to use the new information by copying the downloaded file to your client host machines, replacing the existing server-ca.pem files.
+
+![](cloud-sql-certificate.png)
+
 ## Q127
 
 - SQL Server Always On Availability Group
 - Note, you cannot create a read replica in Cloud SQL for SQL Server unless you use an Enterprise Edition. Which is also a requirement for configuring SQL Server AG. That's not a coincidence. That's how Cloud SQL for SQL Server creates SQL Server read replicas. To find out about the replication, use the AG Dashboard in SSMS.
   https://cloud.google.com/sql/docs/sqlserver/replication/manage-replicas#promote-replica
+
+- Creating a read replica is only only available for Cloud SQL for SQL Server:
+  - SQL Server 2017 Enterprise
+  - SQL Server 2019 Enterprise
+- https://cloud.google.com/sql/docs/sqlserver/replication/create-replica
 
 **Promote a replica(SQL Server)**
 
