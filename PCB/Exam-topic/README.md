@@ -285,10 +285,25 @@
 
 ## Q92
 
-- Select db
+- Spanner
 - Cloud SQL could not scale to 100s of TBs. Eliminate A. Neither Big Query nor Bigtable are relational (although BigQuery does support SQL). Eliminate B and D. That leaves C.
-- Cloud SQL has a double-digit TB storage limit so it's Cloud Spanner.
-- Big query is data warehouse not a relational database.
+- **Cloud SQL has a double-digit TB storage limit**
+
+  - 64 TB of storag
+  - 624GB of RAM
+  - 60000 IOPS
+  - Scale out wiht read replicas
+
+- **Big query** is data warehouse not a relational database.
+  - NoSQL
+  - Petabyte-scalse
+  - sub-10mis atency(very low latency)
+  - Used Google Search, Analytics, Map, Gmail
+- **Spanner**
+  - Scale to petabytes
+  - Strong consisntency
+  - HA
+  - Used for financial and inventory applications
 
 ## Q93
 
@@ -366,8 +381,16 @@ gcloud sql instances create REGIONAL_INSTANCE_NAME \
 
 ## Q107
 
+- VM, extending a file system
 - If you are using ext4, use the resize2fs command to extend the file system
 - https://cloud.google.com/compute/docs/disks/resize-persistent-disk#resize_partitions
+- If you are using ext4, use the resize2fs command to extend the file system:
+
+```
+sudo resize2fs /dev/DEVICE_NAME
+```
+
+![](vm-df-lsblk-command.png)
 
 ## Q108
 
