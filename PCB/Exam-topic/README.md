@@ -162,9 +162,18 @@
 
 ## Q51
 
-- Cloud SQL instance with Cloud SQL Auth proxy
+- Cloud SQL Auth proxy
 - The Cloud SQL Auth proxy is a Cloud SQL connector that provides secure access to your instances without a need for Authorized networks or for configuring SSL.
+- The Cloud SQL Auth proxy requires authenticating as a Cloud SQL IAM identity to authorize your connections to a Cloud SQL instance.
+- **cloudsql.instances.connect permission**
+- cloudsql.instances.connect permission is included:
+
+  - Cloud SQL Client
+  - Cloud SQL Editor
+  - Cloud SQL Admin
+
 - https://cloud.google.com/sql/docs/mysql/sql-proxy#using-a-service-account
+- https://cloud.google.com/sql/docs/mysql/sql-proxy#permissions
 
 ## Q55
 
@@ -200,22 +209,25 @@
 ## Q66
 
 - SQL-compliant database
-- spanner supports
-- Cloud Spanner supports GoogleSQL and PostgreSQL.That’s not the same thing as a natively open source database.
+- Bigtable doesn’t support SQL. Eliminate A. Even if Memorystore could scale, B says single region. Eliminate B. **Cloud Spanner supports Google Standard SQL and PostgreSQL dialects**. That’s not the same thing as a natively open source database. Eliminate D. That leaves C.
 - https://cloud.google.com/spanner
+- Spanner - mission-critical uses cases - finantial app, inventory app.
 
 ## Q68
 
+- Answer **C** not A.
+- "without data loss" = "sync replication"
 - HA and can recover without data loss during a zonal or a regional failure.
-- MySQL read replicas use **asynchronous replication**.
 - https://cloud.google.com/sql/faq
+- **How is my data replicated?**
+  - MySQL instances: MySQL instances provide a high availability configuration and MySQL read replicas. MySQL read replicas use asynchronous replication.
 
 ## Q70
 
 - Spanner, Autoscaler
 - Autoscaler has 3 scaling methods. Stepwise, linear and direct.
   1. Stepwise - Stepwise scaling is useful for workloads that have small or multiple peaks.
-  2. Linear - Linear scaling is best used with load patterns that change more gradually or have a few large peaks.
+  2. Linear - Linear scaling is best used with load patterns that change more gradually or have **a few large peaks**.
   3. Direct - Direct scaling provides an immediate increase in capacity.
 - https://cloud.google.com/spanner/docs/autoscaling-overview
 - https://cloud.google.com/spanner/docs/autoscaling-overview#different_scaling_methods_for_different_workloads
@@ -311,6 +323,9 @@ gcloud sql instances failover <PRIMARY_INSTANCE_NAME>
 
 - Migration
 - I don’t think you can physically move your own equipment into a Google DC. Eliminate B.
+  https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets#online_versus_offline_transfer
+
+- ![](./data-transfer.png)
 
 ## Q89
 
