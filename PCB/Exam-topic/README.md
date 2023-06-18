@@ -256,6 +256,13 @@
 
 - HA, test failover
 - Since primary instance is HA, it can failover between it's two intances
+- https://cloud.google.com/sql/docs/mysql/configure-ha#gcloud_2
+
+```
+gcloud sql instances failover <PRIMARY_INSTANCE_NAME>
+```
+
+![](failover.png)
 
 ## Q84
 
@@ -264,6 +271,10 @@
 - Federated queries are SQL queries initiated FROM BigQuery to Cloud Spanner or Cloud SQL databases. So B doesn’t make sense.
 - The Database Migration Service does not support BigQuery as a destination database engine. Eliminate C.
 - Datastream is a serverless and easy-to-use Change Data Capture (CDC) and replication service that allows you to synchronize data across heterogeneous databases, storage systems, and applications reliably and with minimal latency.
+
+- https://cloud.google.com/datastream-for-bigquery
+  - **Replicate operational data with minimal latency**
+    Seamlessly replicate data from MySQL, PostgreSQL, AlloyDB, and Oracle databases directly into BigQuery, with low latency and without impacting source performance.
 
 ## Q85
 
@@ -289,7 +300,7 @@
 - Cloud SQL could not scale to 100s of TBs. Eliminate A. Neither Big Query nor Bigtable are relational (although BigQuery does support SQL). Eliminate B and D. That leaves C.
 - **Cloud SQL has a double-digit TB storage limit**
 
-  - 64 TB of storag
+  - 64 TB of storage
   - 624GB of RAM
   - 60000 IOPS
   - Scale out wiht read replicas
@@ -307,8 +318,10 @@
 
 ## Q93
 
-- write workloads faster in a multi-regional instance
-- For optimal write latency, place compute resources for write-heavy workloads within or close to the default leader region.
+- Spanner
+- Design a schema that prevents hotspots and other performance issues.
+- For optimal **write latency**, place compute resources for write-heavy workloads within or close to the default leader region.
+- For optimal **read performance** outside of the default leader region, use **staleness** of at least 15 seconds.
 - https://cloud.google.com/spanner/docs/instance-configurations#multi-region-best-practices
 
 ## Q94
