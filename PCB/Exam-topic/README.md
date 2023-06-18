@@ -283,6 +283,30 @@ gcloud sql instances failover <PRIMARY_INSTANCE_NAME>
 - To use offline persistence, you don't need to make any changes to the code that you use to access Cloud Firestore data. With offline persistence enabled, the Cloud Firestore client library automatically manages online and offline data access and synchronizes local data when the device is back online.
 - An app with intermitted internet access meaning it does not HAVE to sync with the live data source must mean Firestore in Datastore mode.
 
+- https://firebase.google.com/docs/firestore/manage-data/enable-offline
+
+  > Cloud Firestore supports offline data persistence. This feature caches a copy of the Cloud Firestore data that your app is actively using, so your app can access the data when the device is offline.
+
+- For Android and Apple platforms, offline persistence is enabled by default. To disable persistence, set the PersistenceEnabled option to false.
+- For the web, offline persistence is disabled by default. To enable persistence, call the enablePersistence method.
+
+  ```js
+  firebase
+    .firestore()
+    .enablePersistence()
+    .catch((err) => {
+      if (err.code == "failed-precondition") {
+        // Multiple tabs open, persistence can only be enabled
+        // in one tab at a a time.
+        // ...
+      } else if (err.code == "unimplemented") {
+        // The current browser does not support all of the
+        // features required to enable persistence
+        // ...
+      }
+    });
+  ```
+
 ## Q87
 
 - Migration
