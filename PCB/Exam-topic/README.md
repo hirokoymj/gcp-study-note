@@ -188,6 +188,8 @@
 - HA standby instance can't be located in different region, and Google recommends to use different zones for all three.
 - https://cloud.google.com/sql/docs/postgres/high-availability#failover-overview
 
+![](failover-best-practice.png)
+
 ## Q62
 
 - Cloud SQL, CMEK
