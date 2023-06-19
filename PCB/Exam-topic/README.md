@@ -178,8 +178,8 @@
 ## Q55
 
 - Cloud Run, Cloud SQL
-- For private IP paths, your application will connect directly to your instance through Serverless VPC Access. This method uses TCP to connect directly to the Cloud SQL instance without using the Cloud SQL Auth proxy.
-- https://cloud.google.com/sql/docs/mysql/connect-run#public-ip-default
+- For private IP paths, your application will connect **directly** to your instance through Serverless VPC Access. This method uses TCP to connect directly to the Cloud SQL instance without using the Cloud SQL Auth proxy.
+- https://cloud.google.com/sql/docs/mysql/connect-run#private-ip
 
 ## Q60
 
