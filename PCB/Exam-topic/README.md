@@ -48,11 +48,13 @@
 
 ## Q12
 
-- The question is about which factors determine the cost of running Spanner. They include region vs. multi-region, compute unit (nodes or processing units), how much storage and how much backup space.
+- Spanner with Autoscaler
+- The question is about which factors determine the cost of running Spanner. They include **region vs. multi-region**, **compute unit** (nodes or processing units), how much **storage** and how much **backup space**.
 - Parent-child table relationships: table interleaving and foreign keys.
 - Using interleaved tables can help speed up queries
 - https://cloud.google.com/spanner/docs/schema-and-data-model#parent-child
 - https://cloud.google.com/spanner/docs/autoscaling-overview
+  > When you create a Cloud Spanner instance, you choose the number of compute capacity nodes or processing units to serve your data. However, if the workload of an instance changes, Cloud Spanner doesn't automatically adjust the size of the instance. This document introduces the Autoscaler tool
 
 ## Q15
 
