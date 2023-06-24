@@ -2,6 +2,35 @@
 
 - Listed the wrong answered questions only.
 
+## Q2
+
+- HA
+- A is wrong because why bother configuring manual backups when Cloud SQL will automate that for you.
+- B seems attractive, but why bother replicating back to on-prem when you can configure a Cloud SQL for HA.
+- C is wrong because **a single zone failure would not give you HA**.
+
+## Q4
+
+- Spanner
+- Cloud Spanner provides built-in tables that keep many statistics for the queries and DML statements. -> SPANNER*SYS.QUERY_STATS*\* tables.
+- Cloud Spanner provides built-in tables that store statistics about reads. -> SPANNER_SYS.READ_STATS\* tables
+- The following query returns the read shapes with the highest CPU usage in the most recent hour:
+
+  ```
+  SELECT read_columns,
+        execution_count,
+        avg_cpu_seconds,
+        execution_count * avg_cpu_seconds AS total_cpu
+  FROM spanner_sys.read_stats_top_hour
+  WHERE interval_end =
+    (SELECT MAX(interval_end)
+    FROM spanner_sys.read_stats_top_hour)
+  ORDER BY total_cpu DESC LIMIT 3;
+  ```
+
+- https://cloud.google.com/spanner/docs/introspection/read-statistics
+- https://cloud.google.com/spanner/docs/introspection/query-statistics
+
 ## Q11
 
 - principle of least privilege (PoLP)
