@@ -1,6 +1,7 @@
 # Questions
 
 - Listed the wrong answered questions only.
+- Google Professional Cloud Database Engineer - 31 Days Contributor Access (Expires Jun 29, 2023)
 
 ## Q2
 
@@ -34,11 +35,16 @@
 ## Q11
 
 - principle of least privilege (PoLP)
-- Cloud Spanner Backup Writer
-  - spanner.backups.create
-- Cloud Spanner Backup Admin
-  - spanner.backups.create
-  - spanner.backups.delete
+- Person A is a database administrator.
+- Person B is an analyst who generates metric reports. -> **Read only**
+- Application C is responsible for automatic backups.-> **creates automatic backups**
+- backupAdmin would allow backup deletion as well as creation.
+- https://cloud.google.com/spanner/docs/iam
+- **Cloud Spanner Backup Admin**
+  ![](./spanner-backupAdmin.png)
+
+- **Cloud Spanner Backup Writer**
+  ![](./spanner-backupWriter.png)
 
 ## Q12
 
