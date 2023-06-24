@@ -58,6 +58,7 @@
 
 ## Q15
 
+- D, E
 - High Cardinality vs Low Cardinality
 - Low Cardinality: a gender, three distinct(male, female or other)
 - High Cardinality: email (a large number of distinct values (one for each person in the table)
@@ -76,12 +77,14 @@
 
 ## Q20
 
+- D
 - MySQL on-premises with read replica
 - backups and maintenance are issue
 - Wants to migrate to GCP with minimum downtime
 - Create an external replica, and use Cloud SQL to synchronize the data to the replica.(GOOD)
 - Use the mysqldump utility to take a backup of the existing on-premises database, and then import it into Cloud SQL.(BAD)
 - https://cloud.google.com/sql/docs/mysql/replication/configure-replication-from-external#mysql
+- The question says backups and maintenance are an issue, so moving to a managed service (Cloud SQL) would be the right thing to do. That eliminates C and A. Option B could (depending upon the DB size) require a lot of downtime to export, copy the dump file to Cloud Storage, then import into Cloud SQL. Therefore, the least amount of downtime would be D.
 
 ## Q22
 
