@@ -1,4 +1,4 @@
-# Questions
+# Questions with an incorrect answer
 
 - Listed the wrong answered questions only.
 - Google Professional Cloud Database Engineer - 31 Days Contributor Access (Expires Jun 29, 2023)
@@ -70,6 +70,9 @@
 - You have 2 problems. Replication lag and slow report performance.
 - Since excessive load is mentioned in the question, creating additional read replicas and spreading the analytics workload around makes B correct.
 - Cloud SQL enables single threaded replication by default, so it stands to reason enabling parallel replication would help the lag.
+
+- Cloud SQL enables single threaded replication by default, so it stands to reason enabling parallel replication would help the lag. To do that you disable replication on the **replica (not the primary)**, set flags on the replica and **optionally** set flags on the **primary instance** to **optimize performance for parallel replication.** That makes **C correct and D incorrect**.
+
 - Basic steps to change parallel replication flags
   1. On a read replica, disable replication.
   2. On the read replica, set the flags for parallel replication. Use the gcloud command to set the flags.
@@ -85,12 +88,6 @@
 - Use the mysqldump utility to take a backup of the existing on-premises database, and then import it into Cloud SQL.(BAD)
 - https://cloud.google.com/sql/docs/mysql/replication/configure-replication-from-external#mysql
 - The question says backups and maintenance are an issue, so moving to a managed service (Cloud SQL) would be the right thing to do. That eliminates C and A. Option B could (depending upon the DB size) require a lot of downtime to export, copy the dump file to Cloud Storage, then import into Cloud SQL. Therefore, the least amount of downtime would be D.
-
-## Q22
-
-- Adding more storage would increase IOPS, but there’s no indication network throughput is an issue, so that eliminates C.
-- A microservice architecture is supposed to use a separate database for each microservice, rather than one big database.
-- https://cloud.google.com/sql/docs/mysql/best-practices#data-arch
 
 ## Q23
 
@@ -113,6 +110,15 @@
 - https://cloud.google.com/sql/docs/mysql/import-export#serverless
 - https://cloud.google.com/sql/docs/mysql/import-export/import-export-sql#gcloud
 
+- **Minimize the performance impact of exports**
+  For a standard export from Cloud SQL, the export is run while the database is online. When the data being exported is smaller, the impact is likely to be minimal. However, when there are large databases, or large objects, such as BLOBs in the database, there's the possibility that the export might degrade database performance.
+
+**Serverless export**
+
+- For a standard export from Cloud SQL -> the export is run while the database is online. -> the export might degrade database performance.
+
+- To prevent slow responses during an export, you can use **serverless export** - With serverless export, Cloud SQL creates a separate, temporary instance to offload the export operation.
+
 ## Q24
 
 - PosgresSQL, load balancer btw primary instance and read replica
@@ -123,8 +129,25 @@
 
 ## Q27
 
+- C (mine, dynamic_dba, 33%)
 - **External read replicas** are external MySQL instances that replicate from a Cloud SQL primary instance. For example, **a MySQL instance running on Compute Engine** is considered an external instance.
 - https://cloud.google.com/sql/docs/mysql/replication#external-read-replicas
+
+- C.
+
+  > D is nonsense, so can be eliminated. The question tells us we’re already managing BOTH sets of MySQL instances, one on prem and the other in GCE. The question also says an objective is to offload part of the management. That can only mean leverage a managed service. The Data(base) Migration Service is a managed service used to instantiate a new migrated DB in Cloud SQL (or AlloyDB for PostgreSQL but that’s not in scope here). The question isn’t asking about database migration, so we can eliminate B. A could be used to create replicas, but doesn’t help with offloading management operations. That leaves C which does use a managed service which could be leveraged to create replicas.
+
+- https://cloud.google.com/sql/docs/mysql/replication/external-server
+  > This page describes a configuration that replicates data from a source database server to MySQL replicas. This configuration is sometimes referred to as an external server configuration.
+
+> The source database server can be any MySQL server, including servers running on other Google Cloud services (such as Cloud SQL or Compute Engine) or on other cloud providers (such as Amazon RDS),
+
+- https://cloud.google.com/sql/docs/mysql/replication/external-server#use_cases_for_external_server_configuration
+
+  > Retain colocation and control of your server while off-loading the administration of the replicas to Cloud SQL.
+  > This use case is sometimes called a hybrid cloud. Replication between your self-managed server and the Cloud SQL replica continues indefinitely.
+
+- ![](./external-server.png)
 
 ## Q28
 
