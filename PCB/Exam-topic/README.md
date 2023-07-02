@@ -65,6 +65,11 @@
 - Bit-reverse sequential values
 - https://cloud.google.com/spanner/docs/schema-design#bit_reverse_primary_key
 
+## Q17
+
+- C.
+- A dynamic schema means the database backend cannot be relational. That eliminates B. No criteria is mentioned that would justify Bigtable (low latency or massive data volume), so eliminate A. That leaves Firestore options which make sense since it’s a **NoSQL database**. Since **“website” and “mobile”** are both mentioned in the question, Firestore in Native mode must be the correct answer.
+
 ## Q18
 
 - You have 2 problems. Replication lag and slow report performance.
@@ -78,6 +83,11 @@
   2. On the read replica, set the flags for parallel replication. Use the gcloud command to set the flags.
 - https://cloud.google.com/sql/docs/mysql/replication/manage-replicas#configuring-parallel-replication
 
+## Q19
+
+- D.
+  Using IAM policies, VPC Service Controls and CMEK is the best answer. A doesn’t make sense since Geography would be a factor at the Region level, not zone level. B is a lot of work and GCP is all about making things easier. C address part of the issue, but D addresses more. The link provided by sp57 is spot on.
+
 ## Q20
 
 - D
@@ -88,6 +98,12 @@
 - Use the mysqldump utility to take a backup of the existing on-premises database, and then import it into Cloud SQL.(BAD)
 - https://cloud.google.com/sql/docs/mysql/replication/configure-replication-from-external#mysql
 - The question says backups and maintenance are an issue, so moving to a managed service (Cloud SQL) would be the right thing to do. That eliminates C and A. Option B could (depending upon the DB size) require a lot of downtime to export, copy the dump file to Cloud Storage, then import into Cloud SQL. Therefore, the least amount of downtime would be D.
+
+## Q21
+
+- D.
+- The question says **a managed solution**, so that eliminates C. Firestore and Spanner do not have the scalability or low latency required. This leaves D. Bigtable by itself is a GCP thing, but Looker allows data visualization across multiple cloud environments.
+  https://www.looker.com/google-cloud/
 
 ## Q23
 
@@ -126,6 +142,26 @@
 - PgBouncer as a connection pooler
 - https://cloud.google.com/sql/docs/postgres/best-practices#admin
 - https://cloud.google.com/architecture/migrating-postgresql-to-gcp
+
+## Q25
+
+- C.
+- The question specifically mentions binary logging and the binary logs are used by point-in-time recovery. D doesn’t buy you anything **since the corrupt data would also be on the HA replica you fail over to**. B looks like a lot of work and if the Cloud SQL instance were instantiated a while ago, option B could take a long time. A would work but the backup could have been taken a while before the corruption began. In which case restoring using that backup would wipe all the good data up to the point of corruption. The question asks for minimal data loss and the only way to ensure that is to restore to a point-in-time just before the corruption began.
+
+## Q26
+
+- C, E.
+  A is wrong because you want user accounts migrated as well as the data. B is nonsense. D is also nonsense since the DMS is an online migration. That leave C and E, both of which are mentioned in the Google doc:
+- [Configure your source instance](https://cloud.google.com/database-migration/docs/postgres/configure-source-database)
+
+  > Your source instance must include the postgres database.
+  > Install the pglogical package on the source instance.
+
+- [Upgrade Postgres with pglogical and Database Migration Service](https://cloud.google.com/blog/topics/developers-practitioners/upgrade-postgres-pglogical-and-database-migration-service)
+
+  > First, you must create a database named "**postgres**" on the source instance. This database may already exist if your source is a Cloud SQL instance.
+
+  > Next, install the **pglogical** package on your source instance. DMS relies on pglogical to transfer data between your source and target instances. If
 
 ## Q27
 
