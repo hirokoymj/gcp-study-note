@@ -191,7 +191,35 @@
 - A is Database Migration Service to migrate the databases with CDC
 - C is Replication from an external server is used to Migration Database to Cloud
 
-# Q35
+## Q29
+
+- B.
+- A is wrong because Datastream is a CDC and replication service for data synchronization across heterogeneous databases. It’s reasonable to assume you’ll be using Cloud SQL for MySQL, so you’ll be performing a homogeneous migration. Plus, while the a Datastream source can be MySQL, a Datastream target is either BigQuery or Cloud Storage and not Cloud SQL. See https://cloud.google.com/datastream/docs/overview.
+  C is wrong because a one time migration wouldn’t capture all the data changes once the maintenance window ended and the apps were fired back up. Furthermore, stopping all writes during the dump would constitute downtime which the question wants minimized. D would take forever in a rapidly changing source system. B is the cleanest and simplest solution especially since the question puts no time constraint on making the migration
+
+## Q30
+
+- **Recommender**
+- [Monitor disk availability](https://cloud.google.com/sql/docs/mysql/using-ood-recommender#apply_recommendation)
+
+  > The Cloud SQL out-of-disk recommender
+
+- [Apply recommendations](https://cloud.google.com/sql/docs/mysql/using-ood-recommender#apply_recommendations)
+  > Edit the instance, if required, to manually increase the storage capacity and set the storage capacity to automatically increase. Alternatively, delete data to free up space.
+
+## Q31
+
+- B.
+- A is wrong. The cloudsql.googleapis.com/postgres.log log file could be used to find out who started the backup operation, not the status of the operation.
+- [back up an instance - troubleshooting ](https://cloud.google.com/sql/docs/postgres/backup-recovery/backups#troubleshooting-backups)
+  > Run the gcloud sql operations list command to list all operations for the given Cloud SQL instance.
+
+## Q34 - NEED SCREENSHOT
+
+- B.
+- **Cloud SQL is a regional service with read replicas allowed in other regions.** So the answer must reference 2 different zones in the us-central1 region, one for the primary and one for the HA replica. A read replica needs to be in a zone within us-east1. The only options which provides that is B.
+
+## Q35
 
 - https://firebase.google.com/docs/firestore
 - Realtime updates Like Realtime Database, Cloud Firestore uses data synchronization to update data on any connected device. However, it's also designed to make simple, one-time fetch queries efficiently.
@@ -212,6 +240,11 @@
   1. Closes all connections.
   2. Ends any tasks that may be consuming resources.
 - https://cloud.google.com/sql/docs/mysql/import-export#troubleshooting
+
+## Q38
+
+- A.
+- B is wrong since Serverless VPC Access is for connecting to your VPC network from serverless environments (Cloud Run, App Engine, Cloud Functions). C is wrong as this concerns private consumption of services across VPC networks that belong to different groups, teams, projects, or organizations. D is wrong because it concerns application networking for services. Nothing in its documentation mentions BMS. That leaves A. I would prefer to have seen something about VPC network peering, but the clincher is firewall rules which you would use to limit IP traffic sources to the backend Oracle DBs residing in their own Google managed VPC on BMS.
 
 ## Q39
 
@@ -236,6 +269,21 @@
   ![](./sql-server-storage.png)
 - https://cloud.google.com/sql/docs/sqlserver/create-instance#expandable-3
 
+## Q42
+
+- C.
+- A is wrong since there is an RPO. B requires manual intervention which partly defeats the object of using a managed service like Cloud SQL. D is wrong since retaining transaction logs would permit point-in-time recovery which is not required. That leaves C.
+
+## Q45
+
+- B.
+  Performing a “SELECT \* FROM TABLE” wouldn’t give you CSV output and that alone wouldn’t call an API. Eliminate A. There’s no need for Cloud Composer in this scenario, especially when the solution is a known combination of Cloud Scheduler, Cloud Function and a Pub/Sub Topic, which is B.
+
+## Q46
+
+- D.
+- Simply a classic use case for Bigtable. Neither Cloud SQL, Firestore nor Memorystore have either the capacity or latency to provide the solution.
+
 ## Q47
 
 - Cloud Spanner
@@ -248,6 +296,15 @@
 - If replication is interrupted for a few hours, for example by a network or server outage, the replica falls behind the primary. The replica catches up once it reconnects to the primary and starts replicating again.
 - https://cloud.google.com/sql/docs/mysql/replication#:~:text=If%20replication%20is,a%20new%20one
 - https://cloud.google.com/sql/docs/mysql/replication#replication_use_cases
+
+## Q49
+
+- C.
+- D might be possible but it’s a lot of effort to migrate to a different platform. Eliminate D. A does not mention HA. Eliminate A. B says to take periodic backups which doesn’t support an RTO/RPO of 30 minutes. The best answer is deploy an HA configuration and have a read replica you could promote to the primary in a different region. C is the best answer.
+
+## Q50
+
+- Cloud SQL serverless export
 
 ## Q51
 
