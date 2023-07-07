@@ -389,6 +389,16 @@
 
 > Look at the Key Visualizer scans for your table. The Key Visualizer tool for Bigtable generates new scan data every 15 minutes that shows the usage patterns for each table in a cluster. Key Visualizer makes it possible to check whether your usage patterns are causing undesirable results, such as hotspots on specific rows or excessive CPU utilization.
 
+## Q75
+
+- Cloud CDN overview
+
+- Cloud CDN (Content Delivery Network) uses Google's global edge network to serve content closer to users, which accelerates your websites and applications.
+
+- Cloud CDN works with the global external Application Load Balancer or the classic Application Load Balancer to deliver content to your users.
+
+- ![](./cloud-cdn.png)
+
 ## Q76
 
 - PosgtresSQL Migration, pglogical, DMS available
