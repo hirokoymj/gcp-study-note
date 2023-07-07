@@ -384,22 +384,29 @@
 
 - BigTable, performance issue->troubleshooting
 - First step of performance troubleshooting is to use Key Visualizer.
-- B might be of interest, but is not the primary tool to diagnose Bigtable performance problems.
-  > B.Check the Cloud Monitoring table/bytes_used metric from Bigtable.
-- https://cloud.google.com/bigtable/docs/performance#troubleshooting
+- Check the Cloud Monitoring might be interesting, but is not the primary tool to diagnose Bigtable performance problems.
+- [Troubleshoot performance issues](https://cloud.google.com/bigtable/docs/performance#troubleshooting)
+
+> Look at the Key Visualizer scans for your table. The Key Visualizer tool for Bigtable generates new scan data every 15 minutes that shows the usage patterns for each table in a cluster. Key Visualizer makes it possible to check whether your usage patterns are causing undesirable results, such as hotspots on specific rows or excessive CPU utilization.
+
+## Q76
+
+- PosgtresSQL Migration, pglogical, DMS available
+- The key is minimal downtime. That eliminates A. Migrate for Compute Engine operates at the VM level. That eliminates B. Migrating from a GCE VM to Cloud SQL is a classic use case for the Database Migration Service. D is the best answer.
 
 ## Q77
 
-- Cloud SQL, backup
-  -By default, for each instance, Cloud SQL retains seven automated backups, in addition to on-demand backups. You can configure how many automated backups to retain (from 1 to 365). We charge a lower rate for backup storage than for other types of instances.
-- https://cloud.google.com/sql/docs/mysql/backup-recovery/backups
+- Cloud SQL, backups
+- https://cloud.google.com/sql/docs/mysql/backup-recovery/backups#what_backups_cost
+- By default, for each instance, Cloud SQL retains **seven** automated backups, in addition to on-demand backups.
+- **automated backups**
+  ![](cloud-sql-automated-backup-7.png)
 
 ## Q78
 
-- Query Insights, troubleshooting
-- First you need to add query tags to help identify application SQL. D is therefore correct.
-- To troubleshoot an application, you must first add tags to your SQL queries.
-- https://cloud.google.com/sql/docs/postgres/using-query-insights#filter_by_query_tags
+- Query Insights
+- Add a tag using sqlcommenter. /_..._/
+- https://cloud.google.com/sql/docs/postgres/using-query-insights#filter_by_query_tags -![](./query-insight-tag-filter.png)
 
 ## Q79
 
