@@ -389,6 +389,21 @@
 
 > Look at the Key Visualizer scans for your table. The Key Visualizer tool for Bigtable generates new scan data every 15 minutes that shows the usage patterns for each table in a cluster. Key Visualizer makes it possible to check whether your usage patterns are causing undesirable results, such as hotspots on specific rows or excessive CPU utilization.
 
+## Q73
+
+- **Spanner**
+
+| DB attribute | Spanner                            |
+| ------------ | ---------------------------------- |
+| Schema       | Dynamic                            |
+| SQL          | Yes                                |
+| Transactions | Strong-ACID with TrueTime ordering |
+| Scalability  | Horizontal                         |
+| Availability | High 99.999% SLA                   |
+| Replication  | Automatic                          |
+
+- ACID(atomicity, consistency, isolation, durability)
+
 ## Q75
 
 - Cloud CDN overview
