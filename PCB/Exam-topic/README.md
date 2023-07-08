@@ -105,6 +105,12 @@
 - The question says **a managed solution**, so that eliminates C. Firestore and Spanner do not have the scalability or low latency required. This leaves D. Bigtable by itself is a GCP thing, but Looker allows data visualization across multiple cloud environments.
   https://www.looker.com/google-cloud/
 
+## Q22
+
+- Adding more storage would increase IOPS, but there’s no indication network throughput is an issue, so that eliminates C.
+- A microservice architecture is supposed to use a separate database for each microservice, rather than one big database.
+- https://cloud.google.com/sql/docs/mysql/best-practices#data-arch
+
 ## Q23
 
 - Cloud SQL, serverless export
@@ -297,16 +303,35 @@
 
 ## Q48
 
-- B or D.
+- I chosen **"B"**
 - Read replica
 - If replication is interrupted for a few hours, for example by a network or server outage, the replica falls behind the primary. The replica catches up once it reconnects to the primary and starts replicating again.
 - https://cloud.google.com/sql/docs/mysql/replication#:~:text=If%20replication%20is,a%20new%20one
 - https://cloud.google.com/sql/docs/mysql/replication#replication_use_cases
 
+- **chelbsik 6 months, 1 week ago**
+  - C - makes no sense
+  - D - nobody said primary instance was offline, plus you can't stop/resture replication on - the primary instance, only on read replica
+    A makes no sense: you can't create clone database from read replica, and if it means to create one from the primary instance - how would that help to insure that replica is still working?
+    I'll go for B
+
 ## Q49
 
 - C.
 - D might be possible but it’s a lot of effort to migrate to a different platform. Eliminate D. A does not mention HA. Eliminate A. B says to take periodic backups which doesn’t support an RTO/RPO of 30 minutes. The best answer is deploy an HA configuration and have a read replica you could promote to the primary in a different region. C is the best answer.
+- HA (ADD) -> HA(Enabled) -> For testing, go a primary and Failover
+
+1. HA with disable
+   ![](HA-disabled-marked-ADD.png)
+
+2. HA with enabled  
+   ![](HA-enabled-marked-ENABLED.png)
+
+3. Testing HA - FAILOVER
+   ![](HA-enabled-test-FAILOVER.png)
+
+4. Read replica - promote
+   ![](read-replica-promote.png)
 
 ## Q50
 
@@ -562,33 +587,14 @@ gcloud sql instances failover <PRIMARY_INSTANCE_NAME>
 - cost-effective backup, Oracle
 - A doesn’t make sense. Oracle is neither licensed nor supported in GCE. Eliminate D. Standard storage is more expensive that Nearline storage. Eliminate C. That leaves B as the most cost effective solution.
 
-## Q96 \*\*\*
+## Q96
 
-- Failover, DB-1(primary), DB-2, DB-3(two cross-region read replicas), A failover happened and promote DB-2 as
-- A. Bring DB-1 back online.
-- B. Delete DB-1, and re-create DB-1 as a read replica in the same region as DB-1.
-- C. Delete DB-2 so that DB-1 automatically reverts to the primary instance.
-
-**Answer: A**
-
-- B. Delete DB-1, and re-create DB-1 as a read replica in the same region as DB-1.
-  > still will be a read replica
-- C. Delete DB-2 so that DB-1 automatically reverts to the primary instance.
-  > DB-1 wont be automatically reverts to the primary instance. As soon as you start DB-1 it will be the primary instance from DB-3, but it is manual
-- D. Create DB-4 as a read replica in the same region as DB-1, and promote DB-4 to primary.
-  > If you do that DB-2 and DB-3 needs to be rebuild
-- A- Bring DB-1 online.
-  > DB-3 is still a read replica of DB-1 and you only need to recreate DB-2
-
-**Answer: B**
-
+- I chosen **B** ( chelbsik)
 - B: Delete DB-1, and re-create DB-1 as a read replica in the same region as DB-1.
-  After a failover, the instance that received the failover continues to be the primary instance, even after the original instance comes back online. After the zone or instance that experienced an outage becomes available again, the original primary instance is destroyed and recreated.
+
 - https://cloud.google.com/sql/docs/mysql/high-availability#:~:text=After%20a%20failover,Initiating%20failover.
 
-- https://cloud.google.com/sql/docs/postgres/replication/cross-region-replicas#disaster_recovery
-
-  > If the primary instance (db-a-0) becomes unavailable, you can promote the replica in region B to become the primary. To again have additional replicas in regions A and C, delete the old instances (the former primary instance in A, and the replica in C), and create new read replicas from the new primary instance in B.
+> After a failover, the instance that received the failover **continues to be the primary instance, even after the original instance comes back online**. After the zone or instance that experienced an outage becomes available again, the original primary instance is destroyed and recreated. Then it becomes the new standby instance. If a failover occurs in the future, the new primary will fail over to the original instance in the original zone.
 
 ## Q99
 
@@ -607,19 +613,17 @@ gcloud sql instances create REGIONAL_INSTANCE_NAME \
 
 ## Q101
 
-- A
-- B - defaul is multi-regional even if your instance is regional.
-- C and D - you don't need to disable automated backups, this will increase administrative efforts
-- All you need to do is to edit your backups and choose to store them in the region that you want instead of multi-regional. A is the answer.
+- I chosen **A** as a correct answer.
+- Let's eliminate:
+  B - defaul is multi-regional even if your instance is regional
+  C and D - you don't need to disable automated backups, this will increase administrative efforts
+  All you need to do is to edit your backups and choose to store them in the region that you want instead of multi-regional. A is the answer.
 
 **Automated backups**
-![](cloud-sql-automated-backups.png)
+![](backups-automated.png)
 
-**Multi-region**
-![](cloud-sql-automated-backup-multi.png)
-
-**Region**
-![](cloud-sql-automated-backup-region.png)
+**on-demand backups**
+![](backups-on-demand.png)
 
 ## Q106
 
@@ -664,6 +668,15 @@ https://drive.google.com/drive/folders/1-1FhPg3mtbIzoOYBb_4yQegfCBgj63Sh
 
 https://drive.google.com/file/d/11MAjHX9GmHt08XG42bhbey-AdyCeEI5E/view?usp=drive_link
 https://drive.google.com/file/d/11NXd80hNwuke0J4WTKFpEswnfJ_Fx5oN/view?usp=drive_link
+
+## Q119
+
+- D
+- [Verify failover criteria](https://cloud.google.com/sql/docs/postgres/replication/cross-region-replicas#verify_failover_criteria)
+
+  > Because replication is asynchronous, when a regional outage occurs and a failover is attempted, some recent transactions that were committed to the primary may be lost (not replicated to the replica). Whenever a primary instance becomes unavailable, the following steps show (1) how to determine the amount of data, if any, that may have been lost in the cross-region failover and (2) how to ensure that the promoted replica reflects as many recent writes as possible.
+
+  > First, check the Lag Bytes values in the monitoring dashboard. When there is a regional outage in the region of the primary instance, Lag Bytes is reported for the primary instance.
 
 ## Q113
 
