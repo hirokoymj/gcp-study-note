@@ -19,3 +19,24 @@
 
 - You cannot configure a custom location for automatic backups. A is wrong. The default option for automatic backups is multi-region. B is wrong.
 - 101
+
+# BT
+
+- Key Visualizer
+
+# Cloud SQL
+
+- Cloud SQL could not scale to multiple regions.
+- Cloud SQL is a regional service so cannot scale to multiple regions.
+
+# Cloud SQL for PostgreSQL
+
+- open source, SQL-compliant database.
+
+# Query Insights
+
+- Sqlcommenter
+
+# Memorystore (Redis)
+
+- sub-millisecond query latency

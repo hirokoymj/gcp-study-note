@@ -352,6 +352,11 @@
 - https://cloud.google.com/sql/docs/mysql/sql-proxy#using-a-service-account
 - https://cloud.google.com/sql/docs/mysql/sql-proxy#permissions
 
+## Q54
+
+- C.
+- Cloud SQL is a regional service so cannot scale to multiple regions. Eliminate A. Spanner doesn’t support semi-structured data and doesn’t scale transparently. Eliminate B. Bigtable doesn’t work with JSON data. Eliminate D. That leaves C, Firestore in Datastore mode which satisfies all the requirements -https://cloud.google.com/firestore#all-features
+
 ## Q55
 
 - Cloud Run, Cloud SQL
@@ -678,6 +683,10 @@ https://drive.google.com/file/d/11NXd80hNwuke0J4WTKFpEswnfJ_Fx5oN/view?usp=drive
 
   > First, check the Lag Bytes values in the monitoring dashboard. When there is a regional outage in the region of the primary instance, Lag Bytes is reported for the primary instance.
 
+## Q112
+
+- Bigtable would not be a valid choice. BigQuery lends itself to OLAP not OLTP. Cloud SQL could not scale to multiple regions. It’s Spanner. A.
+
 ## Q113
 
 - HA
@@ -689,6 +698,14 @@ https://drive.google.com/file/d/11NXd80hNwuke0J4WTKFpEswnfJ_Fx5oN/view?usp=drive
 
 **High availability**
 ![](cloud-sql-HA.png)
+
+## Q116
+
+- A.
+- Updating passwords represents user disruption. Eliminate B. Eliminate C for the same reason. D doesn’t make sense, leaves A. From Google’s documentation, “Traditionally, applications running outside Google Cloud can use service account keys to access Google Cloud resources. However, service account keys are powerful credentials, and can present a security risk if they are not managed correctly.
+
+With identity federation, you can use Identity and Access Management (IAM) to grant external identities IAM roles, including the ability to impersonate service accounts. This approach eliminates the maintenance and security burden associated with service account keys.”
+https://cloud.google.com/iam/docs/workload-identity-federation
 
 ## Q121
 
@@ -719,6 +736,11 @@ https://drive.google.com/file/d/11feWdqJZ-cHznPiWqzgI8xFoUcPIytzF/view?usp=drive
 
 **Security**
 ![](cloud-sql-certificate.png)
+
+## Q126
+
+- C
+- Full exports are not possible offline. Eliminate A and B. Migrating to GCE means you can't use the Database Migration Service. Note, Datastream CDC only supports MySQL and Oracle. To seed the PostgreSQL instance in GCE, a backup is needed created using pg_basebackup. An export won't cut it. That eliminates D and leaves C. Those 9 steps actually make sense.
 
 ## Q127
 
