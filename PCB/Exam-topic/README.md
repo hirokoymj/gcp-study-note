@@ -219,6 +219,12 @@
 - B.
 - **Cloud SQL is a regional service with read replicas allowed in other regions.** So the answer must reference 2 different zones in the us-central1 region, one for the primary and one for the HA replica. A read replica needs to be in a zone within us-east1. The only options which provides that is B.
 
+**Create a primary instance with multi zone**
+![](cloud-sql-create-instance-multi-zone.png)
+
+**Create a Read replica in a different region against a primary instance**
+![](read-replica-different-region.png)
+
 ## Q35
 
 - https://firebase.google.com/docs/firestore
