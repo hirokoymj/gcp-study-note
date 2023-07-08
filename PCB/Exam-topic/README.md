@@ -502,16 +502,24 @@ gcloud sql instances failover <PRIMARY_INSTANCE_NAME>
 ## Q87
 
 - Migration
+
 - I don’t think you can physically move your own equipment into a Google DC. Eliminate B.
   https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets#online_versus_offline_transfer
 
 - ![](./data-transfer.png)
+
+- Today, we’re announcing Datastream, a serverless change data capture (CDC) and replication service,
+- https://cloud.google.com/blog/products/databases/new-cloud-based-cdc-replication-across-databases
 
 ## Q89
 
 - Bare Metal Solution for Oracle, backups
 - Answer B:D=50%:50%
 - I choose D.
+
+## Q91
+
+- VPC SC
 
 ## Q92
 
@@ -575,6 +583,11 @@ gcloud sql instances failover <PRIMARY_INSTANCE_NAME>
 - https://cloud.google.com/sql/docs/postgres/replication/cross-region-replicas#disaster_recovery
 
   > If the primary instance (db-a-0) becomes unavailable, you can promote the replica in region B to become the primary. To again have additional replicas in regions A and C, delete the old instances (the former primary instance in A, and the replica in C), and create new read replicas from the new primary instance in B.
+
+## Q99
+
+- B.
+- A is not HA. B would be HA. C doesn’t make sense and neither does D. Cloud SQL is a regional service which means the failover replica is in the same region as the primary - hopefully in a different zone. Read replicas can be in different regions, but they’re read replicas not failover replicas.
 
 ## Q100
 
