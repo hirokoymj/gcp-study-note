@@ -214,7 +214,7 @@
 - [back up an instance - troubleshooting ](https://cloud.google.com/sql/docs/postgres/backup-recovery/backups#troubleshooting-backups)
   > Run the gcloud sql operations list command to list all operations for the given Cloud SQL instance.
 
-## Q34 - NEED SCREENSHOT
+## Q34
 
 - B.
 - **Cloud SQL is a regional service with read replicas allowed in other regions.** So the answer must reference 2 different zones in the us-central1 region, one for the primary and one for the HA replica. A read replica needs to be in a zone within us-east1. The only options which provides that is B.
