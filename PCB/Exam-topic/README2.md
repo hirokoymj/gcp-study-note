@@ -14,6 +14,7 @@
   ![](read-replica-promote.png)
 - MySQL read replicas use asynchronous replication.
 - zonal failure > enable HA to recover
+- Multiple zone(HA)
 
 # backups
 
@@ -29,9 +30,12 @@
 - Cloud SQL could not scale to multiple regions.
 - Cloud SQL is a regional service so cannot scale to multiple regions.
 
+- Multi
+
 # Cloud SQL for PostgreSQL
 
 - open source, SQL-compliant database.
+- Migration -> installing pglogical
 
 # Query Insights
 
@@ -40,3 +44,21 @@
 # Memorystore (Redis)
 
 - sub-millisecond query latency
+
+# Spanner
+
+- Spanner exports are run as Dataflow jobs.
+- Avoiding user disruption if a regional failure occures means multi-region service.
+
+# serverless export
+
+- Use serverless export. With serverless export, Cloud SQL creates a separate, temporary instance to offload the export operation.
+  Offloading the export operation allows databases on the primary instance to continue to serve queries and perform operations at the usual performance rate. When the data export is complete, the temporary instance is deleted automatically. This might be a good option if you're taking a one-time export of a large database.
+
+# Firestore/Spanner
+
+- Not scale and latency required.
+
+# gcloud command
+
+- show backups status - gcloud sql operations list
