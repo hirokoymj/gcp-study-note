@@ -36,7 +36,7 @@
 - Topic 9:
 - Topic 10:
 - Topic 11:
-- Google Professional Cloud Architect - 365 Days Contributor Access (Expires Jul 09, 2024)
+- Google Professional Cloud Architect - 365 Days Contributor Access
 
 ## Other tutorials
 
