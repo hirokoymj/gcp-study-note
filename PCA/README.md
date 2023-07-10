@@ -4,6 +4,8 @@
 
 ## Qwiklabs
 
+https://www.cloudskillsboost.google/journeys/12
+
 1. A Tour of Google Cloud Hands-on Labs
 2. Preparing for your Professional Cloud Architect Journey
 3. Google Cloud Fundamentals: Core Infrastructure
@@ -11,8 +13,8 @@
 5. Essential Google Cloud Infrastructure: Core Services
 6. Elastic Google Cloud Infrastructure: Scaling and Automation
 7. **Reliable Google Cloud Infrastructure: Design and Process**
-8. Getting Started with Google Kubernetes Engine
-9. Logging, Monitoring and Observability in Google Cloud
+8. **Getting Started with Google Kubernetes Engine**
+9. **Logging, Monitoring and Observability in Google Cloud**
 10. (Lab)Create and Manage Cloud Resources
 11. (Lab)Perform Foundational Infrastructure Tasks in Google Cloud
 12. (Lab)Set Up and Configure a Cloud Environment in Google Cloud
