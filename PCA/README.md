@@ -10,7 +10,7 @@
 4. Essential Google Cloud Infrastructure: Foundation
 5. Essential Google Cloud Infrastructure: Core Services
 6. Elastic Google Cloud Infrastructure: Scaling and Automation
-7. Reliable Google Cloud Infrastructure: Design and Process
+7. **Reliable Google Cloud Infrastructure: Design and Process**
 8. Getting Started with Google Kubernetes Engine
 9. Logging, Monitoring and Observability in Google Cloud
 10. (Lab)Create and Manage Cloud Resources
