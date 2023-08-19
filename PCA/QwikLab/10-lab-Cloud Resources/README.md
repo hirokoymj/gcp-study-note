@@ -14,7 +14,7 @@
 
 7. To open help for the create command, `gcloud compute instances create --help`
 
-# Task 2. Filtering command-line output
+## Task 2. Filtering command-line output
 
 gcloud compute instances list
 gcloud compute instances list --filter="name=('gcelab2')"
@@ -22,7 +22,7 @@ gcloud compute instances list --filter="name=('gcelab2')"
 gcloud compute firewall-rules list
 gcloud compute firewall-rules list --filter="network='default'"
 
-# Task 3. Connecting to your VM instance
+## Task 3. Connecting to your VM instance
 
 gcloud compute ssh gcelab2 --zone $ZONE
 
