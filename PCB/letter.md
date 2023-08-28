@@ -33,4 +33,35 @@ https://covid19.lacounty.gov/wp-content/uploads/HOO_Safer-at-Home-Order-for-Cont
 [3] Fragomen, Del Rey, Bernsen & Loewy, LLP
 444 South Flower Street, Suite 500, Los Angeles, CA 90071, United States 
 +1 310 820 3322
+![image](https://github.com/hirokoymj/gcp-study-note/assets/106212802/3bfa748f-8a95-4919-90de-673fb73cbd7f)
+
+
+
+
+
+
+[Health Care Provider’s Letterhead]
+
+[Date]
+
+To whom it may concern,
+Patient Name: Hiroko Yamaji
+Date of Birth: August 24, 1970
+Sex: Female
+Nationality: Japanese
+
+This is to certify that the following medications have been prescribed for the person listed above, who has a chronic asthma. Omicron variant surges to the US the beginning of 2022. I request Ms. Yamaji to long absence of the US to treatment and recovery for her medical conditions.
+The mediations are:
+-	Inhaler 1
+-	Inhaler 2
+-	Med1
+-	Med2
+
+Sincerely,
+[Physician’s Name]
+[Physician’s Signature] 
+
+
+Sample: https://www.takamatsu-medical.com/images/material/20180401.jpg
 ![Uploading image.png…]()
+
