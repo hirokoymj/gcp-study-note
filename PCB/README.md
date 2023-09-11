@@ -1,3 +1,9 @@
+
+Ms. Yamaji was diagnosed with uterine fibroids on March 30, 2023. The type is subserosal myoma and the size was 4 centimeters. She needs to observe regularly if fibroids are growing to avoid risks of complications of uterine fibroids.
+Due to the discovery of uterine fibroids for the first time in March this year, and due to finding out the best treatment such as surgial removal, she has been in Tokyo, Japan. I request an understanding of Ms. Yamaji’s long absence from the US, to treat and recover for her medical conditions, and request permission of reentry.
+
+
+
 # Professional Cloud Database Engineer Exam
 
 - [Professional Cloud Database Engineer](https://cloud.google.com/learn/certification/cloud-database-engineer)
