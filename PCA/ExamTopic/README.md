@@ -2,7 +2,38 @@
 
 https://www.examtopics.com/exams/google/professional-cloud-architect/view/2/
 
-**Question #100**
+**Question 100**
+**Question 101**
+**Question 102**
+**Question 103**
+**Question 104**
+**Question 105**
+**Question 106**
+**Question 107**
+**Question 108**
+**Question 109**
+
+**Question 110**
+**Question 111**
+**Question 112**
+**Question 113**
+**Question 114**
+**Question 115**
+**Question 116**
+**Question 117**
+**Question 118**
+**Question 119**
+
+**Question 120**
+**Question 121**
+**Question 122**
+**Question 123**
+**Question 124**
+**Question 125**
+**Question 126**
+**Question 127**
+**Question 128**
+**Question 129**
 
 **Question 130**
 
@@ -159,8 +190,13 @@ You would see below and email address
 ```
 
 - GCE, network origin, SSH (firewall rule)
-<hr />
 
-**Question #100**
-
-<hr />
+**Question 162**
+**Question 163**
+**Question 164**
+**Question 165**
+**Question 166**
+**Question 167**
+**Question 168**
+**Question 169**
+**Question 170**
