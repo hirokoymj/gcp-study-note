@@ -45,3 +45,13 @@ https://www.cloudskillsboost.google/journeys/12
 ## Other tutorials
 
 - [youtube - Google Cloud Quick Tutorials](https://www.youtube.com/playlist?list=PLuJRcdtonlDAN73rZsRk_eiJ0NU9h1Cms)
+
+> I cleared my exam yesterday. Most of the questions came from Examtopics, especially from Q.100 to Q.152. There were three -four questions came from the new questions which Kopper2019 ahs added as part of Q.152. On of the challenge is that, many of the answers marked are not correct. To overcome this challenge I adopted below steps:
+
+- a. Spent three to four days in identifying/finalizing the correct answers.
+- b. Referred Google docs and the comments shared by the members of Examtopics.
+- c. I found the answers shared by below members most of the times correct:
+- 1. Tartar
+- 2. MamthaSJ
+- 3. TotoroChina
+- I cleared my exam 2 days back. This exhaustive set of questions really helped me a lot in my exam. many questions were from the set itself. It helped me in developing a mindset on how to decode the questions and how to approach for the most correct option among all the "almost correct" options.
