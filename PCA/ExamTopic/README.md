@@ -25,15 +25,54 @@ https://www.examtopics.com/exams/google/professional-cloud-architect/view/2/
 **Question 119**
 
 **Question 120**
+
+- B. Add two additional NICs to Instance #1 with the following configuration: ג€¢ NIC1 ג—‹ VPC: VPC #2 ג—‹ SUBNETWORK: subnet #2 ג€¢ NIC2 ג—‹ VPC: VPC #3 ג—‹ SUBNETWORK: subnet #3 Update firewall rules to enable traffic between instances. 69%, MamthaSJ
+- this link says VM can have multiple NICs and attached to different VPCs.
+  https://cloud.google.com/vpc/docs/create-use-multiple-interfaces
+  so B is the answer
+
 **Question 121**
+
+- B. Create a Debian-based Compute Engine instance, install and configure the application, and use OS patch management to install available updates. 91%, MamthaSJ
+- https://cloud.google.com/compute/docs/os-patch-management
+
 **Question 122**
+
+- A. 1. Update your GKE cluster to use Cloud Operations for GKE. 2. Use the GKE Monitoring dashboard to investigate logs from affected Pods. 72%, TorontoC
+- https://cloud.google.com/blog/products/management-tools/using-logging-your-apps-running-kubernetes-engine
+
 **Question 123**
+
+Answer should be C,
+https://cloud.google.com/storage/docs/gcs-fuse#notes
+
 **Question 124**
+
+- A. Use the Service Mesh visualization in the Cloud Console to inspect the telemetry between the microservices. MamthaSJ
+- https://cloud.google.com/service-mesh/docs/observability/explore-dashboard
+
 **Question 125**
+
+- A. Create a retention policy on the bucket for the duration of 5 years. Create a lock on the retention policy. 100% -https://cloud.google.com/storage/docs/bucket-lock#retention-policy
+
 **Question 126**
+
+- C. Create a Cloud Build trigger based on the development branch that tests the code, builds the container, and stores it in Container Registry. Create a deployment pipeline that watches for new images and deploys the new image on the development cluster. Ensure only the deployment tool has access to deploy new versions. 100%, TorontoC
+
 **Question 127**
+
+- D. Increase the maximum number of instances in the autoscaling group. 84%, MarthaSJ
+
 **Question 128**
+
+- B. Cloud Run and Cloud Bigtable, MamthaSJ
+- Answer should B, beasue
+  Data is no SQL data, real-time analysis needed. -> BigTable
+  Cloud Run will help in -> Low Cost (Zero when no event), AdityaGupta
+
 **Question 129**
+
+- A. Deploy each microservice as a Deployment. Expose the Deployment in the cluster using a Service, and use the Service DNS name to address it from other microservices within the cluster. MathamSJ
 
 **Question 130**
 
