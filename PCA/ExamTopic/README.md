@@ -9,8 +9,7 @@ https://www.examtopics.com/exams/google/professional-cloud-architect/view/2/
 - C. 1. Create a project with a Shared VPC and assign the Network Admin role to the networking team. 2. Create a second project without a VPC, configure it as a Shared VPC service project, and assign the Compute Admin role to the development team. 57%
 - a networking team and a development team.
 - Option B suggests creating a single project with a standalone VPC, and assigning both the Network Admin and Compute Admin roles to the respective teams. However, this solution does not enforce the required separation of duties between the networking and development teams.
-
-Option C suggests using a Shared VPC. A Shared VPC allows for separation of duties between teams while sharing network resources.
+- Option C suggests using a Shared VPC. A Shared VPC allows for separation of duties between teams while sharing network resources.
 
 **Question 131**
 
