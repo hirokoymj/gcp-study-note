@@ -22,10 +22,10 @@ Option C suggests using a Shared VPC. A Shared VPC allows for separation of duti
 - C. Export logs to a Pub/Sub topic, and trigger Cloud Function with the relevant log events. 100%
 - https://cloud.google.com/blog/products/management-tools/automate-your-response-to-a-cloud-logging-event
 
-  **Question 133**
+**Question 133**
 
-  - C. Configure Identity-Aware Proxy (IAP) for the instance and ensure that you have the role of IAP-secured Tunnel User. Use the gcloud command line tool to ssh into the instance. 70%
-  - https://cloud.google.com/iap/docs/using-tcp-forwarding
+- C. Configure Identity-Aware Proxy (IAP) for the instance and ensure that you have the role of IAP-secured Tunnel User. Use the gcloud command line tool to ssh into the instance. 70%
+- https://cloud.google.com/iap/docs/using-tcp-forwarding
 
 **Question 134**
 
