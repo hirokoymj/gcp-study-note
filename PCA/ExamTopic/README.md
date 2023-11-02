@@ -54,7 +54,15 @@ Option C suggests using a Shared VPC. A Shared VPC allows for separation of duti
 
 **Question 138**
 
+- C. The new approach will make it easier to decouple infrastructure from application, develop and release new features, manage the underlying infrastructure, manage CI/CD pipelines and perform A/B testing, and scale the solution if necessary. 88%
+- C clearly states all of the benefits, C is right.
+- C is better: Management like to understand business benefit in simple language. They don't bother about the technology
+
 **Question 139**
+
+- A. Use a load testing tool to simulate the expected number of concurrent users and total requests to your application, and inspect the results. 84%
+- A or C - not sure
+- GKE
 
 **Question 140**
 
