@@ -27,17 +27,19 @@ https://www.cloudskillsboost.google/journeys/12
 
 - https://www.examtopics.com/exams/google/professional-cloud-architect/view/
 - 273 questions
-- Topic 1: 1-191
-- Topic 2:
-- Topic 3:
-- Topic 4:
-- Topic 5:
-- Topic 6:
-- Topic 7:
-- Topic 8:
-- Topic 9:
-- Topic 10:
-- Topic 11:
+- Topic 1: 1-196
+- Topic 2: 1-6
+- Topic 3: 1-6
+- Topic 4: 1-7
+- Topic 5: 1-6
+- Topic 6: 1-7
+- Topic 7: 1-7
+- Topic 8: 1-11
+- Topic 9: 1-6
+- Topic 10: 1-6
+- Topic 11: 1-11
+- Topic 12: 1-6
+- **TOTAL: 275**
 - Google Professional Cloud Architect - 365 Days Contributor Access
 
 ## Other tutorials

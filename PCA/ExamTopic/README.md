@@ -3,10 +3,58 @@
 https://www.examtopics.com/exams/google/professional-cloud-architect/view/2/
 
 **Question #100**
-B:
-correct
 
-<hr />
+**Question 130**
+
+- C. 1. Create a project with a Shared VPC and assign the Network Admin role to the networking team. 2. Create a second project without a VPC, configure it as a Shared VPC service project, and assign the Compute Admin role to the development team. 57%
+- a networking team and a development team.
+- Option B suggests creating a single project with a standalone VPC, and assigning both the Network Admin and Compute Admin roles to the respective teams. However, this solution does not enforce the required separation of duties between the networking and development teams.
+
+Option C suggests using a Shared VPC. A Shared VPC allows for separation of duties between teams while sharing network resources.
+
+**Question 131**
+
+- D. Store static content such as HTML and images in a Cloud Storage bucket. Use Cloud Functions to host the APIs and save the user data in Firestore. 61%
+- https://cloud.google.com/blog/products/networking/better-load-balancing-for-app-engine-cloud-run-and-functions
+
+**Question 132**
+
+- C. Export logs to a Pub/Sub topic, and trigger Cloud Function with the relevant log events. 100%
+- https://cloud.google.com/blog/products/management-tools/automate-your-response-to-a-cloud-logging-event
+
+  **Question 133**
+
+  - C. Configure Identity-Aware Proxy (IAP) for the instance and ensure that you have the role of IAP-secured Tunnel User. Use the gcloud command line tool to ssh into the instance. 70%
+  - https://cloud.google.com/iap/docs/using-tcp-forwarding
+
+**Question 134**
+
+- C. Assign the development team group the Project Owner role on the Shopping folder, and remove the development team group Project Owner role from the Organization. 89%
+- two folders Finance and Shopping
+- C seems right, you have to remove the role from organization level
+
+**Question 135**
+
+- B. Use Istio's fault injection on the particular microservice whose faulty behavior you want to simulate. 85%
+- GKE
+- Istio fault injection :https://istiobyexample.dev/fault-injection/
+- B is the right answer - reference - https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
+
+**Question 136**
+
+- A. App Engine 100%
+- App Engine is right choice, Developer can focus on developing code rather than worry about infrastructure. A is right
+- The users are global but doesn't mean that app can't be regional. A is the correct answer it seems.
+
+**Question 137**
+
+- C. Use a versioning strategy for the APIs that increases the version number on every backward-incompatible change. 100%
+- You are responsible for the API lifecycle and
+- https://cloud.google.com/apis/design/versioning
+
+**Question 138**
+
+**Question 139**
 
 **Question 140**
 
