@@ -1,10 +1,15 @@
 # Exam Topic
 
-https://www.examtopics.com/exams/google/professional-cloud-architect/view/2/
-
 **Question 100**
 
+- B. Using the Cron service provided by App Engine, publish messages to a Cloud Pub/Sub topic. Subscribe to that topic using a message-processing utility service running on Compute Engine instances. 88%
+- B is correct. More appropriately: https://cloud.google.com/solutions/reliable-task-scheduling-compute-engine
+
 **Question 101**
+
+- B. Lease a Transfer Appliance, upload archived files to it, and send it to Google to transfer archived data to Cloud Storage. Establish a connection with Google using a Dedicated Interconnect or Direct Peering connection and use it to upload files daily. 92%
+- Agree B. 100Mbps connections for 10TB data transfer is takes too long. wk
+- you can not use gsutil to load 10TB daily >>>and then continue loading 10 TB of data daily<<< it will take longer than 24hrs to upload using gsutil. zr79
 
 **Question 102**
 
