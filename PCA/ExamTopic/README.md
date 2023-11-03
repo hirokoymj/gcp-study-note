@@ -3,17 +3,61 @@
 https://www.examtopics.com/exams/google/professional-cloud-architect/view/2/
 
 **Question 100**
+
 **Question 101**
+
 **Question 102**
+
+- B. Cloud Pub/Sub to Cloud Dataflow. 62%
+- I believe the answer is B. "Pub/Sub doesn't provide guarantees about the order of message delivery. Strict message ordering can be achieved with buffering, often using Dataflow." https://cloud.google.com/solutions/data-lifecycle-cloud-platform
+
 **Question 103**
+
+- C. 1. Perform an assessment of virtual machines running in the current VMware environment. 2. Define a migration plan, prepare a Migrate for Compute Engine migration RunBook, and execute the migration. 95%
+- Migrate for Compute Engine organizes groups of VMs into Waves. After understanding the dependencies of your applications, create runbooks that contain groups of VMs and begin your migration!
+- https://cloud.google.com/migrate/compute-engine/docs/4.5/how-to/migrate-on-premises-to-gcp/overview
+
 **Question 104**
+
+- D. Use an unmanaged instance group with an active and standby instance in different zones, use a regional persistent disk, and use a network load balancer in front of the instances.
+- Correct Ans : D
+  Since the Traffic is TCP, Ans A & C gets eliminated as HTTPS load balance is not supported.
+  - B - File storage system is Cloud Firestore which do not give full control, hence eliminated.
+  - D - Unmanaged instance group with network load balance with regional persistent disk for storage gives full control which is required for the migration.
+
 **Question 105**
+
+- D. Configure a Cloud Dedicated Interconnect connection between the on-premises environment and Google Cloud. 100%
+- Ans D , Reason : high throughput via internal IPs
+
 **Question 106**
+
+- A. Deploy a new revision to Cloud Run with the new version. Configure traffic percentage between revisions. 75%
+- https://cloud.google.com/run/docs/resource-model
+- VishalB, omermaH
+
 **Question 107**
+
+- A. Navigate the predefined dashboards in the Cloud Monitoring workspace, and then add metrics and create alert policies. 58%, kopper2019
+- It's A for me... Create a dashboard for each incident?? I think D isn't a good choice...DiegoMDZ
+
 **Question 108**
+
+- C. Binary logging, D. Automated backups. 70%
+- C. Binary logging, D. Automated backups, omermaH
+
+> Binary logging is a feature of MySQL that records all changes made to the database in a binary log file. By enabling binary logging on your Cloud SQL instance, you can use the log file to recover your database in case of catastrophic failure.
+
+Automated backups are a feature of Cloud SQL that allows you to automatically create and retain backups of your database. By enabling automated backups, you can restore your database in case of catastrophic failure or other data loss events.
+
+Option A, sharding, is not a recommended approach. Sharding is a technique for distributing data across multiple servers to improve performance and scalability. While sharding can help to improve the performance of a database, it is not specifically designed to protect against data loss in case of catastrophic failure.
+
 **Question 109**
 
-**Question 110**
+- B. When ingesting new data in BigQuery, run the data through the Data Loss Prevention (DLP) API to identify any personal information. As part of the DLP scan, save the result to Data Catalog. Upon a deletion request, query Data Catalog to find the column with personal information. 47%
+- B. We do not need to delete entire recrod of sports person but some health information collected by association. B would be correct answer. Aditya G
+
+- **Question 110**
 
 - A. App Engine
 - By process of elimination you arrive at App Engine or GKE. Now the requirement is to "to minimize the operational overhead of the solution". 89%
@@ -74,8 +118,7 @@ D. Set an Organization Policy with a constraint on constraints/compute.vmExterna
 **Question 119**
 
 - A. Create a Dataproc cluster using standard worker instances. Most Voted
-
-- Voting A as preemptible workload should only be used with preemptive task. BigfootPanda
+- Voting A as preemptible workload should only be used with preemptive task. BigfootPanda -https://cloud.google.com/architecture/hadoop/hadoop-gcp-migration-jobs#using_preemptible_worker_nodes
 
 **Question 120**
 
