@@ -273,6 +273,22 @@ https://cloud.google.com/storage/docs/gcs-fuse#notes
 - B. Use the Data Transfer appliance to perform an offline migration. Most Voted
 - https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets
 
+- B because anything above 1TB, Google recommends Data Transfer appliance
+  not D because, although the Time to transfer using 1Gbps is around 30 hours, the option is not uploading the content straight away, "Compress the data and upload" - compression of 10TB will take time, again, we must decompress the data before it is usable - again a time consuming process!!
+
+<blockquote>
+
+Answer would be Storage Transfer Service
+
+- A: not suitable for 10 TB load.
+- B: It will take around 3 weeks but feasible.
+- C: not suitable for 10 TB load.
+- D: storage object uploads are limited to 5TiB https://cloud.google.com/storage/quotas. not feasible.
+
+</blockquote>
+
+![](146.png)
+
 **Question 147**
 
 - C. 1. Attach a regional SSD persistent disk to the first instance. 2. In case of a zone outage, force-attach the disk to the other instance.
@@ -563,8 +579,49 @@ ORDER BY total_cost DESC
 </blockquote>
 
 **Question 191**
+
+- A. An HA Cloud VPN gateway connected with two tunnels to an on-premises VPN gateway. 81%
+- A can provide 99.99% availability as well, and no need for C which will be more expensive. alexandE
+- https://cloud.google.com/network-connectivity/docs/vpn/concepts/topologies#1-peer-1-address
+
 **Question 192**
+
+- A. 1. Set a CORS configuration in the target Cloud Storage bucket where the base URL of the App Engine application is an allowed origin. 2. Use the Cloud Storage Signed URL feature to generate a POST URL. 100%
+- https://cloud.google.com/storage/docs/cross-origin#server-side-support
+- Signed URL is for TIme-Based access. This needs access all the time.
+
 **Question 193**
+
+- B. Configure Cloud NAT and select sub-b in the NAT mapping section. 100%
+
+<blockquote>
+
+- A -> It doesn't make sense, Public Google Access allows you to access Google APIs without an external IP, which doesnt solve the problem
+- C -> Bastion host is for the opposite purpose; accessing a machine administratively from the outside without an external IP, not a machine without an external IP accessing the outside.
+- D -> It doesn't make sense.
+- B -> It's the recommended solution for GCP
+
+</blockquote>
+
 **Question 194**
+
+- D 100%
+
+<blockquote>
+
+1. Create an image of the on-premises virtual machines.
+2. Import the image as a virtual disk on Compute Engine using --os=windows-2022-dc-v.
+3. Create a sole-tenancy instance on Compute Engine that uses the imported disk as a boot disk.
+
+</blockquote>
+
+- https://cloud.google.com/compute/docs/import/importing-virtual-disks
+
 **Question 195**
+
+- A. An HA Cloud VPN gateway connected with two tunnels to an on-premises VPN gateway. 100%
+- HA VPN supports two tunnels to achieve 99.99%. Classic VPN does not. Any more than 2 tunnels is excessive cost.
+
 **Question 196**
+
+- Duplicate so review question #146
