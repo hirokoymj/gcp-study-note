@@ -14,15 +14,68 @@ https://www.examtopics.com/exams/google/professional-cloud-architect/view/2/
 **Question 109**
 
 **Question 110**
+
+- A. App Engine
+- By process of elimination you arrive at App Engine or GKE. Now the requirement is to "to minimize the operational overhead of the solution". 89%
+  On the IaaS to PaaS spectrum, this can only be App Engine!
+- IaaS = Compute Engine.
+- Hybrid = GKE (engineering heavy).
+- PaaS = App Engine.
+
 **Question 111**
+
+- B. Use Cloud Scheduler to trigger a Cloud Function that will stop the development and acceptance environments after office hours and start them just before office hours. 89%
+- https://cloud.google.com/compute/docs/instances/viewing-and-applying-idle-vm-recommendations
+
+  > B seems close to this Google provided service option, the extra step should be using idle VM recommendations to find and stop idle VM instances to reduce waste of resources. MaryMei
+
+- Since the price of preemptibles is 1/4 the price of a standard machine D costs far less than B since office hours are 1/3 of whole day. It costs less to keep them running 24h as preemptibles. PAUGURU
+
 **Question 112**
+
+- C. 1. Set up Cloud VPN to provide private network connectivity between the Compute Engine application and the on-premises MySQL server. 2. Stop the on-premises application. 3. Start the Compute Engine application, configured to read and write to the on-premises MySQL server. 4. Create the replication configuration in Cloud SQL. 5. Configure the source database server to accept connections from the Cloud SQL replica. 6. Finalize the Cloud SQL replica configuration. 7. When replication has been completed, stop the Compute Engine application. 8. Promote the Cloud SQL replica to a standalone instance. 9. Restart the Compute Engine application, configured to read and write to the Cloud SQL standalone instance.100%
+
 **Question 113**
+D. Set an Organization Policy with a constraint on constraints/compute.vmExternalIpAccess. List the approved instances in the allowedValues list. 100%
+
 **Question 114**
+
+- B. Enable Firewall Rules Logging for the firewall rules you want to monitor.
+- when you create a firewall rule there is an option for firewall rule logging on/off. It is set to off by default. 100%
+  To get firewall insights or view the logs for a specific firewall rule you need to enable logging while creating the rule or you can enable it by editing that rule.
+- https://cloud.google.com/network-intelligence-center/docs/firewall-insights/how-to/view-understand-insights#enabling-fw-rules-logging
+- https://cloud.google.com/firewall/docs/firewall-rules-logging
+
 **Question 115**
+
+- A. 1. Create a VPC Service Controls perimeter that includes the projects with the buckets. 2. Create an access level with the CIDR of the office network. 100%
+- For all Google Cloud services secured with VPC Service Controls, you can ensure that:
+  Resources within a perimeter are accessed only from clients within authorized VPC networks using Private Google Access with either Google Cloud or on-premises.
+- https://cloud.google.com/vpc-service-controls/docs/overview
+
 **Question 116**
+
+- D. Start a new rolling update. Select the Opportunistic update mode.
+- https://cloud.google.com/compute/docs/instance-groups/rolling-out-updates-to-managed-instance-groups
+- The key here is "you don't want to update any running instances". Only opportunistic support this. jawulya
+
 **Question 117**
+
+- B. Configure the Compute Engine instances with an instance template for the application, and use a regional persistent disk for the application data. Whenever a zonal outage occurs, use the instance template to spin up the application in another zone in the same region. Use the regional persistent disk for the application data. 100%
+- Answer is B, it only request zonal resiliency.
+  Regional persistent disk is a storage option that provides synchronous replication of data between two zones in a region. Regional persistent disks can be a good building block to use when you implement HA services in Compute Engine. TotoroC
+- https://cloud.google.com/compute/docs/disks/high-availability-regional-persistent-disk
+
 **Question 118**
+
+- A. Create a Cloud VPN connection from the new VPC to the data center, create a Cloud Router, and apply new IP addresses so there is no overlapping IP space. 68%
+- The correct answer is A, not sure why some here are confused with C... Cloud NAT won't serve this purpose, you can read the documentation here: https://cloud.google.com/nat/docs/troubleshooting#overlapping-ip-addresses, jaxclain
+
 **Question 119**
+
+- A. Create a Dataproc cluster using standard worker instances. Most Voted
+
+- Voting A as preemptible workload should only be used with preemptive task. BigfootPanda
 
 **Question 120**
 
