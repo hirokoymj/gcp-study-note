@@ -481,23 +481,86 @@ C. 1. Create a dataset for the data science team. 2. Create views of tables that
 
 **Question 181**
 
+- C. Set up a Cloud Monitoring sink that triggers the Cloud Function after an instance removal log message arrives in Cloud Logging. 83%, omermaH
+- Actually C is correct but Wrong also in a way .. Sink cannot trigger a cloud function directly. It need Pub/Sub which then will trigger Cloud Function. Tesla
+
 **Question 182**
+
+- A. Use Google Cloud Shell in the Google Cloud Console to interact with Google Cloud. 100%
+- https://cloud.google.com/sdk/gcloud
 
 **Question 183**
 
+- C. Set up a Cloud VPN gateway in each Shared VPC and peer Cloud VPNs. 79%, omermaH
+- https://cloud.google.com/architecture/best-practices-vpc-design#shared-service
+
 **Question 184**
+
+- A. Inspect the logs and metrics from the instances in Cloud Logging and Cloud Monitoring. 100%, omermaH
+- When an application becomes slow, the first step you should take is to gather information about the underlying cause of the problem. One way to do this is by inspecting the logs and metrics from the instances where the application is deployed. Google Cloud Platform (GCP) provides tools such as Cloud Logging and Cloud Monitoring that can help you to collect and analyze this information. omermaH
 
 **Question 185**
 
+- A. Configure liveness and readiness probes in the Pod specification.
+
+- A: Configuring the right liveness and readiness probes prevents outages when rolling out a new ReplicaSet of a Deployment, because Pods are only getting traffic when they are considered ready.
+- B: With GKE, you do not deal with MIGs.
+- C: Does not use GKE tools and is therefore not the best option.
+- D: Does alert you but does not prevent the outage.
+- https://www.youtube.com/watch?v=mxEvAPQRwhw
+
 **Question 186**
+
+- C. Configure a HorizontalPodAutoscaler for all stateless workloads and for all compatible stateful workloads. Configure the cluster to use node auto scaling. 100%
+- Answer C. Use HorizontalPodAutoscaler.
 
 **Question 187**
 
+- B 73%, D 23% omermaH
+- D. 1. Activate billing export into BigQuery. 2. Perform a BigQuery query on the billing table to extract the information you need. 23%, omermaH
+
+<blockquote>
+
+- Go to the Billing page of your Google Cloud project.
+- In the top left and select "billing Export."
+- Follow the prompts to enable billing export and specify the BigQuery dataset and table where you want the data to be exported.
+- Perform a BigQuery query on the billing table: Once you have enabled billing export and the data has started flowing into the specified BigQuery table, you can run a query on the table to extract the information you need. For example, you could use a query like the following to get the total cost of queries split by user:
+
+```
+SELECT user, SUM(cost) as total_cost
+FROM `your-project.your-dataset.billing_export`
+GROUP BY user
+ORDER BY total_cost DESC
+```
+
+</blockquote>
+
 **Question 188**
+
+- A. Set up a network peering between vpc-a and vpc-b. 100%
+- https://cloud.google.com/vpc/docs/vpc-peering
+  > Google Cloud VPC Network Peering allows internal IP address connectivity across two Virtual Private Cloud (VPC) networks regardless of whether they belong to the same project or the same organization.
 
 **Question 189**
 
+- B. Object Versioning. 100%
+- https://cloud.google.com/storage/docs/object-versioning
+
 **Question 190**
+
+- D. Change the filter to metric.label.state = 'free' and the Target utilization to 20. 16%, omermaH
+- free is an available state filter for the percent_used metric. MortaW
+- https://cloud.google.com/compute/docs/autoscaler/scaling-cloud-monitoring-metrics#autoscale_based_on_memory_usage
+
+<blockquote>
+[AMEJack]We have to think in different way.
+
+- Option A: TARGET_TYPE: the autoscaler calculates the average rate of growth per minute and compares that to the utilization target.
+  This will not fit question requirments, only the memory utilization growth will be compared with the target value.
+- Option C: Adding all the memory cached, buffer, used and free will always be constant. So, this will also not fit the question requirements.
+- Option D: I want the "free" memory utilization will be around 20. This will solve the problem.
+
+</blockquote>
 
 **Question 191**
 **Question 192**
