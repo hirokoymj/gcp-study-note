@@ -34,9 +34,29 @@ A
 - thanks for sharing the link, but seems pub/sub can handle more streaming data than bigquery. pub/sub 120,000,000 kB per minute (2 GB/s) in large regions, bigquery is 1GB/s
 
 **Question 5**
+
+- C 56%, B 41%
+- B. Migrate from FTP to streaming transport, migrate from CSV to binary format, and develop machine learning analysis of metrics
+- C. Increase fleet cellular connectivity to 80%, migrate from FTP to streaming transport, and develop machine learning analysis of metrics
+
+- This question is in the sample questions from google
+- A is not correct because machine learning analysis is a good means toward the end of reducing downtime, but shuffling formats and transport doesn't directly help at all.
+
+- B is not correct because machine learning analysis is a good means toward the end of reducing downtime, and moving to streaming can improve the freshness of the information in that analysis, but changing the format doesn't directly help at all.
+- C is correct because using cellular connectivity will greatly improve the freshness of data used for analysis from where it is now, collected when the machines are in for maintenance. Streaming transport instead of periodic FTP will tighten the feedback loop even more. Machine learning is ideal for predictive maintenance workloads.
+- D is not correct because machine learning analysis is a good means toward the end of reducing downtime, but the rest of these changes don't directly help at all.
+
 **Question 6**
+
+- B. Capacity planning, TCO calculations, opex/capex allocation
+- From the case study, it can conclude that Management (CXO) all concern rapid provision of resources (infrastructure) for growing as well as cost management, such as Cost optimization in Infrastructure, trade up front **capital expenditures** (Capex) for **ongoing operating expenditures** (Opex), and **Total cost of ownership** (TCO)
+
 **Question 7**
+
 **Question 8**
+
 **Question 9**
+
 **Question 10**
+
 **Question 11**
