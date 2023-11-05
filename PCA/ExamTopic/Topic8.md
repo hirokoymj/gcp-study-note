@@ -53,10 +53,42 @@ A
 
 **Question 7**
 
+- D. Directly transfer the files to a different Google Cloud Regional Storage bucket location in US, EU, and Asia using Google APIs over HTTP(S). Run the ETL process to retrieve the data from each Regional bucket Most Voted
+- https://cloud.google.com/storage/docs/locations#location_recommendations
+- It's pretty clear that multi-region is good for content serving and not analytics. Only regional and dual regional buckets are good storage for analytics case which exist in the question
+
 **Question 8**
 
+- D. Launch a cluster in each region to preprocess and compress the raw data, then move the data into a region bucket and use a Cloud Dataproc cluster to finish the job. 100%
+
+- There is one thing for sure here. If we move/copy data between continents it will cost us money therefore compressing the data before copying to another region/continent makes sense.
+  Preprocessing also makes sense because we probably want to process smaller chunks of data first (remember 100K milage).
+  So now type of target bucket; multi-region or standard? multi-region is good for high-availability and low latency with a little more cost however question doesn't require any of these features.
+  Therefore I think standard storage option is good to go given lower costs are always better.
+
+- So my answer would be D
+
 **Question 9**
+D. Have the vehicle's computer compress the data in hourly snapshots, and store it in a GCS Coldline bucket. 100%
 
 **Question 10**
 
+- AC, 100%
+- A. Treat every micro service call between modules on the vehicle as untrusted. Most Voted
+- C. Use a trusted platform module (TPM) and verify firmware and binaries on boot.
+- Correct answer: A & C
+- B is not correct because IPv6 doesn't have any impact on the security during vehicle operation, although it improves system scalability and simplicity.
+- D is not correct because merely using a functional programming language doesn't guarantee a more secure level of execution isolation. Any impact on security from this decision would be incidental at best.
+- E is not correct because this improves system durability, but it doesn't have any impact on the security during vehicle operation.
+- F is not correct because it doesn't have any impact on the security during vehicle operation, although it improves system durability.
+
 **Question 11**
+B. Capture all operating data, train machine learning models that identify ideal operations, and run locally to make operational adjustments automatically
+
+Both B and D starts with "Capture all operating data, train machine learning models that identify ideal operations, ..." so they are offering the same method for training the data.
+
+The keypoint here is "make operational adjustments" such as adjusting the oil pressure so if we host in GCP-ML, how are we going to instruct vehicles on field to adjust their oil pressure if they have no internet connection? There is no way to use GCP-ML model generated parameters to command the "not connected" field vehicles to make operational adjustments automatically.
+
+Therefore, I believe running it locally on the servers sitting in the vehicles is the only option.
+
+My answer: B
