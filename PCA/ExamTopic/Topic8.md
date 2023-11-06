@@ -83,7 +83,8 @@ D. Have the vehicle's computer compress the data in hourly snapshots, and store 
 - F is not correct because it doesn't have any impact on the security during vehicle operation, although it improves system durability.
 
 **Question 11**
-B. Capture all operating data, train machine learning models that identify ideal operations, and run locally to make operational adjustments automatically
+
+- B. Capture all operating data, train machine learning models that identify ideal operations, and run locally to make operational adjustments automatically
 
 Both B and D starts with "Capture all operating data, train machine learning models that identify ideal operations, ..." so they are offering the same method for training the data.
 
