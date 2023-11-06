@@ -31,11 +31,17 @@ https://www.examtopics.com/exams/google/professional-cloud-architect/view/3/
 - C. Create a Cloud Monitoring uptime check to validate the application URL. If it fails, put a message in a Pub/Sub queue that triggers a Cloud Function to switch the URL to the "Site is unavailable" page, and notify the Ops team.
 
 **Question 4**
-C. Create a Cloud Monitoring uptime check to validate the application URL. If it fails, put a message in a Pub/Sub queue that triggers a Cloud Function to switch the URL to the "Site is unavailable" page, and notify the Ops team. 100%
+
+- C. Create a Cloud Monitoring uptime check to validate the application URL. If it fails, put a message in a Pub/Sub queue that triggers a Cloud Function to switch the URL to the "Site is unavailable" page, and notify the Ops team. 100%
 
 **Question 5**
 
-A. Configure a trigger in Cloud Build for new source changes. Invoke Cloud Build to build container images for each microservice, and tag them using the code commit hash. Push the images to the Container Registry. 100%
+- A. Configure a trigger in Cloud Build for new source changes. Invoke Cloud Build to build container images for each microservice, and tag them using the code commit hash. Push the images to the Container Registry. 100%
 
 **Question 6**
-A. Request Transfer Appliances from Google Cloud, export the data to appliances, and return the appliances to Google Cloud. 83%
+
+- A. Request Transfer Appliances from Google Cloud, export the data to appliances, and return the appliances to Google Cloud. 83%
+
+- It will take 123 days to transfer
+  The right answer is to use Transfer Appliance
+  https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets#time
