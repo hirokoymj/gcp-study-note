@@ -269,6 +269,12 @@ E - By adjusting the timeline in Stackdriver to match the failure time, you can 
 Other options, such as reading the debug GCE Activity log using the API or Cloud Console, identifying whether a live migration event of the failed server occurred, or exporting a debug VM into an image and running the image on a local server, may not provide the necessary information to understand
 
 **Question 35**
+
+- A. Load logs into Google BigQuery
+- E. Upload log files into Google Cloud Storage
+- Explanation
+  If you want to analyze those logs its recommended Big Query. For storing and backup Cloud Storage is your option, so AE.
+
 **Question 36**
 **Question 37**
 **Question 38**
@@ -280,6 +286,69 @@ Other options, such as reading the debug GCE Activity log using the API or Cloud
 **Question 43**
 **Question 44**
 **Question 45**
+**Question 46**
+**Question 47**
+**Question 48**
+
+**Question 49**
+
+**Question 50**
+
+**Question 50**
+**Question 51**
+**Question 52**
+**Question 53**
+**Question 54**
+**Question 55**
+**Question 56**
+**Question 57**
+**Question 58**
+**Question 59**
+**Question 60**
+
+**Question 60**
+**Question 61**
+**Question 62**
+**Question 63**
+**Question 64**
+**Question 65**
+**Question 66**
+**Question 67**
+**Question 68**
+**Question 69**
+**Question 70**
+
+**Question 71**
+**Question 72**
+**Question 73**
+**Question 74**
+**Question 75**
+**Question 76**
+**Question 77**
+**Question 70**
+**Question 79**
+**Question 80**
+
+**Question 81**
+**Question 82**
+**Question 83**
+**Question 84**
+**Question 85**
+**Question 86**
+**Question 87**
+**Question 88**
+**Question 89**
+**Question 90**
+
+**Question 91**
+**Question 92**
+**Question 93**
+**Question 94**
+**Question 95**
+**Question 96**
+**Question 97**
+**Question 98**
+**Question 99**
 
 **Question 100**
 
