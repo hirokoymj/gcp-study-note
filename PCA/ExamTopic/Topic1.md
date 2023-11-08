@@ -359,13 +359,63 @@ Other options, such as reading the debug GCE Activity log using the API or Cloud
 **Question 50**
 **Question 51**
 **Question 52**
+
+- C. Deploy the application on two Compute Engine instance groups, each in the same project but in a different region. Use the first instance group to serve traffic, and use the HTTP load balancing service to fail over to the standby instance group in case of a disaster
+
+- Explanation
+  Google recommend using MIG for Zonal outage and multiple MIG for regional outage
+
+  https://cloud.google.com/architecture/disaster-recovery#compute-engine
+
+  It says: Compute Engine instances are zonal resources, so in the event of a zone outage instances are unavailable by default. Compute Engine does offer managed instance groups (MIGs) which can automatically scale up additional VMs from pre-configured instance templates, both within a single zone and across multiple zones within a region. MIGs are ideal for applications that require resilience to zone loss and are stateless, but require configuration and resource planning. Multiple regional MIGs can be used to achieve regional outage resilience for stateless applications.
+
 **Question 53**
+
+- D. Deploy your application on App Engine flexible environment and use Cloud VPN to limit access to the on-premises database
+
+- Explanation
+  The right answer is D: Deploy your application on App Engine flexible environment and use Cloud VPN to limit access to the on-premises database.
+
+To integrate with an on-premises database while ensuring that the database is not accessible through the public internet, you should deploy your application on App Engine flexible environment and use Cloud VPN to establish a secure connection between your application and the on-premises database.
+
+Cloud VPN allows you to create a secure, encrypted connection between your on-premises network and Google Cloud, using Internet Protocol security (IPSec) tunnels. This will allow your application to communicate with the on-premises database while keeping the database secure and inaccessible from the public internet.
+
 **Question 54**
 **Question 55**
+
+- A. Move your data onto a Transfer Appliance. Use a Transfer Appliance Rehydrator to decrypt the data into Cloud Storage.
+- Explanation
+  The gsutil tool is the standard tool for small- to medium-sized transfers (less than a few TB)
+
+  https://cloud.google.com/solutions/migration-to-google-cloud-transferring-your-large-datasets#transfer-options
+
+  Transfer Appliance lets you quickly and securely transfer large amounts of data to Google Cloud Platform via a high-capacity storage server that you lease from Google and ship to Google’s datacenter. Transfer Appliance is recommended for data that exceeds 20 TB or would take more than a week to upload.
+
 **Question 56**
+
+- A. Use kubectl set image deployment/echo-deployment <new-image>
+- Explanation
+  To perform an update to the application with minimal downtime on Google Kubernetes Engine (GKE), you can use a rolling update strategy, which involves updating the application incrementally, one pod at a time, while ensuring that the updated pods are functioning properly before updating the next set. Here's the general process:
+
+kubectl set image deployment/echo-deployment <new_image_tag>
+
 **Question 57**
+
+- C. Add all users to a group. Grant the group the roles of BigQuery jobUser on the billing project and BigQuery dataViewer on the projects that contain the data. 100%
+
+- Explanation
+  Both A & C are correct but using the principle of least privileges C is the most appropriate.
+
+  The "roles/bigquery.jobUser" role provides the permission to run jobs, including querying, exporting and copying data, and creating views and materialized views. This role does not provide permissions to create, update, or delete BigQuery resources, such as datasets, tables, and models. Users with this role can only interact with BigQuery through jobs. The
+
+  "roles/bigquery.User" role, on the other hand, provides the permission to create, update, and delete BigQuery resources, as well as run jobs. This role includes all the permissions of the "roles/bigquery.jobUser" role, and in addition allows users to manage BigQuery resources, such as creating datasets, tables, and models, and modifying their schema and access controls.
+
 **Question 58**
+
 **Question 59**
+
+- D. Define a design for the security of data in your web application that meets GDPR requirements. 100%
+
 **Question 60**
 
 **Question 60**
