@@ -276,16 +276,78 @@ Other options, such as reading the debug GCE Activity log using the API or Cloud
   If you want to analyze those logs its recommended Big Query. For storing and backup Cloud Storage is your option, so AE.
 
 **Question 36**
+
+- B. Revert the source code change, and rerun the deployment pipeline. 61%
+- Explanation
+  If a change negatively affects your key performance indicator, it's best to revert the source code change to a known good state and rerun the deployment pipeline. This ensures that your infrastructure is restored to a stable state while you investigate and fix the issue. Reverting the change and redeploying the code will allow your instance groups to continue functioning with the previous stable version, minimizing the impact on your application and users.
+
 **Question 37**
+
+- C. A single Organization with Folders for each department. 100%
+- Explanation
+  To control IAM policies for different departments independently but centrally, you should create a single organization and use folders to organize the policies for each department. This approach allows you to centralize the management of IAM policies for all departments within a single organization, while also allowing you to set up different policies for each department as needed.
+
 **Question 38**
+
+- B. Digitally sign all of your JAR files and redeploy your application
+- Explanation
+  The most likely cause of the error is that one of the JAR files in your application has been tampered with or is corrupt. The SHA1 digest error indicates that the JAR file's signature does not match the expected value, which could be due to tampering or corruption.
+
+  To fix the issue, you should try uploading missing JAR files and redeploying your application. If the issue persists, you may need to digitally sign all of your JAR files and redeploy your application to ensure that the signatures are valid. You should not try to recompile the Cloaked
+
 **Question 39**
+
+- C. Use public key infrastructure (PKI) to encrypt the message client side using the originating user's private key.
+
+- Explanation
+  To prevent message spoofing, it is important to ensure that messages cannot be altered or forged by anyone other than the originating user. One way to accomplish this is by using public key infrastructure (PKI) to encrypt messages using the originating user's private key.
+
 **Question 40**
 
+- B. Configure a Google Cloud Dedicated Interconnect.
+- Explanation
+  It's latency issue. That won't be solved by adding another VPN tunnel. If it was just a throughput issue then VPN would do, however to improve latency you need to go layer 2. Answer is B
+
 **Question 41**
+
+- C. De-identify the data with the Cloud Data Loss Prevention API
+- Explanation
+  The recommended approach for sanitizing data of personally identifiable information or payment card information before storing it in Cloud Bigtable is option C: De-identify the data with the Cloud Data Loss Prevention API.
+
+  The Cloud Data Loss Prevention (DLP) API is a powerful tool that allows you to automatically discover, classify, and redact sensitive data in your organization. It uses advanced machine learning techniques to accurately identify and protect a wide range of sensitive data types, including personal information such as names, addresses, phone numbers, and payment card information.
+
 **Question 42**
+
+- A. ~/bin
+- Explanation
+  https://cloud.google.com/shell/docs/how-cloud-shell-works
+
+  Cloud Shell provisions 5 GB of free persistent disk storage mounted as your $HOME directory on the virtual machine instance. This storage is on a per-user basis and is available across projects. Unlike the instance itself, this storage does not time out on inactivity. All files you store in your home directory, including installed software, scripts and user configuration files like .bashrc and .vimrc, persist between sessions. Your $HOME directory is private to you and cannot be accessed by other users.
+
 **Question 43**
+
+- A. Create a VPC and connect it to your on-premises data center using Dedicated Interconnect.
+- Explanation
+  Cloud VPN supports unto 3 Gbps where as Interconnect can support unto 100 gbps
+
 **Question 44**
+
+- B. Utilize free tier and sustained use discounts. Provide training to the team about service cost management. 100%
+- Explanation
+  Sustained are automatic discounts for running specific GCE a significant portion of the billing month:
+
+  https://cloud.google.com/compute/docs/sustained-use-discounts
+
+  Committed is for workloads with predictable resource needs between 1 year or 3 year, discount is up to 57% for most resources:
+
+  https://cloud.google.com/compute/docs/instances/signing-up-committed-use-discounts
+
 **Question 45**
+
+- D. Use Jenkins to monitor tags in the repository. Deploy staging tags to a staging environment for testing. After testing, tag the repository for production and deploy that to the production environment.
+- Explanation
+  The best answer is D, because the tagging is a best practice that is recommended on Jenkins/Spinnaker to deploy the right code and prevent accidentally (or intentionally) push of wrong code to production environments. See
+
 **Question 46**
 **Question 47**
 **Question 48**
