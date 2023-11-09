@@ -432,22 +432,106 @@ kubectl set image deployment/echo-deployment <new_image_tag>
 
   When creating a "SQL Server 2017 Standard" in Cloud SQL menu you can chose single one or HA (regional).
 
-**Question 60**
 **Question 61**
+
+- B. Use gcloud to create a Kubernetes cluster. Use kubectl to create the deployment. 100%
+- Explanation
+  Create a Google Kubernetes Engine (GKE) cluster: You can use the Google Cloud Console or the gcloud command-line tool to create a GKE cluster, which will provide the underlying infrastructure for running your application.
+
+Deploy the application to the cluster: You can use the kubectl command-line tool to apply the Kubernetes Deployment file provided by the development team to the cluster.
+
+kubectl apply -f deployment.yaml
+
 **Question 62**
+
+- B. Allocate budget for team training. Create a roadmap for your team to achieve Google Cloud certification based on job role.
+- Explanation
+- To evaluate your team's readiness for a new GCP project and create a skills gap plan, you should consider the business goal of cost optimization. One way to optimize costs is to invest in training for your team to increase their skills and knowledge of GCP. This can help your team become more efficient and effective in using GCP, potentially resulting in cost savings over time. You should allocate budget for team training and create a roadmap for your team to achieve Google Cloud certification based on their job roles. This will help ensure that your team has the necessary skills and knowledge to successfully deploy the new GCP project.
+
 **Question 63**
+
+- A. Cloud Functions 93%
+- Explanation
+  - A. Cloud Functions - managed service scales down to 0
+  - B. Compute Engine - not a managed service
+  - C. Google Kubernetes Engine - not a managed service and wont scale down to 0
+  - D. App Engine flexible environment - managed service but won’t scale down to 0
+
 **Question 64**
+
+- A. Create the Key object for each Entity and run a batch get operation
+- Explanation
+  Correct Answer: A Create the Key object for each Entity and run a batch get operation https://cloud.google.com/datastore/docs/best-practices
+
+  Use batch operations for your reads, writes, and deletes instead of single operations. Batch operations are more efficient because they perform multiple operations with the same overhead as a single operation. Firestore in Datastore mode supports batch versions of the operations which allow it to operate on multiple objects in a single Datastore mode call. Such batch calls are faster than making separate calls for each individual entity because they incur the overhead for only one service call. If multiple entity groups are involved, the work for all the groups is performed in parallel on the server side.
+
 **Question 65**
+
+- A. Supply the encryption key in a .boto configuration file. Use gsutil to upload the files. 71%
+- Explanation
+  In GCP document, key could be configured in .boto. No information found which shows gsutil suppots flag "--encryption-key".
+  https://cloud.google.com/storage/docs/encryption/customer-supplied-keys
+
 **Question 66**
+
+- B. Output custom metrics to Stackdriver from the game servers, and create a Dashboard in Stackdriver Monitoring Console to view them. 97%
+
+- Explanation
+  To capture multiple GBs of aggregate real-time KPIs from game servers running on Google Cloud Platform and monitor them with low latency, the customer should output custom metrics to Stackdriver from the game servers. Stackdriver allows you to collect and store custom metrics, as well as view and analyze them in real-time using the Stackdriver Monitoring Console. The customer can create a Dashboard in the Monitoring Console to view the KPIs and monitor them with low latency.
+
 **Question 67**
+
+- C. Perform the following: 1. Create a Google Kubernetes Engine (GKE) cluster with n1-standard-1 type machines. 2. Build a Docker image from the production branch with all of the dependencies, and tag it with the version number. 3. Create a Kubernetes Deployment with the imagePullPolicy set to 'IfNotPresent' in the staging namespace, and then promote it to the production namespace after testing. 67%
+
+- Explanation
+  Using Google Kubernetes Engine (GKE) enables better resource management and allows you to monitor and maximize machine utilization effectively. Creating a Docker image with all the dependencies ensures a consistent environment for your application. By utilizing Kubernetes Deployments, you can reliably deploy new versions of the application and control the rollout process. Additionally, using a staging namespace for testing before promoting to the production namespace ensures a safer deployment process.
+
 **Question 68**
+
+- B. Use Google Cloud Directory Sync to synchronize Active Directory usernames with cloud identities and configure SAML SSO. 100
+  %
+- Explanation
+  To retain their on-premises Active Directory domain controller for identity management while using Google Cloud resources, the company can use Google Cloud Directory Sync to synchronize Active Directory usernames with cloud identities and configure SAML single sign-on (SSO). This will allow users to use their existing Active Directory credentials to access Google Cloud resources, while still maintaining their on-premises Active Directory domain controller as the primary source of identity management.
+
 **Question 69**
+
+- B. Review the Stackdriver logs for the specific GKE container that is serving the unresponsive part of the application.
+- Explanation
+  Since the application writes logs to standard output, the logs should be available in the Stackdriver logs for the container running the unresponsive part of the application. Kubernetes Engine automatically exports these logs to Stackdriver, so you can use the Stackdriver Logging console to view the logs.
+
 **Question 70**
 
+- D. Create a failover replica instance in the same region, but in a different zone. 53%
+- Explanation
+  Cloud SQL is regional. For high availability, we need to think fo a failover strategy. So, Option D meets the requirement. create failover replica in the same region but in different Zone
+
 **Question 71**
+
+- C. Create a custom image from the existing disk. Create an instance template from the custom image. Create an autoscaled managed instance group from the instance template. 100%
+- Explanation
+  Option C is the correct choice because creating a custom image from the existing disk ensures that the application environment is consistent and does not change between instances, which can reduce variability in performance. Creating an instance template from the custom image allows you to easily create new instances that are based on the same image, which can save time and effort. Finally, creating an autoscaled managed instance group allows you to automatically scale the number of instances based on demand, which can ensure that there are enough instances to handle peak traffic while minimizing costs during periods of low traffic
+
 **Question 72**
+
+- B. Use firewall rules based on network tags attached to the compute instances
+- Explanation
+  Right Option - B. Use firewall rules based on network tags attached to the compute instances
+
+  To restrict communications between VM instances within a VPC without relying on static IP addresses or subnets, you can use firewall rules based on network tags attached to the compute instances. This will allow you to specify which instances are allowed to communicate with each other and on which paths and ports. You can then attach the relevant network tags to the compute instances when they are created, allowing you to control communication between the instances without relying on static IP addresses or subnets.
+
 **Question 73**
+
+A. 1. Enable automatic storage increase for the instance. 2. Create a Stackdriver alert when CPU usage exceeds 75%, and change the instance type to reduce CPU usage. 3. Create a Stackdriver alert for replication lag, and shard the database to reduce replication time.
+
+Explanation
+Sharding makes horizontal scaling possible by partitioning the database into smaller, more manageable parts (shards), then deploying the parts across a cluster of machines. Data queries are routed to the corresponding server automatically, usually with rules embedded in application logic or a query router. https://cloud.google.com/community/tutorials/horizontally-scale-mysql-database-backend-with-google-cloud-sql-and-proxysql
+
 **Question 74**
+
+- D. BigQuery, because it is designed for large-scale processing of tabular data
+- Explanation. 94%
+  Cloud SQL/Spanner is OLTP DB but not OLAP. BQ is a well-known OLAP for analytics and also supports RBMS feature too
+
 **Question 75**
 **Question 76**
 **Question 77**
