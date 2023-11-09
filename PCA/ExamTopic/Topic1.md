@@ -415,8 +415,22 @@ kubectl set image deployment/echo-deployment <new_image_tag>
 **Question 59**
 
 - D. Define a design for the security of data in your web application that meets GDPR requirements. 100%
+- Explanation
+  D - https://cloud.google.com/security/gdpr
+
+  The GDPR lays out specific requirements for businesses and organizations who are established in Europe or who serve users in Europe. It regulates how businesses can collect, use, and store personal data Builds upon current documentation and reporting requirements to increase accountability Authorizes fines on businesses who fail to meet its requirements
 
 **Question 60**
+
+- A. Configure a Cloud SQL instance with high availability enabled. 53%
+- Explanation
+  It’s a, doc- https://cloud.google.com/sql/docs/mysql/high-availability
+
+  see also:
+
+  https://cloud.google.com/compute/docs/instances/sql-server/disaster-recovery-for-microsoft-sql-server#high_availability_and_disaster_recovery
+
+  When creating a "SQL Server 2017 Standard" in Cloud SQL menu you can chose single one or HA (regional).
 
 **Question 60**
 **Question 61**
