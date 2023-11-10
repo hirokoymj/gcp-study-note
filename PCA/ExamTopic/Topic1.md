@@ -581,7 +581,18 @@ Sharding makes horizontal scaling possible by partitioning the database into sma
   Dedicated Interconnect is a connection that provides a private, dedicated connection between your on-premises network and GCP over a Google-owned network. It is a secure and reliable option for connecting your on-premises network to GCP. You can use it to replicate files to GCP as a part of your disaster recovery plan. If Dedicated Interconnect fails for any reason, it is a good idea to have a backup solution in place to establish a secure connection between your networks. Cloud VPN is a secure and reliable solution for establishing a connection between your on-premises network and GCP. It uses a virtual private network (VPN) tunnel to securely connect the networks, and it is a good backup option if Dedicated Interconnect fails.
 
 **Question 81**
+
+- B. Provision preemptible VMs to reduce cost. Disable and then discontinue use of all GCP services and APIs that are not HIPAA-compliant. 94%
+- Explanation
+  Disabling and then discontinuing allows you to see the effects of not using the APIs, so you can gauge (check) alternatives. So that leaves B and D as viable answers. The question says only some are not time-critical which implies others are. This means preemptible VMs are good because they will secure a spot for scaling when needed.
+
 **Question 82**
+
+- C. Schedule a disaster simulation exercise during which you can shut off all VMs in a zone to see how your application behaves. 42%
+
+- Explanation
+  Resilience testing of their authentication layer means the testing of availability of service/application even when many of the instances fail in a particular location. That’s why. Disaster type of scenario is better where all VM instances becomes unavailable in a particular zone
+
 **Question 83**
 **Question 84**
 **Question 85**
