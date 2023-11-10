@@ -533,11 +533,52 @@ Sharding makes horizontal scaling possible by partitioning the database into sma
   Cloud SQL/Spanner is OLTP DB but not OLAP. BQ is a well-known OLAP for analytics and also supports RBMS feature too
 
 **Question 75**
+
+- C. In the GCP Console, navigate to Stackdriver Logging. Consult logs for (GKE) and Cloud SQL.
+- Explanation
+  Post mortem always includes log analysis.
+  post mortem = logs
+
 **Question 76**
+
+- A. Ensure that VM service accounts are granted the appropriate Cloud Pub/Sub IAM roles.
+- Explanation
+  The Google-recommended way for your application to authenticate to Cloud Pub/Sub and other Google Cloud services when running on Compute Engine VMs is to use VM service accounts. VM service accounts are automatically created when you create a Compute Engine VM, and they are associated with the VM instance. To authenticate to Cloud Pub/Sub and other Google Cloud services, you should ensure that the VM service accounts are granted the appropriate IAM roles.
+
 **Question 77**
-**Question 70**
+
+- D. Deploy Cloud VPN Gateway in each region. Ensure that each region has at least one VPN tunnel to the on-premises peer gateway.
+
+> It can't be -A - VPC Network Peering only allows private RFC 1918 connectivity across two Virtual Private Cloud (VPC) networks. In this example is one VPC with on-premise network
+> https://cloud.google.com/vpc/docs/vpc-peering
+
+> It is not definitely - B - Can't be
+
+> It is not C - Because Cloud VPN gateways and tunnels are regional objects, not global
+
+> So, it the answer is D -
+> https://cloud.google.com/vpn/docs/how-to/creating-static-vpns
+
+**Question 78**
+
+- B. Make the tables time-partitioned, and configure the partition expiration at 45 days. 100%
+- Explanation
+  If your tables are partitioned by date, the dataset's default table expiration applies to the individual partitions. You can also control partition expiration using the time_partitioning_expiration flag in the bq command-line tool or the expiration configuration setting in the API. When a partition expires, data in the partition is deleted but the partitioned table is not dropped even if the table is empty.
+
+  https://cloud.google.com/bigquery/docs/best-practices-storage
+
 **Question 79**
+
+- A. Configure a HorizontalPodAutoscaler with a target CPU usage. Enable the Cluster Autoscaler from the GCP Console. Most Voted
+- Explanation
+  How does Horizontal Pod Autoscaler work with Cluster Autoscaler? Horizontal Pod Autoscaler changes the deployment's or replicaset's number of replicas based on the current CPU load. If the load increases, HPA will create new replicas, for which there may or may not be enough space in the cluster. If there are not enough resources, CA will try to bring up some nodes, so that the HPA-created pods have a place to run. If the load decreases, HPA will stop some of the replicas. As a result, some nodes may become underutilized or completely empty, and then CA will terminate such unneeded nodes.
+
 **Question 80**
+
+- B. Verify that Dedicated Interconnect can replicate files to GCP. Verify that Cloud VPN can establish a secure connection between your networks if Dedicated Interconnect fails. 100%
+
+- Explanation
+  Dedicated Interconnect is a connection that provides a private, dedicated connection between your on-premises network and GCP over a Google-owned network. It is a secure and reliable option for connecting your on-premises network to GCP. You can use it to replicate files to GCP as a part of your disaster recovery plan. If Dedicated Interconnect fails for any reason, it is a good idea to have a backup solution in place to establish a secure connection between your networks. Cloud VPN is a secure and reliable solution for establishing a connection between your on-premises network and GCP. It uses a virtual private network (VPN) tunnel to securely connect the networks, and it is a good backup option if Dedicated Interconnect fails.
 
 **Question 81**
 **Question 82**
