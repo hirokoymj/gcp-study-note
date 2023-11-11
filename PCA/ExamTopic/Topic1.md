@@ -740,6 +740,9 @@ You can use URL Maps to configure the HTTPS load balancer to route traffic based
 
 **Question 96**
 
+- B. Use Deployment Manager to automate service provisioning. Use Stackdriver to monitor and debug your tests. 88%
+- It is B, Google Best practice ---> never use scripts. They do not trust anyone else's code it seems. TarTar, from exam topic
+
 **Question 97**
 
 - D. Save the files in multiple Multi-Regional Cloud Storage buckets, one bucket per multi-region.
