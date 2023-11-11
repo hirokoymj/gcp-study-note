@@ -349,15 +349,54 @@ Other options, such as reading the debug GCE Activity log using the API or Cloud
   The best answer is D, because the tagging is a best practice that is recommended on Jenkins/Spinnaker to deploy the right code and prevent accidentally (or intentionally) push of wrong code to production environments. See
 
 **Question 46**
+
+- C. Disable the health check for the instance group. Add his SSH key to the project-wide SSH Keys. 83%
+- Explanation
+  C, is the correct answer. As per the requirement Linux expert would need access to VM to troubleshoot the issue. With health check enabled, old VM will be terminated as soon as health-check fails for the VM and new VM will be auto-created. So, this situation will prevent Linux expert to troubleshoot the issue. Had it been the case that stack-drover logging is enabled and the expert just want to view the logs from the Cloud-logs than role to project-viewer could help. But it is specifically mentioned that expert will login into VM to troubleshoot the issue and not looking at the cloud Logs. So, Option-C is the correct answer.
+
 **Question 47**
+
+- C. GKE and GCP provide the tools you need to build a PCI DSS-compliant environment. 100%
+- Explanation
+  Link : https://cloud.google.com/security/compliance/pci-dss
+  Clearly mention GKE as PCI DSS-Compliant but not all GCP service are PCI DSS-Compliant so answer is definitely C.
+
 **Question 48**
+
+- B. Upload your files into Cloud Storage. Use Cloud Dataprep to explore and clean your data. 100%
+- Explanation
+  The recommended approach for detecting anomalies in your company data using Google-recommended practices is option B: Upload your files into Cloud Storage. Use Cloud Dataprep to explore and clean your data.
+
+  Cloud Storage is a highly scalable, durable, and secure object storage service that can be used to store and retrieve data from anywhere on the web. You can use Cloud Storage to store your company data files and make them available for analysis.
+
+  Cloud Dataprep is a fully managed data preparation service that allows you to quickly and easily explore, clean, and transform your data for analysis. It can help you detect anomalies in your data by providing features such as data profiling, data cleansing, and data transformation.
 
 **Question 49**
 
-**Question 50**
+- C. The effective policy is the union of the policy set at the node and policies inherited from its ancestors. 100%
+- Explanation
+  The effective policy for a resource is the union of the policy set at that resource and the policy inherited from its parent.
+
+  https://cloud.google.com/iam/docs/resource-hierarchy-access-control
 
 **Question 50**
+
+- C. Use an IP range on Google Cloud that does not overlap with the range you use on-premises. 85%
+- Explanation
+  Ans is C,
+
+https://cloud.google.com/vpc/docs/using-vpc
+
+"Primary and secondary ranges can't conflict with on-premises IP ranges if you have connected your VPC network to another network with Cloud VPN, Dedicated Interconnect, or Partner Interconnect."
+
 **Question 51**
+
+- A. Point gcloud datastore create-indexes to your configuration file. 100%
+- Explanation
+  A is correct - Point gcloud datastore create-indexes to your configuration file.
+
+  To deploy new indexes to Cloud Datastore, you can use the gcloud datastore create-indexes command and point it to the YAML configuration file containing the required indexes. This command will create the new indexes in Cloud Datastore for your application.
+
 **Question 52**
 
 - C. Deploy the application on two Compute Engine instance groups, each in the same project but in a different region. Use the first instance group to serve traffic, and use the HTTP load balancing service to fail over to the standby instance group in case of a disaster
@@ -653,6 +692,10 @@ Sharding makes horizontal scaling possible by partitioning the database into sma
 - https://cloud.google.com/appengine/docs/standard/splitting-traffic
 
 **Question 91**
+
+- A. Create an egress rule with priority 1000 to deny all traffic for all instances. Create another egress rule with priority 100 to allow the Active Directory traffic for all instances. 100%
+- Explanation
+  To enforce the requirement that all Compute Engine instances in your VPC should be able to connect to an Active Directory server on specific ports while blocking any other traffic emerging from instances, the following two egress rules should be created: Create an egress rule with priority 1000 to deny all traffic for all instances. Create another egress rule with priority 100 to allow the Active Directory traffic for all instances. In this configuration, the rule that allows the AD traffic has a lower priority number than the rule that denies all other traffic. Therefore, this rule should be evaluated first.
 
 **Question 92**
 
