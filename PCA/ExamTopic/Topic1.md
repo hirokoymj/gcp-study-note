@@ -451,6 +451,9 @@ kubectl set image deployment/echo-deployment <new_image_tag>
 
 **Question 58**
 
+- B. Have users upload the images to Cloud Storage using a signed URL that expires after 24 hours. 100%
+- https://cloud.google.com/storage/docs/access-control/signed-urls
+
 **Question 59**
 
 - D. Define a design for the security of data in your web application that meets GDPR requirements. 100%
