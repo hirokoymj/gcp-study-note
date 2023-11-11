@@ -420,6 +420,10 @@ To integrate with an on-premises database while ensuring that the database is no
 Cloud VPN allows you to create a secure, encrypted connection between your on-premises network and Google Cloud, using Internet Protocol security (IPSec) tunnels. This will allow your application to communicate with the on-premises database while keeping the database secure and inaccessible from the public internet.
 
 **Question 54**
+
+- A. Upload the required installation files to Cloud Storage. Configure the VM on a subnet with a Private Google Access subnet. Assign only an internal IP address to the VM. Download the installation files to the VM using gsutil. 78%
+- https://cloud.google.com/vpc/docs/configure-private-google-access
+
 **Question 55**
 
 - A. Move your data onto a Transfer Appliance. Use a Transfer Appliance Rehydrator to decrypt the data into Cloud Storage.
