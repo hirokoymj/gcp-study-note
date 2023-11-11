@@ -589,27 +589,85 @@ Sharding makes horizontal scaling possible by partitioning the database into sma
 **Question 82**
 
 - C. Schedule a disaster simulation exercise during which you can shut off all VMs in a zone to see how your application behaves. 42%
-
 - Explanation
   Resilience testing of their authentication layer means the testing of availability of service/application even when many of the instances fail in a particular location. That’s why. Disaster type of scenario is better where all VM instances becomes unavailable in a particular zone
 
 **Question 83**
+
+- D. Use Cloud Audit Logging to view Cloud Audit Logs, and create a filter on the query operation to get the required information.
+- Explanation
+  Cloud Audit Logging records activities and API calls in Google Cloud services, including BigQuery. You can use Cloud Audit Logging to view logs and filter them based on specific operations, such as queries in BigQuery. By filtering on the query operation, you can gather the required information about how many queries each user ran in the last month, which is essential for audit purposes.
+
 **Question 84**
+
+- B. Create a custom VM image with all OS package dependencies. Use Deployment Manager to create the managed instance group with the VM image.
+
+- Explanation
+  Managed instance groups are a way to manage a group of Compute Engine instances as a single entity. If you want to automate the creation of a managed instance group, you can use tools such as Terraform, Deployment Manager, or Puppet to automate the process. To minimize the startup time for new VMs in the instance group, you should create a custom VM image with all of the OS package dependencies pre-installed. This will allow you to create new VMs from the custom image, which will significantly reduce the startup time compared to installing the dependencies on each VM individually. You can then use Deployment Manager to create the managed instance group with the custom VM image.
+- https://cloud.google.com/compute/docs/images
+
 **Question 85**
+
+- A. Create a group per country. Add analysts to their respective country-groups. Create a single group 'all_analysts', and add all country-groups as members. Grant the 'all_analysts' group the IAM role of BigQuery jobUser. Share the appropriate dataset with view access with each respective analyst country-group. Most Voted
+
+- Explanation
+  Job user = Able to create query
+
+  Data Viewer = Able to view the data
+
 **Question 86**
+
+- B. Memcache backed by Cloud Datastore for the customer session state data. Lifecycle-managed Cloud Storage for log archives, thumbnails, and VM boot/data volumes. 68%
+- Explanation
+  Local SSD cannot be used for neither boot nor data. This rules out other options except B.
+
 **Question 87**
+
+- A. StatefulSets
+- Explanation
+  StatefulSets is a feature of Kubernetes, which the question asks about. Yes, Persistent volumes are required by StatefulSets https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
+
+  See the Google documentations for mentioning of hostnames https://cloud.google.com/kubernetes-engine/docs/concepts/statefulset
+
 **Question 88**
+
+- A. Customize the cache keys to omit the protocol from the key. 60%
+- https://cloud.google.com/cdn/docs/best-practices#using_custom_cache_keys_to_improve_cache_hit_ratio
+- Explanation
+  By default, Cloud CDN uses the complete request URL to build the cache key. For performance and scalability, it’s important to optimize cache hit ratio. To help optimize your cache hit ratio, you can use custom cache keys
+
 **Question 89**
+
+- B. Stackdriver automatically collects admin activity logs for most services. The Stackdriver Logging agent must be installed on each instance to collect system logs. 100%
+- Explanation
+  Admin and event logs are configured by default. VM System logs require a logging agent to be configured. So, A is not valid. Answer is B
+
 **Question 90**
 
+- B. Deploy the update as a new version in the App Engine application, and split traffic between the new and current versions. 100%
+- Explanation
+  To test an update to an App Engine application with production traffic before replacing the current version, you can deploy the update as a new version in the App Engine application and split traffic between the new and current versions. This is known as a "blue-green" deployment, and it allows you to test the new version with a portion of production traffic while the current version is still serving the remainder of traffic.
+
+  To split traffic between the new and current versions, you can use the App Engine traffic splitting feature. This feature allows you to specify the percentage of traffic that should be sent to each version, and it can be used to gradually ramp up traffic to the new version over time. This allows you to test the new version with a small portion of traffic initially, and gradually increase the traffic as you become more confident in the update.
+
+- https://cloud.google.com/appengine/docs/standard/splitting-traffic
+
 **Question 91**
+
 **Question 92**
+
 **Question 93**
+
 **Question 94**
+
 **Question 95**
+
 **Question 96**
+
 **Question 97**
+
 **Question 98**
+
 **Question 99**
 
 **Question 100**
