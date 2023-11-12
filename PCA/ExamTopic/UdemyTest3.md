@@ -103,15 +103,112 @@ Action = "Delete object" Object conditions = select ""Days since custom time" ch
 - https://cloud.google.com/pubsub/docs/stream-messages-dataflow
 
 **Question 11**
+**Question 103**
+
+- C. 1. Perform an assessment of virtual machines running in the current VMware environment. 2. Define a migration plan, prepare a Migrate for Compute Engine migration RunBook, and execute the migration. 95%
+- Migrate for Compute Engine organizes groups of VMs into Waves. After understanding the dependencies of your applications, create runbooks that contain groups of VMs and begin your migration!
+- https://cloud.google.com/migrate/compute-engine/docs/4.5/how-to/migrate-on-premises-to-gcp/overview
+
 **Question 12**
+**Question 104**
+
+- D. Use an unmanaged instance group with an active and standby instance in different zones, use a regional persistent disk, and use a network load balancer in front of the instances.
+- Correct Ans : D
+  Since the Traffic is TCP, Ans A & C gets eliminated as HTTPS load balance is not supported.
+  - B - File storage system is Cloud Firestore which do not give full control, hence eliminated.
+  - D - Unmanaged instance group with network load balance with regional persistent disk for storage gives full control which is required for the migration.
+
 **Question 13**
+
+- Let’s talk about the Cloud Peering services, which are Direct Peering and Carrier Peering. These services are useful when you require access to Google and Google Cloud properties.
+  ![](./images/13-4.png)
+  ![](./images/13-1.png)
+  ![](./images/13-2.png)
+  ![](./images/13-3.png)
+
 **Question 14**
+
+- Cloud Run for Anthos allows you to deploy new revisions of your application with a specific percentage of traffic,
+- https://cloud.google.com/anthos/run/docs/deploy-application
+- Cloud Run for Anthos
+- [Cloud Run: Split traffic between multiple revisions](https://cloud.google.com/run/docs/rollouts-rollbacks-traffic-migration#split-traffic)
+
+- ![](./images/14-0.png)
+- ![](./images/14-1.png)
+
 **Question 15**
+
+- you need to triage incidents quickly -> Alert
+- between A and B, u don´t need to create a custom metric. I go with A
+- **Explanation**
+  An incident, also called an alert, is a record of the triggering of an alerting policy. Unless an alerting policy is snoozed or disabled, Cloud Monitoring opens an incident when a condition of an alerting policy is triggered.
+
 **Question 16**
+
+- **Explanation**
+  Cloud SQL. If you use Cloud SQL, the fully managed Google Cloud MySQL database, you should enable automated backups and binary logging for your Cloud SQL instances. This allows you to perform a point-in-time recovery, which restores your database from a backup and recovers it to a fresh Cloud SQL instance
+
 **Question 17**
+
+- BigQuery
+
 **Question 18**
+
+- App Engine
+- IaaS = Compute Engine. Hybrid = GKE (engineering heavy). PaaS = App Engine.
+
 **Question 19**
+
+- https://cloud.google.com/blog/topics/cost-management/best-practices-for-optimizing-your-cloud-costs
+- [](../../PCB/Qwiklab/MySQL/README.md)
+
+- [Export and import using SQL dump files](https://cloud.google.com/sql/docs/mysql/import-export/import-export-sql)
+
+- Note: If you're migrating an entire database from a supported database server (on-premises, in AWS, or Cloud SQL) to a new Cloud SQL instance, you can use Database Migration Service instead of exporting and then importing files.
+- https://cloud.google.com/sql/docs/mysql/import-export#serverless
+
 **Question 20**
+
+- [Restrict external IP addresses to specific VMs](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address#disableexternalip)
+
+```
+constraints/compute.vmExternalIpAccess
+```
+
+- **Explanation**
+  Set an Organization Policy with a constraint on constraints/compute.vmExternalIpAccess. List the approved instances in the allowedValues list.
+
+**Question 21**
+**Question 22**
+**Question 23**
+**Question 24**
+**Question 25**
+**Question 26**
+**Question 27**
+**Question 28**
+**Question 29**
+**Question 30**
+
+**Question 31**
+**Question 32**
+**Question 33**
+**Question 34**
+**Question 35**
+**Question 36**
+**Question 37**
+**Question 38**
+**Question 39**
+**Question 40**
+
+**Question 41**
+
+**Question 42**
+
+**Question 43**
+
+**Question 44**
+
+**Question 45**
 
 ![](./images/94.png)
 
