@@ -101,3 +101,44 @@ Action = "Delete object" Object conditions = select ""Days since custom time" ch
 - I believe the answer is B. "Pub/Sub doesn't provide guarantees about the order of message delivery. Strict message ordering can be achieved with buffering, often using Dataflow." https://cloud.google.com/solutions/data-lifecycle-cloud-platform
 
 - https://cloud.google.com/pubsub/docs/stream-messages-dataflow
+
+**Question 11**
+**Question 12**
+**Question 13**
+**Question 14**
+**Question 15**
+**Question 16**
+**Question 17**
+**Question 18**
+**Question 19**
+**Question 20**
+
+![](./images/94.png)
+
+![](./images/95-1.png)
+![](./images/95-2.png)
+![](./images/96-0.png)
+![](./images/96-1.png)
+![](./images/96-2.png)
+![](./images/97.png)
+
+![](./images/98-1.png)
+![](./images/98-2.png)
+![](./images/98-3.png)
+![](./images/98-4.png)
+![](./images/98-5.png)
+![](./images/98-6.png)
+![](./images/98-7.png)
+
+![](./images/99-1.png)
+![](./images/99-2.png)
+
+![](./images/100-0.png)
+![](./images/100-1.png)
+![](./images/100-2.png)
+
+![](./images/101-0.png)
+![](./images/101-1.png)
+
+![](./images/102-0.png)
+![](./images/102-1.png)
