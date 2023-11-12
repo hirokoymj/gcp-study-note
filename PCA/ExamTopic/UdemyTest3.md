@@ -160,25 +160,25 @@ Action = "Delete object" Object conditions = select ""Days since custom time" ch
 **Question 19**
 
 - https://cloud.google.com/blog/topics/cost-management/best-practices-for-optimizing-your-cloud-costs
-- [](../../PCB/Qwiklab/MySQL/README.md)
-
-- [Export and import using SQL dump files](https://cloud.google.com/sql/docs/mysql/import-export/import-export-sql)
-
-- Note: If you're migrating an entire database from a supported database server (on-premises, in AWS, or Cloud SQL) to a new Cloud SQL instance, you can use Database Migration Service instead of exporting and then importing files.
-- https://cloud.google.com/sql/docs/mysql/import-export#serverless
+  ![](./images/19.png)
 
 **Question 20**
 
+- Note: If you're migrating an entire database from a supported database server (on-premises, in AWS, or Cloud SQL) to a new Cloud SQL instance, you can use **Database Migration Service** instead of exporting and then importing files.
+- [Database Migration Service](../../PCB/Qwiklab/MySQL/README.md)
+- [Export and import using SQL dump files](https://cloud.google.com/sql/docs/mysql/import-export/import-export-sql)
+- [Minimize the performance impact of exports](https://cloud.google.com/sql/docs/mysql/import-export#serverless)
+
+**Question 21**
+
 - [Restrict external IP addresses to specific VMs](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address#disableexternalip)
+- **Explanation**
+  Set an Organization Policy with a constraint on constraints/compute.vmExternalIpAccess. List the approved instances in the allowedValues list.
 
 ```
 constraints/compute.vmExternalIpAccess
 ```
 
-- **Explanation**
-  Set an Organization Policy with a constraint on constraints/compute.vmExternalIpAccess. List the approved instances in the allowedValues list.
-
-**Question 21**
 **Question 22**
 **Question 23**
 **Question 24**
