@@ -726,6 +726,20 @@ Sharding makes horizontal scaling possible by partitioning the database into sma
 - Explanation
   To load-balance the HTTPS traffic, we should use an Ingress resource, which acts as a reverse proxy to route traffic to different services based on the HTTP(S) header or the hostname. We can use the GKE Ingress controller to manage the Ingress resource, which will automatically create and manage a Google Cloud Load Balancer to distribute traffic to the pods running the application
 
+- https://cloud.google.com/kubernetes-engine/docs/how-to/scaling-apps#autoscaling-deployments
+
+  > kubectl autoscale creates a HorizontalPodAutoscaler (or HPA) object that targets a specified resource (called the scale target) and scales it as needed.
+
+  ```
+  kubectl autoscale deployment my-app --max 6 --min 4 --cpu-percent 50
+  ```
+
+**Creating an Ingress resource[1]**
+
+Ingress is a Kubernetes resource that encapsulates a collection of rules and configuration for routing external HTTP(S) traffic to internal services.
+
+- [1] https://cloud.google.com/kubernetes-engine/docs/tutorials/http-balancer#creating_an_ingress_resource
+
 **Question 94**
 
 - B. Create an HTTPS load balancer with URL Maps. 100%
