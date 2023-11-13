@@ -180,6 +180,13 @@ constraints/compute.vmExternalIpAccess
 ```
 
 **Question 22**
+
+- [View and understand Firewall Insights](https://cloud.google.com/network-intelligence-center/docs/firewall-insights/how-to/view-understand-insights#enabling-fw-rules-logging)
+- Insights for overly permissive rules and deny rules are generated based on data collected for the duration when Firewall Rules Logging is enabled.
+
+![](./images/22.png)
+![](./images/22-firewall-insight.png)
+
 **Question 23**
 **Question 24**
 **Question 25**
