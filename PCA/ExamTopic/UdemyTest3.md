@@ -327,33 +327,3 @@ Answer 'D' only performs security scanning (not test) and is not automatically d
 **Question 44**
 
 **Question 45**
-
-![](./images/94.png)
-
-![](./images/95-1.png)
-![](./images/95-2.png)
-![](./images/96-0.png)
-![](./images/96-1.png)
-![](./images/96-2.png)
-![](./images/97.png)
-
-![](./images/98-1.png)
-![](./images/98-2.png)
-![](./images/98-3.png)
-![](./images/98-4.png)
-![](./images/98-5.png)
-![](./images/98-6.png)
-![](./images/98-7.png)
-
-![](./images/99-1.png)
-![](./images/99-2.png)
-
-![](./images/100-0.png)
-![](./images/100-1.png)
-![](./images/100-2.png)
-
-![](./images/101-0.png)
-![](./images/101-1.png)
-
-![](./images/102-0.png)
-![](./images/102-1.png)
