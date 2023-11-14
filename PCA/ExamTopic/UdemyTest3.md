@@ -184,27 +184,155 @@ constraints/compute.vmExternalIpAccess
 - [View and understand Firewall Insights](https://cloud.google.com/network-intelligence-center/docs/firewall-insights/how-to/view-understand-insights#enabling-fw-rules-logging)
 - Insights for overly permissive rules and deny rules are generated based on data collected for the duration when Firewall Rules Logging is enabled.
 
-![](./images/22.png)
-![](./images/22-firewall-insight.png)
+<kbd>![](./images/22.png)</kdb>
+<kbd>![](./images/22-firewall-insight.png)</kbd>
 
 **Question 23**
+
+- VPC Service Controls
+- The following diagram shows a service perimeter that allows communication between a VPC project and Cloud Storage bucket inside the perimeter but blocks all communication across the perimeter:
+  ![](./images/23.png)
+- **Explanation**
+  For all Google Cloud services secured with VPC Service Controls, you can ensure that: Resources within a perimeter are accessed only from clients within authorized VPC networks using Private Google Access with either Google Cloud or on-premises.
+- https://cloud.google.com/vpc-service-controls/docs/overview
+
 **Question 24**
+
+- [Automatically apply VM configuration updates in a MIG](https://cloud.google.com/compute/docs/instance-groups/rolling-out-updates-to-managed-instance-groups)
+-
+- https://cloud.google.com/compute/docs/instance-groups/rolling-out-updates-to-managed-instance-groups#type
+
+- **Update type**
+  Managed instance groups support two types of update:
+
+  - Automatic, or **proactive**, updates
+  - Selective, or **opportunistic**, updates
+
+  If you want to apply updates automatically, set the type to proactive.
+  Alternatively, if an automated update is potentially too disruptive, you can choose to perform an opportunistic update.
+
+- https://cloud.google.com/compute/docs/instance-groups/rolling-out-updates-to-managed-instance-groups#type
+
+- MIGs -> update a MIG template -> opportunistic updates
+
 **Question 25**
+
+- B. Configure the Compute Engine instances with an instance template for the application, and use a regional persistent disk for the application data. Whenever a zonal outage occurs, use the instance template to spin up the application in **another zone in the same region**. Use the regional persistent disk for the application data. 100%
+- [Build HA services using regional Persistent Disk](https://cloud.google.com/compute/docs/disks/high-availability-regional-persistent-disk)
+- Regional Persistent Disk is a storage option that enables you to implement high availability (HA) services in Compute Engine.
+
 **Question 26**
+
+- You can't use Cloud NAT according to this documentation: https://cloud.google.com/nat/docs/troubleshooting#overlapping-ip-addresses
+
+  - **Q:Can I use Cloud NAT to connect a VPC network to another network to work around overlapping IP addresses?**
+  - No, Cloud NAT cannot apply to any custom route whose next hop is not the default internet gateway. For example, Cloud NAT cannot apply to traffic sent to a next hop Cloud VPN tunnel, even if the destination is a publicly routable IP address."
+
+- **BigfoodPanda**
+
+  - Could not be B, as Cloud NAT only apply on route targeting default gateway.
+  - Could not be C : if you block route advertisement, then you will have no route to your datacenter, and you will be unable to connect your datacenter
+  - Could not be D : blocking using firewall the overlapping IP space will not provide connectivity to these ressource
+
+  So answer could only be A : user should update its IP space so it does not overlap
+
 **Question 27**
+
+- [Migrating Hadoop Jobs from On-Premises to Dataproc](https://cloud.google.com/architecture/hadoop/hadoop-gcp-migration-jobs)
+
+  - This guide describes how to move your Apache Hadoop jobs to Google Cloud (by using Dataproc.
+
+- Should be B, you want to minimize costs.
+  https://cloud.google.com/dataproc/docs/concepts/compute/secondary-vms#preemptible_and_non-preemptible_secondary_workers
+
+- The Apache® Hadoop® project develops open-source software for reliable, scalable, distributed computing.
+
+![](./images/27.png)
+The Apache Hadoop software library is a framework that allows for the distributed processing of large data sets across clusters of computers using simple programming models.
+
 **Question 28**
+
+- https://cloud.google.com/compute/docs/images/os-details#debian
+
+![](./images/28-0.png)
+![](./images/28-1.png)
+
 **Question 29**
+
+- [GKE](https://github.com/hirokoymj/gcp-study-note/blob/master/ACE/study-app/README.md#gke)
+- Cluster -> Nodes(VM) -> Pod(container), Pod(container), Pod(container), https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture
+- https://cloud.google.com/blog/products/management-tools/using-logging-your-apps-running-kubernetes-engine
+- https://cloud.google.com/stackdriver/docs/solutions/gke/installing#installing
+
 **Question 30**
 
+- **Limitations**
+  While Cloud Storage FUSE has a file system interface, it is not like an NFS or CIFS file system on the backend. Additionally, Cloud Storage FUSE is not POSIX compliant. For a POSIX file system product in Google Cloud, see Filestore.
+  https://cloud.google.com/storage/docs/gcs-fuse#differences-and-limitations
+- Firestore is POSIX
+- **Explanation**
+  FUSE can be used, but it comes with latency. Question states, huge workload like 100 MB/sec writes, then FUSE is not a god choice. Filestore is much better solution.
+
 **Question 31**
+
+- **Explanation** The Anthos Service Mesh pages in the Google Cloud Console provide both summary and in-depth metrics, charts, and graphs that enable you to observe service behavior.
+- https://cloud.google.com/service-mesh/docs/observability/explore-dashboard
+  Anthos Service Mesh provides observability into the health and performance of your services
+
+![](./images/31.png)
+
 **Question 32**
+
+- [Retention policies](https://cloud.google.com/storage/docs/bucket-lock#retention-policy)
+
 **Question 33**
+
+- **Explanation**
+  "Any code change that has been pushed to the remote develop branch on your GitHub repository should be built" >> this excludes A and B since both happen locally before a push.
+
+Answer 'D' only performs security scanning (not test) and is not automatically deployed which is requested.
+
 **Question 34**
+
+- **Explanation**
+  In order to prioritize the availability on production environment (as per question), first we need to increase the number of max instances in the instance group, then, for sure we can investigate and restart application process.
+
 **Question 35**
+
+- **Explanation**
+  Cloud Run is a serverless compute platform that allows for automatic scaling and provides a low-cost option for applications with unpredictable or variable traffic patterns.
+
+  Cloud Bigtable is a NoSQL database that is designed for high-throughput, low-latency workloads and can handle large amounts of data. It is also fully managed, so it does not require significant administration overhead.
+
 **Question 36**
+
+- GKE
+- each microservice with a specific number of replicas = Deployment
+- internal to the cluster = Service
+- **Explanation**
+  B is incorrect. Ingress comes with a HTTP(S) LB with external IP hence is not needed for communications within the cluster internally.
+
+  Microservice as Deployment - used to create replicas as per this request
+
+  DNS name - used as an alias service name for External name which is user for internal requests
+
 **Question 37**
+
+- **Explanation**
+  It talks about managing all network resources in a company. Google always recommends having a shared VPC to maintain network resources in an organization. The separation of roles adds to the favor of having a shared VPC.
+- https://cloud.google.com/vpc/docs/shared-vpc
+
+  When you use Shared VPC, you designate a project as a host project and attach one or more other service projects to it. The VPC networks in the host project are called Shared VPC networks. Eligible resources from service projects can use subnets in the Shared VPC network.
+
+  Shared VPC lets organization administrators delegate administrative responsibilities, such as creating and managing instances, to Service Project Admins while maintaining centralized control over network resources like subnets, routes, and firewalls.
+
 **Question 38**
+
+- **Explanation**
+  Store static content such as HTML and images in a Cloud Storage bucket. Use Cloud Functions to host the APIs and save the user data in Firestore
+
 **Question 39**
+
 **Question 40**
 
 **Question 41**
