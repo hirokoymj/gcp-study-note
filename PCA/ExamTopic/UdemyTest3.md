@@ -121,10 +121,6 @@ Action = "Delete object" Object conditions = select ""Days since custom time" ch
 **Question 13**
 
 - Let’s talk about the Cloud Peering services, which are Direct Peering and Carrier Peering. These services are useful when you require access to Google and Google Cloud properties.
-  ![](./images/13-4.png)
-  ![](./images/13-1.png)
-  ![](./images/13-2.png)
-  ![](./images/13-3.png)
 
 **Question 14**
 
@@ -132,9 +128,6 @@ Action = "Delete object" Object conditions = select ""Days since custom time" ch
 - https://cloud.google.com/anthos/run/docs/deploy-application
 - Cloud Run for Anthos
 - [Cloud Run: Split traffic between multiple revisions](https://cloud.google.com/run/docs/rollouts-rollbacks-traffic-migration#split-traffic)
-
-- ![](./images/14-0.png)
-- ![](./images/14-1.png)
 
 **Question 15**
 
@@ -160,7 +153,6 @@ Action = "Delete object" Object conditions = select ""Days since custom time" ch
 **Question 19**
 
 - https://cloud.google.com/blog/topics/cost-management/best-practices-for-optimizing-your-cloud-costs
-  ![](./images/19.png)
 
 **Question 20**
 
@@ -183,9 +175,6 @@ constraints/compute.vmExternalIpAccess
 
 - [View and understand Firewall Insights](https://cloud.google.com/network-intelligence-center/docs/firewall-insights/how-to/view-understand-insights#enabling-fw-rules-logging)
 - Insights for overly permissive rules and deny rules are generated based on data collected for the duration when Firewall Rules Logging is enabled.
-
-<kbd>![](./images/22.png)</kdb>
-<kbd>![](./images/22-firewall-insight.png)</kbd>
 
 **Question 23**
 
@@ -247,15 +236,11 @@ constraints/compute.vmExternalIpAccess
 
 - The Apache® Hadoop® project develops open-source software for reliable, scalable, distributed computing.
 
-![](./images/27.png)
-The Apache Hadoop software library is a framework that allows for the distributed processing of large data sets across clusters of computers using simple programming models.
+- The Apache Hadoop software library is a framework that allows for the distributed processing of large data sets across clusters of computers using simple programming models.
 
 **Question 28**
 
 - https://cloud.google.com/compute/docs/images/os-details#debian
-
-![](./images/28-0.png)
-![](./images/28-1.png)
 
 **Question 29**
 
@@ -278,8 +263,6 @@ The Apache Hadoop software library is a framework that allows for the distribute
 - **Explanation** The Anthos Service Mesh pages in the Google Cloud Console provide both summary and in-depth metrics, charts, and graphs that enable you to observe service behavior.
 - https://cloud.google.com/service-mesh/docs/observability/explore-dashboard
   Anthos Service Mesh provides observability into the health and performance of your services
-
-![](./images/31.png)
 
 **Question 32**
 
