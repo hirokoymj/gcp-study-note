@@ -51,7 +51,11 @@ You can use URL Maps to configure the HTTPS load balancer to route traffic based
 - B. Implement retry logic using a truncated exponential backoff strategy.
 - Explanation
   You should use exponential backoff to retry your requests when receiving errors with 5xx or 429 response codes from Cloud Storage.
-  https://cloud.google.com/storage/docs/request-rate
+
+- [Request rate and access distribution guidelines](https://cloud.google.com/storage/docs/request-rate)
+- Cloud Storage is a highly scalable service that uses auto-scaling technology to achieve very high request rates.
+- [429—Too Many Requests](https://cloud.google.com/storage/docs/json_api/v1/status-codes#429_Too_Many_Requests)
+- [500—Internal Server Error](https://cloud.google.com/storage/docs/json_api/v1/status-codes#500_Internal_Server_Error)
 
 **Question 4**
 
@@ -69,8 +73,33 @@ You can use URL Maps to configure the HTTPS load balancer to route traffic based
 - C. Store the data in Cloud Storage and use lifecycle management to delete files when they expire. Most Voted
 - Explanation
   To delete objects up to 4 years, you add an object lifecycle rule specifying the following form parameters:
+  Action = "Delete object" Object conditions = select ""Days since custom time" checkbox and specify 1460 days.
 
-Action = "Delete object" Object conditions = select ""Days since custom time" checkbox and specify 1460 days.
+```
+gcloud storage buckets update gs://BUCKET_NAME --lifecycle-file=LIFECYCLE_CONFIG_FILE
+```
+
+```
+{
+  "lifecycle": {
+    "rule": [
+      {
+        "action": {"type": "Delete"},
+        "condition": {
+          "numNewerVersions": 2,
+          "isLive": false
+        }
+      },
+      {
+        "action": {"type": "Delete"},
+        "condition": {
+          "daysSinceNoncurrentTime": 7
+        }
+      }
+    ]
+  }
+}
+```
 
 **Question 7**
 
