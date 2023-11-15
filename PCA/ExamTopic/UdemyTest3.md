@@ -344,7 +344,7 @@ Answer 'D' only performs security scanning (not test) and is not automatically d
 
 **Question 42**
 
-- Istio fault injection is to test the resiliency of your application.
+- Istio fault injection is to test the **resiliency** of your application.
 - https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
 - Fault Injection - This task shows you how to inject faults to test the resiliency of your application.
 
@@ -392,10 +392,6 @@ spec:
 
 **Question 44**
 
-https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
-
-- This task shows you how to inject faults to test the resiliency of your application.
-
 - **Explanation**
   A versioning strategy for the APIs that increases the version number on every backward-incompatible change is the best way to ensure stability for your customers in case the API makes backward-incompatible changes. This will allow you to track the changes that have been made to the API and allow your customers to easily identify the latest version of the API.
 
@@ -403,4 +399,4 @@ https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
 
 - You are comparing wrong things. Monolithic application need to be compared against Micro Services. In monolithic application; you deploy all the features/api end-points in a single EAR/WAR file; i.e. single JVM. In micro-services they are deployed in multiple JVMs. Note that in Monolithic architecture also you have multiple REST end points exposed.
 
-3 tier, or 2 tier or N tier architectures is a different concept. It says how many subsystems/modules your application is divided like database layer, client layer, application logic layer. Hence, monolithic as well microservices both can be n tier applications.
+- 3 tier, or 2 tier or N tier architectures is a different concept. It says how many subsystems/modules your application is divided like database layer, client layer, application logic layer. Hence, monolithic as well microservices both can be n tier applications.
