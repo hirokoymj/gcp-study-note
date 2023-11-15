@@ -316,14 +316,91 @@ Answer 'D' only performs security scanning (not test) and is not automatically d
 
 **Question 39**
 
+- Explanation
+  Pub/Sub & Cloud Function serves the purpose
+  ![](images/39-1.png)
+
+  <hr />
+
+  ![](images/39-2.png)
+
 **Question 40**
+
+- VM, no public IP, no VPN, connect SSH from outside GCP.
+- Identity-Aware Proxy(IAP)
+- https://cloud.google.com/iap/#
+  - Use identity and context to guard access to your applications and VMs
+  - Control access to your cloud-based and on-premises applications and VMs running on Google Cloud
+  - Verify user identity and use context to determine if a user should be granted access
+  - Work from untrusted networks without the use of a VPN
 
 **Question 41**
 
+- Organization -> Finance/Shopping folder
+- The development team: Google Group + Project Owner under Org.
+- Prevent the development team from creating resources in projects in the Finance folder
+- C. Assign the development team group the Project Owner role on the Shopping folder, and remove the development team group Project Owner role from the Organization.
+- https://cloud.google.com/resource-manager/docs/creating-managing-folders
+
 **Question 42**
+
+- Istio fault injection is to test the resiliency of your application.
+- https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
+- Fault Injection - This task shows you how to inject faults to test the resiliency of your application.
+
+```
+$ kubectl apply -f samples/bookinfo/networking/virtual-service-ratings-test-delay.yaml
+```
+
+- **Injecting an HTTP delay fault**
+  To test the Bookinfo application microservices for resiliency, inject a 7s delay between the reviews:v2 and ratings microservices for user jason. This test will uncover a bug that was intentionally introduced into the Bookinfo app.
+
+```
+kubectl apply -f samples/bookinfo/networking/virtual-service-ratings-test-delay.yaml
+```
+
+```
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+...
+spec:
+  hosts:
+  - ratings
+  http:
+  - fault:
+      delay:
+        fixedDelay: 7s
+        percentage:
+          value: 100
+    match:
+    - headers:
+        end-user:
+          exact: jason
+    route:
+    - destination:
+        host: ratings
+        subset: v1
+  - route:
+    - destination:
+        host: ratings
+        subset: v1
+```
 
 **Question 43**
 
+- just building code without having to create and maintain the underlying infrastructure. -> serverless -> App Engine
+
 **Question 44**
 
+https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
+
+- This task shows you how to inject faults to test the resiliency of your application.
+
+- **Explanation**
+  A versioning strategy for the APIs that increases the version number on every backward-incompatible change is the best way to ensure stability for your customers in case the API makes backward-incompatible changes. This will allow you to track the changes that have been made to the API and allow your customers to easily identify the latest version of the API.
+
 **Question 45**
+
+- You are comparing wrong things. Monolithic application need to be compared against Micro Services. In monolithic application; you deploy all the features/api end-points in a single EAR/WAR file; i.e. single JVM. In micro-services they are deployed in multiple JVMs. Note that in Monolithic architecture also you have multiple REST end points exposed.
+
+3 tier, or 2 tier or N tier architectures is a different concept. It says how many subsystems/modules your application is divided like database layer, client layer, application logic layer. Hence, monolithic as well microservices both can be n tier applications.
