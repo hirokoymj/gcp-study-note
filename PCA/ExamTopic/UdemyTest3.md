@@ -15,14 +15,29 @@
   kubectl autoscale deployment my-app --max 6 --min 4 --cpu-percent 50
   ```
 
-  **Creating an Ingress resource[1]**
+- [GKE - Creating an Ingress resource](https://cloud.google.com/kubernetes-engine/docs/tutorials/http-balancer#creating_an_ingress_resource)
+- Ingress is a Kubernetes resource that encapsulates a collection of rules and configuration for routing external HTTP(S) traffic to internal services.
 
-Ingress is a Kubernetes resource that encapsulates a collection of rules and configuration for routing external HTTP(S) traffic to internal services.
+- On GKE, Ingress is implemented using Cloud Load Balancing.
 
-- [1] https://cloud.google.com/kubernetes-engine/docs/tutorials/http-balancer#creating_an_ingress_resource
+  ```
+  apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    name: basic-ingress
+  spec:
+    defaultBackend:
+      service:
+        name: web
+        port:
+          number: 8080
+  ```
+
+  ```
+  kubectl apply -f basic-ingress.yaml
+  ```
 
 **Question 2**
-**Question 94**
 
 - B. Create an HTTPS load balancer with URL Maps. 100%
 - https://cloud.google.com/load-balancing/docs/https/url-map
@@ -32,7 +47,6 @@ Ingress is a Kubernetes resource that encapsulates a collection of rules and con
 You can use URL Maps to configure the HTTPS load balancer to route traffic based on the URL path being requested. This allows you to set up different URL paths to be served by different back-end services, providing a high level of flexibility in your load balancing configuration.
 
 **Question 3**
-**Question 95**
 
 - B. Implement retry logic using a truncated exponential backoff strategy.
 - Explanation
@@ -40,20 +54,17 @@ You can use URL Maps to configure the HTTPS load balancer to route traffic based
   https://cloud.google.com/storage/docs/request-rate
 
 **Question 4**
-**Question 96**
 
 - B. Use Deployment Manager to automate service provisioning. Use Stackdriver to monitor and debug your tests. 88%
 - It is B, Google Best practice ---> never use scripts. They do not trust anyone else's code it seems. TarTar, from exam topic
 
 **Question 5**
-**Question 97**
 
 - D. Save the files in multiple Multi-Regional Cloud Storage buckets, one bucket per multi-region.
 - Explanation
   To reduce latency you need a bucket near your users and you can't setup multi-region with Asia/EU/America selected so A is out and we are left with D.
 
 **Question 6**
-**Question 98**
 
 - C. Store the data in Cloud Storage and use lifecycle management to delete files when they expire. Most Voted
 - Explanation
@@ -62,20 +73,25 @@ You can use URL Maps to configure the HTTPS load balancer to route traffic based
 Action = "Delete object" Object conditions = select ""Days since custom time" checkbox and specify 1460 days.
 
 **Question 7**
-**Question 99**
 
 - A. Set the memcache service level to dedicated. Create a key from the hash of the query, and return database values from memcache before issuing a query to Cloud SQL. 100%
-- Explanation
+- **Explanation**
   Right Option - A. Set the memcache service level to dedicated. Create a key from the hash of the query, and return database values from memcache before issuing a query to Cloud SQL.
 
   A dedicated memcache is always better than shared until cost-effectiveness specify in the exam as objective. So, Option C and D are ruled out.
 
   From A and B, Option B is sending and updating query every minute which is over killing. So reasonable option left with A which balance performance and cost.
 
-- https://cloud.google.com/appengine/docs/legacy/standard/php/memcache
+- [App Engine- Memcache API for legacy bundled services](https://cloud.google.com/appengine/docs/legacy/standard/php/memcache)
+- One use of a memory cache is to speed up common datastore queries.
+- Shared memcache vs Dedicated memcache
+
+```
+$memcache = new Memcache;
+return $memcache->get($key);
+```
 
 **Question 8**
-**Question 100**
 
 - B. Using the Cron service provided by App Engine, publish messages to a Cloud Pub/Sub topic. Subscribe to that topic using a message-processing utility service running on Compute Engine instances. 88%
 - B is correct. More appropriately: https://cloud.google.com/solutions/reliable-task-scheduling-compute-engine
@@ -84,7 +100,6 @@ Action = "Delete object" Object conditions = select ""Days since custom time" ch
 - A and C are out… messages are to be sent to pub sub and processed using a client. D is overkill for this purpose
 
 **Question 9**
-**Question 101**
 
 - B. Lease a Transfer Appliance, upload archived files to it, and send it to Google to transfer archived data to Cloud Storage. Establish a connection with Google using a Dedicated Interconnect or Direct Peering connection and use it to upload files daily. 92%
 - Agree B. 100Mbps connections for 10TB data transfer is takes too long. wk
@@ -95,7 +110,6 @@ Action = "Delete object" Object conditions = select ""Days since custom time" ch
 - https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview
 
 **Question 10**
-**Question 102**
 
 - B. Cloud Pub/Sub to Cloud Dataflow. 62%
 - I believe the answer is B. "Pub/Sub doesn't provide guarantees about the order of message delivery. Strict message ordering can be achieved with buffering, often using Dataflow." https://cloud.google.com/solutions/data-lifecycle-cloud-platform
