@@ -172,6 +172,7 @@ return $memcache->get($key);
 - Cloud Run for Anthos
 - [Cloud Run: Split traffic between multiple revisions](https://cloud.google.com/run/docs/rollouts-rollbacks-traffic-migration#split-traffic)
 - Cloud Run -> Revisions -> Manage Traffic
+
 **Question 15**
 
 - you need to triage incidents quickly -> Alert
