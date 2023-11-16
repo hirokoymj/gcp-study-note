@@ -146,14 +146,14 @@ return $memcache->get($key);
 - https://cloud.google.com/pubsub/docs/stream-messages-dataflow
 
 **Question 11**
-**Question 103**
+
 
 - C. 1. Perform an assessment of virtual machines running in the current VMware environment. 2. Define a migration plan, prepare a Migrate for Compute Engine migration RunBook, and execute the migration. 95%
 - Migrate for Compute Engine organizes groups of VMs into Waves. After understanding the dependencies of your applications, create runbooks that contain groups of VMs and begin your migration!
 - https://cloud.google.com/migrate/compute-engine/docs/4.5/how-to/migrate-on-premises-to-gcp/overview
 
 **Question 12**
-**Question 104**
+
 
 - D. Use an unmanaged instance group with an active and standby instance in different zones, use a regional persistent disk, and use a network load balancer in front of the instances.
 - Correct Ans : D
@@ -171,7 +171,7 @@ return $memcache->get($key);
 - https://cloud.google.com/anthos/run/docs/deploy-application
 - Cloud Run for Anthos
 - [Cloud Run: Split traffic between multiple revisions](https://cloud.google.com/run/docs/rollouts-rollbacks-traffic-migration#split-traffic)
-
+- Cloud Run -> Revisions -> Manage Traffic
 **Question 15**
 
 - you need to triage incidents quickly -> Alert
