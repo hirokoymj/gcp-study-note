@@ -181,7 +181,9 @@ return $memcache->get($key);
   An incident, also called an alert, is a record of the triggering of an alerting policy. Unless an alerting policy is snoozed or disabled, Cloud Monitoring opens an incident when a condition of an alerting policy is triggered.
 
 **Question 16**
-
+- Cloud SQL, Point-in-time recovery
+- [Log storage for point-in-time recovery](https://cloud.google.com/sql/docs/mysql/backup-recovery/pitr)
+  - Point-in-time recovery uses binary logs.
 - **Explanation**
   Cloud SQL. If you use Cloud SQL, the fully managed Google Cloud MySQL database, you should enable automated backups and binary logging for your Cloud SQL instances. This allows you to perform a point-in-time recovery, which restores your database from a backup and recovers it to a fresh Cloud SQL instance
 
