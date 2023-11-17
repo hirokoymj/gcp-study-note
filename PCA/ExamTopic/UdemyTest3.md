@@ -146,26 +146,31 @@ return $memcache->get($key);
 - https://cloud.google.com/pubsub/docs/stream-messages-dataflow
 
 **Question 11**
-**Question 103**
 
 - C. 1. Perform an assessment of virtual machines running in the current VMware environment. 2. Define a migration plan, prepare a Migrate for Compute Engine migration RunBook, and execute the migration. 95%
 - Migrate for Compute Engine organizes groups of VMs into Waves. After understanding the dependencies of your applications, create runbooks that contain groups of VMs and begin your migration!
 - https://cloud.google.com/migrate/compute-engine/docs/4.5/how-to/migrate-on-premises-to-gcp/overview
 
 **Question 12**
-**Question 104**
 
 - D. Use an unmanaged instance group with an active and standby instance in different zones, use a regional persistent disk, and use a network load balancer in front of the instances.
 - Correct Ans : D
   Since the Traffic is TCP, Ans A & C gets eliminated as HTTPS load balance is not supported.
+
   - B - File storage system is Cloud Firestore which do not give full control, hence eliminated.
   - D - Unmanaged instance group with network load balance with regional persistent disk for storage gives full control which is required for the migration.
 
+- [Cloud VPN overview](https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview)
+- HA VPN and Classic VPN. However, some Classic VPN features are **deprecated**.
+- HA VPN is a high-availability (HA) Cloud VPN solution that lets you securely connect your on-premises network to your VPC network through an IPsec VPN connection in a single region. HA VPN provides an SLA of 99.99% service availability.
+- Dedicated Interconnect
+
 **Question 13**
 
-- Let’s talk about the Cloud Peering services, which are Direct Peering and Carrier Peering. These services are useful when you require access to Google and Google Cloud properties.
-
-**Question 14**
+- D. Configure a Cloud Dedicated Interconnect connection between the on-premises environment and Google Cloud.
+- **Explanation**
+  “Requires high throughput via internal IPs, while minimizing latency" - both are the aspects you cannot guarantee with using VPN traversing the internet.
+- **Question 14**
 
 - Cloud Run for Anthos allows you to deploy new revisions of your application with a specific percentage of traffic,
 - https://cloud.google.com/anthos/run/docs/deploy-application
@@ -251,7 +256,9 @@ constraints/compute.vmExternalIpAccess
 
 - B. Configure the Compute Engine instances with an instance template for the application, and use a regional persistent disk for the application data. Whenever a zonal outage occurs, use the instance template to spin up the application in **another zone in the same region**. Use the regional persistent disk for the application data. 100%
 - [Build HA services using regional Persistent Disk](https://cloud.google.com/compute/docs/disks/high-availability-regional-persistent-disk)
-- Regional Persistent Disk is a storage option that enables you to implement high availability (HA) services in Compute Engine.
+- Regional Persistent Disk is a storage option that enables you to implement high availability (HA) services in Compute Engine. Regional Persistent Disk synchronously replicates data between **two zones in the same region** and ensures HA for disk data for up to one zonal failure.
+- HA VM, Primary VM, Standby VM
+  ![](./images/25.png)
 
 **Question 26**
 
@@ -270,20 +277,13 @@ constraints/compute.vmExternalIpAccess
 
 **Question 27**
 
-- [Migrating Hadoop Jobs from On-Premises to Dataproc](https://cloud.google.com/architecture/hadoop/hadoop-gcp-migration-jobs)
-
-  - This guide describes how to move your Apache Hadoop jobs to Google Cloud (by using Dataproc.
-
-- Should be B, you want to minimize costs.
-  https://cloud.google.com/dataproc/docs/concepts/compute/secondary-vms#preemptible_and_non-preemptible_secondary_workers
-
-- The Apache® Hadoop® project develops open-source software for reliable, scalable, distributed computing.
-
-- The Apache Hadoop software library is a framework that allows for the distributed processing of large data sets across clusters of computers using simple programming models.
+- [Dataproc](https://cloud.google.com/dataproc?hl=en)
+  Dataproc is a fully managed and highly scalable service for running Apache Hadoop, Apache Spark, Apache Flink, Presto, and 30+ open source tools and frameworks
 
 **Question 28**
 
-- https://cloud.google.com/compute/docs/images/os-details#debian
+- [About Patch](https://cloud.google.com/compute/docs/os-patch-management)
+  - Debian and Ubuntu - apt upgrade
 
 **Question 29**
 
