@@ -146,12 +146,20 @@ return $memcache->get($key);
 - https://cloud.google.com/pubsub/docs/stream-messages-dataflow
 
 **Question 11**
+<<<<<<< HEAD
+=======
+
+>>>>>>> 16a6af1690e0c2de483fee4224d6818215864062
 
 - C. 1. Perform an assessment of virtual machines running in the current VMware environment. 2. Define a migration plan, prepare a Migrate for Compute Engine migration RunBook, and execute the migration. 95%
 - Migrate for Compute Engine organizes groups of VMs into Waves. After understanding the dependencies of your applications, create runbooks that contain groups of VMs and begin your migration!
 - https://cloud.google.com/migrate/compute-engine/docs/4.5/how-to/migrate-on-premises-to-gcp/overview
 
 **Question 12**
+<<<<<<< HEAD
+=======
+
+>>>>>>> 16a6af1690e0c2de483fee4224d6818215864062
 
 - D. Use an unmanaged instance group with an active and standby instance in different zones, use a regional persistent disk, and use a network load balancer in front of the instances.
 - Correct Ans : D
@@ -176,6 +184,7 @@ return $memcache->get($key);
 - https://cloud.google.com/anthos/run/docs/deploy-application
 - Cloud Run for Anthos
 - [Cloud Run: Split traffic between multiple revisions](https://cloud.google.com/run/docs/rollouts-rollbacks-traffic-migration#split-traffic)
+- Cloud Run -> Revisions -> Manage Traffic
 
 **Question 15**
 
@@ -185,7 +194,9 @@ return $memcache->get($key);
   An incident, also called an alert, is a record of the triggering of an alerting policy. Unless an alerting policy is snoozed or disabled, Cloud Monitoring opens an incident when a condition of an alerting policy is triggered.
 
 **Question 16**
-
+- Cloud SQL, Point-in-time recovery
+- [Log storage for point-in-time recovery](https://cloud.google.com/sql/docs/mysql/backup-recovery/pitr)
+  - Point-in-time recovery uses binary logs.
 - **Explanation**
   Cloud SQL. If you use Cloud SQL, the fully managed Google Cloud MySQL database, you should enable automated backups and binary logging for your Cloud SQL instances. This allows you to perform a point-in-time recovery, which restores your database from a backup and recovers it to a fresh Cloud SQL instance
 
