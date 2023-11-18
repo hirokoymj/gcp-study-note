@@ -278,7 +278,8 @@ gcloud container clusters update cluster-name --enable-autoscaling \
 <hr />
 
 **Question 22**
-C. 1. Attach a regional SSD persistent disk to the first instance. 2. In case of a zone outage, force-attach the disk to the other instance. 90%
+
+- C. 1. Attach a regional SSD persistent disk to the first instance. 2. In case of a zone outage, force-attach the disk to the other instance. 90%
 
 - [Manage failures for regional Persistent Disk](https://cloud.google.com/compute/docs/disks/repd-failover)
   Regional Persistent Disk is a storage option that provides synchronous replication of data between two zones in a region. You can use regional Persistent Disk as a building block when you implement high availability (HA) services in Compute Engine.
