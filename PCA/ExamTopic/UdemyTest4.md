@@ -1,4 +1,4 @@
-# Practice Test 3
+# Practice Test 4
 
 **Question 1**
 
@@ -47,6 +47,10 @@ my-bucket/6e9b84-2016-05-10-12-00-01/file3
 
 - B. Use source code security analyzers as part of the CI/CD pipeline Most Voted
 - E. Run a vulnerability security scanner as part of your continuous-integration /continuous-delivery (CI/CD) pipeline Most VotedMost Voted
+- https://cloud.google.com/kubernetes-engine/docs/concepts/best-practices-continuous-integration-delivery-kubernetes
+- continuous integration and continuous delivery (CI/CD)
+- Continuous integration (CI) is a practice in which developers integrate all their code changes back into a main branch as often as possible.
+- Continuous delivery (CD) lets you release code at any time.
 
 <hr />
 
@@ -80,6 +84,7 @@ gsutil hash -c FILE_NAME
 **Question 6**
 
 - C. Digitally sign each timestamp and log entry and store the signature
+- https://stackoverflow.com/questions/3829546/how-can-i-digitally-sign-logs-to-ensure-that-they-have-not-been-modified
 
 **Explanation**
 
@@ -91,18 +96,12 @@ More Explanation: To verify the authenticity of your logs if they are tampered w
 
 **Question 7**
 
-- D. Compress the data and upload it with gsutil -m to enable multi-threaded copy
-- This is pretty simple.
-  Time to transfer using Transfer Appliance: 1-3 weeks (I've used it twice and had a 2-3 week turnaround total)
-  Time to transfer using 1Gbps : 30 hours (https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets)
-
-  Answer is D, using gsutil
-
-**Explanation**
-
-Time to transfer using Transfer Appliance is around 1-3 weeks.
-
-Time to transfer using 1Gbps : 30 hours (https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets)
+- B. Use the Data Transfer appliance to perform an offline migration. 48%
+- D. Compress the data and upload it with gsutil -m to enable multi-threaded copy 43%
+- Answer is B. Transfer appliance
+- According to https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets
+  > The expected turnaround time for a network appliance to be shipped, loaded with your data, shipped back, and rehydrated on Google Cloud is 20 days. If your online transfer timeframe is calculated to be substantially more than this timeframe, consider Transfer Appliance.
+- (Transfer Appliance for larger transfers)[https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets#transfer_appliance_for_larger_transfers]
 
 <hr />
 
@@ -281,9 +280,18 @@ Cluster is already running so use update instead of create new cluster.
 <hr />
 
 **Question 21**
-alsdfas;
 
-<hr />**Question 22**
+- A. Use a load testing tool to simulate the expected number of concurrent users and total requests to your application, and inspect the results. 84%
+
+**Explanation**
+
+A load testing tool can be used to simulate the expected number of concurrent users and total requests to your application. This will allow you to test how your application handles the expected load and to identify any potential problems. Enabling autoscaling on the GKE cluster and enabling horizontal pod autoscaling on your application deployments will not help you to test the latency of your application. This will only help to ensure that your application can handle the expected load.
+
+<hr />
+
+**Question 22**
+C. 1. Attach a regional SSD persistent disk to the first instance. 2. In case of a zone outage, force-attach the disk to the other instance. 90%
+
 <hr />**Question 23**
 <hr />**Question 24**
 <hr />**Question 25**
