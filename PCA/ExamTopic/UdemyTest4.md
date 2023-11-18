@@ -147,40 +147,164 @@ App Engine standard has autoscaling out of the box, supports Go 1.12 and can sca
 <hr />
 
 **Question 11**
+
+- C. Create a second GKE cluster in asia-southeast1, and use kubemci to create a global HTTP(s) load balancer. 76%
+
+**Explanation**
+
+C is ok .
+
+https://cloud.google.com/blog/products/gcp/how-to-deploy-geographically-distributed-services-on-kubernetes-engine-with-kubemci
+
+MCI – Multi cluster Ingress.
+
+<hr />
+
 **Question 12**
+
+- D. Create a snapshot of the root disk, create an image file in Google Cloud Storage from the snapshot, and create a new virtual machine instance in the US-East region using the image file the root disk. 67%
+
+**Explanation**
+D is correct. A and B are talking about appending the file system to a new VM, not setting it at the root in a new VM set. Option C is not offered within the GCP because the image must be on the GCP platform to run the gcloud of Google Console instructions to create a VM with the image.
+
+<hr />
+
 **Question 13**
+
+- B. Mount a Local SSD volume as the backup location. After the backup is complete, use gsutil to move the backup to Google Cloud Storage. 76%
+
+**Explanation**
+
+If you use a tool like GCFUSE it will write immediately to GCS which is a cost benefit because you don't need intermediate storage. However, "Quickly as possible" key for understanding. GCFUSE will write to GCS which is much slower than writing directly to an added SSD. During the write to GCS, it would also execute reads for a longer period on the production database.
+
+Therefore, writing to the extra SSD would be recommended solution. Offloading from the SSD to GCS would not impact the running database because the data is already separated.
+
+<hr />
+
 **Question 14**
+
+- B. Google Kubernetes Engine with containers 65%
+- C. Google App Engine Standard Environment
+- I would go with B&C
+  Cloud-native, less-ops and auto-scaling all get addressed
+
+**Explanation**
+
+Option B, Google Kubernetes Engine (GKE) with containers, is a managed Kubernetes service that automatically manages and scales containerized applications. GKE handles cluster management tasks like scaling, upgrades, and security patches, allowing you to focus on the application itself.Option C, Google App Engine Standard Environment, is a fully managed platform for building and deploying applications. It automatically scales applications based on demand and provides a no-ops experience. With App Engine Standard Environment, you don't need to worry about infrastructure management, as Google handles it for you.
+
+<hr />
+
 **Question 15**
+
+- B. Create a key with Cloud Key Management Service (KMS). Set the encryption key on the bucket to the Cloud KMS key. 83%
+- B is OK
+  https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys#add-object-key
+
+**Explanation**
+
+To rotate the encryption key used to encrypt data in a Cloud Storage bucket, it is recommended to use Cloud KMS. You can create a new key version, set it as the primary version, and update the bucket's default KMS key to the new key version. This allows you to rotate the encryption key while still allowing access to the data. You can then process the data in Dataproc while the encryption key is being rotated. This approach provides security and compliance with regulations, as well as easy key rotation without disrupting access to data.
+
+<hr />
+
 **Question 16**
+
+- B. Use the Storage Transfer Service to move the data.
+- Very Tricky and don't have enough details to answer the question. Use this Guide (https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets#transfer-options) and let's try to eliminate options.
+
+A. Use the gsutil mv command to move the data. (We have 10TB, hence rejected)
+B. Use the Storage Transfer Service to move the data. (Source might not be Cloud provider. Hence rejecting it. If source is AWS/Azure then this is the answer)
+C. Download the data to a Transfer Appliance, and ship it to Google. (I don't think we can use Transfer Appliance at Third party service providers DC. Assuming this 3rd party is not a cloud provider)
+D. Download the data to the on-premises data center, and upload it to the Cloud Storage bucket. (This seems better assuming DC has good bandwidth such as 1 Gbbs)
+
+**Explanation**
+Trick - Current storage is object store so mostly a cloud provider… thus storage transfer service. C is right.
+
+<hr />
+
 **Question 17**
+
+- B. Google Compute Engine managed instance groups with auto-scaling. 100%
+- B, https://cloud.google.com/compute/docs/autoscaler/
+- Changing the tests as little as possible rules out C & D.
+  Test takes several hours and you need to improve perfromace. Autocaling with MIG will do it
+  Unmanaged group cannot autosacle. Load balancer will not improve perfromance
+
+**Explanation**
+
+Changing the tests as little as possible rules out C & D. Test takes several hours and you need to improve perfromace. Autocaling with MIG will do it Unmanaged group cannot autosacle. Load balancer will not improve performance
+
+<hr />
+
 **Question 18**
+
+- C. Review your RowKey strategy and ensure that keys are evenly spread across the alphabet. 100%
+- Option-C is correct: https://cloud.google.com/bigtable/docs/schema-design#row-keys
+
+**Explanation**
+
+C. Review your RowKey strategy and ensure that keys are evenly spread across the alphabet.
+
+The RowKey is used to sort data within a Cloud Bigtable cluster. If the keys are not evenly spread across the alphabet, it can result in a hotspot and slow down queries. To prevent this from happening in the future, you should review your RowKey strategy and ensure that keys are evenly spread across the alphabet. This will help to distribute the data evenly across the cluster and improve query performance. Other potential solutions to consider include adding more nodes to the cluster or optimizing your query patterns. However, deleting records older than 30 days or advising clients to use HBase APIs instead of NodeJS APIs would not address the issue of a hotspot in the cluster.
+
+<hr />
+
 **Question 19**
+
+- C. 1. Create folders under the Organization resource named Development and Production. 2. Grant all developers the Project Creator IAM role on the Development folder. 3. Move the developer projects into the Development folder. 4. Set the policies for all projects on the Organization. 5. Additionally, set the production policies on the Production folder. 97%
+
+- the requirement is "...You want to manage policies for all projects centrally..." With multiple organizations that wont be possible as you would have to set policies on multiple organizations. Therefore I opt for "C".
+
+**Explanation**
+Answer is C
+
+A - you only want to create and Organization structure not Google Workspace B - best practice is to move your projects to a folders D - developers are allowed to create projects
+
+<hr />
+
 **Question 20**
 
+- C. Update the existing Kubernetes Engine cluster with the following command: gcloud alpha container clusters update mycluster - -enable- autoscaling - -min-nodes=1 - -max-nodes=10. 100%
+
+- To enable autoscaling for an existing node pool, run the following command:
+
+```
+gcloud container clusters update cluster-name --enable-autoscaling \
+--min-nodes 1 --max-nodes 10 --zone compute-zone --node-pool default-pool
+```
+
+- https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-autoscaler
+
+**Explanation**
+
+Cluster is already running so use update instead of create new cluster.
+
+<hr />
+
 **Question 21**
-**Question 22**
-**Question 23**
-**Question 24**
-**Question 25**
-**Question 26**
-**Question 27**
-**Question 28**
-**Question 29**
-**Question 30**
 
-**Question 31**
-**Question 32**
-**Question 33**
-**Question 34**
-**Question 35**
-**Question 36**
-**Question 37**
-**Question 38**
-**Question 39**
-**Question 40**
+<hr />**Question 22**
+<hr />**Question 23**
+<hr />**Question 24**
+<hr />**Question 25**
+<hr />**Question 26**
+<hr />**Question 27**
+<hr />**Question 28**
+<hr />**Question 29**
+<hr />**Question 30**
 
-**Question 41**
-**Question 42**
-**Question 43**
-**Question 44**
-**Question 45**
+<hr />**Question 31**
+<hr />**Question 32**
+<hr />**Question 33**
+<hr />**Question 34**
+<hr />**Question 35**
+<hr />**Question 36**
+<hr />**Question 37**
+<hr />**Question 38**
+<hr />**Question 39**
+<hr />**Question 40**
+
+<hr />**Question 41**
+<hr />**Question 42**
+<hr />**Question 43**
+<hr />**Question 44**
+<hr />**Question 45**
