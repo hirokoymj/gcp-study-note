@@ -377,16 +377,95 @@ gcloud container clusters update cluster-name --enable-autoscaling \
 2. Cost-based recommendations: Recommends Compute Engine instances based on:
    **The current CPU and RAM configuration of the on-premises VM.**
 
-<hr />**Question 31**
-<hr />**Question 32**
-<hr />**Question 33**
-<hr />**Question 34**
-<hr />**Question 35**
-<hr />**Question 36**
-<hr />**Question 37**
-<hr />**Question 38**
-<hr />**Question 39**
-<hr />**Question 40**
+<hr />
+
+**Question 31**
+
+- A. Configure an organization policy to restrict identities by domain.100%
+- https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains
+
+<hr />
+
+**Question 32**
+
+- A. Inspect the logs and metrics from the instances in Cloud Logging and Cloud Monitoring. 100%
+- First thing to do is to inspect logs and monitoring to see what is happening
+
+<hr />
+
+**Question 33**
+
+- A. Use Google App Engine to serve the website and Google Cloud Datastore to store user data. 100%
+- C. Use a managed instance group to serve the website and Google Cloud Bigtable to store user data. 100%
+- Data is unstructured... Datastore and BigTable should be used. So it is A and C
+
+<hr />
+
+**Question 34**
+
+- C. 1. Create a dataset for the data science team. 2. Create views of tables that you want to share, excluding PII. 3. Assign an appropriate project-level IAM role to the members of the data science team. 4. Assign access controls to the dataset that contains the view. 5. Authorize the view to access the source dataset. 57%
+- A. 36%
+- C: view in a different dataset (https://cloud.google.com/bigquery/docs/share-access-views: "Authorized views should be created in a different dataset from the source data. That way, data owners can give users access to the authorized view without simultaneously granting access to the underlying data.")
+
+<hr />
+
+**Question 35**
+
+- D. Configure serverless VPC access. 90%
+- https://cloud.google.com/vpc/docs/private-access-options
+  You can use a **Serverless VPC Access connector** to let Cloud Run, App Engine standard, and Cloud Functions environments send packets to the internal IPv4 addresses of resources in a VPC network. Serverless VPC Access also supports sending packets to other networks connected to the selected VPC network.
+
+<hr />
+
+**Question 36**
+
+- A. 1. Install a Cloud Logging agent on all instances. 2. Create a sink to export logs into a regional Cloud Storage bucket. 3. Create an Object Lifecycle rule to move files into a Coldline Cloud Storage bucket after one month. 4. Configure a retention policy at the bucket level using bucket lock. 97%
+- This approach would allow you to use Cloud Logging to collect and export the logs from the Compute Engine instances into a Cloud Storage bucket. You can then use an Object Lifecycle rule to automatically move the logs from the regional bucket to a Coldline bucket after one month, which will reduce storage costs for logs that are not actively being queried. By configuring a retention policy using bucket lock, you can ensure that the logs are retained for at least two years for audit purposes. This approach follows Google-recommended practices for storing logs and minimizing costs.
+
+<hr />
+
+**Question 37**
+
+- D. Use node affinity labels based on the node name when creating Compute Engine instances in order to host each workload on the correct node. 100%
+
+- Answer is D. The question is about aligning EACH client to their dedicated nodes (D), not to a node group (C).
+- [Default affinity labels](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#default_affinity_labels)
+- The above reference clearly articulates the default affinity label for node group and node name. Unless we're thinking about growing each client to their own dedicated node groups (not in the current requirement), then the answer is not C, rather D.
+- [Sole-tenancy overview](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes)
+
+  > Sole-tenancy lets you have exclusive access to a sole-tenant node, which is a physical Compute Engine server that is dedicated to hosting only your project's VMs.
+
+  > Use sole-tenant nodes to keep your VMs physically separated from VMs in other projects,
+
+  > VMs running on sole-tenant nodes can use the same Compute Engine features as other VMs, including transparent scheduling and block storage, but with an added layer of hardware isolation
+
+<hr />
+
+**Question 38**
+
+- A. Create an aggregated export on the Production folder. Set the log sink to be a Cloud Storage bucket in an operations project. 98%
+- https://cloud.google.com/logging/docs/export/aggregated_sinks
+
+  Aggregated sinks combine and route log entries from the Google Cloud resources contained by an organization or folder. For instance, you might aggregate and route audit log entries from all the folders contained by an organization to a Cloud Storage bucket.
+
+<hr />
+
+**Question 39**
+
+- AEF 100%(ET) or ABF(udemy/Me)
+  A. Ensure that the load tests validate the performance of Cloud Bigtable.
+  B. Create a separate Google Cloud project to use for the load-testing environment.
+  E. Instrument the production services to record every transaction for replay by the load-testing tool.
+  F. Instrument the load-testing tool and the target services with detailed logging and metrics collection.
+
+- As Q is to test the scalability, so A is important. Also, B is "best-practice" and not a requirement for load testing.
+
+<hr />
+
+**Question 40**
+
+- C. In the Logging section of the console, specify GCE Network as the logging section. Search for the Create Insert entry. 100%
+- Explanation: When you search for Create Insert, it displays a JSON code string that contains the creators e-mail
 
 <hr />**Question 41**
 <hr />**Question 42**
