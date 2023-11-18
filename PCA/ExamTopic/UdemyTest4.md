@@ -453,11 +453,10 @@ gcloud container clusters update cluster-name --enable-autoscaling \
 **Question 39**
 
 - AEF 100%(ET) or ABF(udemy/Me)
-  A. Ensure that the load tests validate the performance of Cloud Bigtable.
-  B. Create a separate Google Cloud project to use for the load-testing environment.
-  E. Instrument the production services to record every transaction for replay by the load-testing tool.
-  F. Instrument the load-testing tool and the target services with detailed logging and metrics collection.
-
+- A. Ensure that the load tests validate the performance of Cloud Bigtable.
+- B. Create a separate Google Cloud project to use for the load-testing environment.
+- E. Instrument the production services to record every transaction for replay by the load-testing tool.
+- F. Instrument the load-testing tool and the target services with detailed logging and metrics collection.
 - As Q is to test the scalability, so A is important. Also, B is "best-practice" and not a requirement for load testing.
 
 <hr />
@@ -465,7 +464,13 @@ gcloud container clusters update cluster-name --enable-autoscaling \
 **Question 40**
 
 - C. In the Logging section of the console, specify GCE Network as the logging section. Search for the Create Insert entry. 100%
-- Explanation: When you search for Create Insert, it displays a JSON code string that contains the creators e-mail
+- https://stackoverflow.com/questions/72716412/what-logs-can-i-use-to-diagnose-connectivity-issues-on-a-gce-network
+
+1. Navigation Menu > Logging > Log Explorer
+2. On the right upper part of your GCP console, click Resource.
+3. Scroll down and choose **GCE Network**.
+4. Once you click GCE Network, it will show you the Network ID of your VPC network
+5. Then choose where your VM instance is located then click “apply”.
 
 <hr />**Question 41**
 <hr />**Question 42**
