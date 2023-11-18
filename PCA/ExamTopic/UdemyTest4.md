@@ -472,8 +472,46 @@ gcloud container clusters update cluster-name --enable-autoscaling \
 4. Once you click GCE Network, it will show you the Network ID of your VPC network
 5. Then choose where your VM instance is located then click “apply”.
 
-<hr />**Question 41**
-<hr />**Question 42**
-<hr />**Question 43**
-<hr />**Question 44**
-<hr />**Question 45**
+<hr />
+
+**Question 41**
+
+- C. Configure binary authorization policies for the development, staging, and production clusters. - Create attestations as part of the continuous integration pipeline. 100%
+- https://cloud.google.com/binary-authorization/docs/overview
+- Binary authorization is a feature of Google Kubernetes Engine that allows you to enforce policies on the images that are deployed to your clusters. By configuring binary authorization policies for the development, staging, and production clusters, you can ensure that only images that have been attested by an authorized entity are allowed to be deployed to those clusters. You can create the attestations as part of the continuous integration pipeline, which will allow you to verify that the image has been tested before it is deployed to the next environment.
+
+<hr />
+
+**Question 42**
+
+- B. Create a Google Group per department and add all department members to their respective groups. Create a folder per department and grant the respective group the required IAM permissions at the folder level. Add the projects under the respective folders. 100%
+- https://cloud.google.com/resource-manager/docs/access-control-folders#best-practices-folders-iam
+  Use groups whenever possible to manage principals.
+
+- https://cloud.google.com/resource-manager/docs/creating-managing-folders
+  A folder can contain projects, other folders, or a combination of both. Organizations can use folders to group projects under the organization node in a hierarchy. For example, your organization might contain multiple departments, each with its own set of Google Cloud resources. Folders allow you to group these resources on a per-department basis.
+
+<hr />
+
+**Question 43**
+
+- A. Create a Dataflow pipeline to retrieve the data from the external sources. As part of the pipeline, use the Cloud Data Loss Prevention (Cloud DLP) API to remove any PII data. Store the result in BigQuery. 74%
+
+- PII -> Cloud DLP. So that narrows the choices down to A or C. C says "Ask the external partners to upload all data on Cloud Storage" which is not generally a feasible or recommended practice. Also, we cannot store PII anywhere, including in GCS. Answer is A.
+
+<hr />
+
+**Question 44**
+
+- C. Make the container tag match the source code commit hash. 100%
+- [Tagging using the Git commit hash](https://cloud.google.com/architecture/best-practices-for-building-containers#tagging_using_the_git_commit_hash)
+- You can use this commit hash as a version number for your software, but also as a tag for the Docker image built from this specific version of your software. Doing so makes Docker images traceable: because in this case the image tag is immutable, you instantly know which specific version of your software is running inside a given container.
+
+<hr />
+
+**Question 45**
+
+- A. Configure the GKE cluster as a private cluster. 98%
+- [Workloads on private GKE clusters unable to access internet](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#workloads_on_private_clusters_unable_to_access_internet)
+  Ensure you configure the Cloud NAT gateway to apply at least the following subnet IP address ranges for the subnet that your cluster uses:
+- Cloud NAT allows the resources in private subnet to access the internet—for updates, patching, config management, and more—in a controlled and efficient manner.
