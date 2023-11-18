@@ -101,7 +101,8 @@ More Explanation: To verify the authenticity of your logs if they are tampered w
 - Answer is B. Transfer appliance
 - According to https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets
   > The expected turnaround time for a network appliance to be shipped, loaded with your data, shipped back, and rehydrated on Google Cloud is 20 days. If your online transfer timeframe is calculated to be substantially more than this timeframe, consider Transfer Appliance.
-- (Transfer Appliance for larger transfers)[https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets#transfer_appliance_for_larger_transfers]
+- [Transfer Appliance for larger transfers](https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets#transfer_appliance_for_larger_transfers)
+- For large-scale transfers (especially transfers with limited network bandwidth), Transfer Appliance is an excellent option
 
 <hr />
 
