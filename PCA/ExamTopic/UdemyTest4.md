@@ -486,10 +486,10 @@ gcloud container clusters update cluster-name --enable-autoscaling \
 
 - B. Create a Google Group per department and add all department members to their respective groups. Create a folder per department and grant the respective group the required IAM permissions at the folder level. Add the projects under the respective folders. 100%
 - https://cloud.google.com/resource-manager/docs/access-control-folders#best-practices-folders-iam
-  Use groups whenever possible to manage principals.
+- Use groups whenever possible to manage principals.
 
 - https://cloud.google.com/resource-manager/docs/creating-managing-folders
-  A folder can contain projects, other folders, or a combination of both. Organizations can use folders to group projects under the organization node in a hierarchy. For example, your organization might contain multiple departments, each with its own set of Google Cloud resources. Folders allow you to group these resources on a per-department basis.
+- A folder can contain projects, other folders, or a combination of both. Organizations can use folders to group projects under the organization node in a hierarchy. For example, your organization might contain multiple departments, each with its own set of Google Cloud resources. Folders allow you to group these resources on a per-department basis.
 
 <hr />
 
@@ -511,7 +511,7 @@ gcloud container clusters update cluster-name --enable-autoscaling \
 
 **Question 45**
 
-- A. Configure the GKE cluster as a private cluster. 98%
+- A. Configure the GKE cluster as a private cluster, and configure Cloud NAT Gateway for the cluster subnet. 98%
 - [Workloads on private GKE clusters unable to access internet](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#workloads_on_private_clusters_unable_to_access_internet)
-  Ensure you configure the Cloud NAT gateway to apply at least the following subnet IP address ranges for the subnet that your cluster uses:
+- Ensure you configure the Cloud NAT gateway to apply at least the following subnet IP address ranges for the subnet that your cluster uses:
 - Cloud NAT allows the resources in private subnet to access the internet—for updates, patching, config management, and more—in a controlled and efficient manner.
