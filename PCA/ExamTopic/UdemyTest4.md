@@ -18,6 +18,8 @@
 
 ![](images4/1.png)
 
+<hr />
+
 **Question 2**
 
 - D. 1. Append metadata to file body 2. Compress individual files 3. Name files with a random prefix pattern 4. Save files to one bucket Most Voted
@@ -39,10 +41,14 @@ my-bucket/5ca42c-2016-05-10-12-00-00/file2
 my-bucket/6e9b84-2016-05-10-12-00-01/file3
 ```
 
+<hr />
+
 **Question 3**
 
 - B. Use source code security analyzers as part of the CI/CD pipeline Most Voted
 - E. Run a vulnerability security scanner as part of your continuous-integration /continuous-delivery (CI/CD) pipeline Most VotedMost Voted
+
+<hr />
 
 **Question 4**
 
@@ -62,10 +68,14 @@ gsutil -m
 gsutil hash -c FILE_NAME
 ```
 
+<hr />
+
 **Question 5**
 
 - A. Use Google Cloud Shell in the Google Cloud Console to interact with Google Cloud. Most Voted
 - https://cloud.google.com/sdk/gcloud
+
+<hr />
 
 **Question 6**
 
@@ -76,6 +86,8 @@ gsutil hash -c FILE_NAME
 C (Correct answer) - Digitally sign each timestamp and log entry and store the signature. Answer A, B, and D don’t have any added value to verify the authenticity of your logs. Besides, Logs are mostly suitable for exporting to Cloud storage, BigQuery, and PubSub. SQL database is not the best way to be exported to nor store log data.
 
 More Explanation: To verify the authenticity of your logs if they are tampered with or forged, you can use a certain algorithm to generate digest by hashing each timestamp or log entry and then digitally sign the digest with a private key to generate a signature. Anybody with your public key can verify that signature to confirm that it was made with your private key and they can tell if the timestamp or log entry was modified. You can put the signature files into a folder separate from the log files. This separation enables you to enforce granular security policies.
+
+<hr />
 
 **Question 7**
 
@@ -92,6 +104,8 @@ Time to transfer using Transfer Appliance is around 1-3 weeks.
 
 Time to transfer using 1Gbps : 30 hours (https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets)
 
+<hr />
+
 **Question 8**
 
 - C. Set up a Cloud VPN gateway in each Shared VPC and peer Cloud VPNs.79%
@@ -102,6 +116,8 @@ Time to transfer using 1Gbps : 30 hours (https://cloud.google.com/architecture/m
 **Explanation**
 
 VPC peering cannot be established between VPCs if there is IP range overlap. C is ok since you can establish VPN across these VPCs and only include the applications required IP ranges as its mentioned that they do not overlap
+
+<hr />
 
 **Question 9**
 
@@ -118,6 +134,8 @@ For private access options, connect to services in VPC networks we use private s
 
 https://cloud.google.com/vpc/docs/private-access-options#connect-services
 
+<hr />
+
 **Question 10**
 
 - B. Develop the application for App Engine standard environment. 100%
@@ -125,6 +143,8 @@ https://cloud.google.com/vpc/docs/private-access-options#connect-services
 **Explanation**
 
 App Engine standard has autoscaling out of the box, supports Go 1.12 and can scale down to 0 to save money
+
+<hr />
 
 **Question 11**
 **Question 12**
