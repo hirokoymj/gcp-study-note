@@ -270,24 +270,109 @@ gcloud container clusters update cluster-name --enable-autoscaling \
 **Question 21**
 
 - A. Use a load testing tool to simulate the expected number of concurrent users and total requests to your application, and inspect the results. 84%
+- It is A. You want to TEST the deployment, not changing anything (yet).
+- A load testing tool can be used to simulate the expected number of concurrent users and total requests to your application. This will allow you to test how your application handles the expected load and to identify any potential problems.
 
-**Explanation**
-
-A load testing tool can be used to simulate the expected number of concurrent users and total requests to your application. This will allow you to test how your application handles the expected load and to identify any potential problems. Enabling autoscaling on the GKE cluster and enabling horizontal pod autoscaling on your application deployments will not help you to test the latency of your application. This will only help to ensure that your application can handle the expected load.
+- Enabling autoscaling on the GKE cluster and enabling horizontal pod autoscaling on your application deployments will not help you to test the latency of your application. This will only help to ensure that your application can handle the expected load.
 
 <hr />
 
 **Question 22**
 C. 1. Attach a regional SSD persistent disk to the first instance. 2. In case of a zone outage, force-attach the disk to the other instance. 90%
 
-<hr />**Question 23**
-<hr />**Question 24**
-<hr />**Question 25**
-<hr />**Question 26**
-<hr />**Question 27**
-<hr />**Question 28**
-<hr />**Question 29**
-<hr />**Question 30**
+- [Manage failures for regional Persistent Disk](https://cloud.google.com/compute/docs/disks/repd-failover)
+  Regional Persistent Disk is a storage option that provides synchronous replication of data between two zones in a region. You can use regional Persistent Disk as a building block when you implement high availability (HA) services in Compute Engine.
+
+<hr />
+
+**Question 23**
+
+- A. Set up a filter in Cloud Logging and a Cloud Storage bucket as an export target for the logs you want to save. 100%
+
+- [Create a sink](https://cloud.google.com/logging/docs/export/configure_export_v2#creating_sink)
+  - **Cloud Logging bucket**: Select or create a Logging bucket.
+  - **BigQuery table**: Select or create the particular dataset to receive the routed logs. You also have the option to use partitioned tables.
+  - **Cloud Storage bucket**: Select or create the particular Cloud Storage bucket to receive the routed logs.
+  - **Pub/Sub topic**: Select or create the particular topic to receive the routed logs.
+  - **Splunk**: Select the Pub/Sub topic for your Splunk service.
+  - **Other project**: Populate the Sink destination field as described in Destination path formats.
+
+<hr />
+
+**Question 24**
+
+- B. Org viewer, project viewer. 100%
+- A is not correct because Project owner is too broad. The security team does not need to be able to make changes to projects.
+- B is correct because: Org viewer grants the security team permissions to view the organization's display name.
+  Project viewer grants the security team permissions to see the resources within projects.
+- C is not correct because Org admin is too broad. The security team does not need to be able to make changes to the organization.
+- D is not correct because Project owner is too broad. The security team does not need to be able to make changes to projects.
+
+<hr />
+
+**Question 25**
+
+- C. Meet with the cloud operations team and the engineer to discuss load balancer options. 100%
+- [LB - WebSocket support](https://cloud.google.com/load-balancing/docs/https#websocket_support)
+- Google Cloud HTTP(S)-based load balancers have native support for the WebSocket protocol when you use HTTP or HTTPS as the protocol to the backend.
+
+<hr />
+
+**Question 26**
+
+- D. Store the data in a Cloud Storage bucket. Design the processing pipelines to retrieve the data from the bucket. 100%
+- D, store RAW unstructured data as-is in Cloud Storage, and then define how to process it.
+  Classical Data Lake ELT (Extract -> Load -> Transform )
+- https://cloud.google.com/architecture/big-data-analytics/analytics-lakehouse
+
+<hr />
+
+**Question 27**
+
+- C. Set up a Cloud Monitoring sink that triggers the Cloud Function after an instance removal log message arrives in Cloud Logging. 79%
+- https://cloud.google.com/compute/docs/shutdownscript#limitations
+  Compute Engine executes shutdown scripts only on a best-effort basis.
+
+- In this scenario, you want to ensure that the commands in the shutdown script are run reliably every time an instance is shut down. One way to do this is by setting up a Cloud Monitoring sink that triggers a Cloud Function after an instance removal log message arrives in Cloud Logging. This will allow you to use the Cloud Function to perform the necessary tasks (such as removing database entries) when an instance is shut down, and it will ensure that these tasks are performed reliably and consistently.
+
+- Option A: Modifying the shutdown script to wait for 30 seconds before triggering the Cloud Function is not a reliable solution, as it relies on the shutdown script being able to run for at least 30 seconds before the instance is shut down.
+
+<hr />
+
+**Question 28**
+
+- D. Import a key in Cloud KMS. Create a dataset in BigQuery using the customer-supplied key option and select the created key. 100%
+- The answer is easy. It says keys must be left outside of Google Cloud.
+  This automatically eliminates A / B.
+  Now the C option says decrypts before storing it in BigQuery which the point is to encrypt the data while been in BigQuery, D is the only possible answer.
+
+<hr />
+
+**Question 29**
+
+- D. Configure a Kubernetes autoscaling deployment based on the subscription/num_undelivered_messages metric. 100%
+- [Cloud Pub/Sub - Monitor message backlog](https://cloud.google.com/pubsub/docs/monitoring#monitoring_the_backlog)
+
+  To ensure that your subscribers are keeping up with the flow of messages, create a dashboard. The dashboard can show the following backlog metrics, aggregated by resource, for all your subscriptions:
+
+- subscription/num_undelivered_message
+
+![](images4/29.png)
+
+<hr />
+
+**Question 30**
+
+- D. Create a Compute Engine instance with CPU and memory options similar to your application's current on-premises virtual machine. Install the Cloud Monitoring agent, and deploy the third-party application. Run a load test with normal traffic levels on the application, and follow the Rightsizing Recommendations in the Cloud Console. 70%
+
+- [Cloud instance rightsizing](https://cloud.google.com/migrate/compute-engine/docs/4.9/concepts/planning-a-migration/cloud-instance-rightsizing?hl=en)
+
+**Rightsizing provides two types of recommendations:**
+
+1. Performance-based recommendations: Recommends Compute Engine instances based on the CPU and RAM currently allocated to the on-premises VM. This recommendation is the default.
+
+2. Cost-based recommendations: Recommends Compute Engine instances based on:
+   **The current CPU and RAM configuration of the on-premises VM.**
 
 <hr />**Question 31**
 <hr />**Question 32**
