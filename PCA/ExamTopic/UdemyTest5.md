@@ -110,17 +110,16 @@ gsutil -m cp -r dir gs://my-bucket
 
 <hr />
 
-**Question 11**
+**Question 11 - Mountkirk Games**
 
 - A. Tests should scale well beyond the prior approaches.65%
 - D. Tests should include directly testing the Google Cloud Platform (GCP) infrastructure. 35%/Me/tartar
-- Mountkirk Games
 - It is D. New to GCP, migrated to GCP.... time to test if it works or not.
 - " had problems scaling their global audience, application servers MySQL databases, and analytics tools."
 
 <hr />
 
-**Question 12**
+**Question 12 - JencoMart**
 
 - C. Provision service account keys for the on-premises infrastructure and use Google Cloud Platform (GCP) managed keys for the VMs. 100%
 
@@ -133,7 +132,7 @@ gsutil -m cp -r dir gs://my-bucket
 
 <hr />
 
-**Question 13**
+**Question 13 - HRL**
 
 - A. Use Explainable AI. 100%
 - Answer A
@@ -142,7 +141,7 @@ gsutil -m cp -r dir gs://my-bucket
 
 <hr />
 
-**Question 14**
+**Question 14- Mountkirk Games**
 
 - D. Create a global load balancer with managed instance groups and autoscaling policies. Use non-preemptible Compute Engine instances. 100%
 - D => KPI game stability = Use non-preemptible
@@ -150,7 +149,7 @@ gsutil -m cp -r dir gs://my-bucket
 
 <hr />
 
-**Question 15**
+**Question 15- JencoMart**
 
 - C. Create a single G Suite account to manage users with each stage of each application in its own project. 90%
 
@@ -163,7 +162,7 @@ gsutil -m cp -r dir gs://my-bucket
 
 <hr />
 
-**Question 16**
+**Question 16- Mountkirk Games**
 
 - A. Create a scalable environment in GCP for simulating production load. 100%
 - From scenario: Requirements for Game Backend Platform
@@ -174,7 +173,7 @@ gsutil -m cp -r dir gs://my-bucket
 
 <hr />
 
-**Question 17**
+**Question 17- Mountkirk Games**
 
 - AB 53%
 - A. Store as much analytics and game activity data as financially feasible today so it can be used to train machine learning models to predict user behavior in the future. Most Voted
@@ -184,7 +183,7 @@ gsutil -m cp -r dir gs://my-bucket
 
 <hr />
 
-**Question 18**
+**Question 18- Mountkirk Games**
 
 - A. Configure an organizational policy which constrains where resources can be deployed. 88%
 - You can limit the physical location of a new resource with the Organization Policy Service resource locations constraint.
@@ -200,7 +199,7 @@ listPolicy:
 
 <hr />
 
-**Question 19**
+**Question 19- JencoMart**
 
 - D. Google Cloud Datastore 54%
 - A. Cloud Spanner 38%/ME
