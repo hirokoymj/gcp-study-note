@@ -109,3 +109,119 @@ gsutil -m cp -r dir gs://my-bucket
 ```
 
 <hr />
+
+**Question 11**
+
+- A. Tests should scale well beyond the prior approaches
+- since they are migrating to new GCP infrastructure they should have higher scalability in tests.
+
+<hr />
+
+**Question 12**
+
+- C. Provision service account keys for the on-premises infrastructure and use Google Cloud Platform (GCP) managed keys for the VMs. 100%
+
+- Correct Answer : C
+  Where will the code that assumes the identity of the service account be running: on Google Cloud Platform or on-premises?
+  https://cloud.google.com/iam/docs/understanding-service-accounts
+
+- Answer: C.
+
+https://cloud.google.com/iam/docs/understanding-service-accounts#migrating_data_to_google_cloud_platform
+
+There are two types of service account keys:
+
+GCP-managed keys. These keys are used by Cloud Platform services such as App Engine and Compute Engine. They cannot be downloaded, and are automatically rotated and used for signing for a maximum of two weeks. The rotation process is probabilistic; usage of the new key will gradually ramp up and down over the key's lifetime. We recommend caching the public key set for a service account for at most 24 hours to ensure that you always have access to the current key set.
+
+User-managed keys. These keys are created, downloadable, and managed by users. They expire 10 years from creation, and cease authenticating successfully when they are deleted from the service account.
+
+<hr />
+
+**Question 13**
+
+- A. Use Explainable AI. 100%
+- Answer A
+- AI Explanations helps you understand your model's outputs for classification and regression tasks. Whenever you request a prediction on AI Platform, AI Explanations tells you how much each feature in the data contributed to the predicted result. You can then use this information to verify that the model is behaving as expected, recognize bias in your models, and get ideas for ways to improve your model and your training data.
+- https://cloud.google.com/ai-platform/prediction/docs/ai-explanations/overview
+
+<hr />
+
+**Question 14**
+
+- D. Create a global load balancer with managed instance groups and autoscaling policies. Use non-preemptible Compute Engine instances. 100%
+- D => KPI game stability = Use non-preemptible
+- Agree "D". Preemptible VM is suitable for app which is fault-tolerant. Termination of preemptive VM might affect gaming experience, so it is not a good choice.
+
+<hr />
+
+**Question 15**
+
+- C. Create a single G Suite account to manage users with each stage of each application in its own project. 90%
+
+- Here are the correct answers:
+  https://cloud.google.com/resource-manager/docs/creating-managing-folders
+  Refer to the diagram on top, different envs are created at the project level.
+
+- https://cloud.google.com/docs/enterprise/best-practices-for-enterprise-organizations
+  "A general recommendation is to have one project per application per environment. For example, if you have two applications, "app1" and "app2", each with a development and production environment, you would have four projects: app1-dev, app1-prod, app2-dev, app2-prod. This isolates the environments from each other, so changes to the development project do not accidentally impact production, and gives you better access control, since you can (for example) grant all developers access to development projects but restrict production access to your CI/CD pipeline." The answer is C.
+
+<hr />
+
+**Question 16**
+
+- A. Create a scalable environment in GCP for simulating production load. 100%
+- From scenario: Requirements for Game Backend Platform
+
+  1. Dynamically scale up or down based on game activity
+  2. Connect to a managed NoSQL database service
+  3. Run customize Linux distro
+
+<hr />
+
+**Question 17**
+
+- AB 53%
+- A. Store as much analytics and game activity data as financially feasible today so it can be used to train machine learning models to predict user behavior in the future. Most Voted
+- B. Begin packaging their game backend artifacts in container images and running them on Google Kubernetes Engine to improve the ability to scale up or down based on game activity.
+- A = ML = future stuff
+- B = containers = portability (since current platform runs on VM's)
+
+<hr />
+
+**Question 18**
+
+- A. Configure an organizational policy which constrains where resources can be deployed. 88%
+- You can limit the physical location of a new resource with the Organization Policy Service resource locations constraint.
+- https://cloud.google.com/resource-manager/docs/organization-policy/defining-locations
+
+```
+constraint: constraints/gcp.resourceLocations
+listPolicy:
+    deniedValues:
+    - in:us-east1-locations
+    - in:northamerica-northeast1-locations
+```
+
+<hr />
+
+**Question 19**
+
+- D. Google Cloud Datastore 54%
+- A. Cloud Spanner 38%/ME
+- Oracle (relational) + global => Spanner
+- Cloud Spanner is a fully managed, scalable, and globally distributed relational database service. It provides strong consistency, high availability, and low-latency capabilities, which would be suitable for JencoMart's User Profiles database requirements.
+
+<hr />
+
+**Question 20**
+
+- D. Configure Ingress for Anthos with a global load balancer and Google Kubernetes Engine. 50%
+- C. Configure a global load balancer with Google Kubernetes Engine. 25%/Me
+- For me is C.
+  There is no necessity of Anthos or hybrid connectivity cluster. GKE and Global LB is enought
+- C.
+  The reason for choosing C is that configuring a global load balancer with Google Kubernetes Engine (GKE) meets the business and technical requirements of Mountkirk Games. A global load balancer automatically routes players to the nearest regional game instances, reducing latency and providing high performance. Moreover, GKE allows dynamic scaling based on game activity and takes advantage of Google Cloud's managed services and resource pooling to minimize costs.
+- D.
+  Configuring Ingress for Anthos with a global load balancer and Google Kubernetes Engine is more suitable for multi-cluster environments. In this scenario, deploying game instances in multiple regions is required, but a multi-cluster setup is not necessary. Therefore, option C is the best solution.
+
+<hr />
