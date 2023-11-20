@@ -112,8 +112,11 @@ gsutil -m cp -r dir gs://my-bucket
 
 **Question 11**
 
-- A. Tests should scale well beyond the prior approaches
-- since they are migrating to new GCP infrastructure they should have higher scalability in tests.
+- A. Tests should scale well beyond the prior approaches.65%
+- D. Tests should include directly testing the Google Cloud Platform (GCP) infrastructure. 35%/Me/tartar
+- Mountkirk Games
+- It is D. New to GCP, migrated to GCP.... time to test if it works or not.
+- " had problems scaling their global audience, application servers MySQL databases, and analytics tools."
 
 <hr />
 
@@ -121,14 +124,12 @@ gsutil -m cp -r dir gs://my-bucket
 
 - C. Provision service account keys for the on-premises infrastructure and use Google Cloud Platform (GCP) managed keys for the VMs. 100%
 
-- Correct Answer : C
-  Where will the code that assumes the identity of the service account be running: on Google Cloud Platform or on-premises?
-  https://cloud.google.com/iam/docs/understanding-service-accounts
-
 - Answer: C.
 
-- Migrating data to Google Cloud Platform
-  Let's say that you have some data processing that happens on another cloud provider and you want to transfer the processed data to Google Cloud Platform. You can use a service account from the virtual machines on the external cloud to push the data to Google Cloud Platform. To do this, you must create and download a service account key when you create the service account and then use that key from the external process to call the Cloud Platform APIs.
+  Migrating data to Google Cloud Platform
+  Let's say that you have some data processing that happens on another cloud provider and you want to transfer the processed data to Google Cloud Platform. You can use a service account from the virtual machines on the external cloud to push the data to Google Cloud Platform.
+
+  To do this, **you must create and download a service account key when you create the service account and then use that key from the external process to call the Cloud Platform APIs.**
 
 <hr />
 
