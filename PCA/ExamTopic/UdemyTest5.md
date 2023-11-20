@@ -127,13 +127,8 @@ gsutil -m cp -r dir gs://my-bucket
 
 - Answer: C.
 
-https://cloud.google.com/iam/docs/understanding-service-accounts#migrating_data_to_google_cloud_platform
-
-There are two types of service account keys:
-
-GCP-managed keys. These keys are used by Cloud Platform services such as App Engine and Compute Engine. They cannot be downloaded, and are automatically rotated and used for signing for a maximum of two weeks. The rotation process is probabilistic; usage of the new key will gradually ramp up and down over the key's lifetime. We recommend caching the public key set for a service account for at most 24 hours to ensure that you always have access to the current key set.
-
-User-managed keys. These keys are created, downloadable, and managed by users. They expire 10 years from creation, and cease authenticating successfully when they are deleted from the service account.
+- Migrating data to Google Cloud Platform
+  Let's say that you have some data processing that happens on another cloud provider and you want to transfer the processed data to Google Cloud Platform. You can use a service account from the virtual machines on the external cloud to push the data to Google Cloud Platform. To do this, you must create and download a service account key when you create the service account and then use that key from the external process to call the Cloud Platform APIs.
 
 <hr />
 
