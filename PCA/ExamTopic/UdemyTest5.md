@@ -220,3 +220,87 @@ listPolicy:
   Configuring Ingress for Anthos with a global load balancer and Google Kubernetes Engine is more suitable for multi-cluster environments. In this scenario, deploying game instances in multiple regions is required, but a multi-cluster setup is not necessary. Therefore, option C is the best solution.
 
 <hr />
+
+**Question 21**
+
+- C. Change the filter to metric.label.state = 'used' AND metric.label.state = 'buffered' AND metric.label.state = 'cached' AND metric.label.state = 'slab'. 53%
+- https://cloud.google.com/compute/docs/autoscaler/scaling-cloud-monitoring-metrics#autoscale_based_on_memory_usage
+
+A. Change the Target type to DELTA_PER_MINUTE. (in this case the utlization tagret need to be in minutes which is not the case its percentage % and not time based.
+B. Change the Metric identifier to agent.googleapis.com/memory/bytes_used. (not applicable)
+C. Change the filter to metric.label.state = 'used' AND metric.label.state = 'buffered' AND metric.label.state = 'cached' AND metric.label.state = 'slab'. (this gives total memory used)
+D. Change the filter to metric.label.state = 'free' and the Target utilization to 20. (you would still need to change the the percent_used to percent_free)
+
+https://stackoverflow.com/questions/69267526/what-is-disk-data-cached-in-the-memory-usage-chart-metrics-of-gcp-compute-in
+
+https://cloud.google.com/compute/docs/autoscaler/scaling-cloud-monitoring-metrics
+
+<hr />
+
+**Question 22 - EHR Healthcare**
+
+- AB 100%
+- A. Verify EHR's product usage against the list of compliant products on the Google Cloud compliance page.
+- B. Advise EHR to execute a Business Associate Agreement (BAA) with Google Cloud.
+- A - OK, Google Cloud compliance page will give list of products those are HIPAA compliant.
+  [HIPAA](https://cloud.google.com/security/compliance/hipaa-compliance?skip_cache=true)
+- B - OK (BAA means HIPAA Business Associate amendment or Business Associate Agreement entered into between Google and Customer. With EHR being a leading provider of health record software, this agreement is required. https://cloud.google.com/files/gcp-hipaa-overview-guide.pdf?hl=en)
+- C - Eliminated (Firebase authentication provides backend services, easy-to-use SDKs and ready-made libraries to users on App. https://firebase.google.com/docs/auth)
+- D - Eliminated (more of an observability platform)
+- E - Eliminated (Running distributed services in GKE private clusters gives enterprises both secure and reliable services. Not sure how this may help with Private Compliance Audit)
+
+<hr />
+
+**Question 23**
+
+- AB 100%
+- A. Evaluate the impact of migrating their current batch ETL code to Cloud Dataflow. Most Voted
+- B. Write a schema migration plan to denormalize data for better performance in BigQuery.
+- Cloud Dataflow -> Stream data (mobile devices)
+- BigQuery -> Intensive Analytics + historic data
+- Both are FULLY MANAGED services.
+
+<hr />
+
+**Question 24**
+
+- A. Configure Workload Identity and service accounts to be used by the application platform. 100%
+- A. Because Mountkrik Game is going to use GKE clusters for its new deployment and so work load identity is the preferred way to connect the apps running on GKE
+- Workload Identity is the recommended way to access Google Cloud services from applications running within GKE due to its improved security properties and manageability. For information about alternative ways to access Google Cloud APIs from GKE, refer to the alternatives section below.
+  https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+
+<hr />
+
+**Question 25 - JencoMart**
+
+- CDF 100%
+- C. Take a snapshot of the disk and connect to a new machine to investigate
+- D. Check inbound firewall rules for the network the machine is connected to
+- F. Print the Serial Console output for the instance for troubleshooting, activate the interactive console, and investigate
+- migrate user db to Google. Shut down old server and new db stop SSH connection.
+
+Assumption:- VM in production environment, cannot be taken down.
+
+based on above, A/B are out. E causes downtime to remove the VM from the old network and connect it to a new network for testing.
+
+Only leaves CDF
+
+- C - Snapshotting is fine, it will reduce the performance for a short duration, but the database will still be up
+- D - Obvious place to check for firewall rules (if ssh ports are open or not)
+- F - Easy to see server messages on console (without downtime)
+
+<hr />
+
+**Question 26**
+
+- C. Create a service account (SA) in the legacy game's Google Cloud project, add this SA in the new game's IAM page, and then give it the Firebase Admin role in both projects. 100%
+
+- I think it should not simply give out the Organization admin role so A and B is out. We should not migrate the new game to the lagacy game's project and thus D is out. So remain C is the only choice.
+
+<hr />
+
+**Question 27**
+
+<hr />**Question 28**
+<hr />**Question 29**
+<hr />**Question 30**
