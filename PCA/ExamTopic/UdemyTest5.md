@@ -301,6 +301,34 @@ Only leaves CDF
 
 **Question 27**
 
-<hr />**Question 28**
-<hr />**Question 29**
-<hr />**Question 30**
+- C. Google Kubernetes Registry, Google Container Engine, Google HTTP(S) Load Balancer. 100%
+
+<hr />
+
+**Question 28**
+
+- C. Configure a HorizontalPodAutoscaler for all stateless workloads and for all compatible stateful workloads. Configure the cluster to use node auto scaling. 100%
+- A: Is not necessary because you can have multiple node pools with different configurations.
+- B: Optimizes resource usage of CPU/memory in your existing node pool but does not necessarily improve cost - still an option that should be considered.
+- C: This looks really good. Autoscaling workloads and the node pools makes your whole infrastructure more elastic and gives you the option to rely on the same node pool.
+- D: This might not be a good option for every type of workload. Batch and stateless workloads can often handle this quite well, but stateful workloads are not well-suited for operation on preemptible VMs.
+
+<hr />
+
+**Question 29**
+
+- A. Cloud Bigtable. 100%
+- Cloud Bigtable for Storing time series data in Cloud Bigtable https://cloud.google.com/bigtable/docs/schema-design-time-series
+
+<hr />
+
+**Question 30**
+
+- B. Encrypt the card data with a deterministic algorithm stored in Firestore using Datastore mode. 97%
+
+- https://cloud.google.com/community/tutorials/pci-tokenizer
+
+  > Deterministic output means that a given set of inputs (card number, expiration, and userID) will always generate the same token. This is useful if you want to rely on the token value to deduplicate your token stores. You can simply match a newly generated token to your existing catalog of tokens to determine whether the card has been previously stored. Depending on your application architecture, this can be a very useful feature. However, this could also be accomplished using a salted hash of the input values.
+
+- https://cloud.google.com/architecture/tokenizing-sensitive-cardholder-data-for-pci-dss
+  > Firestore is the next major version of Datastore. Firestore can run in Datastore mode, which uses the same API as Datastore and scales to millions of writes per second
