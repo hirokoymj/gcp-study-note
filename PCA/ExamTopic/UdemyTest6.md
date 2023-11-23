@@ -91,3 +91,106 @@ Ref: https://cloud.google.com/bigquery/docs/managing-partitioned-tables#partitio
 - Uptime check monitoring
 - Correct answer is B. https://cloud.google.com/monitoring/uptime-checks/using-uptime-checks#monitoring_uptime_check_list_ips-console
 - It would be missing firewall rule that would be causing problem.
+
+<hr />
+
+**Question 11**
+
+- B. They should add additional unit tests and production scale load tests on their cloud staging environment. 100%
+- A - Not Correct. Developer can debug the problem, but cannot _prevent_ the outage.
+- B - Correct. Developers are responsible for writing unit tests. They already have end-to-end tests for _endpoints_ but nothing mentioned about the unit tests. Cloud will auto-scale but you need to define your auto-scaling configuration (desired count, max count etc) and production scale load test will help you to configure the auto-scaling policies
+- C - Not Correct. They already have end-to-end test. Running it on staging environment will not prevent an outage
+- D - Not Correct. Answers says "an impact the new release causes to latency" but question ask for preventing an outage and so this one is ruled out
+
+<hr />
+
+**Question 12 TerramEarth**
+
+- D. Use Cloud Dataprep and configure the BigQuery tables as the source. Schedule a daily job to clean the data. 100%
+- **Cloud Dataprep** is an intelligent data service for visually exploring, cleaning, and preparing structured and unstructured data for analysis, reporting, and machine learning. https://cloud.google.com/dataprep
+- **Cloud Dataproc** is a fast, easy-to-use, fully managed cloud service for running Apache Spark and Apache Hadoop clusters in a simpler way. https://cloud.google.com/dataproc?hl=en
+- **Dataflow** is a managed service for executing a wide variety of data processing patterns. https://cloud.google.com/dataflow?hl=en
+
+<hr />
+
+**Question 13 TerramEarth**
+
+- B. Make func_query 'Require authentication.' Create a unique service account and associate it to func_display. Grant the service account invoker role for func_query. Create an id token in func_display and include the token to the request when invoking func_query. 100%
+
+- For 1st gen functions, the invoker role is Cloud Functions Invoker (roles/cloudfunctions.invoker)
+
+```
+gcloud functions add-iam-policy-binding RECEIVING_FUNCTION \
+  --member='serviceAccount:CALLING_FUNCTION_IDENTITY' \
+  --role='roles/cloudfunctions.invoker'
+```
+
+- https://cloud.google.com/functions/docs/securing/authenticating#authenticating_function_to_function_calls
+
+<hr />
+
+**Question 14 TerramEarth's**
+
+- B. Capture all operating data, train machine learning models that identify ideal operations, and run locally to make operational adjustments automatically. 100%
+- Run Locally -> That's exactly what gcp ca, provide:
+  https://cloud.google.com/blog/products/gcp/bringing-intelligence-edge-cloud-iot
+
+<hr />
+
+**Question 15 TerramEarth**
+
+- B. Deploy Cloud Run services to multiple regions. Create serverless network endpoint groups pointing to the services. Add the serverless NEGs to a backend service that is used by a global HTTP(S) Load Balancing instance. 95%
+
+- Cloud Run is a regional service. To serve global users you need to configure a Global HTTP LB and NEG as the backend. Cloud Run services are deployed into individual regions and to route your users to different regions of your service, you need to configure external HTTP(S) Load Balancing.
+
+- https://cloud.google.com/run/docs/multiple-regions
+
+- A network endpoint group (NEG) specifies a group of backend endpoints for a load balancer. A serverless NEG is a backend that points to a Cloud Run, App Engine, or Cloud Functions service.
+
+- https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts
+
+<hr />
+
+**Question 16**
+
+- A. Configure a trigger in Cloud Build for new source changes. Invoke Cloud Build to build container images for each microservice, and tag them using the code commit hash. Push the images to the Container Registry. 95%
+- https://cloud.google.com/architecture/best-practices-for-building-containers#tagging_using_the_git_commit_hash
+
+<hr />
+
+**Question 17 Dress4Win**
+
+- A. Grant the operations engineer access to use Google Cloud Shell. 100%
+
+<hr />
+
+**Question 18 TerramEarth**
+
+- B. Vehicles write data directly to Google Cloud Pub/Sub. 100%
+- We need to buffer, the default limit of BigQuery is 100 API calls per second, till now this cannot be changed. Hence we should ease using Pub/Sub so B.
+
+- To handle the volume of data that TerramEarth plans to ingest, it is recommended to use a scalable and reliable data ingestion solution such as Google Cloud Pub/Sub. With Cloud Pub/Sub, the vehicles can stream data directly to the service, which can handle the high volume of data and provide a buffer to absorb sudden spikes in traffic. The data can then be processed and stored in a data warehouse such as BigQuery for analysis.
+
+- Option A (writing data directly to GCS) may not be suitable for handling high volumes of data in real-time and may result in data loss if the volume exceeds the capacity of GCS.
+- Option C (streaming data directly to BigQuery) may not be suitable for handling high volumes of data in real-time as it may result in data loss or ingestion delays.
+- Option D (continuing to write data using the existing system) may not be suitable as the current system may not be able to handle the increased volume of data and may result in data loss or ingestion delays.
+
+<hr />
+
+**Question 19 Dress4Wm**
+
+- A. Store image files in a Google Cloud Storage bucket. Use Google Cloud Datastore to maintain metadata that maps each customer's ID and their image files. 100%
+- I think it's A, because in the question says "The customer has exclusive control over who may view these images"
+  And I think it is easier to develop this feature having in cloud datastore a NOSQL database where you can manage the control of file's viewer
+
+<hr />
+
+**Question 20**
+
+- C. Create a Cloud Monitoring uptime check to validate the application URL. If it fails, put a message in a Pub/Sub queue that triggers a Cloud Function to switch the URL to the "Site is unavailable" page, and notify the Ops team. 100%
+- Cloud monitoring for Uptime check to validate the application URL and leverage pub/sub to trigger Cloud Function to switch URL
+- https://cloud.google.com/monitoring/uptime-checks?hl=e
+
+<hr />
+
+**Question 11**
