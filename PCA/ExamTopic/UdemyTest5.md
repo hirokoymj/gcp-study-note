@@ -350,13 +350,13 @@ Only leaves CDF
 
 <hr />
 
-**Question 32**
+**Question 32 - EHR**
 
 - D. Configure two Dedicated Interconnect connections in one metro (City) and two connections in another metro, and make sure the Interconnect connections are placed in different metro zones
 - Answer : D (based on the requirement of secure and high-performance connection between on-premises systems to Google Cloud)
-- EHR is supposed to be massive in size. so the option of 100 GBps / Dedicated is warranted.
 - https://cloud.google.com/network-connectivity/docs/interconnect/tutorials/dedicated-creating-9999-availability
 - https://cloud.google.com/network-connectivity/docs/interconnect/tutorials/production-level-overview
+- ![](images5/../image5/32.png)
 
 <hr />
 
@@ -425,17 +425,46 @@ Only leaves CDF
 - binary athorization and vun checks
 
 <hr />**Question 41**
+
+A. Create an Organizational Policy with a constraint to allow external IP addresses only on the frontend Compute Engine instances.
+
+https://cloud.google.com/blog/topics/developers-practitioners/limiting-public-ips-google-cloud
+
 <hr />**Question 42**
-<hr />**Question 43**
-<hr />**Question 44**
-<hr />**Question 45**
 
-A. A single VPN tunnel, which limits throughput
-C. A copy command that is not suited to operate over long distances
-F. Complicated internet connectivity between the on-premises infrastructure and GCP
+- C. Turn off Pub/Sub message batching. 73%
+- C - The cost of batching is latency for individual messages, which are queued in memory until their corresponding batch is filled and ready to be sent over the network. To minimize latency, batching should be turned off.
+- https://cloud.google.com/pubsub/docs/publisher?hl=en#batching
+- https://cloud.google.com/pubsub/docs/publish-best-practices?hl=en#configure-batch
 
-  <hr />
+<hr />
 
-**Question 46**
+**Question 43**
 
-A. Use Google App Engine with Google Cloud Endpoints. Focus on an API for dealers and partners.
+- C. Create Request Latency and Error Rate as service level indicators. 95%
+- CPU utilization doesn't tell us about the user experience except perhaps if it hits 100%. The errors & latency (driven party by CPU ) are much better indicators
+
+<hr />
+
+**Question 44 - Mountkirk Games**
+
+- D. Use Cloud Bigtable for time series data, use Cloud Spanner for transactional data, and use BigQuery for historical data queries. 83%
+- Storing time-series data in Cloud Bigtable is a natural fit, Cloud Spanner scales horizontally and serves data with low latency while maintaining transactional consistency and industry-leading 99.999% (five 9s) availability - 10x less downtime than four nines (<5 minutes per year). Cloud Spanner helps future-proof your database backend. After you load your data into BigQuery, you can query the data in your tables. BigQuery supports two types of queries: Interactive queries, Batch queries
+
+<hr />
+
+**Question 45 - JencoMart**
+
+- ACF 50%
+  A. A single VPN tunnel, which limits throughput
+  C. A copy command that is not suited to operate over long distances
+  F. Complicated internet connectivity between the on-premises infrastructure and GCP
+
+<hr />
+
+**Question 46 - TerramEarth**
+
+- A. Use Google App Engine with Google Cloud Endpoints. Focus on an API for dealers and partners.
+- With Endpoints Frameworks, you don't have to deploy a third-party web server (such as Apache Tomcat or Gunicorn) with your application. You annotate or decorate the code and deploy your application as you normally would to the App Engine standard environment.
+
+<hr />
