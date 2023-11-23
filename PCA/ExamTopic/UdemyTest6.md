@@ -1,6 +1,6 @@
 # Udemy Test 6
 
-**Question 1**
+**Question 1 Dress4Win**
 
 - D. Identify the number of virtual cores and RAM associated with the application server virtual machines align them to a custom machine type in the cloud, monitor performance, and scale the machine types up until the desired performance is reached.　 58％
 - A - not correct. as its talking about Physical server size
@@ -19,14 +19,14 @@
 
 <hr />
 
-**Question 3**
+**Question 3 TerramEarth**
 
 - B. Capacity planning, TCO calculations, opex/capex allocation. 92%
 - From the case study, it can conclude that Management (CXO) all concern rapid provision of resources (infrastructure) for growing as well as cost management, such as Cost optimization in Infrastructure, trade up front capital expenditures (Capex) for ongoing operating expenditures (Opex), and Total cost of ownership (TCO)
 
 <hr />
 
-**Question 4**
+**Question 4 TerramEarth**
 
 - AC 92%
 - A. Open a support case regarding the CVE and chat with the support engineer.
@@ -53,7 +53,7 @@
 
 <hr />
 
-**Question 7**
+**Question 7 Dress4Win**
 
 - A. Use regional managed instance groups and a global load balancer to increase performance because the regional managed instance group can grow instances in each region separately based on traffic.
 - Creating MIGs across regions behind a GLB, gives HA across Zones and Regions.
@@ -85,7 +85,7 @@ Ref: https://cloud.google.com/bigquery/docs/managing-partitioned-tables#partitio
 
 <hr />
 
-**Question 10**
+**Question 10 Dress4Win**
 
 - B. In the Cloud Platform Console download the list of the uptime servers' IP addresses and create an inbound firewall rule. 64%
 - Correct answer is B. https://cloud.google.com/monitoring/uptime-checks/using-uptime-checks#monitoring_uptime_check_list_ips-console
