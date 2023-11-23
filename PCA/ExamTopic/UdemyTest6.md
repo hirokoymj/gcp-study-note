@@ -193,4 +193,95 @@ gcloud functions add-iam-policy-binding RECEIVING_FUNCTION \
 
 <hr />
 
-**Question 11**
+**Question 21 Dress4Win**
+
+- C. Monitoring, Logging, Alerts, Error Reporting. 53%/ME
+- D. Monitoring, Logging, Debug, Error Report. 47%
+- With D you cannot achieve "Their administrators are notified automatically when their application reports errors."
+- However, with Error Reporting (Log insights) - Notifies you when new errors are detected. So, perfect option is C.
+
+<hr />
+
+**Question 22 Dress4Win**
+
+- C. Hadoop/Spark deployed using Cloud Dataproc Regional in High Availability mode. 100%
+- Google Cloud includes Dataproc, which is a managed Hadoop and Spark environment. You can use Dataproc to run most of your existing jobs with minimal alteration, so you don't need to move away from all of the Hadoop tools you already know.
+
+<hr />
+
+**Question 23 Dress4Win**
+
+- D. Use the Activity page in the GCP Console and Stackdriver Logging to provide the required insight.
+- https://cloud.google.com/logging/docs/audit/
+- Admin Activity audit logs contain log entries for API calls or other administrative actions that modify the configuration or metadata of resources. For example, these logs record when users create VM instances or change Identity and Access Management permissions. To view these logs, you must have the IAM role Logging/Logs Viewer or Project/Viewer.
+
+<hr />
+
+**Question 24 TerramEarth**
+
+- B. Cloud IoT Core with public/private key pairs
+- https://cloud.google.com/iot-core/
+- IoT Core was developed for connecting existing devices spread around the world to GCP. Also, it supports end-to-end security using asymmetric key authentication over TLS 1.2. So, this is exact match for this question.
+
+<hr />
+
+**Question 25**
+
+- AC 100%
+- A. Treat every micro service call between modules on the vehicle as untrusted.
+- C. Use a trusted platform module (TPM) and verify firmware and binaries on boot.
+- B is not correct because IPv6 doesn't have any impact on the security during vehicle operation, although it improves system scalability and simplicity.
+- D is not correct because merely using a functional programming language doesn't guarantee a more secure level of execution isolation. Any impact on security from this decision would be incidental at best.
+- E is not correct because this improves system durability, but it doesn't have any impact on the security during vehicle operation.
+- F is not correct because it doesn't have any impact on the security during vehicle operation, although it improves system durability.
+
+<hr />
+
+**Question 26 Dress4Win**
+
+- A. Deploy Nginx and Tomcat using Cloud Deployment Manager to Compute Engine. Deploy a Cloud SQL server to replace MySQL. Deploy Jenkins using Cloud Deployment Manager.
+- The requriements also specify:
+  "Easily create non-production environment in the cloud.
+  Implement an automation framework for provisioning resources in cloud.
+  Implement a continuous deployment process for deploying applications to the on-premises datacenter or cloud."
+  So A is better.
+
+<hr />
+
+**Question 27 Dress4Win**
+
+- C. Create a Cloud Storage Transfer Service Job to copy the files to a Coldline Storage bucket.
+- https://cloud.google.com/storage-transfer/docs/transfer-options
+- We recommend using Storage Transfer Service to move or back up your data from other cloud storage providers to Cloud Storage.
+  - Amazon S3
+  - Microsoft Azure Blob Storage
+
+<hr />
+
+**Question 28 Dress4Win**
+
+- A. Identify self-contained applications with external dependencies as a first move to the cloud. 82%
+- To become familiar with deploying applications to the cloud, it is recommended to start with simple, self-contained applications with external dependencies that can be easily moved to the cloud. These applications are likely to have fewer dependencies on other components in the infrastructure and can be migrated with minimal effort, helping the team to get comfortable with the cloud deployment process. Once the team has gained experience with the cloud deployment process, they can gradually move more complex applications with internal dependencies to the cloud.
+
+<hr />
+
+**Question 29**
+
+- C. Increase fleet cellular connectivity to 80%, migrate from FTP to streaming transport, and develop machine learning analysis of metrics. 59%
+- C is right choice because using cellular connectivity will greatly improve the freshness of data used for analysis from where it is now, collected when the machines are in for maintenance. Streaming transport instead of periodic FTP will tighten the feedback loop even more. Machine learning is ideal for predictive maintenance workloads.
+
+<hr />
+
+**Question 30**
+
+- D. Directly transfer the files to a different Google Cloud **Regional** Storage bucket location in US, EU, and Asia using Google APIs over HTTP(S). Run the ETL process to retrieve the data from each Regional bucket. 72%
+- C. Directly transfer the files to different Google Cloud **Multi-Regional** Storage bucket locations in US, EU, and Asia using Google APIs over HTTP(S). Run the ETL process using the data in the bucket. 28%
+- D - https://cloud.google.com/storage/docs/locations#considerations
+
+  - Regional: 200 Gbps (per region, per project)
+  - Multi-regional: 50 Gbps (per region, per project)
+
+- Sending Data to all Multi Region Buckets >> Incurs more cost , More Latency
+- Sending Data only to Regional Bucket >> Incurs less cost , Less Latency
+
+<hr />
