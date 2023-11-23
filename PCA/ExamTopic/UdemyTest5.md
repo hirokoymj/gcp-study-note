@@ -424,13 +424,17 @@ Only leaves CDF
   To ensure deployment are secure and and consistent, automatically scan images for vulnerabilities with container analysis
 - binary athorization and vun checks
 
-<hr />**Question 41**
+<hr />
+
+**Question 41**
 
 A. Create an Organizational Policy with a constraint to allow external IP addresses only on the frontend Compute Engine instances.
 
 https://cloud.google.com/blog/topics/developers-practitioners/limiting-public-ips-google-cloud
 
-<hr />**Question 42**
+<hr />
+
+**Question 42**
 
 - C. Turn off Pub/Sub message batching. 73%
 - C - The cost of batching is latency for individual messages, which are queued in memory until their corresponding batch is filled and ready to be sent over the network. To minimize latency, batching should be turned off.
@@ -456,9 +460,9 @@ https://cloud.google.com/blog/topics/developers-practitioners/limiting-public-ip
 **Question 45 - JencoMart**
 
 - ACF 50%
-  A. A single VPN tunnel, which limits throughput
-  C. A copy command that is not suited to operate over long distances
-  F. Complicated internet connectivity between the on-premises infrastructure and GCP
+- A. A single VPN tunnel, which limits throughput
+- C. A copy command that is not suited to operate over long distances
+- F. Complicated internet connectivity between the on-premises infrastructure and GCP
 
 <hr />
 
