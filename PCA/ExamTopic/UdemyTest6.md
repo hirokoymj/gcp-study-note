@@ -42,8 +42,51 @@
 - The right answer is to use Transfer Appliance
   https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets#time
 
-<hr />**Question 6**
-<hr />**Question 7**
-<hr />**Question 8**
-<hr />**Question 9**
-<hr />**Question 10**
+<hr />
+
+**Question 6 Dress4Win**
+
+- A. Google Cloud Storage Coldline to store the data, and gsutil to access the data.
+- **Infrequently** accessed data
+- https://cloud.google.com/storage/docs/storage-classes#coldline
+- Coldline storage is a very-low-cost, highly durable storage service for storing infrequently accessed data.
+
+<hr />
+
+**Question 7**
+
+- A. Use regional managed instance groups and a global load balancer to increase performance because the regional managed instance group can grow instances in each region separately based on traffic.
+- Creating MIGs across regions behind a GLB, gives HA across Zones and Regions.
+
+<hr />
+
+**Question 8 TerramEarth**
+
+- C. Create a BigQuery time-partitioned table for the European data, and set the partition expiration period to 36 months. For Cloud Storage, use gsutil to enable lifecycle management using a DELETE action with an Age condition of 36 months. 86%
+
+When you create a table partitioned by ingestion time, BigQuery automatically loads data into daily, date-based partitions that reflect the data's ingestion or arrival time.
+
+Ref: https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time
+
+And Google recommends you configure the default table expiration for your datasets, configure the expiration time for your tables, and configure the partition expiration for partitioned tables.
+
+Ref: https://cloud.google.com/bigquery/docs/best-practices-storage#use_the_expiration_settings_to_remove_unneeded_tables_and_partitions
+
+If the partitioned table has a table expiration configured, all the partitions in it are deleted according to the table expiration settings. For our specific requirement, we could set the partition expiration to 36 months so that partitions older than 36 months (and the data within) are automatically deleted.
+
+Ref: https://cloud.google.com/bigquery/docs/managing-partitioned-tables#partition-expiration
+
+<hr />
+
+**Question 9 TerramEarth**
+
+- D. Have the vehicle's computer compress the data in hourly snapshots, and store it in a GCS Coldline bucket Most Voted
+- D is most cost effective as don't want to use until 'next year'
+
+<hr />
+
+**Question 10**
+
+- B. In the Cloud Platform Console download the list of the uptime servers' IP addresses and create an inbound firewall rule. 64%
+- Correct answer is B. https://cloud.google.com/monitoring/uptime-checks/using-uptime-checks#monitoring_uptime_check_list_ips-console
+- It would be missing firewall rule that would be causing problem.
