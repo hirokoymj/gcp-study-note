@@ -331,4 +331,111 @@ Only leaves CDF
   > Deterministic output means that a given set of inputs (card number, expiration, and userID) will always generate the same token. This is useful if you want to rely on the token value to deduplicate your token stores. You can simply match a newly generated token to your existing catalog of tokens to determine whether the card has been previously stored. Depending on your application architecture, this can be a very useful feature. However, this could also be accomplished using a salted hash of the input values.
 
 - https://cloud.google.com/architecture/tokenizing-sensitive-cardholder-data-for-pci-dss
+
   > Firestore is the next major version of Datastore. Firestore can run in Datastore mode, which uses the same API as Datastore and scales to millions of writes per second
+
+  <hr />
+
+**Question 31**
+
+- A. Configure liveness and readiness probes in the Pod specification. 100%
+
+- B: With GKE, you do not deal with MIGs.
+- C: Does not use GKE tools and is therefore not the best option.
+- D: Does alert you but does not prevent the outage.
+- Types of health check
+- **Readiness** - Readiness probes are designed to let Kubernetes know when your app is ready to serve traffic.
+- **Liveness** - Liveness probes let Kubernetes know if your app is alive or dead.
+- https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-setting-up-health-checks-with-readiness-and-liveness-probes
+
+<hr />
+
+**Question 32**
+
+- D. Configure two Dedicated Interconnect connections in one metro (City) and two connections in another metro, and make sure the Interconnect connections are placed in different metro zones
+- Answer : D (based on the requirement of secure and high-performance connection between on-premises systems to Google Cloud)
+- EHR is supposed to be massive in size. so the option of 100 GBps / Dedicated is warranted.
+- https://cloud.google.com/network-connectivity/docs/interconnect/tutorials/dedicated-creating-9999-availability
+- https://cloud.google.com/network-connectivity/docs/interconnect/tutorials/production-level-overview
+
+<hr />
+
+**Question 33**
+
+- B. Object Versioning
+- allows you to store multiple versions of an object in Cloud Storage
+- https://cloud.google.com/storage/docs/object-versioning
+
+<hr />
+
+**Question 34 - Mountkirk Games**
+
+- C. Create an instance template for the backend. For every region, deploy it on a multi-zone managed instance group. Use an L7 load balancer. Most Voted
+- Multi-zone makes it high available. L7 balances load for e.g. HTTP traffic. So the answer is C. Why not A? L4 works at the network protocol (TCP/UDP) which is not suitable for REST APIs.
+
+<hr />
+
+**Question 35**
+
+- A. Add a new Dedicated Interconnect connection. 100%
+- I will go A cause note in https://cloud.google.com/network-connectivity/docs/interconnect/how-to/dedicated/modifying-interconnects [1] says
+  " It is not possible to change the link type on an Interconnect connection circuit from 10 Gbps to 100 Gbps. If you want to migrate to 100 Gbps, you must first provision a new 100-Gbps Interconnect connection alongside your existing 10-Gbps connection, and then migrate the traffic onto the 100-Gbps connection."
+- The following items can't be modified for existing Dedicated Interconnect connections:[1]
+- https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview
+
+<hr />
+
+**Question 36 - Mountkirk Games**
+
+- A. Deploy failure injection software to the game analytics platform that can inject additional latency to mobile client analytics traffic. 67%
+- resilience: the power or ability of a material to return to its original form.(回復力)
+- A is most likely correct: Istio (which is now Anthos Service Mesh on GCP) is capable of injecting delays: https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault
+
+<hr />
+
+**Question 37 - Mountkirk Games**
+
+- D. Create one project for development, a second for staging and a third for production. 50%
+- deploying isolated application environments.
+- https://cloud.google.com/appengine/docs/standard/php/creating-separate-dev-environments
+
+<hr />
+
+**Question 38**
+
+- B. 1. Create a Cloud Logging sink to export BigQuery data access logs to BigQuery. 2. Perform a BigQuery query on the generated table to extract the information you need. 73%
+- option B allows you to monitor queries in real-time by exporting BigQuery data access logs directly to another BigQuery table, enabling you to analyze the costliest queries and user expenses as they happen
+
+<hr />
+
+**Question 39 - Mountkirk Games**
+
+- B. Verify that the project quota hasn't been exceeded Most Voted
+- B is the correct answer Error code starting like 5xx is something related to server 503 UNAVAILABLE Service unavailable. Typically, the server is down.
+
+<hr />
+
+**Question 40**
+
+- AD 41%
+- A. Enable Binary Authorization on GKE, and sign containers as part of a CI/CD pipeline.
+- D. Configure Container Registry to use vulnerability scanning to confirm that there are no vulnerabilities before deploying the workload.
+- https://cloud.google.com/binary-authorization/docs/overview
+  To ensure deployment are secure and and consistent, automatically scan images for vulnerabilities with container analysis
+- binary athorization and vun checks
+
+<hr />**Question 41**
+<hr />**Question 42**
+<hr />**Question 43**
+<hr />**Question 44**
+<hr />**Question 45**
+
+A. A single VPN tunnel, which limits throughput
+C. A copy command that is not suited to operate over long distances
+F. Complicated internet connectivity between the on-premises infrastructure and GCP
+
+  <hr />
+
+**Question 46**
+
+A. Use Google App Engine with Google Cloud Endpoints. Focus on an API for dealers and partners.
