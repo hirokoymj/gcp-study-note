@@ -88,5 +88,6 @@ Ref: https://cloud.google.com/bigquery/docs/managing-partitioned-tables#partitio
 **Question 10 Dress4Win**
 
 - B. In the Cloud Platform Console download the list of the uptime servers' IP addresses and create an inbound firewall rule. 64%
+- Uptime check monitoring
 - Correct answer is B. https://cloud.google.com/monitoring/uptime-checks/using-uptime-checks#monitoring_uptime_check_list_ips-console
 - It would be missing firewall rule that would be causing problem.
