@@ -285,3 +285,37 @@ gcloud functions add-iam-policy-binding RECEIVING_FUNCTION \
 - Sending Data only to Regional Bucket >> Incurs less cost , Less Latency
 
 <hr />
+**Question 31**
+
+<hr />**Question 32**
+<hr />**Question 33**
+<hr />**Question 34**
+<hr />**Question 35**
+<hr />
+
+**Question 36 Dress4Win**
+
+- B. Setup a MySQL replica server/slave in the cloud environment, and configure it for asynchronous replication from the MySQL master server on-premises until cutover. 100%
+
+- I will go with answer B, because this will avoid any downtime and performance impact. And post cutover this database can be used a master.
+
+- A -> Will cause downtime.
+- B -> Right choice
+- C -> Business impact, incosistency in data.
+- D -> Cloud DataStore is NoSQL DB
+
+<hr />
+
+**Question 37 Dress4Win**
+
+- D. Containerize the micro-services and host them in Google Kubernetes Engine. 100%
+- Containerizing the existing applications ensures efficient use of resources. This activity the business requirement “optimize architecture for performance in the cloud”.
+
+<hr />
+
+**Question 38 TerramEarth**
+
+- D. Launch a cluster in each region to preprocess and compress the raw data, then move the data into a region bucket and use a Cloud Dataproc cluster to finish the job. 100%
+- Regional bucket is required, since multi regional bucket will incur additional cost to transfer the data to a centralized location.
+- Though running Dataproc for preprocessing in each region will incur additional cost but it will also reduce cost of running Dataproc job on all pre-processed data will also reduce cost offsetting additional cost of Dataproc cluster at regional level.
+- https://cloud.google.com/storage/docs/locations#considerations
