@@ -1,48 +1,50 @@
 # Exam Topic
 
 **Question 1**
-D. Use separate backend pools for each API path behind the load balancer. 100%
 
+- D. Use separate backend pools for each API path behind the load balancer. 100%
 - D is the answer because HTTP(S) load balancer can direct traffic reaching a single IP to different backends based on the incoming URL.
-
 - A is not correct because configuring a new load balancer would require a new or different SSL and DNS records which conflicts with the requirements to keep the same SSL and DNS records.
-
 - B is not correct because it goes against the requirements. The company wants to keep the old API available while new customers and testers try the new API.
-
 - C is not correct because it is not a requirement to decommission the implementation behind the old API.
+
+<hr />
 
 **Question 2**
 
 - A. Load data into Google BigQuery
-- A is correct.
+- To optimize the storage of the multi-petabyte data set for ease of analysis by business analysts who have experience only with using a SQL interface, you should load the data into Google BigQuery.
 
-To optimize the storage of the multi-petabyte data set for ease of analysis by business analysts who have experience only with using a SQL interface, you should load the data into Google BigQuery.
+- BigQuery is a fully-managed, cloud-native data warehouse that allows you to perform fast SQL queries on large amounts of data. By loading the data into BigQuery, you can provide your business analysts with a familiar SQL interface for querying the data, making it easier for them to analyze the data set.
 
-BigQuery is a fully-managed, cloud-native data warehouse that allows you to perform fast SQL queries on large amounts of data. By loading the data into BigQuery, you can provide your business analysts with a familiar SQL interface for querying the data, making it easier for them to analyze the data set.
+- Other options, such as inserting data into Google Cloud SQL, putting flat files into Google Cloud Storage, or streaming data into Google Cloud Datastore, may not provide the necessary SQL interface or query performance for efficient analysis of the data set.
 
-Other options, such as inserting data into Google Cloud SQL, putting flat files into Google Cloud Storage, or streaming data into Google Cloud Datastore, may not provide the necessary SQL interface or query performance for efficient analysis of the data set.
+<hr />
 
 **Question 3**
 
 - Correct option is CDE.
+  C. Instrument the application with a monitoring tool like Stackdriver Debugger: A monitoring tool like Stackdriver Debugger can help in identifying and debugging issues that arise during the migration process. It can also provide insights into the performance and availability of the application after it has been migrated to the cloud.
 
-C. Instrument the application with a monitoring tool like Stackdriver Debugger: A monitoring tool like Stackdriver Debugger can help in identifying and debugging issues that arise during the migration process. It can also provide insights into the performance and availability of the application after it has been migrated to the cloud.
+- D. Select an automation framework to reliably provision the cloud infrastructure: Automating the provisioning of the cloud infrastructure can help ensure that the process is reliable and repeatable. It can also help reduce the risk of errors and increase the speed of the migration process.
 
-D. Select an automation framework to reliably provision the cloud infrastructure: Automating the provisioning of the cloud infrastructure can help ensure that the process is reliable and repeatable. It can also help reduce the risk of errors and increase the speed of the migration process.
+- E. Deploy a continuous integration tool with automated testing in a staging environment: Deploying a continuous integration tool with automated testing in a staging environment can help ensure that the application is thoroughly tested before it is deployed to production. This can help reduce the risk of issues arising in production and provide greater confidence in the stability and reliability of the application.
 
-E. Deploy a continuous integration tool with automated testing in a staging environment: Deploying a continuous integration tool with automated testing in a staging environment can help ensure that the application is thoroughly tested before it is deployed to production. This can help reduce the risk of issues arising in production and provide greater confidence in the stability and reliability of the application.
+<hr />
 
 **Question 4**
 
 - A is correct option.
+- App Engine spins up new containers automatically according to the load. During peak traffic, HTTP requests originated by the same user could be served by different containers. Given that the variable `sessions` is recreated for each container, it might store different data. The problem here is that this Flask app is stateful. The `sessions` variable is the state of this app. And stateful variables in App Engine / Cloud Run / Cloud Functions are problematic. A solution would be to store the session in some database (e.g., Firestore, Memorystore) and retrieve it from there. This way the app would fetch the session from a single place and would be stateless.
 
-App Engine spins up new containers automatically according to the load. During peak traffic, HTTP requests originated by the same user could be served by different containers. Given that the variable `sessions` is recreated for each container, it might store different data. The problem here is that this Flask app is stateful. The `sessions` variable is the state of this app. And stateful variables in App Engine / Cloud Run / Cloud Functions are problematic. A solution would be to store the session in some database (e.g., Firestore, Memorystore) and retrieve it from there. This way the app would fetch the session from a single place and would be stateless.
+<hr />
 
 **Question 5**
 
 - A should good.
+- Stackdriver is Google's logging solution. The answer wouldn't be to find another viable 3rd party logging solution.
 
-Stackdriver is Google's logging solution. The answer wouldn't be to find another viable 3rd party logging solution.
+<hr />
 
 **Question 6**
 
@@ -60,13 +62,17 @@ B) In software, a canary process is usually the first instance that receives liv
 
 Hence (A) and (C) are correct.
 
+<hr />
+
 **Question 7**
 
-- AD is correct
+- AD 63%
+- Use the flag -no-auto-delete with this flag, the disk won't be deleted when the VM is terminated.
+- https://cloud.google.com/compute/docs/images/create-custom#gcloud
+- By default, the auto-delete option is enabled on the boot disks.
+- Billing export to BigQuery enables you to export your daily usage and cost estimates automatically throughout the day to a BigQuery dataset you specify. You can then access your billing data from BigQuery.
 
-Use the flag -no-auto-delete with this flag, the disk won't be deleted when the VM is terminated.
-
-Billing export to BigQuery enables you to export your daily usage and cost estimates automatically throughout the day to a BigQuery dataset you specify. You can then access your billing data from BigQuery.
+<hr />
 
 **Question 8**
 
@@ -81,6 +87,8 @@ C seems unreasonable because we have no idea on the structure of the data.
 
 D seems unreasonable because there is no such Google database type.
 
+<hr />
+
 **Question 9**
 
 - C. Ensure that a firewall rule exists to allow load balancer health checks to reach the instances in the instance group. 100%
@@ -88,11 +96,15 @@ D seems unreasonable because there is no such Google database type.
 - Explanation
   If curl command is working then traffic exists. So, we need to check why health checks are failing. So, firewall issues for health check done by Google probers
 
+<hr />
+
 **Question 10**
 
 - C. Create a new service account with BigQuery access and execute your script with that user
 - Explanation
   Service accounts provide a way to authenticate your application to Google Cloud services. When you create a service account, you can assign it specific roles that dictate what resources the service account can interact with, and how it can interact with them. In this case, you would assign the BigQuery access role to the service account, which would then be used to authenticate your script to BigQuery.
+
+<hr />
 
 **Question 11**
 
@@ -108,11 +120,15 @@ option C, which may require password reassignment,
 
 option D, which may cause user confusion or forgotten passwords.
 
+<hr />
+
 **Question 12**
 
 - B. Google Cloud Dataflow
 - Explanation
   These options include a mix of batch and stream processing – points to Dataflow.
+
+<hr />
 
 **Question 13**
 
@@ -120,10 +136,14 @@ option D, which may cause user confusion or forgotten passwords.
 - Explanation
   App engine gives flexibility to roll back to previous version. Priority should be restoring the services to working state. And trace the issue using Stackdriver where the logs are already captured from previous failed service.
 
+<hr />
+
 **Question 14**
 
 - Explanation
   Increasing the size of the persistent disk can be done without requiring the virtual machine to be shut down, and the resize2fs command can be used to resize the ext4 filesystem on the disk to take advantage of the additional space. This will allow you to add more storage space to the virtual machine without disrupting the database service.
+
+<hr />
 
 **Question 15**
 
@@ -131,11 +151,15 @@ option D, which may cause user confusion or forgotten passwords.
 - Explanation
   Tokenization is a process of replacing sensitive data, such as credit card numbers, with unique, randomly-generated tokens that cannot be used for fraudulent purposes. By using a tokenizer service and storing only tokenized data, you can reduce the scope of PCI compliance to only the tokenization service, rather than the entire application. This can help minimize the amount of sensitive data that needs to be protected and reduce the overall compliance burden.
 
+<hr />
+
 **Question 16**
 
 - B. Google Cloud Bigtable
 - Explanation
   Google Cloud Bigtable is a scalable, high-performance NoSQL database that is well-suited for storing large amounts of data with low latency. It is designed for high-throughput workloads such as streaming data, and is able to handle bursts of up to millions of reads and writes per second.
+
+<hr />
 
 **Question 17**
 
@@ -143,13 +167,16 @@ option D, which may cause user confusion or forgotten passwords.
 - Explanation
   Cloud Storage has lifecycle management rules and could be applied with gsutil and gcloud storage buckets. It is common to use JSON for transferring data.
 
+<hr />
+
 **Question 18**
 
 - B. Google Cloud Dataproc
 - Explanation
   Dataproc is a fully managed and highly scalable service for running Apache Hadoop, Apache Spark, Apache Flink, Presto, and 30+ open source tools and frameworks. Use Dataproc for data lake modernization, ETL, and secure data science, at scale, integrated with Google Cloud, at a fraction of the cost.
+- https://cloud.google.com/dataproc
 
-https://cloud.google.com/dataproc
+<hr />
 
 **Question 19**
 
@@ -157,11 +184,15 @@ https://cloud.google.com/dataproc
 - Explanation
   Answer is C because persistent disk performance is based on the total persistent disk capacity attached to an instance and the number of vCPUs that the instance has. Incrementing the persistent disk capacity will increment its throughput and IOPS, which in turn improve the performance of MySQL.
 
+<hr />
+
 **Question 20**
 
 - C. Google Cloud Bigtable
 - Explanation
   To optimize the performance of an accurate, real-time, weather-charting application that receives data from 50,000 sensors sending 10 readings per second, it would be most appropriate to store the data in a distributed, horizontally scalable, NoSQL database such as Google Cloud Bigtable Other options, such as Google BigQuery, Google Cloud SQL, and Google Cloud Storage, may not be as well-suited for handling high volumes of real-time data and may not provide the same level of performance and scalability as Google Cloud Bigtable.
+
+<hr />
 
 **Question 21**
 

@@ -319,3 +319,5 @@ gcloud functions add-iam-policy-binding RECEIVING_FUNCTION \
 - Regional bucket is required, since multi regional bucket will incur additional cost to transfer the data to a centralized location.
 - Though running Dataproc for preprocessing in each region will incur additional cost but it will also reduce cost of running Dataproc job on all pre-processed data will also reduce cost offsetting additional cost of Dataproc cluster at regional level.
 - https://cloud.google.com/storage/docs/locations#considerations
+- https://cloud.google.com/dataproc?hl=en
+- Dataproc => Apache Hadoop, Apache Spark, Apache Flink, Presto, and 30+ open source tools.
