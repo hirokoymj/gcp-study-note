@@ -390,8 +390,12 @@ Other options, such as reading the debug GCE Activity log using the API or Cloud
 **Question 45**
 
 - D. Use Jenkins to monitor tags in the repository. Deploy staging tags to a staging environment for testing. After testing, tag the repository for production and deploy that to the production environment.
-- Explanation
-  The best answer is D, because the tagging is a best practice that is recommended on Jenkins/Spinnaker to deploy the right code and prevent accidentally (or intentionally) push of wrong code to production environments. See
+
+- https://stackify.com/continuous-delivery-git-jenkins/
+
+- The question states: "... code changes can be verified BEFORE deploying to production", it eliminates option C.
+  The approach of tagging is the correct practise that DevOps use
+- Correct answer is D. Question talks about 'before deploying to production'. C talks about after deploying to production.
 
 <hr />
 
@@ -408,6 +412,7 @@ Other options, such as reading the debug GCE Activity log using the API or Cloud
 - C. GKE and GCP provide the tools you need to build a PCI DSS-compliant environment. 100%
 - https://cloud.google.com/security/compliance/pci-dss
   Clearly mention GKE as PCI DSS-Compliant but not all GCP service are PCI DSS-Compliant so answer is definitely C.
+- Payment Card Industry (PCI) Data Security Standards (DSS)
 
 <hr />
 
@@ -438,10 +443,9 @@ Other options, such as reading the debug GCE Activity log using the API or Cloud
 **Question 51**
 
 - A. Point gcloud datastore create-indexes to your configuration file. 100%
-- Explanation
-  A is correct - Point gcloud datastore create-indexes to your configuration file.
+- https://cloud.google.com/sdk/gcloud/reference/datastore/indexes/create
 
-  To deploy new indexes to Cloud Datastore, you can use the gcloud datastore create-indexes command and point it to the YAML configuration file containing the required indexes. This command will create the new indexes in Cloud Datastore for your application.
+<hr />
 
 **Question 52**
 
@@ -454,21 +458,31 @@ Other options, such as reading the debug GCE Activity log using the API or Cloud
 
   It says: Compute Engine instances are zonal resources, so in the event of a zone outage instances are unavailable by default. Compute Engine does offer managed instance groups (MIGs) which can automatically scale up additional VMs from pre-configured instance templates, both within a single zone and across multiple zones within a region. MIGs are ideal for applications that require resilience to zone loss and are stateless, but require configuration and resource planning. Multiple regional MIGs can be used to achieve regional outage resilience for stateless applications.
 
+<hr />
+
 **Question 53**
 
 - D. Deploy your application on App Engine flexible environment and use Cloud VPN to limit access to the on-premises database
 
-- Explanation
-  The right answer is D: Deploy your application on App Engine flexible environment and use Cloud VPN to limit access to the on-premises database.
+- https://cloud.google.com/appengine/docs/the-appengine-environments
+- Accesses the resources or services of your Google Cloud project that reside in the Compute Engine network.
+- https://stackoverflow.com/questions/37137914/is-it-possible-to-use-google-app-engine-with-google-cloud-vpn
 
-To integrate with an on-premises database while ensuring that the database is not accessible through the public internet, you should deploy your application on App Engine flexible environment and use Cloud VPN to establish a secure connection between your application and the on-premises database.
+> App Engine Flexible Environment is based on Google Compute Engine and consequently can connect to your remote network via Cloud VPNs. As described in this article, you can specify network settings in your app.yaml configuration file of your GAE Flexible application.
 
-Cloud VPN allows you to create a secure, encrypted connection between your on-premises network and Google Cloud, using Internet Protocol security (IPSec) tunnels. This will allow your application to communicate with the on-premises database while keeping the database secure and inaccessible from the public internet.
+<hr />
 
 **Question 54**
 
 - A. Upload the required installation files to Cloud Storage. Configure the VM on a subnet with a Private Google Access subnet. Assign only an internal IP address to the VM. Download the installation files to the VM using gsutil. 78%
 - https://cloud.google.com/vpc/docs/configure-private-google-access
+- you can follow these steps:
+- Upload the required installation files to Cloud Storage.
+  Configure the VM on a subnet with a Private Google Access subnet. This will allow the VM to access Google APIs and services, such as Cloud Storage, without requiring a public IP address or internet access.
+  Assign only an internal IP address to the VM. This will ensure that the VM is not accessible from the public internet.
+  Download the installation files to the VM using gsutil, which is a command-line tool that allows you to access Cloud Storage from the VM.
+
+<hr />
 
 **Question 55**
 
@@ -480,29 +494,42 @@ Cloud VPN allows you to create a secure, encrypted connection between your on-pr
 
   Transfer Appliance lets you quickly and securely transfer large amounts of data to Google Cloud Platform via a high-capacity storage server that you lease from Google and ship to Google’s datacenter. Transfer Appliance is recommended for data that exceeds 20 TB or would take more than a week to upload.
 
+<hr />
+
 **Question 56**
 
-- A. Use kubectl set image deployment/echo-deployment <new-image>
-- Explanation
-  To perform an update to the application with minimal downtime on Google Kubernetes Engine (GKE), you can use a rolling update strategy, which involves updating the application incrementally, one pod at a time, while ensuring that the updated pods are functioning properly before updating the next set. Here's the general process:
+- A. Use `kubectl set image deployment/echo-deployment` <new-image>
+- Selected A - Source: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment
 
-kubectl set image deployment/echo-deployment <new_image_tag>
+- Deployment ensures that only a certain number of Pods are down while they are being updated. By default, it ensures that at least 75% of the desired number of Pods are up (25% max unavailable).
+
+- Deployment also ensures that only a certain number of Pods are created above the desired number of Pods. By default, it ensures that at most 125% of the desired number of Pods are up (25% max surge).
+
+<hr />
 
 **Question 57**
 
 - C. Add all users to a group. Grant the group the roles of BigQuery jobUser on the billing project and BigQuery dataViewer on the projects that contain the data. 100%
 
-- Explanation
-  Both A & C are correct but using the principle of least privileges C is the most appropriate.
+- Both A & C are correct but using the principle of least privileges C is the most appropriate.
 
-  The "roles/bigquery.jobUser" role provides the permission to run jobs, including querying, exporting and copying data, and creating views and materialized views. This role does not provide permissions to create, update, or delete BigQuery resources, such as datasets, tables, and models. Users with this role can only interact with BigQuery through jobs. The
+- **BigQuery User**: (roles/bigquery.user) - When applied to a dataset, this role provides the ability to read the dataset's metadata and list tables in the dataset.
+  When applied to a project, this role also provides the ability to run jobs, including queries, within the project. A principal with this role can enumerate their own jobs, cancel their own jobs, and enumerate datasets within a project. <b>Additionally, allows the creation of new datasets within the project; the creator is granted the BigQuery Data Owner role(roles/bigquery.dataOwner) on these new datasets.</b>
+  Lowest-level resources where you can grant this role: Dataset
 
-  "roles/bigquery.User" role, on the other hand, provides the permission to create, update, and delete BigQuery resources, as well as run jobs. This role includes all the permissions of the "roles/bigquery.jobUser" role, and in addition allows users to manage BigQuery resources, such as creating datasets, tables, and models, and modifying their schema and access controls.
+- **BigQuery Job User:** (roles/bigquery.jobUser) - Provides permissions to run jobs, including queries, within the project.
+  Lowest-level resources where you can grant this role: Project
+
+- https://cloud.google.com/bigquery/docs/access-control
+
+<hr />
 
 **Question 58**
 
 - B. Have users upload the images to Cloud Storage using a signed URL that expires after 24 hours. 100%
 - https://cloud.google.com/storage/docs/access-control/signed-urls
+
+<hr />
 
 **Question 59**
 
@@ -512,17 +539,17 @@ kubectl set image deployment/echo-deployment <new_image_tag>
 
   The GDPR lays out specific requirements for businesses and organizations who are established in Europe or who serve users in Europe. It regulates how businesses can collect, use, and store personal data Builds upon current documentation and reporting requirements to increase accountability Authorizes fines on businesses who fail to meet its requirements
 
+<hr />
+
 **Question 60**
 
 - A. Configure a Cloud SQL instance with high availability enabled. 53%
-- Explanation
-  It’s a, doc- https://cloud.google.com/sql/docs/mysql/high-availability
+- https://cloud.google.com/sql/docs/sqlserver/high-availability
+- High availability feature is available in cloud SQL.
+  We dont have to create compute instance, install SQL server and place the db and log file in group of windows compute engine machines with failover clustering. Always chose readymade services from GCP.
+- https://cloud.google.com/compute/docs/instances/sql-server/disaster-recovery-for-microsoft-sql-server#high_availability_and_disaster_recovery
 
-  see also:
-
-  https://cloud.google.com/compute/docs/instances/sql-server/disaster-recovery-for-microsoft-sql-server#high_availability_and_disaster_recovery
-
-  When creating a "SQL Server 2017 Standard" in Cloud SQL menu you can chose single one or HA (regional).
+<hr />
 
 **Question 61**
 
