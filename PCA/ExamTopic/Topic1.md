@@ -793,14 +793,19 @@ gcloud compute vpn-gateways create GW_NAME \
 **Question 91**
 
 - A. Create an egress rule with priority 1000 to deny all traffic for all instances. Create another egress rule with priority 100 to allow the Active Directory traffic for all instances. 100%
-- Explanation
-  To enforce the requirement that all Compute Engine instances in your VPC should be able to connect to an Active Directory server on specific ports while blocking any other traffic emerging from instances, the following two egress rules should be created: Create an egress rule with priority 1000 to deny all traffic for all instances. Create another egress rule with priority 100 to allow the Active Directory traffic for all instances. In this configuration, the rule that allows the AD traffic has a lower priority number than the rule that denies all other traffic. Therefore, this rule should be evaluated first.
+
+- https://cloud.google.com/vpc/docs/firewalls#default_firewall_rules
+
+- The implied **allow egress rule**: An egress rule whose action is allow, destination is 0.0.0.0/0, and priority is **the lowest possible (65535)** lets any instance send traffic to any destination
+
+- The implied **deny ingress rule**: An ingress rule whose action is deny, source is 0.0.0.0/0, and priority is the lowest possible (65535)
 
 **Question 92**
 
 - D. Save a history of recommendations and results of the recommendations in BigQuery, to be used as training data. 100%
 
 - The following insights and recommendations can be exported (to bigquery):
+
   - IAM recommender
   - VM machine type recommender
   - Managed instance group machine type recommender
@@ -811,6 +816,10 @@ gcloud compute vpn-gateways create GW_NAME \
   - Unattended project recommender
   - Cloud Run Service Identity recommender
   - https://cloud.google.com/recommender/docs/bq-export/export-recommendations-to-bq
+
+- https://cloud.google.com/recommender/docs/recommenders
+
+<hr />
 
 **Question 93**
 
@@ -983,11 +992,15 @@ Action = "Delete object" Object conditions = select ""Days since custom time" ch
   Resources within a perimeter are accessed only from clients within authorized VPC networks using Private Google Access with either Google Cloud or on-premises.
 - https://cloud.google.com/vpc-service-controls/docs/overview
 
+<hr />
+
 **Question 116**
 
 - D. Start a new rolling update. Select the Opportunistic update mode.
 - https://cloud.google.com/compute/docs/instance-groups/rolling-out-updates-to-managed-instance-groups
 - The key here is "you don't want to update any running instances". Only opportunistic support this. jawulya
+
+<hr />
 
 **Question 117**
 
@@ -996,22 +1009,35 @@ Action = "Delete object" Object conditions = select ""Days since custom time" ch
   Regional persistent disk is a storage option that provides synchronous replication of data between two zones in a region. Regional persistent disks can be a good building block to use when you implement HA services in Compute Engine. TotoroC
 - https://cloud.google.com/compute/docs/disks/high-availability-regional-persistent-disk
 
+<hr />
+
 **Question 118**
 
 - A. Create a Cloud VPN connection from the new VPC to the data center, create a Cloud Router, and apply new IP addresses so there is no overlapping IP space. 68%
 - The correct answer is A, not sure why some here are confused with C... Cloud NAT won't serve this purpose, you can read the documentation here: https://cloud.google.com/nat/docs/troubleshooting#overlapping-ip-addresses, jaxclain
+
+<hr />
 
 **Question 119**
 
 - A. Create a Dataproc cluster using standard worker instances. Most Voted
 - Voting A as preemptible workload should only be used with preemptive task. BigfootPanda -https://cloud.google.com/architecture/hadoop/hadoop-gcp-migration-jobs#using_preemptible_worker_nodes
 
+<hr />
+
 **Question 120**
 
 - B. Add two additional NICs to Instance #1 with the following configuration: ג€¢ NIC1 ג—‹ VPC: VPC #2 ג—‹ SUBNETWORK: subnet #2 ג€¢ NIC2 ג—‹ VPC: VPC #3 ג—‹ SUBNETWORK: subnet #3 Update firewall rules to enable traffic between instances. 69%, MamthaSJ
-- this link says VM can have multiple NICs and attached to different VPCs.
-  https://cloud.google.com/vpc/docs/create-use-multiple-interfaces
-  so B is the answer
+- https://cloud.google.com/vpc/docs/create-use-multiple-interfaces
+- According to my understanding the requirement is that only VM1 shall be able to communicate with VM2 and VM3, but not VM2 with VM3.
+- We can exclude d) as d) would enable VM2 to communicate with VM3 as well
+- We can exclude c) as well - there is no connection between VPC1 and VPC3.
+  IMHO a) will not work.
+- So the only correct answer seems to be b)
+
+![](images/120.png)
+
+<hr />
 
 **Question 121**
 
