@@ -326,6 +326,8 @@ Other options, such as reading the debug GCE Activity log using the API or Cloud
 
   To fix the issue, you should try uploading missing JAR files and redeploying your application. If the issue persists, you may need to digitally sign all of your JAR files and redeploy your application to ensure that the signatures are valid. You should not try to recompile the Cloaked
 
+<hr />
+
 **Question 39**
 
 - C. Use public key infrastructure (PKI) to encrypt the message client side using the originating user's private key.
@@ -333,11 +335,15 @@ Other options, such as reading the debug GCE Activity log using the API or Cloud
 - Explanation
   To prevent message spoofing, it is important to ensure that messages cannot be altered or forged by anyone other than the originating user. One way to accomplish this is by using public key infrastructure (PKI) to encrypt messages using the originating user's private key.
 
+<hr />
+
 **Question 40**
 
 - B. Configure a Google Cloud Dedicated Interconnect.
 - Explanation
   It's latency issue. That won't be solved by adding another VPN tunnel. If it was just a throughput issue then VPN would do, however to improve latency you need to go layer 2. Answer is B
+
+<hr />
 
 **Question 41**
 
@@ -347,6 +353,8 @@ Other options, such as reading the debug GCE Activity log using the API or Cloud
 
   The Cloud Data Loss Prevention (DLP) API is a powerful tool that allows you to automatically discover, classify, and redact sensitive data in your organization. It uses advanced machine learning techniques to accurately identify and protect a wide range of sensitive data types, including personal information such as names, addresses, phone numbers, and payment card information.
 
+<hr />
+
 **Question 42**
 
 - A. ~/bin
@@ -355,11 +363,15 @@ Other options, such as reading the debug GCE Activity log using the API or Cloud
 
   Cloud Shell provisions 5 GB of free persistent disk storage mounted as your $HOME directory on the virtual machine instance. This storage is on a per-user basis and is available across projects. Unlike the instance itself, this storage does not time out on inactivity. All files you store in your home directory, including installed software, scripts and user configuration files like .bashrc and .vimrc, persist between sessions. Your $HOME directory is private to you and cannot be accessed by other users.
 
+<hr />
+
 **Question 43**
 
 - A. Create a VPC and connect it to your on-premises data center using Dedicated Interconnect.
 - Explanation
   Cloud VPN supports unto 3 Gbps where as Interconnect can support unto 100 gbps
+
+<hr />
 
 **Question 44**
 
@@ -373,52 +385,55 @@ Other options, such as reading the debug GCE Activity log using the API or Cloud
 
   https://cloud.google.com/compute/docs/instances/signing-up-committed-use-discounts
 
+<hr />
+
 **Question 45**
 
 - D. Use Jenkins to monitor tags in the repository. Deploy staging tags to a staging environment for testing. After testing, tag the repository for production and deploy that to the production environment.
 - Explanation
   The best answer is D, because the tagging is a best practice that is recommended on Jenkins/Spinnaker to deploy the right code and prevent accidentally (or intentionally) push of wrong code to production environments. See
 
+<hr />
+
 **Question 46**
 
 - C. Disable the health check for the instance group. Add his SSH key to the project-wide SSH Keys. 83%
-- Explanation
-  C, is the correct answer. As per the requirement Linux expert would need access to VM to troubleshoot the issue. With health check enabled, old VM will be terminated as soon as health-check fails for the VM and new VM will be auto-created. So, this situation will prevent Linux expert to troubleshoot the issue. Had it been the case that stack-drover logging is enabled and the expert just want to view the logs from the Cloud-logs than role to project-viewer could help. But it is specifically mentioned that expert will login into VM to troubleshoot the issue and not looking at the cloud Logs. So, Option-C is the correct answer.
+- C, is the correct answer. As per the requirement linux expert would need access to VM to troubleshoot the issue.
+- With health check enabled, old VM will be terminated as soon as health-check fails for the VM and new VM will be auto-created. So, this situation will prevent linux expert to troubleshoot the issue.
+
+<hr />
 
 **Question 47**
 
 - C. GKE and GCP provide the tools you need to build a PCI DSS-compliant environment. 100%
-- Explanation
-  Link : https://cloud.google.com/security/compliance/pci-dss
+- https://cloud.google.com/security/compliance/pci-dss
   Clearly mention GKE as PCI DSS-Compliant but not all GCP service are PCI DSS-Compliant so answer is definitely C.
+
+<hr />
 
 **Question 48**
 
 - B. Upload your files into Cloud Storage. Use Cloud Dataprep to explore and clean your data. 100%
-- Explanation
-  The recommended approach for detecting anomalies in your company data using Google-recommended practices is option B: Upload your files into Cloud Storage. Use Cloud Dataprep to explore and clean your data.
 
-  Cloud Storage is a highly scalable, durable, and secure object storage service that can be used to store and retrieve data from anywhere on the web. You can use Cloud Storage to store your company data files and make them available for analysis.
+- Cloud Dataprep is a fully managed data preparation service that allows you to quickly and easily explore, clean, and transform your data for analysis.
+- "detect anomalies" <<-Very important.
 
-  Cloud Dataprep is a fully managed data preparation service that allows you to quickly and easily explore, clean, and transform your data for analysis. It can help you detect anomalies in your data by providing features such as data profiling, data cleansing, and data transformation.
+<hr />
 
 **Question 49**
 
 - C. The effective policy is the union of the policy set at the node and policies inherited from its ancestors. 100%
-- Explanation
-  The effective policy for a resource is the union of the policy set at that resource and the policy inherited from its parent.
+- intersection, the intersection of the policy set
 
-  https://cloud.google.com/iam/docs/resource-hierarchy-access-control
+<hr />
 
 **Question 50**
 
 - C. Use an IP range on Google Cloud that does not overlap with the range you use on-premises. 85%
-- Explanation
-  Ans is C,
+- https://cloud.google.com/vpc/docs/using-vpc
+- "Primary and secondary ranges can't conflict with on-premises IP ranges if you have connected your VPC network to another network with Cloud VPN, Dedicated Interconnect, or Partner Interconnect."
 
-  https://cloud.google.com/vpc/docs/using-vpc
-
-  "Primary and secondary ranges can't conflict with on-premises IP ranges if you have connected your VPC network to another network with Cloud VPN, Dedicated Interconnect, or Partner Interconnect."
+<hr />
 
 **Question 51**
 
