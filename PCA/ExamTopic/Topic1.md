@@ -640,10 +640,15 @@ kubectl apply -f deployment.yaml
 
 **Question 73**
 
-A. 1. Enable automatic storage increase for the instance. 2. Create a Stackdriver alert when CPU usage exceeds 75%, and change the instance type to reduce CPU usage. 3. Create a Stackdriver alert for replication lag, and shard the database to reduce replication time.
+- A. 1. Enable automatic storage increase for the instance. 2. Create a Stackdriver alert when CPU usage exceeds 75%, and change the instance type to reduce CPU usage. 3. Create a Stackdriver alert for replication lag, and shard the database to reduce replication time.
 
-Explanation
-Sharding makes horizontal scaling possible by partitioning the database into smaller, more manageable parts (shards), then deploying the parts across a cluster of machines. Data queries are routed to the corresponding server automatically, usually with rules embedded in application logic or a query router. https://cloud.google.com/community/tutorials/horizontally-scale-mysql-database-backend-with-google-cloud-sql-and-proxysql
+- https://cloud.google.com/sql/docs/mysql/instance-settings#automatic-storage-increase-2ndgen
+
+**Enable automatic storage increases**
+
+If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 64 TB.
+
+<hr />
 
 **Question 74**
 
@@ -668,15 +673,19 @@ Sharding makes horizontal scaling possible by partitioning the database into sma
 
 - D. Deploy Cloud VPN Gateway in each region. Ensure that each region has at least one VPN tunnel to the on-premises peer gateway.
 
-> It can't be -A - VPC Network Peering only allows private RFC 1918 connectivity across two Virtual Private Cloud (VPC) networks. In this example is one VPC with on-premise network
-> https://cloud.google.com/vpc/docs/vpc-peering
+- Cloud VPN Gateway is a regional service, not global.
 
-> It is not definitely - B - Can't be
+- https://cloud.google.com/vpn/docs/how-to/creating-static-vpns
 
-> It is not C - Because Cloud VPN gateways and tunnels are regional objects, not global
+- Cloud VPN Gateway is regional. NOt Global
 
-> So, it the answer is D -
-> https://cloud.google.com/vpn/docs/how-to/creating-static-vpns
+```
+gcloud compute vpn-gateways create GW_NAME \
+--network=NETWORK \
+--region=REGION
+```
+
+<hr />
 
 **Question 78**
 
