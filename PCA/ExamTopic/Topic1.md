@@ -711,37 +711,46 @@ gcloud compute vpn-gateways create GW_NAME \
 **Question 81**
 
 - B. Provision preemptible VMs to reduce cost. Disable and then discontinue use of all GCP services and APIs that are not HIPAA-compliant. 94%
-- Explanation
-  Disabling and then discontinuing allows you to see the effects of not using the APIs, so you can gauge (check) alternatives. So that leaves B and D as viable answers. The question says only some are not time-critical which implies others are. This means preemptible VMs are good because they will secure a spot for scaling when needed.
+- Disabling and then discontinuing allows you to see the effects of not using the APIs, so you can gauge (check) alternatives. So that leaves B and D as viable answers. The question says only some are not time-critical which implies others are. This means preemptible VMs are good because they will secure a spot for scaling when needed.
+
+<hr />
 
 **Question 82**
 
 - C. Schedule a disaster simulation exercise during which you can shut off all VMs in a zone to see how your application behaves. 42%
-- Explanation
-  Resilience testing of their authentication layer means the testing of availability of service/application even when many of the instances fail in a particular location. That’s why. Disaster type of scenario is better where all VM instances becomes unavailable in a particular zone
+- Resilience testing of their authentication layer means the testing of availability of service/application even when many of the instances fail in a particular location. That’s why. Disaster type of scenario is better where all VM instances becomes unavailable in a particular zone.
+- Chaos testing is to shutdown random instances.
+
+<hr />
 
 **Question 83**
 
 - D. Use Cloud Audit Logging to view Cloud Audit Logs, and create a filter on the query operation to get the required information.
-- Explanation
-  Cloud Audit Logging records activities and API calls in Google Cloud services, including BigQuery. You can use Cloud Audit Logging to view logs and filter them based on specific operations, such as queries in BigQuery. By filtering on the query operation, you can gather the required information about how many queries each user ran in the last month, which is essential for audit purposes.
+
+- Cloud Audit Logging records activities and API calls in Google Cloud services, including BigQuery. You can use Cloud Audit Logging to view logs and filter them based on specific operations, such as queries in BigQuery. By filtering on the query operation, you can gather the required information about how many queries each user ran in the last month, which is essential for audit purposes.
+
+- https://cloud.google.com/bigquery/docs/reference/auditlogs#auditdata_examples
+
+<hr />
 
 **Question 84**
 
 - B. Create a custom VM image with all OS package dependencies. Use Deployment Manager to create the managed instance group with the VM image.
 
-- Explanation
-  Managed instance groups are a way to manage a group of Compute Engine instances as a single entity. If you want to automate the creation of a managed instance group, you can use tools such as Terraform, Deployment Manager, or Puppet to automate the process. To minimize the startup time for new VMs in the instance group, you should create a custom VM image with all of the OS package dependencies pre-installed. This will allow you to create new VMs from the custom image, which will significantly reduce the startup time compared to installing the dependencies on each VM individually. You can then use Deployment Manager to create the managed instance group with the custom VM image.
+- Managed instance groups are a way to manage a group of Compute Engine instances as a single entity. If you want to automate the creation of a managed instance group, you can use tools such as Terraform, Deployment Manager, or Puppet to automate the process. **To minimize the startup time for new VMs in the instance group, you should create a custom VM image with all of the OS package dependencies pre-installed**. This will allow you to create new VMs from the custom image, which will significantly reduce the startup time compared to installing the dependencies on each VM individually. You can then use Deployment Manager to create the managed instance group with the custom VM image.
 - https://cloud.google.com/compute/docs/images
 
 **Question 85**
 
 - A. Create a group per country. Add analysts to their respective country-groups. Create a single group 'all_analysts', and add all country-groups as members. Grant the 'all_analysts' group the IAM role of BigQuery jobUser. Share the appropriate dataset with view access with each respective analyst country-group. Most Voted
 
-- Explanation
-  Job user = Able to create query
+- **BigQuery Job User (roles/bigquery.jobUser): **
+  Provides permissions to run jobs, including queries, within the project.
 
-  Data Viewer = Able to view the data
+- A: As all analysts need to execute query, they need JobUser role.
+  They should be restricted to view all datasets (not tables) of respective country.
+
+<hr />
 
 **Question 86**
 
@@ -761,8 +770,9 @@ gcloud compute vpn-gateways create GW_NAME \
 
 - A. Customize the cache keys to omit the protocol from the key. 60%
 - https://cloud.google.com/cdn/docs/best-practices#using_custom_cache_keys_to_improve_cache_hit_ratio
-- Explanation
-  By default, Cloud CDN uses the complete request URL to build the cache key. For performance and scalability, it’s important to optimize cache hit ratio. To help optimize your cache hit ratio, you can use custom cache keys
+- A logo needs to be cached whether displayed through HTTP or HTTPS. When you customize the cache keys for the backend service that holds the logo, clear the Protocol checkbox so that requests through HTTP and HTTPS count as matches for the logo's cache entry.
+
+<hr />
 
 **Question 89**
 
