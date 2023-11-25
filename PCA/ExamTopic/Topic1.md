@@ -1048,16 +1048,49 @@ Action = "Delete object" Object conditions = select ""Days since custom time" ch
 
 - A. 1. Update your GKE cluster to use Cloud Operations for GKE. 2. Use the GKE Monitoring dashboard to investigate logs from affected Pods. 72%, TorontoC
 - https://cloud.google.com/blog/products/management-tools/using-logging-your-apps-running-kubernetes-engine
+- If you have an existing cluster with Cloud Logging and Monitoring disabled, you can still enable logging and monitoring for the cluster.
+- https://cloud.google.com/kubernetes-engine/docs/how-to/config-logging-monitoring#migrating
+
+- gcloud container clusters update command's --logging flag.
+
+  ```
+  gcloud container clusters update CLUSTER_NAME \
+    --region=REGION \
+    --logging=NONE | SYSTEM | SYSTEM,WORKLOAD
+  ```
+
+- gcloud container clusters update command's --monitoring flag.
+
+  ```
+  gcloud container clusters update CLUSTER_NAME \
+    --region=REGION \
+    --monitoring=NONE | SYSTEM
+  ```
+
+<hr />
 
 **Question 123**
 
-Answer should be C,
-https://cloud.google.com/storage/docs/gcs-fuse#notes
+- C. Create a Cloud Filestore instance and mount it in each instance.
+- https://cloud.google.com/storage/docs/gcs-fuse#notes
+
+| Service       | Filesystem |
+| ------------- | ---------- |
+| Cloud Storage | FUSE       |
+| Filestore     | POSIX      |
+|               | NFS< CIFS> |
+
+<hr />
 
 **Question 124**
 
-- A. Use the Service Mesh visualization in the Cloud Console to inspect the telemetry between the microservices. MamthaSJ
+- A. Use the Service Mesh visualization in the Cloud Console to inspect the telemetry between the microservices.
 - https://cloud.google.com/service-mesh/docs/observability/explore-dashboard
+- Anthos Service Mesh Visualization
+- https://cloud.google.com/service-mesh/docs/observability-overview
+- Anthos Service Mesh provides observability into the health and performance of your services. To obtain **telemetry data**, Anthos Service Mesh relies on sidecar proxies that you inject as a separate container into the same pods as your workloads.
+
+<hr />
 
 **Question 125**
 
@@ -1065,22 +1098,55 @@ https://cloud.google.com/storage/docs/gcs-fuse#notes
 
 **Question 126**
 
-- C. Create a Cloud Build trigger based on the development branch that tests the code, builds the container, and stores it in Container Registry. Create a deployment pipeline that watches for new images and deploys the new image on the development cluster. Ensure only the deployment tool has access to deploy new versions. 100%, TorontoC
+- C. Create a Cloud Build trigger based on the development branch that tests the code, builds the container, and stores it in Container Registry. Create a deployment pipeline that watches for new images and deploys the new image on the development cluster. Ensure only the deployment tool has access to deploy new versions. 100%
+
+- To automate the build and deployment process for your microservices in the development environment, you can use Cloud Build to set up a trigger that listens for code pushes to the development branch on your GitHub repository. When a code change is pushed to the branch, Cloud Build can test the code, build the container image, and store it in Container Registry. You can then create a deployment pipeline that watches for new images in Container Registry and deploys them automatically on the development cluster. To ensure that only code that has been properly tested and built is deployed in the development environment, you should ensure that only the deployment tool has access to deploy new versions.
+
+- Option D is incorrect because relying on Vulnerability Scanning alone is not sufficient to ensure that the code changes are properly tested and built before being deployed in the development environment.
+
+<hr />
 
 **Question 127**
 
 - D. Increase the maximum number of instances in the autoscaling group. 84%, MarthaSJ
+- it says "autoscaling has reached the upper limit of instances" and there are no abnormal errors... so the upper limit for autoscaling has to be increased.
+
+<hr />
 
 **Question 128**
 
 - B. Cloud Run and Cloud Bigtable, MamthaSJ
-- Answer should B, beasue
-  Data is no SQL data, real-time analysis needed. -> BigTable
-  Cloud Run will help in -> Low Cost (Zero when no event), AdityaGupta
+- Any correct answer must involve Cloud Bigtable over BigQuery since Bigtable is optimized for heavy write loads
+
+**Compute:**
+
+- Cloud Run vs. Compute Engine autoscaling managed instance group
+- Cloud Run wins because can scale down up to 0 instances -> in Spike workflows will be cheaper.
+
+**Storage:**
+
+- BigQuery vs. Big Table.
+- 500,000 requests per second it’s not suitable in BQ:
+- https://cloud.google.com/bigquery/quotas
+- “A user can make up to 100 API requests per second to an API method”
+  ![](images/128.png)
+
+<hr />
 
 **Question 129**
 
 - A. Deploy each microservice as a Deployment. Expose the Deployment in the cluster using a Service, and use the Service DNS name to address it from other microservices within the cluster. MathamSJ
+
+**Benefit of using Service**
+
+- Leveraging service allows for you to set up your environment with static IP addresses. So when your pods die and restart the IP address associated with the deceased pod remains
+  for the new pod that replaces it (ephemeral). I think using "Service" is helpful if you are setting up your pods to be able to communicate with specific pods in the cluster.
+
+**Benefit of using DNS for Service**
+
+- Using DNS for your Service (static IP) you can look up Services and/or Pods by name instead of IP. Addressability by name instead of IP is easier for me.
+
+<hr />
 
 **Question 130**
 
@@ -1527,6 +1593,14 @@ ORDER BY total_cost DESC
 
 - A. An HA Cloud VPN gateway connected with two tunnels to an on-premises VPN gateway. 100%
 - HA VPN supports two tunnels to achieve 99.99%. Classic VPN does not. Any more than 2 tunnels is excessive cost.
+- https://cloud.google.com/network-connectivity/docs/vpn/how-to/creating-ha-vpn2
+
+| on-prem - GCP |                     |
+| ------------- | ------------------- |
+| classic VPN   |                     |
+| HA VPN        | 99.99%, two tunnels |
+
+<hr />
 
 **Question 196**
 
