@@ -118,6 +118,8 @@ You would see below and email address
 
 - GCE, network origin, SSH (firewall rule)
 
+<hr />
+
 **Question 162**
 
 - D. Create a snapshot of the root disk, create an image file in Google Cloud Storage from the snapshot, and create a new virtual machine instance in the US-East region using the image file the root disk. 67%, tartar
