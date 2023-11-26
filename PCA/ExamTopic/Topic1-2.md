@@ -124,17 +124,23 @@ You would see below and email address
 - in a different project in the US-East region.
 - https://cloud.google.com/compute/docs/instances/copy-vm-between-projects
   > you have to create Image from Snapshot and share it to the destination project. Prakzz
+- But this is not the case here, we have:
+  Different zones and different project hence, you must use a bucket.
+
+<hr />
 
 **Question 163**
 
 - B. Mount a Local SSD volume as the backup location. After the backup is complete, use gsutil to move the backup to Google Cloud Storage.
 - Option B is the most appropriate solution in this case. Mounting a Local SSD volume as the backup location will allow the backups to be taken quickly and efficiently, as Local SSDs have very high I/O performance and low latencies. Additionally, using gsutil to move the backups to Google Cloud Storage after they have been taken will provide a secure and durable storage location for the backups. omermaH
 
-> A, configuring a cron job to use the gcloud tool to take regular backups using persistent disk snapshots, may not be the most efficient option because persistent disks have relatively lower I/O performance compared to Local SSDs.
+- A, configuring a cron job to use the gcloud tool to take regular backups using persistent disk snapshots, may not be the most efficient option because persistent disks have relatively lower I/O performance compared to Local SSDs.
 
-> C, using gcsfuse to mount a Google Cloud Storage bucket as a volume directly on the instance and writing the backups to the mounted location using mysqldump, may not be the most efficient option because the backups would need to be transferred over the network, which could impact the performance of the backups.
+- C, using gcsfuse to mount a Google Cloud Storage bucket as a volume directly on the instance and writing the backups to the mounted location using mysqldump, may not be the most efficient option because the backups would need to be transferred over the network, which could impact the performance of the backups.
 
-> D, mounting additional persistent disk volumes onto each VM instance in a RAID10 array and using LVM to create snapshots to send to Cloud Storage, may not be the most efficient option because it would require additional disk space and setup, and LVM snapshots may not be as fast as Local SSDs for taking backups.
+- D, mounting additional persistent disk volumes onto each VM instance in a RAID10 array and using LVM to create snapshots to send to Cloud Storage, may not be the most efficient option because it would require additional disk space and setup, and LVM snapshots may not be as fast as Local SSDs for taking backups.
+
+<hr />
 
 **Question 164**
 
@@ -148,6 +154,8 @@ You would see below and email address
   > B. Create a separate Google Cloud project to use for the load-testing environment
   > F : The most important/standard factor of testing, you gather logs and metrics in TEST environment for further scaling.
 
+<hr />
+
 **Question 165**
 
 - B. Org viewer, project viewer 100%
@@ -157,23 +165,17 @@ You would see below and email address
 - C is not correct because Org admin is too broad. The security team does not need to be able to make changes to the organization.
 - D is not correct because Project owner is too broad. The security team does not need to be able to make changes to projects.
 
+<hr />
+
 **Question 166**
 
 - BE 45% omermaH, DE 37%
 - B. Use source code security analyzers as part of the CI/CD pipeline Most Vot
 - E. Run a vulnerability security scanner as part of your continuous-integration /continuous-delivery (CI/CD) pipeline
 - D. Enable code signing and a trusted binary repository integrated with your CI/CD pipeline Most Voted
+- BE - For me, Option D, enabling code signing and a trusted binary repository integrated with your CI/CD pipeline. It's to ensure that the correct code is put in production but not link to security errors.
 
-> B. Use source code security analyzers as part of the CI/CD pipeline: By using source code security analyzers as part of the CI/CD pipeline, you can automatically detect and alert on security vulnerabilities in the code as it is being developed, which can help prevent security errors from being introduced.
-
-> E. Run a vulnerability security scanner as part of your continuous-integration /continuous-delivery (CI/CD) pipeline: By running a vulnerability security scanner as part of the CI/CD pipeline, you can automatically detect and alert on security vulnerabilities in the application as it is being deployed, which can help prevent security errors from being introduced.
-> upvoted 2 times
-
-> Option A, ensuring every code check-in is peer reviewed by a security SME, could be a good way to prevent security errors from being introduced, as peer review can help catch mistakes before they are committed. However, it may not be practical to always have a security SME available to review every code check-in, especially if the company places a high value on release speed and agility.
-
-> Option C, ensuring you have stubs to unit test all interfaces between components, is not directly related to preventing security errors from being introduced. While unit testing can help ensure that the code is working correctly, it is not specifically focused on security.
-
-> Option D, enabling code signing and a trusted binary repository integrated with your CI/CD pipeline, could be a good way to ensure that only trusted code is being deployed. However, it may not be sufficient on its own to prevent security errors from being introduced, as it does not directly address vulnerabilities in the code itself.
+<hr />
 
 **Question 167**
 
@@ -187,14 +189,19 @@ gcloud container clusters update cluster-name --enable-autoscaling \
 
 - https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-autoscaler
 
+<hr />
+
 **Question 168**
 
+- AC 100%
 - A. Use Google App Engine to serve the website and Google Cloud Datastore to store user data.
 - C. Use a managed instance group to serve the website and Google Cloud Bigtable to store user data. Most Voted
 - by omermeH below.
-  > A: Google App Engine is a fully managed platform for building and running web applications and APIs. It can automatically scale to meet high traffic demands, making it a good choice for serving the website for the promotional email campaign. Google Cloud Datastore can also scale automatically to meet high traffic demands, making it a good choice for storing user data.
+- A: Google App Engine is a fully managed platform for building and running web applications and APIs. It can automatically scale to meet high traffic demands, making it a good choice for serving the website for the promotional email campaign. Google Cloud Datastore can also scale automatically to meet high traffic demands, making it a good choice for storing user data.
 
-> C: A managed instance group are managed as a single entity and can automatically scale up or down based on demand. This makes it a good choice for serving the website for the promotional email campaign. Google Cloud Bigtable is a fully managed, high-performance NoSQL database that can store and serve large amounts of structured data with low latency. It is designed to scale horizontally and can handle high traffic demands, making it a good choice for storing user data.
+- C: A managed instance group are managed as a single entity and can automatically scale up or down based on demand. This makes it a good choice for serving the website for the promotional email campaign. Google Cloud Bigtable is a fully managed, high-performance NoSQL database that can store and serve large amounts of structured data with low latency. It is designed to scale horizontally and can handle high traffic demands, making it a good choice for storing user data.
+
+<hr />
 
 **Question 169**
 
@@ -202,13 +209,17 @@ gcloud container clusters update cluster-name --enable-autoscaling \
 - B. Google Kubernetes Engine with containers
 - C. Google App Engine Standard Environment
 - No ops = Serverless / Almost Serverless, less operational management overhead.
-  Kubernetes and App Engine are the only one that gives us that flexibility, plus is modernizing apps.alexanderC
+- Kubernetes and App Engine are the only one that gives us that flexibility, plus is modernizing apps.alexanderC
+
+<hr />
 
 **Question 170**
 
 - C. Digitally sign each timestamp and log entry and store the signature. 100%
 - by omermaH
   > I would recommend option C, digitally signing each timestamp and log entry and storing the signature. Digitally signing a log entry involves creating a cryptographic hash of the log entry and a timestamp, and then encrypting the hash using a private key. The encrypted hash, known as the signature, can be stored along with the log entry in a secure manner. To verify the authenticity of the log entry, you can use the public key associated with the private key used to create the signature to decrypt the signature and recreate the hash. If the recreated hash matches the original hash, it indicates that the log entry has not been tampered with and is authentic.
+
+<hr />
 
 **Question 171**
 
