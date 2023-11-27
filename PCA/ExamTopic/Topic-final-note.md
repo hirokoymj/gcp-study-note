@@ -13,7 +13,78 @@
 - A deployment is responsible for keeping a set of pods running.
 - A service is responsible for enabling network access to a set of pods.
 
-**HelloApp using Node.js**
+## Deploy an app to a GKE cluster
+
+- https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster
+
+```
+1. Create a GKE cluster
+gcloud container clusters create-auto hello-cluster \
+    --location=us-central1
+
+2. Get authentication credentials for the cluster
+gcloud container clusters get-credentials hello-cluster \
+    --location us-central1
+
+3. Create the Deployment
+# To run hello-app in your cluster, you need to deploy the application
+kubectl create deployment hello-server \
+    --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
+
+4. Expose the Deployment
+# After deploying the application, you need to expose it to the internet so that users can access it.
+# You can expose your application by creating a Service.
+kubectl expose deployment hello-server \
+    --type LoadBalancer \
+    --port 80 \
+    --target-port 8080
+
+5. Inspect the running Pods.
+kubectl get nodes
+
+6. Inspect the hello-server Service
+kubectl get service hello-server
+
+7. View the app.
+http://EXTERNAL_IP
+```
+
+## HelloApp using Node.js
+
+- **Deploy an app to a GKE cluster**
+- https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster
+
+```
+1. Create a GKE cluster
+gcloud container clusters create-auto hello-cluster \
+    --location=us-central1
+
+1. Get authentication credentials for the cluster
+gcloud container clusters get-credentials hello-cluster \
+    --location us-central1
+
+1. Create the Deployment
+# To run hello-app in your cluster, you need to deploy the application
+kubectl create deployment hello-server \
+    --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
+
+1. Expose the Deployment
+# After deploying the application, you need to expose it to the internet so that users can access it.
+# You can expose your application by creating a Service.
+kubectl expose deployment hello-server \
+    --type LoadBalancer \
+    --port 80 \
+    --target-port 8080
+
+1. Inspect the running Pods.
+kubectl get nodes
+
+1. Inspect the hello-server Service
+kubectl get service hello-server
+
+1. View the app.
+http://EXTERNAL_IP
+```
 
 1. Node.js Hello App (index.js)
 2. Containerizing an app with Cloud Build
@@ -62,41 +133,7 @@ kubernetes   ClusterIP      10.22.222.1     <none>          443/TCP        20m
 //http://35.111.111.11
 ```
 
-**Commands**
-
-```
-1. Create a GKE cluster
-gcloud container clusters create-auto hello-cluster \
-    --location=us-central1
-
-2. Get authentication credentials for the cluster
-gcloud container clusters get-credentials hello-cluster \
-    --location us-central1
-
-3. Create the Deployment
-# To run hello-app in your cluster, you need to deploy the application
-kubectl create deployment hello-server \
-    --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
-
-4. Expose the Deployment
-# After deploying the application, you need to expose it to the internet so that users can access it.
-# You can expose your application by creating a Service.
-kubectl expose deployment hello-server \
-    --type LoadBalancer \
-    --port 80 \
-    --target-port 8080
-
-5. Inspect the running Pods.
-kubectl get nodes
-
-6. Inspect the hello-server Service
-kubectl get service hello-server
-
-7. View the app.
-http://EXTERNAL_IP
-```
-
-**GKE Links:**
+## GKE Links
 
 1. [Standard cluster architecture](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture)
 2. [Quickstart-1](https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster)
