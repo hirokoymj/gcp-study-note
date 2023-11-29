@@ -327,6 +327,8 @@ gcloud compute os-config patch-jobs execute \
 - C. Export logs to a Pub/Sub topic, and trigger Cloud Function with the relevant log events. 100%
 - https://cloud.google.com/blog/products/management-tools/automate-your-response-to-a-cloud-logging-event
 
+<hr />
+
 **Question 133**
 
 - C. Configure Identity-Aware Proxy (IAP) for the instance and ensure that you have the role of IAP-secured Tunnel User. Use the gcloud command line tool to ssh into the instance. 70%
@@ -966,11 +968,12 @@ ORDER BY total_cost DESC
 - A. An HA Cloud VPN gateway connected with two tunnels to an on-premises VPN gateway. 100%
 - HA VPN supports two tunnels to achieve 99.99%. Classic VPN does not. Any more than 2 tunnels is excessive cost.
 - https://cloud.google.com/network-connectivity/docs/vpn/how-to/creating-ha-vpn2
+- https://jayendrapatil.com/tag/classic-vpn-vs-ha-vpn/
 
-| on-prem - GCP |                     |
-| ------------- | ------------------- |
-| classic VPN   |                     |
-| HA VPN        | 99.99%, two tunnels |
+| on-prem <-> GCP |                                                             |
+| --------------- | ----------------------------------------------------------- |
+| classic VPN     | 99.9% SLA, a single interface, a single external IP address |
+| HA VPN          | 99.99% SLA, two interfaces and two external IP addresses    |
 
 <hr />
 
