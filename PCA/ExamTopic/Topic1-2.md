@@ -9,10 +9,14 @@
 - Explanation
   Dedicated interconnect will provide a private network with 10gbs. The internet limited to 100 mb is not possible to use cloud VPN ( it will use public internet so be limited for the daily)
 
+<hr />
+
 **Question 102**
 
 - B. Cloud Pub/Sub to Cloud Dataflow. 62%
 - I believe the answer is B. "Pub/Sub doesn't provide guarantees about the order of message delivery. Strict message ordering can be achieved with buffering, often using Dataflow." https://cloud.google.com/solutions/data-lifecycle-cloud-platform
+
+<hr />
 
 **Question 103**
 
@@ -34,10 +38,14 @@
   - B - File storage system is Cloud Firestore which do not give full control, hence eliminated.
   - D - Unmanaged instance group with network load balance with regional persistent disk for storage gives full control which is required for the migration.
 
+<hr />
+
 **Question 105**
 
 - D. Configure a Cloud Dedicated Interconnect connection between the on-premises environment and Google Cloud. 100%
 - Ans D , Reason : high throughput via internal IPs
+
+<hr />
 
 **Question 106**
 
@@ -45,10 +53,14 @@
 - https://cloud.google.com/run/docs/resource-model
 - VishalB, omermaH
 
+<hr />
+
 **Question 107**
 
 - A. Navigate the predefined dashboards in the Cloud Monitoring workspace, and then add metrics and create alert policies. 58%, kopper2019
 - It's A for me... Create a dashboard for each incident?? I think D isn't a good choice...DiegoMDZ
+
+<hr />
 
 **Question 108**
 
@@ -64,6 +76,8 @@
 - B. When ingesting new data in BigQuery, run the data through the Data Loss Prevention (DLP) API to identify any personal information. As part of the DLP scan, save the result to Data Catalog. Upon a deletion request, query Data Catalog to find the column with personal information. 47%
 - B. We do not need to delete entire recrod of sports person but some health information collected by association. B would be correct answer. Aditya G
 
+<hr />
+
 **Question 110**
 
 - A. App Engine
@@ -72,6 +86,8 @@
 - IaaS = Compute Engine.
 - Hybrid = GKE (engineering heavy).
 - PaaS = App Engine.
+
+<hr />
 
 **Question 111**
 
@@ -82,13 +98,19 @@
 
 - Since the price of preemptibles is 1/4 the price of a standard machine D costs far less than B since office hours are 1/3 of whole day. It costs less to keep them running 24h as preemptibles. PAUGURU
 
+<hr />
+
 **Question 112**
 
 - C. 1. Set up Cloud VPN to provide private network connectivity between the Compute Engine application and the on-premises MySQL server. 2. Stop the on-premises application. 3. Start the Compute Engine application, configured to read and write to the on-premises MySQL server. 4. Create the replication configuration in Cloud SQL. 5. Configure the source database server to accept connections from the Cloud SQL replica. 6. Finalize the Cloud SQL replica configuration. 7. When replication has been completed, stop the Compute Engine application. 8. Promote the Cloud SQL replica to a standalone instance. 9. Restart the Compute Engine application, configured to read and write to the Cloud SQL standalone instance.100%
 
+<hr />
+
 **Question 113**
 
 - D. Set an Organization Policy with a constraint on constraints/compute.vmExternalIpAccess. List the approved instances in the allowedValues list. 100%
+
+<hr />
 
 **Question 114**
 
@@ -97,6 +119,8 @@
   To get firewall insights or view the logs for a specific firewall rule you need to enable logging while creating the rule or you can enable it by editing that rule.
 - https://cloud.google.com/network-intelligence-center/docs/firewall-insights/how-to/view-understand-insights#enabling-fw-rules-logging
 - https://cloud.google.com/firewall/docs/firewall-rules-logging
+
+<hr />
 
 **Question 115**
 
