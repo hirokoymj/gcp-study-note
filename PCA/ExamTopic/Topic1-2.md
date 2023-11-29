@@ -20,6 +20,12 @@
 - Migrate for Compute Engine organizes groups of VMs into Waves. After understanding the dependencies of your applications, create runbooks that contain groups of VMs and begin your migration!
 - https://cloud.google.com/migrate/compute-engine/docs/4.5/how-to/migrate-on-premises-to-gcp/overview
 
+- https://cloud.google.com/migrate/compute-engine/docs/4.5/reference/runbooks
+
+- https://cloud.google.com/migrate/compute-engine/docs/4.5/how-to/organizing-migrations/creating-and-modifying-runbooks
+
+<hr />
+
 **Question 104**
 
 - D. Use an unmanaged instance group with an active and standby instance in different zones, use a regional persistent disk, and use a network load balancer in front of the instances.
@@ -47,13 +53,11 @@
 **Question 108**
 
 - C. Binary logging, D. Automated backups. 70%
-- C. Binary logging, D. Automated backups, omermaH
+- https://cloud.google.com/sql/docs/mysql/replication#requirements
+- Automated backups must be enabled.
+- Binary logging must be enabled which requires point-in-time recovery to be enabled. Learn more about the impact of these logs.
 
-> Binary logging is a feature of MySQL that records all changes made to the database in a binary log file. By enabling binary logging on your Cloud SQL instance, you can use the log file to recover your database in case of catastrophic failure.
-
-> Automated backups are a feature of Cloud SQL that allows you to automatically create and retain backups of your database. By enabling automated backups, you can restore your database in case of catastrophic failure or other data loss events.
-
-> Option A, sharding, is not a recommended approach. Sharding is a technique for distributing data across multiple servers to improve performance and scalability. While sharding can help to improve the performance of a database, it is not specifically designed to protect against data loss in case of catastrophic failure.
+<hr />
 
 **Question 109**
 
@@ -107,7 +111,8 @@
 
 - D. Start a new rolling update. Select the Opportunistic update mode.
 - https://cloud.google.com/compute/docs/instance-groups/rolling-out-updates-to-managed-instance-groups
-- The key here is "you don't want to update any running instances". Only opportunistic support this. jawulya
+- The key here is "you don't want to update any running instances". Only opportunistic support this.
+- MIGs, template, Automatic==proactive, Selective=opportunistic
 
 <hr />
 
@@ -124,6 +129,9 @@
 
 - A. Create a Cloud VPN connection from the new VPC to the data center, create a Cloud Router, and apply new IP addresses so there is no overlapping IP space. 68%
 - The correct answer is A, not sure why some here are confused with C... Cloud NAT won't serve this purpose, you can read the documentation here: https://cloud.google.com/nat/docs/troubleshooting#overlapping-ip-addresses, jaxclain
+
+- Can I use Cloud NAT to connect a VPC network to another network to work around overlapping IP addresses?
+- No, Cloud NAT cannot apply to any custom route whose next hop is not the default internet gateway. For example, Cloud NAT cannot apply to traffic sent to a next hop Cloud VPN tunnel, even if the destination is a publicly routable IP address.
 
 <hr />
 
@@ -152,6 +160,16 @@
 
 - B. Create a Debian-based Compute Engine instance, install and configure the application, and use OS patch management to install available updates. 91%, MamthaSJ
 - https://cloud.google.com/compute/docs/os-patch-management
+- https://cloud.google.com/compute/docs/os-patch-management/create-patch-job#run-patch-job
+- Use the os-config patch-jobs execute command to run a patch job.
+
+```
+gcloud compute os-config patch-jobs execute \
+  --instance-filter-names="zones/us-east1-b/instances/instance-1" \
+  --description "patch for instance-1"
+```
+
+<hr />
 
 **Question 122**
 
@@ -204,6 +222,8 @@
 **Question 125**
 
 - A. Create a retention policy on the bucket for the duration of 5 years. Create a lock on the retention policy. 100% -https://cloud.google.com/storage/docs/bucket-lock#retention-policy
+
+<hr />
 
 **Question 126**
 
@@ -259,10 +279,16 @@
 
 **Question 130**
 
+- C (58%, ME), B (42%)
 - C. 1. Create a project with a Shared VPC and assign the Network Admin role to the networking team. 2. Create a second project without a VPC, configure it as a Shared VPC service project, and assign the Compute Admin role to the development team. 57%
-- a networking team and a development team.
-- Option B suggests creating a single project with a standalone VPC, and assigning both the Network Admin and Compute Admin roles to the respective teams. However, this solution does not enforce the required separation of duties between the networking and development teams.
-- Option C suggests using a Shared VPC. A Shared VPC allows for separation of duties between teams while sharing network resources.
+
+- https://cloud.google.com/vpc/docs/shared-vpc
+
+- When you use Shared VPC, you designate a project as a host project and attach one or more other service projects to it. The VPC networks in the host project are called Shared VPC networks. Eligible resources from service projects can use subnets in the Shared VPC network.
+
+- **Shared VPC lets organization administrators delegate administrative responsibilities**, such as creating and managing instances, to Service Project Admins while maintaining centralized control over network resources like subnets, routes, and firewalls.
+
+<hr />
 
 **Question 131**
 
@@ -291,6 +317,8 @@
 - two folders Finance and Shopping
 - C seems right, you have to remove the role from organization level
 
+<hr />
+
 **Question 135**
 
 - B. Use Istio's fault injection on the particular microservice whose faulty behavior you want to simulate. 85%
@@ -298,11 +326,15 @@
 - Istio fault injection :https://istiobyexample.dev/fault-injection/
 - B is the right answer - reference - https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
 
+<hr />
+
 **Question 136**
 
 - A. App Engine 100%
 - App Engine is right choice, Developer can focus on developing code rather than worry about infrastructure. A is right
 - The users are global but doesn't mean that app can't be regional. A is the correct answer it seems.
+
+<hr />
 
 **Question 137**
 
@@ -310,17 +342,23 @@
 - You are responsible for the API lifecycle and
 - https://cloud.google.com/apis/design/versioning
 
+<hr />
+
 **Question 138**
 
 - C. The new approach will make it easier to decouple infrastructure from application, develop and release new features, manage the underlying infrastructure, manage CI/CD pipelines and perform A/B testing, and scale the solution if necessary. 88%
 - C clearly states all of the benefits, C is right.
 - C is better: Management like to understand business benefit in simple language. They don't bother about the technology
 
+<hr />
+
 **Question 139**
 
 - A. Use a load testing tool to simulate the expected number of concurrent users and total requests to your application, and inspect the results. 84%
 - A or C - not sure
 - GKE
+
+<hr />
 
 **Question 140**
 
@@ -356,11 +394,15 @@ spec:
     name: pubsub
 ```
 
+<hr />
+
 **Question 141**
 
 - (100%)C. Make the container tag match the source code commit hash.
 - https://cloud.google.com/architecture/best-practices-for-building-containers#tagging_using_the_git_commit_hash
 - If you have an advanced continuous delivery system and you release your software often, you probably don't use version numbers as described in the Semantic Versioning Specification. In this case, a common way of handling version numbers is to use the Git commit SHA-1 hash
+
+<hr />
 
 **Question 142**
 
@@ -368,20 +410,28 @@ spec:
 - https://cloud.google.com/appengine/docs/the-appengine-environments
 - Go 1.12, and can handle sudden spikes.
 
+<hr />
+
 **Question 143**
 
 - D. Store the data in a Cloud Storage bucket. Design the processing pipelines to retrieve the data from the bucket. Most Voted
 - https://cloud.google.com/architecture/big-data-analytics/analytics-lakehouse
+
+<hr />
 
 **Question 144**
 
 - B. Create a Google Group per department and add all department members to their respective groups. Create a folder per department and grant the respective group the required IAM permissions at the folder level. Add the projects under the respective folders.(100%)
 - https://cloud.google.com/resource-manager/docs/access-control-folders#best-practices-folders-iam
 
+<hr />
+
 **Question 145**
 
 - C. Configure binary authorization policies for the development, staging, and production clusters. Create attestations as part of the continuous integration pipeline.(100%)
 - https://cloud.google.com/binary-authorization/docs/overview#policy_model
+
+<hr />
 
 **Question 146**
 
@@ -404,10 +454,14 @@ Answer would be Storage Transfer Service
 
 ![](146.png)
 
+<hr />
+
 **Question 147**
 
 - C. 1. Attach a regional SSD persistent disk to the first instance. 2. In case of a zone outage, force-attach the disk to the other instance.
 - https://cloud.google.com/compute/docs/disks/repd-failover#zonal_failures
+
+<hr />
 
 **Question 148**
 
@@ -417,11 +471,15 @@ Answer would be Storage Transfer Service
   Now the C option says decrypts before storing it in BigQuery which the point is to encrypt the data while been in BigQuery, D is the only possible answer.
 - If you want to control encryption yourself, you can use customer-managed encryption keys (CMEK) for BigQuery. https://cloud.google.com/bigquery/docs/customer-managed-encryption
 
+<hr />
+
 **Question 149**
 
 - B. Create a key with Cloud Key Management Service (KMS). Set the encryption key on the bucket to the Cloud KMS key. (83%)
 - https://cloud.google.com/storage/docs/encryption/customer-managed-keys#key-replacement
 - "Your company must be able to rotate the encryption key" is the requirement which eliminates CMEK and why you need a CSEK. You have to use a boto config file to do this and is part of one of the labs.(Ric350)
+
+<hr />
 
 **Question 150**
 
@@ -659,20 +717,28 @@ gcloud container clusters update cluster-name --enable-autoscaling \
 
 - I would recommend option C, creating two folders under the Organization resource named "Development" and "Production" and placing developer and production projects in the respective folders. This approach would allow you to centrally manage policies for all projects, while also being able to set more restrictive policies for production projects. It would also allow you to easily move projects between the Development and Production folders as business needs change, without disrupting users or developers.
 
+<hr />
+
 **Question 172**
 
 - D. 1. Create a managed instance group with Compute Engine instances. 2. Create a global load balancer and configure it with two backends: ג—‹ Managed instance group ג—‹ Cloud Storage bucket 3. Enable Cloud CDN on the bucket backend. 97%
 
 - I would recommend option D, creating a managed instance group with Compute Engine instances and a global load balancer with two backends: the managed instance group and the Cloud Storage bucket, and enabling Cloud CDN on the bucket backend. This approach would allow you to scale the number of instances in the managed instance group as needed to handle the demand for the application, and would also use the Cloud CDN to improve the performance of the application by caching the music files closer to the users. omermaH
 
+<hr />
+
 **Question 173**
 
 - A. Set up a filter in Cloud Logging and a Cloud Storage bucket as an export target for the logs you want to save. 100%
+
+<hr />
 
 **Question 174**
 
 - A. Create a Dataflow pipeline to retrieve the data from the external sources. As part of the pipeline, use the Cloud Data Loss Prevention (Cloud DLP) API to remove any PII data. Store the result in BigQuery. 74%
 - I would recommend option A, creating a Dataflow pipeline to retrieve the data from the external sources and using the Cloud Data Loss Prevention (Cloud DLP) API to remove any PII data. Storing the result in BigQuery would allow the data warehousing team to easily perform analysis on the data. omermaH
+
+<hr />
 
 **Question 175**
 
@@ -682,51 +748,72 @@ gcloud container clusters update cluster-name --enable-autoscaling \
 
 - Option A is the correct solution because it allows you to create an aggregated export on the Production folder, which will capture logs from all the production projects contained in the folder. Setting the log sink to a Cloud Storage bucket in an operations project will allow the operations team to store the logs in a central location. omermaH
 
+<hr />
+
 **Question 176**
 
 - A. 1. Install a Cloud Logging agent on all instances. 2. Create a sink to export logs into a regional Cloud Storage bucket. 3. Create an Object Lifecycle rule to move files into a Coldline Cloud Storage bucket after one month. 4. Configure a retention policy at the bucket level using bucket lock. 97%
 - This approach would allow you to use Cloud Logging to collect and export the logs from the Compute Engine instances into a Cloud Storage bucket. You can then use an Object Lifecycle rule to automatically move the logs from the regional bucket to a Coldline bucket after one month, which will reduce storage costs for logs that are not actively being queried. By configuring a retention policy using bucket lock, you can ensure that the logs are retained for at least two years for audit purposes. This approach follows Google-recommended practices for storing logs and minimizing costs. omermaH
+
+<hr />
 
 **Question 177**
 
 - A. Configure an organization policy to restrict identities by domain. 100%
 - https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains
 
+<hr />
+
 **Question 178**
 
 - C. Review your RowKey strategy and ensure that keys are evenly spread across the alphabet. 100%, omermaH
 - https://cloud.google.com/bigtable/docs/schema-design#row-keys
 
+<hr />
+
 **Question 179**
-C. 1. Create a dataset for the data science team. 2. Create views of tables that you want to share, excluding PII. 3. Assign an appropriate project-level IAM role to the members of the data science team. 4. Assign access controls to the dataset that contains the view. 5. Authorize the view to access the source dataset. 57%
+
+- C. 1. Create a dataset for the data science team. 2. Create views of tables that you want to share, excluding PII. 3. Assign an appropriate project-level IAM role to the members of the data science team. 4. Assign access controls to the dataset that contains the view. 5. Authorize the view to access the source dataset. 57%
 
 - C is correct here. You need view to avoid PII data. So materialized view is not needed.
 - C: view in a different dataset (https://cloud.google.com/bigquery/docs/share-access-views: "Authorized views should be created in a different dataset from the source data. That way, data owners can give users access to the authorized view without simultaneously granting access to the underlying data.") someone2011
+
+<hr />
 
 **Question 180**
 
 - B. Use the Storage Transfer Service to move the data.
 - https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets#transfer-options
 
+<hr />
+
 **Question 181**
 
 - C. Set up a Cloud Monitoring sink that triggers the Cloud Function after an instance removal log message arrives in Cloud Logging. 83%, omermaH
 - Actually C is correct but Wrong also in a way .. Sink cannot trigger a cloud function directly. It need Pub/Sub which then will trigger Cloud Function. Tesla
+
+<hr />
 
 **Question 182**
 
 - A. Use Google Cloud Shell in the Google Cloud Console to interact with Google Cloud. 100%
 - https://cloud.google.com/sdk/gcloud
 
+<hr />
+
 **Question 183**
 
 - C. Set up a Cloud VPN gateway in each Shared VPC and peer Cloud VPNs. 79%, omermaH
 - https://cloud.google.com/architecture/best-practices-vpc-design#shared-service
 
+<hr />
+
 **Question 184**
 
 - A. Inspect the logs and metrics from the instances in Cloud Logging and Cloud Monitoring. 100%, omermaH
 - When an application becomes slow, the first step you should take is to gather information about the underlying cause of the problem. One way to do this is by inspecting the logs and metrics from the instances where the application is deployed. Google Cloud Platform (GCP) provides tools such as Cloud Logging and Cloud Monitoring that can help you to collect and analyze this information. omermaH
+
+<hr />
 
 **Question 185**
 
@@ -738,10 +825,14 @@ C. 1. Create a dataset for the data science team. 2. Create views of tables that
 - D: Does alert you but does not prevent the outage.
 - https://www.youtube.com/watch?v=mxEvAPQRwhw
 
+<hr />
+
 **Question 186**
 
 - C. Configure a HorizontalPodAutoscaler for all stateless workloads and for all compatible stateful workloads. Configure the cluster to use node auto scaling. 100%
 - Answer C. Use HorizontalPodAutoscaler.
+
+<hr />
 
 **Question 187**
 
@@ -764,16 +855,22 @@ ORDER BY total_cost DESC
 
 </blockquote>
 
+<hr />
+
 **Question 188**
 
 - A. Set up a network peering between vpc-a and vpc-b. 100%
 - https://cloud.google.com/vpc/docs/vpc-peering
   > Google Cloud VPC Network Peering allows internal IP address connectivity across two Virtual Private Cloud (VPC) networks regardless of whether they belong to the same project or the same organization.
 
+<hr />
+
 **Question 189**
 
 - B. Object Versioning. 100%
 - https://cloud.google.com/storage/docs/object-versioning
+
+<hr />
 
 **Question 190**
 
@@ -791,17 +888,23 @@ ORDER BY total_cost DESC
 
 </blockquote>
 
+<hr />
+
 **Question 191**
 
 - A. An HA Cloud VPN gateway connected with two tunnels to an on-premises VPN gateway. 81%
 - A can provide 99.99% availability as well, and no need for C which will be more expensive. alexandE
 - https://cloud.google.com/network-connectivity/docs/vpn/concepts/topologies#1-peer-1-address
 
+<hr />
+
 **Question 192**
 
 - A. 1. Set a CORS configuration in the target Cloud Storage bucket where the base URL of the App Engine application is an allowed origin. 2. Use the Cloud Storage Signed URL feature to generate a POST URL. 100%
 - https://cloud.google.com/storage/docs/cross-origin#server-side-support
 - Signed URL is for TIme-Based access. This needs access all the time.
+
+<hr />
 
 **Question 193**
 
@@ -816,6 +919,8 @@ ORDER BY total_cost DESC
 
 </blockquote>
 
+<hr />
+
 **Question 194**
 
 - D 100%
@@ -829,6 +934,8 @@ ORDER BY total_cost DESC
 </blockquote>
 
 - https://cloud.google.com/compute/docs/import/importing-virtual-disks
+
+<hr />
 
 **Question 195**
 
