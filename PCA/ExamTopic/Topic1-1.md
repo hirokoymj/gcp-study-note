@@ -147,9 +147,10 @@ option D, which may cause user confusion or forgotten passwords.
 
 **Question 15**
 
-- A. Create a tokenizer service and store only tokenized data
-- Explanation
-  Tokenization is a process of replacing sensitive data, such as credit card numbers, with unique, randomly-generated tokens that cannot be used for fraudulent purposes. By using a tokenizer service and storing only tokenized data, you can reduce the scope of PCI compliance to only the tokenization service, rather than the entire application. This can help minimize the amount of sensitive data that needs to be protected and reduce the overall compliance burden.
+- A. Create a tokenizer service and store only tokenized data. 100%
+- https://cloud.google.com/architecture/tokenizing-sensitive-cardholder-data-for-pci-dss
+- Tokenization is a process of replacing sensitive data, such as credit card numbers, with unique, randomly-generated tokens that cannot be used for fraudulent purposes.
+- SA: Cloud KMS CryptoKey Encrypter/Decrypter.
 
 <hr />
 
@@ -180,9 +181,14 @@ option D, which may cause user confusion or forgotten passwords.
 
 **Question 19**
 
-- C. Dynamically resize the SSD persistent disk to 500 GB
-- Explanation
-  Answer is C because persistent disk performance is based on the total persistent disk capacity attached to an instance and the number of vCPUs that the instance has. Incrementing the persistent disk capacity will increment its throughput and IOPS, which in turn improve the performance of MySQL.
+- C. Dynamically resize the SSD persistent disk to 500 GB. 78%
+- Increasing disk size will also increase its performance.
+- https://cloud.google.com/compute/docs/disks/performance#optimize_disk_performance
+- To increase disk performance, start with the following steps:
+  - Resize your Persistent Disk
+  - Change the machine type and number of vCPUs on the VM to increase the per-VM IOPS
+- [n1-standard](https://cloud.google.com/compute/docs/disks/performance#pd-standard_5)
+- [n1-ssd](https://cloud.google.com/compute/docs/disks/performance#pd-ssd_8)
 
 <hr />
 
@@ -196,18 +202,19 @@ option D, which may cause user confusion or forgotten passwords.
 
 **Question 21**
 
-- B. Create synthetic random user input, replay synthetic load until autoscale logic is triggered on at least one layer, and introduce ג€chaosג€ to the system by terminating random resources on both zones
-- Explanation
-  By creating synthetic random user input and replaying the load, you can simulate the expected increased user traffic and trigger the autoscale logic on different layers of the application. Introducing chaos to the system by terminating random resources in both zones helps test the resiliency and redundancy of the system under stress. This strategy will help ensure that the system can maintain the 99.99% availability SLA when subjected to additional user load.
+- B. Create synthetic random user input, replay synthetic load until autoscale logic is triggered on at least one layer, and introduce ג€chaosג€ to the system by terminating random resources on both zones. 81%
+- resilience test is not about load, is about terminate resources and service not affected. Think it's B. The best for resilience in to introduce chaos in the infraestructure.
+- https://cloud.google.com/solutions/scalable-and-resilient-apps#test_your_resilience
 
 **Question 22**
 
 - C. Use a slimmed-down base image like Alpine Linux Most Voted
 - E. Copy the source after he package dependencies (Python and pip) are installed
-- Explanation
-  C: Smaller the base image with minimum dependency faster the container will start
+- C: Smaller the base image with minimum dependency faster the container will start
+- E: Docker image build uses caching. Docker Instructions sequence matter because application’s dependencies change less frequently than the Python code which will help to reuse the cached layer of dependency and only add new layer for code change for Python Source code.
+- https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/
 
-E: Docker image build uses caching. Docker Instructions sequence matter because application’s dependencies change less frequently than the Python code which will help to reuse the cached layer of dependency and only add new layer for code change for Python Source code.
+<hr />
 
 **Question 23**
 
@@ -218,8 +225,12 @@ E: Docker image build uses caching. Docker Instructions sequence matter because 
 **Question 24**
 
 - D. Instrument your application with Stackdriver Trace in order to break down the request latencies at each microserviceD. Instrument your application with Stackdriver Trace in order to break down the request latencies at each microservice
-- Explanation
-  Stackdriver Trace is a distributed tracing system that allows you to understand the relationships between requests and the various microservices that they touch as they pass through your application. By instrumenting your application with Stackdriver Trace, you can get a detailed breakdown of the latencies at each microservice, which can help you identify which service is taking the longest in those cases where a small number of API requests take a very long time.
+- Stackdriver Trace is a distributed tracing system that allows you to understand the relationships between requests and the various microservices that they touch as they pass through your application.
+- Setting timeouts on your application or sending custom metrics to Stackdriver Monitoring may not provide the level of detail that you need to identify the specific service that is causing the latency issues.
+
+- Looking for insights in Stackdriver **Monitoring** may also not provide the necessary level of detail, as it may not show the individual latencies at each microservice.
+
+<hr />
 
 **Question 25**
 
@@ -266,8 +277,22 @@ B complies with requirements <analysis and audit> you can audit from GCS but not
 **Question 31**
 
 - A. Google Kubernetes Engine, Jenkins, and Helm. 69%
-- Explanation
-  It should be A. Helm is needed for "Deploy application bundles using dynamic templates" Load Balancing should be part of GKE Already.
+
+- https://cloud.google.com/kubernetes-engine/docs/tutorials/http-balancer#optional_serving_multiple_applications_on_a_load_balancer
+
+- As per the above document and given example of "fanout-ingress.yaml" in above document and also in GKE sample repository below
+  https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/tree/master/load-balancing
+
+- it's clear that GKE LB can handle "6. Route network traffic to specific services based on URL" So NO need for Cloud Load balancing.
+
+- Helm satisfy "5. Deploy application bundles using dynamic templates"
+  and no other option satisfies this point #5.
+  So correct answer should be: A
+- https://cloud.google.com/kubernetes-engine/docs/concepts/ingress#:~:text=GKE%20clusters%20have%20external%20Application,you%20must%20not%20disable%20it.
+
+- Load Balancers are enabled by default in GKE. There's no need to enable them.
+
+<hr />
 
 **Question 32**
 
@@ -288,16 +313,18 @@ https://cloud.google.com/compute/docs/shutdownscript#provide_shutdown_script_con
 - A. Use Stackdriver Logging to search for the module log entries
 - C. Use gcloud or Cloud Console to connect to the serial console and observe the logs
 - E. Adjust the Google Stackdriver timeline to match the failure time, and observe the batch server metrics
-- Explanation
-  To collect details on the failure of the batch servers in GCE VMs, you can take the following actions:
 
-A - Stackdriver Logging can help you identify any issues related to the new Linux kernel module by searching for log entries related to the module.
+- A: Stackdriver Logging can help you identify any issues related to the new Linux kernel module by searching for log entries related to the module.
 
-C - Connecting to the serial console allows you to view the logs in real-time as the batch servers are running. This can help you identify any issues related to the new kernel module.
+- C: Connecting to the serial console allows you to view the logs in real-time as the batch servers are running. This can help you identify any issues related to the new kernel module.
 
-E - By adjusting the timeline in Stackdriver to match the failure time, you can view the batch server metrics during the time when the failures occurred. This can help you identify any issues related to the new kernel module.
+- E: By adjusting the timeline in Stackdriver to match the failure time, you can view the batch server metrics during the time when the failures occurred. This can help you identify any issues related to the new kernel module.
 
-Other options, such as reading the debug GCE Activity log using the API or Cloud Console, identifying whether a live migration event of the failed server occurred, or exporting a debug VM into an image and running the image on a local server, may not provide the necessary information to understand
+![](images/34-1.png)
+
+![](images/34-2.png)
+
+<hr />
 
 **Question 35**
 
@@ -332,8 +359,9 @@ Other options, such as reading the debug GCE Activity log using the API or Cloud
 
 - C. Use public key infrastructure (PKI) to encrypt the message client side using the originating user's private key.
 
-- Explanation
-  To prevent message spoofing, it is important to ensure that messages cannot be altered or forged by anyone other than the originating user. One way to accomplish this is by using public key infrastructure (PKI) to encrypt messages using the originating user's private key.
+- [AdityaG]Using PKI to encrypt messages using the originating user's private key provides end-to-end encryption, which means only the intended recipient can decrypt the message. This option also ensures that the message's authenticity is protected. If a malicious user changes the sender's name, the recipient will not be able to decrypt the message since it was not encrypted using the correct private key. This option is a strong method for securing chat messages.
+
+- https://support.google.com/messages/answer/10262381?hl=en&sjid=6649918137787088154-AP
 
 <hr />
 
@@ -594,16 +622,24 @@ kubectl apply -f deployment.yaml
 **Question 66**
 
 - B. Output custom metrics to Stackdriver from the game servers, and create a Dashboard in Stackdriver Monitoring Console to view them. 97%
+- BigTable doesn't integrate with Data Studio
+  https://cloud.google.com/bigtable/docs/integrations
 
-- Explanation
-  To capture multiple GBs of aggregate real-time KPIs from game servers running on Google Cloud Platform and monitor them with low latency, the customer should output custom metrics to Stackdriver from the game servers. Stackdriver allows you to collect and store custom metrics, as well as view and analyze them in real-time using the Stackdriver Monitoring Console. The customer can create a Dashboard in the Monitoring Console to view the KPIs and monitor them with low latency.
+- To capture multiple GBs of aggregate real-time KPIs from game servers running on Google Cloud Platform and monitor them with low latency, the customer should output custom metrics to Stackdriver from the game servers. Stackdriver allows you to collect and store custom metrics, as well as view and analyze them in real-time using the Stackdriver Monitoring Console. The customer can create a Dashboard in the Monitoring Console to view the KPIs and monitor them with low latency.
+
+- Option A, storing time-series data in Bigtable and viewing it using Data Studio, would not be suitable for capturing and monitoring real-time KPIs with low latency. Bigtable is a scalable NoSQL database that is optimized for large-scale batch processing, and Data Studio is a visualization tool that is not designed for real-time data analysis.
+
+<hr />
 
 **Question 67**
 
 - C. Perform the following: 1. Create a Google Kubernetes Engine (GKE) cluster with n1-standard-1 type machines. 2. Build a Docker image from the production branch with all of the dependencies, and tag it with the version number. 3. Create a Kubernetes Deployment with the imagePullPolicy set to 'IfNotPresent' in the staging namespace, and then promote it to the production namespace after testing. 67%
 
-- Explanation
-  Using Google Kubernetes Engine (GKE) enables better resource management and allows you to monitor and maximize machine utilization effectively. Creating a Docker image with all the dependencies ensures a consistent environment for your application. By utilizing Kubernetes Deployments, you can reliably deploy new versions of the application and control the rollout process. Additionally, using a staging namespace for testing before promoting to the production namespace ensures a safer deployment process.
+- You should use GKE, because your can scale up and down based on your demand. Also you can specifiy the resource size like 0.1 CPU and 128 MB of memory per Pod.
+
+- Secondly, Kubernetes Deployment with the imagePullPolicy set to “IfNotPresent” in the staging namespace, and then promote it to production namespace after testing. is best practice.
+
+<hr />
 
 **Question 68**
 
