@@ -206,6 +206,8 @@ option D, which may cause user confusion or forgotten passwords.
 - resilience test is not about load, is about terminate resources and service not affected. Think it's B. The best for resilience in to introduce chaos in the infraestructure.
 - https://cloud.google.com/solutions/scalable-and-resilient-apps#test_your_resilience
 
+<hr />
+
 **Question 22**
 
 - C. Use a slimmed-down base image like Alpine Linux Most Voted
@@ -222,6 +224,8 @@ option D, which may cause user confusion or forgotten passwords.
 - Explanation
   You want to avoid this problem, which you can only do if you load test, it in a test environment. With option A, B and D you might find the problem and the solution faster (or not since it's a performance problem), but you do not avoid the problem.
 
+<hr />
+
 **Question 24**
 
 - D. Instrument your application with Stackdriver Trace in order to break down the request latencies at each microserviceD. Instrument your application with Stackdriver Trace in order to break down the request latencies at each microservice
@@ -237,11 +241,15 @@ option D, which may cause user confusion or forgotten passwords.
 -　 D. Implement routinely scheduled failovers of your databases 　 64％ -　 Explanation
 Option D, implementing routinely scheduled failovers of your databases, is the best option in this scenario. This ensures that if the primary database crashes, the replica will automatically be promoted to the master and take over database operations, preventing any downtime or data loss. This can be achieved by setting up automatic failover mechanisms or by manually promoting the replica to the master as soon as the primary database goes down.
 
+<hr />
+
 **Question 26**
 
 - D. Configure Stackdriver Monitoring for all Projects, and export to Google Cloud Storage.
 - Explanation
   D is correct and best practice for long term log storage
+
+<hr />
 
 **Question 27**
 
@@ -251,6 +259,8 @@ Option D, implementing routinely scheduled failovers of your databases, is the b
 
 Google Cloud Dedicated Interconnect - large updates and better security, however may not be the most cost effective choice
 
+<hr />
+
 **Question 28**
 
 - B. Enable Logging export to Google BigQuery and use ACLs and views to scope the data shared with the auditor. 67%
@@ -259,11 +269,15 @@ Google Cloud Dedicated Interconnect - large updates and better security, however
 
 B complies with requirements <analysis and audit> you can audit from GCS but not analyze the data in it, that is done by BQ
 
+<hr />
+
 **Question 29**
 
 - C. In a secret management system Most Voted
 - Explanation
   It is important to store the credentials for your database back-end securely in order to protect them from unauthorized access. One way to do this is by using a secret management system, such as Google Cloud's Secret Manager. Secret Manager is a secure and convenient storage system for API keys, passwords, and other sensitive data that is designed to protect against unauthorized access. By storing the credentials in Secret Manager, you can ensure that they are kept secure and can be easily accessed by your microservices as needed.
+
+<hr />
 
 **Question 30**
 
@@ -273,6 +287,8 @@ B complies with requirements <analysis and audit> you can audit from GCS but not
   C. Cloud Deployment Manager is unfamiliar to the company's engineers: This may lead to a learning curve and potential delays or mistakes in deployment, as the team becomes familiar with the new system.
 
   F. Cloud Deployment Manager only supports automation of Google Cloud resources: If the company has a multi-cloud or hybrid cloud environment, the custom tool might need to be adapted or additional tools might be required for managing resources in other cloud environments or on-premises infrastructure.
+
+<hr />
 
 **Question 31**
 
@@ -302,11 +318,15 @@ B complies with requirements <analysis and audit> you can audit from GCS but not
 
 https://cloud.google.com/compute/docs/shutdownscript#provide_shutdown_script_contents_directly
 
+<hr />
+
 **Question 33**
 
 - D. Add tags to each tier and set up firewall rules to allow the desired traffic flow. 100%
 - Explanation
   The web tier can communicate with end users and the app tier, and the app tier can communicate with the database tier, but no other communication between tiers is allowed. The instances running the web tier have a network tag of web, the instances running the app tier have a network tag of app, and the instances running the database tier have a network tag of db.
+
+<hr />
 
 **Question 34**
 
@@ -333,17 +353,23 @@ https://cloud.google.com/compute/docs/shutdownscript#provide_shutdown_script_con
 - Explanation
   If you want to analyze those logs its recommended Big Query. For storing and backup Cloud Storage is your option, so AE.
 
+<hr />
+
 **Question 36**
 
 - B. Revert the source code change, and rerun the deployment pipeline. 61%
 - Explanation
   If a change negatively affects your key performance indicator, it's best to revert the source code change to a known good state and rerun the deployment pipeline. This ensures that your infrastructure is restored to a stable state while you investigate and fix the issue. Reverting the change and redeploying the code will allow your instance groups to continue functioning with the previous stable version, minimizing the impact on your application and users.
 
+<hr />
+
 **Question 37**
 
 - C. A single Organization with Folders for each department. 100%
 - Explanation
   To control IAM policies for different departments independently but centrally, you should create a single organization and use folders to organize the policies for each department. This approach allows you to centralize the management of IAM policies for all departments within a single organization, while also allowing you to set up different policies for each department as needed.
+
+<hr />
 
 **Question 38**
 
@@ -589,11 +615,15 @@ Deploy the application to the cluster: You can use the kubectl command-line tool
 
 kubectl apply -f deployment.yaml
 
+<hr />
+
 **Question 62**
 
 - B. Allocate budget for team training. Create a roadmap for your team to achieve Google Cloud certification based on job role.
 - Explanation
 - To evaluate your team's readiness for a new GCP project and create a skills gap plan, you should consider the business goal of cost optimization. One way to optimize costs is to invest in training for your team to increase their skills and knowledge of GCP. This can help your team become more efficient and effective in using GCP, potentially resulting in cost savings over time. You should allocate budget for team training and create a roadmap for your team to achieve Google Cloud certification based on their job roles. This will help ensure that your team has the necessary skills and knowledge to successfully deploy the new GCP project.
+
+<hr />
 
 **Question 63**
 
@@ -604,6 +634,8 @@ kubectl apply -f deployment.yaml
   - C. Google Kubernetes Engine - not a managed service and wont scale down to 0
   - D. App Engine flexible environment - managed service but won’t scale down to 0
 
+<hr />
+
 **Question 64**
 
 - A. Create the Key object for each Entity and run a batch get operation
@@ -612,12 +644,16 @@ kubectl apply -f deployment.yaml
 
   Use batch operations for your reads, writes, and deletes instead of single operations. Batch operations are more efficient because they perform multiple operations with the same overhead as a single operation. Firestore in Datastore mode supports batch versions of the operations which allow it to operate on multiple objects in a single Datastore mode call. Such batch calls are faster than making separate calls for each individual entity because they incur the overhead for only one service call. If multiple entity groups are involved, the work for all the groups is performed in parallel on the server side.
 
+<hr />
+
 **Question 65**
 
 - A. Supply the encryption key in a .boto configuration file. Use gsutil to upload the files. 71%
 - Explanation
   In GCP document, key could be configured in .boto. No information found which shows gsutil suppots flag "--encryption-key".
   https://cloud.google.com/storage/docs/encryption/customer-supplied-keys
+
+<hr />
 
 **Question 66**
 
@@ -648,11 +684,15 @@ kubectl apply -f deployment.yaml
 - Explanation
   To retain their on-premises Active Directory domain controller for identity management while using Google Cloud resources, the company can use Google Cloud Directory Sync to synchronize Active Directory usernames with cloud identities and configure SAML single sign-on (SSO). This will allow users to use their existing Active Directory credentials to access Google Cloud resources, while still maintaining their on-premises Active Directory domain controller as the primary source of identity management.
 
+<hr />
+
 **Question 69**
 
 - B. Review the Stackdriver logs for the specific GKE container that is serving the unresponsive part of the application.
 - Explanation
   Since the application writes logs to standard output, the logs should be available in the Stackdriver logs for the container running the unresponsive part of the application. Kubernetes Engine automatically exports these logs to Stackdriver, so you can use the Stackdriver Logging console to view the logs.
+
+<hr />
 
 **Question 70**
 
@@ -660,11 +700,15 @@ kubectl apply -f deployment.yaml
 - Explanation
   Cloud SQL is regional. For high availability, we need to think fo a failover strategy. So, Option D meets the requirement. create failover replica in the same region but in different Zone
 
+<hr />
+
 **Question 71**
 
 - C. Create a custom image from the existing disk. Create an instance template from the custom image. Create an autoscaled managed instance group from the instance template. 100%
 - Explanation
   Option C is the correct choice because creating a custom image from the existing disk ensures that the application environment is consistent and does not change between instances, which can reduce variability in performance. Creating an instance template from the custom image allows you to easily create new instances that are based on the same image, which can save time and effort. Finally, creating an autoscaled managed instance group allows you to automatically scale the number of instances based on demand, which can ensure that there are enough instances to handle peak traffic while minimizing costs during periods of low traffic
+
+<hr />
 
 **Question 72**
 
@@ -673,6 +717,8 @@ kubectl apply -f deployment.yaml
   Right Option - B. Use firewall rules based on network tags attached to the compute instances
 
   To restrict communications between VM instances within a VPC without relying on static IP addresses or subnets, you can use firewall rules based on network tags attached to the compute instances. This will allow you to specify which instances are allowed to communicate with each other and on which paths and ports. You can then attach the relevant network tags to the compute instances when they are created, allowing you to control communication between the instances without relying on static IP addresses or subnets.
+
+<hr />
 
 **Question 73**
 
@@ -706,6 +752,8 @@ gcloud sql instances create INSTANCE_NAME \
 - Explanation. 94%
   Cloud SQL/Spanner is OLTP DB but not OLAP. BQ is a well-known OLAP for analytics and also supports RBMS feature too
 
+<hr />
+
 **Question 75**
 
 - C. In the GCP Console, navigate to Stackdriver Logging. Consult logs for (GKE) and Cloud SQL.
@@ -713,11 +761,15 @@ gcloud sql instances create INSTANCE_NAME \
   Post mortem always includes log analysis.
   post mortem = logs
 
+<hr />
+
 **Question 76**
 
 - A. Ensure that VM service accounts are granted the appropriate Cloud Pub/Sub IAM roles.
 - Explanation
   The Google-recommended way for your application to authenticate to Cloud Pub/Sub and other Google Cloud services when running on Compute Engine VMs is to use VM service accounts. VM service accounts are automatically created when you create a Compute Engine VM, and they are associated with the VM instance. To authenticate to Cloud Pub/Sub and other Google Cloud services, you should ensure that the VM service accounts are granted the appropriate IAM roles.
+
+<hr />
 
 **Question 77**
 
@@ -745,11 +797,15 @@ gcloud compute vpn-gateways create GW_NAME \
 
   https://cloud.google.com/bigquery/docs/best-practices-storage
 
+<hr />
+
 **Question 79**
 
 - A. Configure a HorizontalPodAutoscaler with a target CPU usage. Enable the Cluster Autoscaler from the GCP Console. Most Voted
 - Explanation
   How does Horizontal Pod Autoscaler work with Cluster Autoscaler? Horizontal Pod Autoscaler changes the deployment's or replicaset's number of replicas based on the current CPU load. If the load increases, HPA will create new replicas, for which there may or may not be enough space in the cluster. If there are not enough resources, CA will try to bring up some nodes, so that the HPA-created pods have a place to run. If the load decreases, HPA will stop some of the replicas. As a result, some nodes may become underutilized or completely empty, and then CA will terminate such unneeded nodes.
+
+<hr />
 
 **Question 80**
 
@@ -757,6 +813,8 @@ gcloud compute vpn-gateways create GW_NAME \
 
 - Explanation
   Dedicated Interconnect is a connection that provides a private, dedicated connection between your on-premises network and GCP over a Google-owned network. It is a secure and reliable option for connecting your on-premises network to GCP. You can use it to replicate files to GCP as a part of your disaster recovery plan. If Dedicated Interconnect fails for any reason, it is a good idea to have a backup solution in place to establish a secure connection between your networks. Cloud VPN is a secure and reliable solution for establishing a connection between your on-premises network and GCP. It uses a virtual private network (VPN) tunnel to securely connect the networks, and it is a good backup option if Dedicated Interconnect fails.
+
+<hr />
 
 **Question 81**
 
@@ -813,6 +871,8 @@ gcloud compute vpn-gateways create GW_NAME \
 - Explanation
   Local SSD cannot be used for neither boot nor data. This rules out other options except B.
 
+<hr />
+
 **Question 87**
 
 - A. StatefulSets
@@ -820,6 +880,8 @@ gcloud compute vpn-gateways create GW_NAME \
   StatefulSets is a feature of Kubernetes, which the question asks about. Yes, Persistent volumes are required by StatefulSets https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
 
   See the Google documentations for mentioning of hostnames https://cloud.google.com/kubernetes-engine/docs/concepts/statefulset
+
+<hr />
 
 **Question 88**
 
@@ -836,6 +898,8 @@ gcloud compute vpn-gateways create GW_NAME \
 - Explanation
   Admin and event logs are configured by default. VM System logs require a logging agent to be configured. So, A is not valid. Answer is B
 
+<hr />
+
 **Question 90**
 
 - B. Deploy the update as a new version in the App Engine application, and split traffic between the new and current versions. 100%
@@ -846,6 +910,8 @@ gcloud compute vpn-gateways create GW_NAME \
 
 - https://cloud.google.com/appengine/docs/standard/splitting-traffic
 
+<hr />
+
 **Question 91**
 
 - A. Create an egress rule with priority 1000 to deny all traffic for all instances. Create another egress rule with priority 100 to allow the Active Directory traffic for all instances. 100%
@@ -855,6 +921,8 @@ gcloud compute vpn-gateways create GW_NAME \
 - The implied **allow egress rule**: An egress rule whose action is allow, destination is 0.0.0.0/0, and priority is **the lowest possible (65535)** lets any instance send traffic to any destination
 
 - The implied **deny ingress rule**: An ingress rule whose action is deny, source is 0.0.0.0/0, and priority is the lowest possible (65535)
+
+<hr />
 
 **Question 92**
 
@@ -897,6 +965,8 @@ Ingress is a Kubernetes resource that encapsulates a collection of rules and con
 
 - [1] https://cloud.google.com/kubernetes-engine/docs/tutorials/http-balancer#creating_an_ingress_resource
 
+<hr />
+
 **Question 94**
 
 - B. Create an HTTPS load balancer with URL Maps. 100%
@@ -906,6 +976,8 @@ Ingress is a Kubernetes resource that encapsulates a collection of rules and con
 
 You can use URL Maps to configure the HTTPS load balancer to route traffic based on the URL path being requested. This allows you to set up different URL paths to be served by different back-end services, providing a high level of flexibility in your load balancing configuration.
 
+<hr />
+
 **Question 95**
 
 - B. Implement retry logic using a truncated exponential backoff strategy.
@@ -913,16 +985,22 @@ You can use URL Maps to configure the HTTPS load balancer to route traffic based
   You should use exponential backoff to retry your requests when receiving errors with 5xx or 429 response codes from Cloud Storage.
   https://cloud.google.com/storage/docs/request-rate
 
+<hr />
+
 **Question 96**
 
 - B. Use Deployment Manager to automate service provisioning. Use Stackdriver to monitor and debug your tests. 88%
 - It is B, Google Best practice ---> never use scripts. They do not trust anyone else's code it seems. TarTar, from exam topic
+
+<hr />
 
 **Question 97**
 
 - D. Save the files in multiple Multi-Regional Cloud Storage buckets, one bucket per multi-region.
 - Explanation
   To reduce latency you need a bucket near your users and you can't setup multi-region with Asia/EU/America selected so A is out and we are left with D.
+
+<hr />
 
 **Question 98**
 
