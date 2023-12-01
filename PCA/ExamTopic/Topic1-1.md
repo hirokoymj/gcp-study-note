@@ -928,20 +928,13 @@ gcloud compute vpn-gateways create GW_NAME \
 
 - D. Save a history of recommendations and results of the recommendations in BigQuery, to be used as training data. 100%
 
-- The following insights and recommendations can be exported (to bigquery):
-
-  - IAM recommender
-  - VM machine type recommender
-  - Managed instance group machine type recommender
-  - Idle PD recommender
-  - Idle VM recommender
-  - Cloud SQL overprovisioned instance recommender
-  - Cloud SQL idle instance recommender
-  - Unattended project recommender
-  - Cloud Run Service Identity recommender
-  - https://cloud.google.com/recommender/docs/bq-export/export-recommendations-to-bq
-
 - https://cloud.google.com/recommender/docs/recommenders
+  - A recommender is a service on Google Cloud that provides usage recommendations for Google Cloud resources. Recommenders are specific to a single Google Cloud product and resource type.
+- https://cloud.google.com/recommender/docs/bq-export/export-recommendations-to-bq
+  - With the BigQuery export, you can view daily snapshots of recommendations for your organization.
+    ![](images/92-1.png)
+
+![](images/92-2.png)
 
 <hr />
 
