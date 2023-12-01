@@ -678,11 +678,25 @@ kubectl apply -f deployment.yaml
 
 - A. 1. Enable automatic storage increase for the instance. 2. Create a Stackdriver alert when CPU usage exceeds 75%, and change the instance type to reduce CPU usage. 3. Create a Stackdriver alert for replication lag, and shard the database to reduce replication time.
 
+- **Enable automatic storage increases**
+- If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 64 TB.
+
+| Setting                    | Parameter               |
+| -------------------------- | ----------------------- |
+| Automatic storage increase | --storage-auto-increase |
+
+NOTE: Determines whether Cloud SQL automatically provides more storage for your instance when free space runs low.
+
+```
+gcloud sql instances create INSTANCE_NAME \
+--region=REGION \
+--tier=TIER \
+--database-version=MYSQL_8_0_31 \
+--edition=ENTERPRISE_PLUS
+```
+
 - https://cloud.google.com/sql/docs/mysql/instance-settings#automatic-storage-increase-2ndgen
-
-**Enable automatic storage increases**
-
-If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 64 TB.
+- https://cloud.google.com/sql/docs/mysql/create-instance#gcloud
 
 <hr />
 
@@ -713,13 +727,13 @@ If you enable this setting, Cloud SQL checks your available storage every 30 sec
 
 - https://cloud.google.com/vpn/docs/how-to/creating-static-vpns
 
-- Cloud VPN Gateway is regional. NOt Global
-
 ```
 gcloud compute vpn-gateways create GW_NAME \
 --network=NETWORK \
 --region=REGION
 ```
+
+- Each Cloud VPN gateway is a regional resource that uses one or more regional external IP addresses. A Cloud VPN gateway can connect to a peer VPN gateway.
 
 <hr />
 
@@ -748,6 +762,8 @@ gcloud compute vpn-gateways create GW_NAME \
 
 - B. Provision preemptible VMs to reduce cost. Disable and then discontinue use of all GCP services and APIs that are not HIPAA-compliant. 94%
 - Disabling and then discontinuing allows you to see the effects of not using the APIs, so you can gauge (check) alternatives. So that leaves B and D as viable answers. The question says only some are not time-critical which implies others are. This means preemptible VMs are good because they will secure a spot for scaling when needed.
+- https://cloud.google.com/security/compliance/hipaa#unique_features
+  > Google Cloud's security practices allow us to have a HIPAA BAA covering Google Cloud's entire infrastructure, not a set aside portion of our cloud. As a result, you are not restricted to a specific region which has scalability, operational and architectural benefits. You can also benefit from multi-regional service redundancy as well as the ability to use **Preemptible VMs to reduce costs**.
 
 <hr />
 
@@ -773,8 +789,11 @@ gcloud compute vpn-gateways create GW_NAME \
 
 - B. Create a custom VM image with all OS package dependencies. Use Deployment Manager to create the managed instance group with the VM image.
 
-- Managed instance groups are a way to manage a group of Compute Engine instances as a single entity. If you want to automate the creation of a managed instance group, you can use tools such as Terraform, Deployment Manager, or Puppet to automate the process. **To minimize the startup time for new VMs in the instance group, you should create a custom VM image with all of the OS package dependencies pre-installed**. This will allow you to create new VMs from the custom image, which will significantly reduce the startup time compared to installing the dependencies on each VM individually. You can then use Deployment Manager to create the managed instance group with the custom VM image.
+- Managed instance groups are a way to manage a group of Compute Engine instances as a single entity. If you want to automate the creation of a managed instance group, you can use tools such as Terraform, Deployment Manager, or Puppet to automate the process. **To minimize the startup time for new VMs in the instance group, you should create a custom VM image with all of the OS package dependencies pre-installed**.
 - https://cloud.google.com/compute/docs/images
+- Custom images are available only to your Google Cloud project. You can create a custom image from boot disks and other images. Then, use the custom image to create an instance.
+
+<hr />
 
 **Question 85**
 
@@ -804,6 +823,7 @@ gcloud compute vpn-gateways create GW_NAME \
 
 **Question 88**
 
+- A 60%/ME, D 40%
 - A. Customize the cache keys to omit the protocol from the key. 60%
 - https://cloud.google.com/cdn/docs/best-practices#using_custom_cache_keys_to_improve_cache_hit_ratio
 - A logo needs to be cached whether displayed through HTTP or HTTPS. When you customize the cache keys for the backend service that holds the logo, clear the Protocol checkbox so that requests through HTTP and HTTPS count as matches for the logo's cache entry.
@@ -912,15 +932,26 @@ You can use URL Maps to configure the HTTPS load balancer to route traffic based
 
 Action = "Delete object" Object conditions = select ""Days since custom time" checkbox and specify 1460 days.
 
+<hr />
+
 **Question 99**
 
 - A. Set the memcache service level to dedicated. Create a key from the hash of the query, and return database values from memcache before issuing a query to Cloud SQL. 100%
-- Explanation
-  Right Option - A. Set the memcache service level to dedicated. Create a key from the hash of the query, and return database values from memcache before issuing a query to Cloud SQL.
+- PHP App Engine Stand -> App Engine Memcache PHP API
+- https://cloud.google.com/appengine/docs/legacy/standard/php/memcache/using
 
-  A dedicated memcache is always better than shared until cost-effectiveness specify in the exam as objective. So, Option C and D are ruled out.
+- Shared (default) - free and provides cache capacity on a best-effort basis.
+- Dedicated - billed by the GB-hour of cache size and provides a fixed cache capacity assigned exclusively to your application.
 
-  From A and B, Option B is sending and updating query every minute which is over killing. So reasonable option left with A which balance performance and cost.
+```
+$memcache = new Memcache;
+$value = $request->getContent();
+return $memcache->set($key, $value);
+```
+
+![](images/99.png)
+
+<hr />
 
 **Question 100**
 
