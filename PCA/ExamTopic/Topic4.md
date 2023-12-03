@@ -7,14 +7,8 @@ https://www.examtopics.com/exams/google/professional-cloud-architect/view/3/
 - A. Verify EHR's product usage against the list of compliant products on the Google Cloud compliance page. Most Voted
 - B. Advise EHR to execute a Business Associate Agreement (BAA) with Google Cloud.
 - the Health Insurance Portability and Accountability Act (known as HIPAA)
-- https://cloud.google.com/security/compliance/hipaa
-- **Essential best practices:**
-
-```
-1. Execute a Google Cloud BAA. You can request a BAA directly from your account manager.
-
-2. Disable or otherwise ensure that you do not use Google Cloud Products that are not explicitly covered by the BAA (see Covered Products) when working with PHI.
-```
+- A - OK (Google Cloud compliance page will give list of products those are HIPAA compliant https://cloud.google.com/security/compliance/offerings?skip_cache=true#/regions=USA&industries=Healthcare_and_life_sciences&focusArea=Privacy)
+- B - OK (BAA means HIPAA Business Associate amendment or Business Associate Agreement entered into between Google and Customer. With EHR being a leading provider of health record software, this agreement is required. https://cloud.google.com/files/gcp-hipaa-overview-guide.pdf?hl=en)
 
 **Question 2**
 
@@ -23,7 +17,16 @@ https://www.examtopics.com/exams/google/professional-cloud-architect/view/3/
 - D. Configure Container Registry to use vulnerability scanning to confirm that there are no vulnerabilities before deploying the workload.
 - https://cloud.google.com/binary-authorization/docs/overview
 - **What is Binary Authorization?**
-  > Binary Authorization is a Google Cloud product that you can use to implement software supply-chain security measures when you develop and deploy container-based applications.
+- Binary Authorization is a Google Cloud product that you can use to implement software supply-chain security measures when
+- You can use Binary Authorization to do the following:
+
+- **Monitor**: You can configure continuous validation (CV) (Preview) to periodically monitor that container images associated with running Pods conform to a policy that you define. If images don't conform with the policy, CV produces log entries in Cloud Logging.
+
+- **Enforce**: You can configure Binary Authorization enforcement to enforce that images that are being deployed to one of the supported container-based platforms conform with a policy that you define. Images that conform with the policy are allowed to be deployed; otherwise, they are disallowed from being deployed.
+
+![](images/topic4-2.png)
+
+<hr />
 
 **Question 3**
 
@@ -83,6 +86,8 @@ Google recommends using the 99.99% SLA interconnect (dedicated or partner) for p
 
 - A: https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept
 
-> Public endpoint access disabled: This is the most secure option as it prevents all internet access to the control plane. This is a good choice if you have configured your on-premises network to connect to Google Cloud using Cloud Interconnect or Cloud VPN.
+  - A private cluster is a type of VPC-native cluster that only depends on internal IP addresses. Nodes, Pods, and Services in a private cluster require unique subnet IP address ranges.
 
-> If you disable public endpoint access, then you must configure authorized networks for the private endpoint. If you don't do this, you can only connect to the private endpoint from cluster nodes or VMs in the same subnet as the cluster.
+- (victory108)A: Private clusters run nodes without external IP addresses, and optionally run their cluster control plane without a publicly-reachable endpoint. Additionally, private clusters do not allow Google Cloud IP addresses to access the control plane endpoint by default. Using private clusters with authorized networks makes your control plane reachable only by the allowed CIDRs, by nodes within your cluster's VPC, and by Google's internal production jobs that manage your control plane.
+
+- Public endpoint access disabled: This is the most secure option as it prevents all internet access to the control plane. This is a good choice if you have configured your on-premises network to connect to Google Cloud using Cloud Interconnect or Cloud VPN.

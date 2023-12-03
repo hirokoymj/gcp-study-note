@@ -10,19 +10,34 @@ https://www.examtopics.com/exams/google/professional-cloud-architect/view/3/
 **Question 2**
 
 - D %, omermaH
+- Google Cloud Armor security policies to filter incoming traffic to the following destinations:
+- https://cloud.google.com/armor/docs/configure-security-policies#create-rules
 
-> The command **gcloud compute security-policies rules update 1000 --security-policy=hlr-policy --expression="evaluatePreconfigurationExpr(`sourceiplist-fastly`)" --action=allow** updates a security policy rule with the name "1000" in the security policy "hlr-policy". The rule allows traffic that matches the specified expression and has the action "allow".
+- updates a security policy rule with the name "1000" in the security policy "hlr-policy". The rule allows traffic that matches the specified expression and has the action "allow".
 
-> In this particular case, the expression used in the rule is "evaluatePreconfigurationExpr(sourceiplist-fastly)". The "evaluatePreconfigurationExpr" function is used to reference a preconfigured expression, in this case, the tag "sourceiplist-fastly". This means that the rule will allow traffic from any instances that have the "sourceiplist-fastly" tag.
+```
+  gcloud compute security-policies rules update 1000 --security-policy=hlr-policy --expression="evaluatePreconfigurationExpr(`sourceiplist-fastly`)" --action=allow**
+```
+
+- Ex - the following command adds a rule to block traffic from IP address ranges 192.0.2.0/24 and 198.51.100.0/24. The rule has priority 1000 and is a rule in a policy called my-policy:
+
+```
+gcloud compute security-policies rules create 1000 \
+    --security-policy my-policy \
+    --description "block traffic from 192.0.2.0/24 and 198.51.100.0/24" \
+    --src-ip-ranges "192.0.2.0/24","198.51.100.0/24" \
+    --action "deny-403"
+```
 
 **Question 3**
 
 - C. Configure the deployment job to notify a Pub/Sub queue that triggers a Cloud Function. 82%, omermaH
-- Option A, Set up Cloud Tasks and a Cloud Storage bucket that triggers a Cloud Function, would not be the correct solution because Cloud Tasks is a service for creating and managing asynchronous tasks that are executed later, but it does not support recurring schedules.
 
-- Option B, Set up a Cloud Logging sink and a Cloud Storage bucket that triggers a Cloud Function, would not be the correct solution because Cloud Logging is a service for collecting, viewing, and analyzing logs, but it does not support triggering Cloud Functions on a recurring basis.
+- Answer C seems to be right. There are 2 requirements here,
 
-- Option D, Set up Identity and Access Management (IAM) and Confidential Computing to trigger a Cloud Function, would not be the correct solution because IAM is a service for managing access to Google Cloud resources and Confidential Computing is a service for running sensitive workloads in hardware-isolated environments, but neither of these services can be used to trigger Cloud Functions on a recurring basis.
+1. Run every time it is released on Tuesday
+2. Set Airwolf to run weekly
+   Since a new version of the predictive capability application is released every tuesday evening at 3.00 am, the deployment job would run every time its released which is every week recurring. So both the requirements above are satisfied
 
 **Question 4**
 
