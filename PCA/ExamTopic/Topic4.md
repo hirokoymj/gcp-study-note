@@ -10,6 +10,8 @@ https://www.examtopics.com/exams/google/professional-cloud-architect/view/3/
 - A - OK (Google Cloud compliance page will give list of products those are HIPAA compliant https://cloud.google.com/security/compliance/offerings?skip_cache=true#/regions=USA&industries=Healthcare_and_life_sciences&focusArea=Privacy)
 - B - OK (BAA means HIPAA Business Associate amendment or Business Associate Agreement entered into between Google and Customer. With EHR being a leading provider of health record software, this agreement is required. https://cloud.google.com/files/gcp-hipaa-overview-guide.pdf?hl=en)
 
+<hr />
+
 **Question 2**
 
 - AD 42%, AC 40%/ME
@@ -43,6 +45,8 @@ https://www.examtopics.com/exams/google/professional-cloud-architect/view/3/
 - C - more problematic and probably more expensive
 - D - Google does not offer a service level agreement (SLA) with Carrier Peering
 
+<hr />
+
 **Question 4**
 
 D. Configure two Dedicated Interconnect connections in one metro (City) and two connections in another metro, and make sure the Interconnect connections are placed in different metro zones.
@@ -66,6 +70,8 @@ Google recommends using the 99.99% SLA interconnect (dedicated or partner) for p
 
 - https://cloud.google.com/network-connectivity/docs/interconnect/tutorials/production-level-overview
 
+<hr />
+
 **Question 5**
 
 - C. Turn off Pub/Sub message batching.
@@ -76,11 +82,15 @@ Google recommends using the 99.99% SLA interconnect (dedicated or partner) for p
 - D does not make sense at all.
 - B is about receiver, not publisher.
 
+<hr />
+
 **Question 6**
 
 - A. Create an Organizational Policy with a constraint to allow external IP addresses only on the frontend Compute Engine instances. Most Voted
 
 - https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address#disableexternalip
+
+<hr />
 
 **Question 7**
 
