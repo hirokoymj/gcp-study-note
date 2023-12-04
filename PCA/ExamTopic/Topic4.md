@@ -1,7 +1,5 @@
 # TOPIC 4 - EHR Healthcare
 
-https://www.examtopics.com/exams/google/professional-cloud-architect/view/3/
-
 **Question 1**
 
 - A. Verify EHR's product usage against the list of compliant products on the Google Cloud compliance page. Most Voted
