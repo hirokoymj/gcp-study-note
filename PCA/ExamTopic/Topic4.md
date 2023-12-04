@@ -12,9 +12,12 @@ https://www.examtopics.com/exams/google/professional-cloud-architect/view/3/
 
 **Question 2**
 
-- AD 40%
+- AD 42%, AC 40%/ME
 - A. Enable Binary Authorization on GKE, and sign containers as part of a CI/CD pipeline.
+- C. Configure Container Registry to only allow trusted service accounts to create and deploy containers from the registry.
 - D. Configure Container Registry to use vulnerability scanning to confirm that there are no vulnerabilities before deploying the workload.
+- [jits1984]Binary authorization and Service Account controls (as the question is asking on how you would secure the deployment process and not improving the security of the application)
+
 - https://cloud.google.com/binary-authorization/docs/overview
 - **What is Binary Authorization?**
 - Binary Authorization is a Google Cloud product that you can use to implement software supply-chain security measures when
@@ -83,11 +86,20 @@ Google recommends using the 99.99% SLA interconnect (dedicated or partner) for p
 
 - A 61%, C 39%
 - A. Use a private cluster with a private endpoint with master authorized networks configured.
-
+- Q is GKE NW, architecture, reduce attach surface.
 - A: https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept
 
-  - A private cluster is a type of VPC-native cluster that only depends on internal IP addresses. Nodes, Pods, and Services in a private cluster require unique subnet IP address ranges.
+- A private cluster is a type of VPC-native cluster that only depends on . Nodes, Pods, and Services in a private cluster require **unique subnet IP address ranges**.
 
 - (victory108)A: Private clusters run nodes without external IP addresses, and optionally run their cluster control plane without a publicly-reachable endpoint. Additionally, private clusters do not allow Google Cloud IP addresses to access the control plane endpoint by default. Using private clusters with authorized networks makes your control plane reachable only by the allowed CIDRs, by nodes within your cluster's VPC, and by Google's internal production jobs that manage your control plane.
 
-- Public endpoint access disabled: This is the most secure option as it prevents all internet access to the control plane. This is a good choice if you have configured your on-premises network to connect to Google Cloud using Cloud Interconnect or Cloud VPN.
+- **Endpoints in private clusters**
+- https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept#endpoints_in_private_clusters
+
+  - **Private endpoint**: The private endpoint is an internal IP address in the control plane's VPC network.
+  - **Public endpoint**: This is the external IP address of the control plane. By default, tools like kubectl communicate with the control plane on its public endpoint.
+
+- **Access to cluster endpoints**
+- https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept#overview
+
+  - **Public endpoint access disabled**: This is the most secure option as it prevents all internet access to the control plane. This is a good choice if you have configured your on-premises network to connect to Google Cloud using Cloud Interconnect or Cloud VPN.

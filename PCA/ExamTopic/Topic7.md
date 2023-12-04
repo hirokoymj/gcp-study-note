@@ -25,6 +25,9 @@ A. Configure an organizational policy which constrains where resources can be de
 **Question 6**
 
 - A. Configure Workload Identity and service accounts to be used by the application platform.
+- https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity
+- **Workload Identity** is the recommended way for your workloads running on Google Kubernetes Engine (GKE) to access Google Cloud services in a secure and manageable way.
+- https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 
 **Question 7**
 
