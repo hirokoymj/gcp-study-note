@@ -2,6 +2,7 @@
 
 **Question 1**
 
+- AB 100%
 - A. Verify EHR's product usage against the list of compliant products on the Google Cloud compliance page. Most Voted
 - B. Advise EHR to execute a Business Associate Agreement (BAA) with Google Cloud.
 - the Health Insurance Portability and Accountability Act (known as HIPAA)
@@ -33,7 +34,7 @@
 
 **Question 3**
 
-- A. Add a new Dedicated Interconnect connection.
+- A. Add a new Dedicated Interconnect connection. 100%
 - https://cloud.google.com/network-connectivity/docs/interconnect/how-to/dedicated/modifying-interconnects
 - **The following items can't be modified for existing Dedicated Interconnect connections:**
 
@@ -47,7 +48,7 @@
 
 **Question 4**
 
-D. Configure two Dedicated Interconnect connections in one metro (City) and two connections in another metro, and make sure the Interconnect connections are placed in different metro zones.
+- D. Configure two Dedicated Interconnect connections in one metro (City) and two connections in another metro, and make sure the Interconnect connections are placed in different metro zones. 88%
 
 **Business requirements for this case:**
 
@@ -72,7 +73,7 @@ Google recommends using the 99.99% SLA interconnect (dedicated or partner) for p
 
 **Question 5**
 
-- C. Turn off Pub/Sub message batching.
+- C. Turn off Pub/Sub message batching. 70%
 - C - The cost of batching is latency for individual messages, which are queued in memory until their corresponding batch is filled and ready to be sent over the network. To minimize latency, batching should be turned off.
   https://cloud.google.com/pubsub/docs/publisher?hl=en#batching
 
@@ -84,7 +85,7 @@ Google recommends using the 99.99% SLA interconnect (dedicated or partner) for p
 
 **Question 6**
 
-- A. Create an Organizational Policy with a constraint to allow external IP addresses only on the frontend Compute Engine instances. Most Voted
+- A. Create an Organizational Policy with a constraint to allow external IP addresses only on the frontend Compute Engine instances. 100%
 
 - https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address#disableexternalip
 
