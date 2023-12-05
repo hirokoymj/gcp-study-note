@@ -14,17 +14,19 @@
 
 **Question 2**
 
-- B. Deploy Cloud Run services to multiple regions. Create serverless network endpoint groups pointing to the services. Add the serverless NEGs to a backend service that is used by a global HTTP(S) Load Balancing in
+- B. Deploy Cloud Run services to multiple regions. Create serverless network endpoint groups pointing to the services. Add the serverless NEGs to a backend service that is used by a global HTTP(S) Load Balancing instance. 100%
 
-- B is correct.
-  > Cloud Run is a regional service.
-  > To serve global users you need to configure a Global HTTP LB and NEG as the backend.
-  > Cloud Run services are deployed into individual regions and to route your users to different regions of your service, you need to configure external HTTP(S) Load Balancing.
+- Cloud Run is a regional service.
+  To serve global users you need to configure a Global HTTP LB and NEG as the backend.
+  Cloud Run services are deployed into individual regions and to route your users to different regions of your service, you need to configure external HTTP(S) Load Balancing.
 
-> https://cloud.google.com/run/docs/multiple-regions
+- https://cloud.google.com/run/docs/multiple-regions
 
-> A network endpoint group (NEG) specifies a group of backend endpoints for a load balancer.
-> A serverless NEG is a backend that points to a Cloud Run, App Engine, or Cloud Functions service. https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts
+- A network endpoint group (NEG) specifies a group of backend endpoints for a load balancer.
+
+- A serverless NEG is a backend that points to a Cloud Run, App Engine, or Cloud Functions service.
+
+- https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts
 
 <hr />
 
