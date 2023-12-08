@@ -57,3 +57,5 @@ A. Replace the existing data warehouse with BigQuery. Use table partitioning. 88
 **Question 6**
 
 - B. Cloud IoT Core with public/private key pairs. 100%
+- https://cloud.google.com/iot-core/
+- https://cloud.google.com/architecture/connected-devices
