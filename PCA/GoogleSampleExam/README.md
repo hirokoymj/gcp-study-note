@@ -84,10 +84,28 @@
 - https://sre.google/workbook/implementing-slos/
 - Service level objectives (SLOs) specify a target level for the reliability of your service. Because SLOs are key to making data-driven decisions about reliability
 
+<hr />
+
 **Question 9**
 
-<hr />**Question 10**
-<hr />**Question 11**
+- B. Use Cloud CDN to cache the video content from HRL’s existing public cloud provider.
+- Cloud CDN, Cache large object(video)
+- B is correct because Cloud CDN can be used to cache data hosted on other cloud providers and supports large objects such as video.
+
+<hr />
+
+**Question 10**
+
+- C. Use the Cloud Data Loss Prevention (DLP) API to provide data to the recommendation service.
+- C is correct because Cloud DLP was specifically designed for this use case.
+
+<hr />
+
+**Question 11**
+
+- D. Create a network plan for your VPC in Google Cloud that uses non- overlapping CIDR ranges with your on-premises environment. Use a Cloud Interconnect connection between your on-premises environment and Google Cloud.
+- D is correct because this ensures your on premises network is compatible with your Google Cloud VPC.
+
 <hr />
 
 **Question 12**
@@ -96,7 +114,9 @@
 - C is correct because Pub/Sub can handle the frequency of this data, and consumers of the data can pull from the shared topic for further processing.
 - Sensor, pubsub
 
-<hr />**Question 13**
+<hr />
+
+**Question 13**
 
 - A. Load logs into BigQuery.
 - E. Upload log files into Cloud Storage.
@@ -107,7 +127,9 @@
 - D is not correct because Cloud Bigtable is optimized for read-write latency and analytics throughput, not analytics querying and reporting.
 - E is correct because Cloud Storage provides the Coldline and Archive storage classes to support long-term storage with infrequent access, which would support the long-term disaster recovery backup requirement.
 
-<hr />**Question 14**
+<hr />
+
+**Question 14**
 
 - C. Ensure that a firewall rule exists to allow load balancer health checks to reach the instances in the instance group.
 
