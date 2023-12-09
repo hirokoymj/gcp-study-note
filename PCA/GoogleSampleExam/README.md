@@ -25,7 +25,13 @@
 - https://cloud.google.com/blog/products/networking/google-cloud-network-connectivity-options-explained
 - If you need private, high-performance connectivity to Google Cloud, but installing equipment isn’t an option—or you would prefer to work with a service provider partner as an intermediary, then we recommend you go with a **Partner Interconnect.**
 
-<hr />**Question 3**
+<hr />
+
+**Question 3**
+
+- B. Enable Virtual Private Cloud Service Controls, and create a service perimeter around the Cloud Storage resources.
+- VPC service Controls, perimiter, data exfiltration
+
 <hr />
 
 **Question 4**
@@ -82,9 +88,31 @@
 
 <hr />**Question 10**
 <hr />**Question 11**
-<hr />**Question 12**
+<hr />
+
+**Question 12**
+
+- C. Have devices poll for connectivity to Pub/Sub and publish the latest messages on a regular interval to a shared topic for all devices.
+- C is correct because Pub/Sub can handle the frequency of this data, and consumers of the data can pull from the shared topic for further processing.
+- Sensor, pubsub
+
 <hr />**Question 13**
+
+- A. Load logs into BigQuery.
+- E. Upload log files into Cloud Storage.
+
+- A is correct because BigQuery is a serverless cloud data warehouse for analytics and supports the volume and analytics requirement.
+- B is not correct because Cloud SQL does not support the expected 100 TB. Additionally, Cloud SQL is a relational database and not the best fit for time-series log data formats.
+- C is not correct because Cloud Logging is optimized for monitoring, error reporting, and debugging instead of analytics queries.
+- D is not correct because Cloud Bigtable is optimized for read-write latency and analytics throughput, not analytics querying and reporting.
+- E is correct because Cloud Storage provides the Coldline and Archive storage classes to support long-term storage with infrequent access, which would support the long-term disaster recovery backup requirement.
+
 <hr />**Question 14**
+
+- C. Ensure that a firewall rule exists to allow load balancer health checks to reach the instances in the instance group.
+
+- C is correct because health check failures lead to a VM being marked unhealthy and can result in termination if the health check continues to fail. Because you have already verified that the instances are functioning properly, the next step would be to determine why the health check is continuously failing.
+
 <hr />
 
 **Question 15**
@@ -99,14 +127,29 @@
 
 **Question 16**
 
+- C. In a secret management system
+- C is correct because a secret management system such as Secret Manager is a secure and convenient storage system for API keys, passwords, certificates, and other sensitive data. Secret Manager provides a central place and single source of truth to manage, access, and audit secrets across Google Cloud.
+
 <hr />
 
 **Question 17**
+
+- B. Organization viewer, Project viewer
+- Organization viewer grants the security team permissions to view the organization's display name.
+- Project viewer grants the security team permissions to see the resources within projects.
 
 <hr />
 
 **Question 18**
 
+- A. Use persistent disks to store the state. Start and stop the VM as needed.
+- D. Use BigQuery billing export and labels to relate cost to groups.
+- A is correct because persistent disks will not be deleted when an instance is stopped.
+- D is correct because exporting daily usage and cost estimates automatically throughout the day to a BigQuery dataset is a good way of providing visibility to the finance department. Labels can then be used to group the costs based on team or cost center.
+
 <hr />
 
 **Question 19**
+
+- C. Dynamically resize the SSD persistent disk to 500 GB.
+- C is correct because persistent disk performance is based on the total persistent disk capacity attached to an instance and the number of vCPUs that the instance has. Incrementing the persistent disk capacity will increment its throughput and IOPS, which in turn improve the performance of MySQL.
