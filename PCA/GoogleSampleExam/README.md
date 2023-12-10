@@ -40,6 +40,10 @@
 - A is correct because Identity-Aware Proxy (IAP) connector allows you to manage access to HTTP-based apps outside of Google Cloud.
 - C is not correct because Cloud Armor does not authenticate or authorize application access.
 - Identity-Aware Proxy (IAP) allows you to manage access to HTTP-based apps outside of Google Cloud. This includes apps on-premises in your enterprise's data centers.
+- https://cloud.google.com/iap?hl=en
+- Control access to your cloud-based and on-premises applications and VMs running on Google Cloud
+- https://cloud.google.com/iap/docs/concepts-overview
+- IAP lets you establish a central authorization layer for applications accessed by HTTPS, so you can use an application-level access control model instead of relying on network-level firewalls.
 
 <hr />
 
@@ -168,6 +172,12 @@
 - D. Use BigQuery billing export and labels to relate cost to groups.
 - A is correct because persistent disks will not be deleted when an instance is stopped.
 - D is correct because exporting daily usage and cost estimates automatically throughout the day to a BigQuery dataset is a good way of providing visibility to the finance department. Labels can then be used to group the costs based on team or cost center.
+- https://cloud.google.com/sdk/gcloud/reference/compute/instances/set-disk-auto-delete#--auto-delete
+- https://cloud.google.com/sdk/gcloud/reference/compute/instances/create#--disk
+- https://cloud.google.com/compute/docs/disks/local-ssd#data_persistence
+- https://cloud.google.com/billing/docs/how-to/export-data-bigquery
+- https://cloud.google.com/resource-manager/docs/creating-managing-labels
+- https://cloud.google.com/compute/docs/instances/instance-life-cycle
 
 <hr />
 
@@ -175,3 +185,5 @@
 
 - C. Dynamically resize the SSD persistent disk to 500 GB.
 - C is correct because persistent disk performance is based on the total persistent disk capacity attached to an instance and the number of vCPUs that the instance has. Incrementing the persistent disk capacity will increment its throughput and IOPS, which in turn improve the performance of MySQL.
+- https://cloud.google.com/compute/docs/disks/performance
+- https://cloud.google.com/compute/docs/disks/#pdspecs
