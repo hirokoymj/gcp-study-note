@@ -369,6 +369,14 @@ gcloud compute os-config patch-jobs execute \
 - https://cloud.google.com/iap/docs/using-tcp-forwarding
 - This page explains how you can use Identity-Aware Proxy (IAP) TCP forwarding to enable administrative access to VM instances that do not have external IP addresses or do not permit direct access over the internet.
 
+- https://cloud.google.com/iap/docs/concepts-overview
+- IAP lets you establish a central authorization layer for applications accessed by HTTPS, so you can use an **application-level access control model** instead of relying on **network-level** firewalls.
+
+![](images/133-1.png)
+![](images/133-2.png)
+
+- [GSP946 - Securing Cloud Applications with Identity Aware Proxy (IAP) using Zero-Trust](https://www.cloudskillsboost.google/focuses/20229?catalog_rank=%7B%22rank%22%3A1%2C%22num_filters%22%3A0%2C%22has_search%22%3Atrue%7D&parent=catalog&search_id=28909879)
+
 <hr />
 
 **Question 134**
