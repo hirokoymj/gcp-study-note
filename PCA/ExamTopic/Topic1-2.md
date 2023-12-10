@@ -75,7 +75,9 @@
 # Specify the backup-start-time parameter using 24-hour time in UTC±00 time zone.f
 gcloud sql instances patch INSTANCE_NAME \
 --backup-start-time=HH:MM
+```
 
+```
 # Enable point-in-time recovery
 gcloud sql instances patch INSTANCE_NAME \
 --enable-bin-log
@@ -186,14 +188,14 @@ In the backupConfiguration section, you see binaryLogEnabled: true if the change
 **Question 120**
 
 - B. Add two additional NICs to Instance #1 with the following configuration: ג€¢ NIC1 ג—‹ VPC: VPC #2 ג—‹ SUBNETWORK: subnet #2 ג€¢ NIC2 ג—‹ VPC: VPC #3 ג—‹ SUBNETWORK: subnet #3 Update firewall rules to enable traffic between instances. 69%, MamthaSJ
-- https://cloud.google.com/vpc/docs/create-use-multiple-interfaces
-- According to my understanding the requirement is that only VM1 shall be able to communicate with VM2 and VM3, but not VM2 with VM3.
-- We can exclude d) as d) would enable VM2 to communicate with VM3 as well
-- We can exclude c) as well - there is no connection between VPC1 and VPC3.
-  IMHO a) will not work.
-- So the only correct answer seems to be b)
 
-![](images/120.png)
+- B is the correct answer,
+
+- Connect the VPC1 instance to VPC2 instance with NIC1 and Connect VPC1 instance to VPC3 instance with NIC2. And update firewall rules to enable traffic between them.
+
+- [Create VMs with multiple network interfaces](https://cloud.google.com/vpc/docs/create-use-multiple-interfaces)
+  By default, every virtual machine (VM) instance in a Virtual Private Cloud (VPC) network has a single network interface. However, you can configure an instance with multiple network interfaces.
+  ![](images/120.png)
 
 <hr />
 
