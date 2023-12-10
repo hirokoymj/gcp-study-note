@@ -24,3 +24,31 @@ https://www.youtube.com/playlist?list=PLuJRcdtonlDAN73rZsRk_eiJ0NU9h1Cms
 
 ![](41-2.png)
 ![](41-1.png)
+
+## 15. Creating Firewall Rules
+
+1. VPC network -> Firewall
+2. dougnet-allow-http, doughnet, Ingress, Allow, Tags: webserver, 0.0.0.0/0, tpc:80 -> Create
+3. Compute Engine -> VM with Network: dougnet
+
+![](15-1.png)
+![](15-2.png)
+
+## 16. Creating GKE clusters
+
+1. Kubernates Engine -> Create Cluster
+2. dougs-cluster, us-central1-c, Number of nodes:3, Enable autoscaling: 1, 30
+3. Nodes (like Compute Engine, E2, e2micro(2 CPU 1GB memory)) -> Create
+4.
+
+```
+## Connect to clusters
+gcloud container clusters get-credentials dougs-cluster --zone us-east4-a --project xxx
+
+## interact with the cluster
+kuberctl get notes
+```
+
+![](16-1.png)
+
+![](16-2.png)

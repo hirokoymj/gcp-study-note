@@ -128,6 +128,20 @@ In the backupConfiguration section, you see binaryLogEnabled: true if the change
 **Question 113**
 
 - D. Set an Organization Policy with a constraint on constraints/compute.vmExternalIpAccess. List the approved instances in the allowedValues list. 100%
+- https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address#disableexternalip
+
+```
+{
+"constraint": "constraints/compute.vmExternalIpAccess",
+"listPolicy": {
+  "allowedValues": [
+     "projects/PROJECT_ID/zones/ZONE/instances/VM_NAME",
+     "projects/PROJECT_ID/zones/ZONE/instances/VM_NAME",
+     "projects/PROJECT_ID/zones/ZONE/instances/VM_NAME"
+  ]
+ }
+}
+```
 
 <hr />
 
@@ -135,9 +149,10 @@ In the backupConfiguration section, you see binaryLogEnabled: true if the change
 
 - B. Enable Firewall Rules Logging for the firewall rules you want to monitor.
 - when you create a firewall rule there is an option for firewall rule logging on/off. It is set to off by default. 100%
-  To get firewall insights or view the logs for a specific firewall rule you need to enable logging while creating the rule or you can enable it by editing that rule.
+- To get firewall insights or view the logs for a specific firewall rule you need to enable logging while creating the rule or you can enable it by editing that rule.
 - https://cloud.google.com/network-intelligence-center/docs/firewall-insights/how-to/view-understand-insights#enabling-fw-rules-logging
 - https://cloud.google.com/firewall/docs/firewall-rules-logging
+  ![](images/114.png)
 
 <hr />
 
