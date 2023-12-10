@@ -57,22 +57,39 @@
 
 **Question 107**
 
-- A. Navigate the predefined dashboards in the Cloud Monitoring workspace, and then add metrics and create alert policies. 58%, kopper2019
+- A 57%/ME, D 43%
+- A. Navigate the predefined dashboards in the Cloud Monitoring workspace, and then add metrics and create alert policies.
 - It's A for me... Create a dashboard for each incident?? I think D isn't a good choice...DiegoMDZ
+- GKE, triage incidents quickly -> monitoring, alert
 
 <hr />
 
 **Question 108**
 
 - C. Binary logging, D. Automated backups. 70%
-- https://cloud.google.com/sql/docs/mysql/replication#requirements
-- Automated backups must be enabled.
-- Binary logging must be enabled which requires point-in-time recovery to be enabled. Learn more about the impact of these logs.
+- https://cloud.google.com/sql/docs/mysql/backup-recovery/pitr
+- Point-in-time recovery uses binary logs.
+- https://cloud.google.com/sql/docs/mysql/backup-recovery/pitr#enablingpitr
+
+```
+# Specify the backup-start-time parameter using 24-hour time in UTC±00 time zone.f
+gcloud sql instances patch INSTANCE_NAME \
+--backup-start-time=HH:MM
+
+# Enable point-in-time recovery
+gcloud sql instances patch INSTANCE_NAME \
+--enable-bin-log
+
+gcloud sql instances describe INSTANCE_NAME
+In the backupConfiguration section, you see binaryLogEnabled: true if the change was successful.
+```
 
 <hr />
 
 **Question 109**
 
+- A 52%, B 48%/ME
+- A. Use a unique identifier for each individual. Upon a deletion request, delete all rows from BigQuery with this identifier.
 - B. When ingesting new data in BigQuery, run the data through the Data Loss Prevention (DLP) API to identify any personal information. As part of the DLP scan, save the result to Data Catalog. Upon a deletion request, query Data Catalog to find the column with personal information. 47%
 - B. We do not need to delete entire recrod of sports person but some health information collected by association. B would be correct answer. Aditya G
 

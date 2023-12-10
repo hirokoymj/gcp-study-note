@@ -44,7 +44,7 @@
 - Control access to your cloud-based and on-premises applications and VMs running on Google Cloud
 - https://cloud.google.com/iap/docs/concepts-overview
 - IAP lets you establish a central authorization layer for applications accessed by HTTPS, so you can use an application-level access control model instead of relying on network-level firewalls.
-
+- IAP -> Authorization layer by HTTPS = app level access instead of network-level firewalls.
 <hr />
 
 **Question 5**
