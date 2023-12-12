@@ -727,11 +727,15 @@ You would see below and email address
 
 **Question 166**
 
-- BE 45% omermaH, DE 37%
+- BE 45% omermaH/ME, DE 37%
 - B. Use source code security analyzers as part of the CI/CD pipeline Most Vot
 - E. Run a vulnerability security scanner as part of your continuous-integration /continuous-delivery (CI/CD) pipeline
 - D. Enable code signing and a trusted binary repository integrated with your CI/CD pipeline Most Voted
 - BE - For me, Option D, enabling code signing and a trusted binary repository integrated with your CI/CD pipeline. It's to ensure that the correct code is put in production but not link to security errors.
+
+- Polaris, BlackDuck, etc
+- https://medium.com/@manjula.aw/nodejs-security-tools-de0d0c937ec0
+- Static Application Security Testing (SAST) tools analyze the source code to find possible vulnerable codes.
 
 <hr />
 
@@ -775,7 +779,11 @@ gcloud container clusters update cluster-name --enable-autoscaling \
 
 - C. Digitally sign each timestamp and log entry and store the signature. 100%
 - by omermaH
+
   > I would recommend option C, digitally signing each timestamp and log entry and storing the signature. Digitally signing a log entry involves creating a cryptographic hash of the log entry and a timestamp, and then encrypting the hash using a private key. The encrypted hash, known as the signature, can be stored along with the log entry in a secure manner. To verify the authenticity of the log entry, you can use the public key associated with the private key used to create the signature to decrypt the signature and recreate the hash. If the recreated hash matches the original hash, it indicates that the log entry has not been tampered with and is authentic.
+
+- CMS Advanced Electronic Signatures (CAdES)
+- https://tex2e.github.io/rfc-translater/html/rfc5126.html#4-4-1--Electronic-Signature-with-Time-CAdES-T
 
 <hr />
 
