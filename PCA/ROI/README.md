@@ -52,3 +52,21 @@ kuberctl get notes
 ![](16-1.png)
 
 ![](16-2.png)
+
+## 17. Creating GKE Clusters using the CLI
+
+- minimum command
+
+```
+gcloud container clusters create dougs-cluster --zone=us-east4
+```
+
+- GCP-> Kubernates Engine -> Create a Kubernetes cluster -> select
+  - dougs-cluster
+  - us-central1-c
+  - 2 nodes
+  - Enable autoscaling (min:2, max:8)
+  - Nodes: machine: E2, e2-micro(2 CPU 1GB memory)
+- Click on Commandline link -> generating gcloud command -> copy &paste the command on Cloud Shell.
+
+![](17.png)
