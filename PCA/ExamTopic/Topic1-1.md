@@ -83,7 +83,7 @@
 
 **Question 8**
 
-- B. NoSQL
+- B. NoSQL 100%
 
 <hr />
 
