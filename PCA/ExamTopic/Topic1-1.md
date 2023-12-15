@@ -83,16 +83,7 @@
 
 **Question 8**
 
-- B
-- This is time series data. We also have no idea what kinds of data are being captured so it doesn't appear structured.
-
-A does not seem reasonable because a flat file is not easy to query and analyze.
-
-B seems reasonable because this accommodates unstructured data.
-
-C seems unreasonable because we have no idea on the structure of the data.
-
-D seems unreasonable because there is no such Google database type.
+- B. NoSQL
 
 <hr />
 
