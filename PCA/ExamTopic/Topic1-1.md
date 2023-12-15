@@ -23,12 +23,19 @@
 
 **Question 3**
 
-- Correct option is CDE.
-  C. Instrument the application with a monitoring tool like Stackdriver Debugger: A monitoring tool like Stackdriver Debugger can help in identifying and debugging issues that arise during the migration process. It can also provide insights into the performance and availability of the application after it has been migrated to the cloud.
+- ADE 31%/Me/RKS_2021, CDE 44%, ACE 24%
+- A. Port the application code to run on Google App Engine
+- D. Select an automation framework to reliably provision the cloud infrastructure
+- E. Deploy a continuous integration tool with automated testing in a staging environment
 
-- D. Select an automation framework to reliably provision the cloud infrastructure: Automating the provisioning of the cloud infrastructure can help ensure that the process is reliable and repeatable. It can also help reduce the risk of errors and increase the speed of the migration process.
+- A: https://cloud.google.com/appengine/docs/legacy/standard/java/tools/uploadinganapp
+- E: CICD
+- Operations manager should not touch application for instrument
 
-- E. Deploy a continuous integration tool with automated testing in a staging environment: Deploying a continuous integration tool with automated testing in a staging environment can help ensure that the application is thoroughly tested before it is deployed to production. This can help reduce the risk of issues arising in production and provide greater confidence in the stability and reliability of the application.
+- (**ADE**)By elimination and if the J2EE is a basic application ADE:
+  - B. Integrate Cloud Dataflow => no needed for this application.
+  - C. Stackdriver Debugger => it's not the first monitoring tool to put in place, it's only to debug code execution.
+  - F. Migrate from MySQL to a managed NoSQL database => no need for that, gcp has SQL supported with cloud SQL.
 
 <hr />
 
@@ -41,8 +48,10 @@
 
 **Question 5**
 
-- A should good.
-- Stackdriver is Google's logging solution. The answer wouldn't be to find another viable 3rd party logging solution.
+- C 53%/ME/tartar, A 47%
+- A. Direct them to download and install the Google StackDriver logging agent Mo
+- C. Help them define their requirements and assess viable logging tools
+- How do we know the logging required is for GCE .. not for other GKE. or other services -> C
 
 <hr />
 
@@ -93,8 +102,7 @@ D seems unreasonable because there is no such Google database type.
 
 - C. Ensure that a firewall rule exists to allow load balancer health checks to reach the instances in the instance group. 100%
 
-- Explanation
-  If curl command is working then traffic exists. So, we need to check why health checks are failing. So, firewall issues for health check done by Google probers
+- C is correct because health check failures lead to a VM being marked unhealthy and can result in termination if the health check continues to fail. Because you have already verified that the instances are functioning properly, the next step would be to determine why the health check is continuously failing.
 
 <hr />
 

@@ -881,6 +881,12 @@ gcloud container clusters update cluster-name --enable-autoscaling \
 
 - C. Set up a Cloud VPN gateway in each Shared VPC and peer Cloud VPNs. 79%, omermaH
 - https://cloud.google.com/architecture/best-practices-vpc-design#shared-service
+- https://cloud.google.com/vpc/docs/using-vpc-peering#creating_multiple_peering_connections
+- Two orgs, each shared VPC, overlapping, -> No VPC peering
+- https://cloud.google.com/architecture/best-practices-vpc-design#shared-service
+- Cloud VPN is another alternative. Because Cloud VPN establishes reachability through managed IPsec tunnels, it doesn't have the aggregate limits of VPC Network Peering. Cloud VPN uses a VPN Gateway for connectivity and doesn't consider the aggregate resource use of the IPsec peer. The drawbacks of Cloud VPN include increased costs (VPN tunnels and traffic egress), management overhead required to maintain tunnels, and the performance overhead of IPsec.
+
+![](images/183.png)
 
 <hr />
 
