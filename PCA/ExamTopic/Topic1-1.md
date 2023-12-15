@@ -3,21 +3,18 @@
 **Question 1**
 
 - D. Use separate backend pools for each API path behind the load balancer. 100%
-- D is the answer because HTTP(S) load balancer can direct traffic reaching a single IP to different backends based on the incoming URL.
-- A is not correct because configuring a new load balancer would require a new or different SSL and DNS records which conflicts with the requirements to keep the same SSL and DNS records.
-- B is not correct because it goes against the requirements. The company wants to keep the old API available while new customers and testers try the new API.
-- C is not correct because it is not a requirement to decommission the implementation behind the old API.
+- (Amber25 2 years, 7 months ago)D is the answer because HTTP(S) load balancer can direct traffic reaching a single IP to different backends based on the incoming URL.
 
 <hr />
 
 **Question 2**
 
 - A. Load data into Google BigQuery
-- To optimize the storage of the multi-petabyte data set for ease of analysis by business analysts who have experience only with using a SQL interface, you should load the data into Google BigQuery.
+- B is not correct because Cloud SQL storage limit doesn't fit the requirement.
+- https://cloud.google.com/sql/docs/mysql/instance-settings
+- Standard and high memory machine types: up to **64 TB**.
 
-- BigQuery is a fully-managed, cloud-native data warehouse that allows you to perform fast SQL queries on large amounts of data. By loading the data into BigQuery, you can provide your business analysts with a familiar SQL interface for querying the data, making it easier for them to analyze the data set.
-
-- Other options, such as inserting data into Google Cloud SQL, putting flat files into Google Cloud Storage, or streaming data into Google Cloud Datastore, may not provide the necessary SQL interface or query performance for efficient analysis of the data set.
+![](images/2.png)
 
 <hr />
 
@@ -57,19 +54,20 @@
 
 **Question 6**
 
-- AC is correct.
+- AC 84%
+- A. Introduce a green-blue deployment model
+- C. Fragment the monolithic platform into microservices
+- A: Blue green deployment is an application release model that gradually transfers user traffic from a previous version of an app or microservice to a nearly identical new release—both of which are running in production.
+- https://cloud.google.com/architecture/application-deployment-and-testing-strategies
+- **Blue/green deployment**
+- In the diagram, blue represents the current application version and green represents the new application version.
+- Only one version is live at a time. Traffic is routed to the blue deployment while the green deployment is created and tested. After you're finished testing, you route traffic to the new version.
+- https://cloud.google.com/architecture/application-deployment-and-testing-strategies#canary_test_pattern
 
-D) and E) are pointless in this context.
-
-C) is certainly a good practice.
-
-Between A) and B):
-
-A) Blue green deployment is an application release model that gradually transfers user traffic from a previous version of an app or microservice to a nearly identical new release—both of which are running in production.
-
-B) In software, a canary process is usually the first instance that receives live production traffic about a new configuration update, either a binary or configuration rollout. The new release only goes to the canary at first. The fact that the canary handles real user traffic is key: if it breaks, real users get affected, so canarying should be the first step in your deployment process, as opposed to the last step in testing in production. " While both green-blue and canary releases are useful, (B) suggests "replacing QA" with canary releases - which is not good. QA got the issue down by 80%.
-
-Hence (A) and (C) are correct.
+- **Canary test pattern**
+- Canary releases let you route the live production traffic to different versions of the application without any downtime.
+- You then split and route a percentage of traffic from the production version to
+- B - Canary but not on the QA environments. With Canary you usually test in production
 
 <hr />
 
