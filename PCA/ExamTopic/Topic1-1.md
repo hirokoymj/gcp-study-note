@@ -883,14 +883,12 @@ ALTER TABLE mydataset.mytable
 
 - A. Configure a HorizontalPodAutoscaler with a target CPU usage. Enable the Cluster Autoscaler from the GCP Console. 100%/tartar
 - (tartar): https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app#deploying_the_sample_app_to
-
 - Step 4. Create a HorizontalPodAutoscaler resource for your Deployment.
+  ```
+  kubectl autoscale deployment hello-app --cpu-percent=80 --min=1 --max=5
+  ```
 - https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
   - This is different from vertical scaling, which for Kubernetes would mean assigning more resources (for example: memory or CPU) to the Pods that are already running for the workload.
-
-```
-kubectl autoscale deployment hello-app --cpu-percent=80 --min=1 --max=5
-```
 
 <hr />
 
