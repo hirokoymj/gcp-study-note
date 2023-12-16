@@ -268,7 +268,8 @@ FROM node:19-slim
 **Question 23**
 
 - C 62%, D 34%/ExamTopic/tartar/ME
-- C. Increase the load on your test and staging environments Most Voted
+- C. Increase the load on your test and staging environments
+- **D. Deploy changes to a small subset of users before rolling out to production**
 - https://cloud.google.com/architecture/application-deployment-and-testing-strategies#canary_test_pattern
 - **In canary testing**, you partially roll out a change and then evaluate its performance against a baseline deployment, as the following diagram shows.
 - Canary test - most users, few users
@@ -286,8 +287,8 @@ FROM node:19-slim
 
 **Question 25**
 
--　 D. Implement routinely scheduled failovers of your databases 　 64％ -　 Explanation
-Option D, implementing routinely scheduled failovers of your databases, is the best option in this scenario. This ensures that if the primary database crashes, the replica will automatically be promoted to the master and take over database operations, preventing any downtime or data loss. This can be achieved by setting up automatic failover mechanisms or by manually promoting the replica to the master as soon as the primary database goes down.
+- D. Implement routinely scheduled failovers of your databases 64％
+- Option D, implementing routinely scheduled failovers of your databases, is the best option in this scenario. This ensures that if the primary database crashes, the replica will automatically be promoted to the master and take over database operations, preventing any downtime or data loss. This can be achieved by setting up automatic failover mechanisms or by manually promoting the replica to the master as soon as the primary database goes down.
 
 <hr />
 
