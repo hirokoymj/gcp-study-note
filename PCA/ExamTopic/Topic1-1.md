@@ -549,27 +549,27 @@ gcloud compute instances create example-instance --metadata shutdown-script="#! 
 
 **Question 51**
 
-- A. Point gcloud datastore create-indexes to your configuration file. 100%
+- A. Point gcloud datastore create-indexes to your configuration file. 100%/tartar
 - https://cloud.google.com/sdk/gcloud/reference/datastore/indexes/create
+
+```
+gcloud datastore indexes create ~/myapp/index.yaml
+```
 
 <hr />
 
 **Question 52**
 
 - C. Deploy the application on two Compute Engine instance groups, each in the same project but in a different region. Use the first instance group to serve traffic, and use the HTTP load balancing service to fail over to the standby instance group in case of a disaster
-
-- Explanation
-  Google recommend using MIG for Zonal outage and multiple MIG for regional outage
-
-  https://cloud.google.com/architecture/disaster-recovery#compute-engine
-
-  It says: Compute Engine instances are zonal resources, so in the event of a zone outage instances are unavailable by default. Compute Engine does offer managed instance groups (MIGs) which can automatically scale up additional VMs from pre-configured instance templates, both within a single zone and across multiple zones within a region. MIGs are ideal for applications that require resilience to zone loss and are stateless, but require configuration and resource planning. Multiple regional MIGs can be used to achieve regional outage resilience for stateless applications.
+- Google recommend using MIG for Zonal outage and multiple MIG for regional outage
+- https://cloud.google.com/architecture/disaster-recovery#compute-engine
+- It says: Compute Engine instances are zonal resources, so in the event of a zone outage instances are unavailable by default. Compute Engine does offer managed instance groups (MIGs) which can automatically scale up additional VMs from pre-configured instance templates, both within a single zone and across multiple zones within a region. MIGs are ideal for applications that require resilience to zone loss and are stateless, but require configuration and resource planning. Multiple regional MIGs can be used to achieve regional outage resilience for stateless applications.
 
 <hr />
 
 **Question 53**
 
-- D. Deploy your application on App Engine flexible environment and use Cloud VPN to limit access to the on-premises database
+- D. Deploy your application on App Engine flexible environment and use Cloud VPN to limit access to the on-premises database, 55%, tartar
 
 - https://cloud.google.com/appengine/docs/the-appengine-environments
 - Accesses the resources or services of your Google Cloud project that reside in the Compute Engine network.
@@ -581,11 +581,10 @@ gcloud compute instances create example-instance --metadata shutdown-script="#! 
 
 **Question 54**
 
-- A. Upload the required installation files to Cloud Storage. Configure the VM on a subnet with a Private Google Access subnet. Assign only an internal IP address to the VM. Download the installation files to the VM using gsutil. 78%
+- A. Upload the required installation files to Cloud Storage. Configure the VM on a subnet with a Private Google Access subnet. Assign only an internal IP address to the VM. Download the installation files to the VM using gsutil. 78%/tartar
 - https://cloud.google.com/vpc/docs/configure-private-google-access
 - you can follow these steps:
-- Upload the required installation files to Cloud Storage.
-  Configure the VM on a subnet with a Private Google Access subnet. This will allow the VM to access Google APIs and services, such as Cloud Storage, without requiring a public IP address or internet access.
+- This will allow the VM to access Google APIs and services, such as Cloud Storage, without requiring a public IP address or internet access.
   Assign only an internal IP address to the VM. This will ensure that the VM is not accessible from the public internet.
   Download the installation files to the VM using gsutil, which is a command-line tool that allows you to access Cloud Storage from the VM.
 
@@ -594,23 +593,19 @@ gcloud compute instances create example-instance --metadata shutdown-script="#! 
 **Question 55**
 
 - A. Move your data onto a Transfer Appliance. Use a Transfer Appliance Rehydrator to decrypt the data into Cloud Storage.
-- Explanation
-  The gsutil tool is the standard tool for small- to medium-sized transfers (less than a few TB)
-
-  https://cloud.google.com/solutions/migration-to-google-cloud-transferring-your-large-datasets#transfer-options
-
-  Transfer Appliance lets you quickly and securely transfer large amounts of data to Google Cloud Platform via a high-capacity storage server that you lease from Google and ship to Google’s datacenter. Transfer Appliance is recommended for data that exceeds 20 TB or would take more than a week to upload.
+- https://cloud.google.com/dataprep
+- **Dataprep by Trifacta** - An intelligent cloud data service to visually explore, clean, and prepare data for analysis and machine learning.
 
 <hr />
 
 **Question 56**
 
-- A. Use `kubectl set image deployment/echo-deployment` <new-image>
+- A. Use `kubectl set image deployment/echo-deployment` <new-image>, 91%, tartar
 - Selected A - Source: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment
 
-- Deployment ensures that only a certain number of Pods are down while they are being updated. By default, it ensures that at least 75% of the desired number of Pods are up (25% max unavailable).
-
-- Deployment also ensures that only a certain number of Pods are created above the desired number of Pods. By default, it ensures that at most 125% of the desired number of Pods are up (25% max surge).
+```
+kubectl set image deployment nginx nginx=nginx:1.9.1
+```
 
 <hr />
 
@@ -650,11 +645,12 @@ gcloud compute instances create example-instance --metadata shutdown-script="#! 
 
 **Question 60**
 
-- A. Configure a Cloud SQL instance with high availability enabled. 53%
+- A. Configure a Cloud SQL instance with high availability enabled. 53%/ME
+- D. Set up SQL Server Always On Availability Groups using Windows Failover Clustering. Place nodes in different zones. 46%/tartar
 - https://cloud.google.com/sql/docs/sqlserver/high-availability
-- High availability feature is available in cloud SQL.
-  We dont have to create compute instance, install SQL server and place the db and log file in group of windows compute engine machines with failover clustering. Always chose readymade services from GCP.
-- https://cloud.google.com/compute/docs/instances/sql-server/disaster-recovery-for-microsoft-sql-server#high_availability_and_disaster_recovery
+- By elimination, seems to me like D is the correct option with a definition issue in the answer.
+
+  A. Probably, this question was created when Cloud SQL wasn't fully compatible with SQL Server. Even though it is now (2023), Cloud SQL is a regional resource, and the DR strategies talk about failing over from region to region, not from zone to zone - https://cloud.google.com/sql/docs/sqlserver/intro-to-cloud-sql-disaster-recovery#overview_of_the_basic_dr_process.
 
 <hr />
 
