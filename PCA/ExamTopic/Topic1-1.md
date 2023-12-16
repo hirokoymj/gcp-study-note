@@ -363,23 +363,30 @@ FROM node:19-slim
 **Question 32**
 
 - C. Create a shutdown script and use it as the value for a new metadata entry with the key shutdown-script in the Cloud Platform Console when you create the new virtual machine instance. 60%
-- Explanation
-  You can create and apply shutdown script for running VM too.
+- https://cloud.google.com/compute/docs/shutdownscript#console
 
-https://cloud.google.com/compute/docs/shutdownscript#provide_shutdown_script_contents_directly
+```
+# Using the Google Cloud CLI, use the --metadata flag to provide the contents of your shutdown script,
+gcloud compute instances create example-instance --metadata shutdown-script="#! /bin/bash
+> # Shuts down Apache server
+> /etc/init.d/apache2 stop"
+```
 
 <hr />
 
 **Question 33**
 
 - D. Add tags to each tier and set up firewall rules to allow the desired traffic flow. 100%
-- Explanation
-  The web tier can communicate with end users and the app tier, and the app tier can communicate with the database tier, but no other communication between tiers is allowed. The instances running the web tier have a network tag of web, the instances running the app tier have a network tag of app, and the instances running the database tier have a network tag of db.
+- D is correct because as instances scale, they will all have the same tag to identify the tier. These tags can then be leveraged in firewall rules to allow and restrict traffic as required, because tags can be used for both the target and source.
+- https://cloud.google.com/vpc/docs/using-vpc
+- https://cloud.google.com/vpc/docs/routes
+- https://cloud.google.com/vpc/docs/add-remove-network-tags
 
 <hr />
 
 **Question 34**
 
+- ACE 73%
 - A. Use Stackdriver Logging to search for the module log entries
 - C. Use gcloud or Cloud Console to connect to the serial console and observe the logs
 - E. Adjust the Google Stackdriver timeline to match the failure time, and observe the batch server metrics
@@ -394,6 +401,9 @@ https://cloud.google.com/compute/docs/shutdownscript#provide_shutdown_script_con
 
 ![](images/34-2.png)
 
+- C: https://cloud.google.com/compute/docs/troubleshooting/troubleshooting-using-serial-console
+- This page describes how to enable interactive access to an instance's serial console to debug boot and networking issues
+
 <hr />
 
 **Question 35**
@@ -407,33 +417,25 @@ https://cloud.google.com/compute/docs/shutdownscript#provide_shutdown_script_con
 
 **Question 36**
 
-- B. Revert the source code change, and rerun the deployment pipeline. 61%
-- Explanation
-  If a change negatively affects your key performance indicator, it's best to revert the source code change to a known good state and rerun the deployment pipeline. This ensures that your infrastructure is restored to a stable state while you investigate and fix the issue. Reverting the change and redeploying the code will allow your instance groups to continue functioning with the previous stable version, minimizing the impact on your application and users.
+- B. Revert the source code change, and rerun the deployment pipeline. 61%/tartar
 
 <hr />
 
 **Question 37**
 
 - C. A single Organization with Folders for each department. 100%
-- Explanation
-  To control IAM policies for different departments independently but centrally, you should create a single organization and use folders to organize the policies for each department. This approach allows you to centralize the management of IAM policies for all departments within a single organization, while also allowing you to set up different policies for each department as needed.
 
 <hr />
 
 **Question 38**
 
-- B. Digitally sign all of your JAR files and redeploy your application
-- Explanation
-  The most likely cause of the error is that one of the JAR files in your application has been tampered with or is corrupt. The SHA1 digest error indicates that the JAR file's signature does not match the expected value, which could be due to tampering or corruption.
-
-  To fix the issue, you should try uploading missing JAR files and redeploying your application. If the issue persists, you may need to digitally sign all of your JAR files and redeploy your application to ensure that the signatures are valid. You should not try to recompile the Cloaked
+- B. Digitally sign all of your JAR files and redeploy your application 92%, tartar
 
 <hr />
 
 **Question 39**
 
-- C. Use public key infrastructure (PKI) to encrypt the message client side using the originating user's private key.
+- C. Use public key infrastructure (PKI) to encrypt the message client side using the originating user's private key. 76%
 
 - [AdityaG]Using PKI to encrypt messages using the originating user's private key provides end-to-end encryption, which means only the intended recipient can decrypt the message. This option also ensures that the message's authenticity is protected. If a malicious user changes the sender's name, the recipient will not be able to decrypt the message since it was not encrypted using the correct private key. This option is a strong method for securing chat messages.
 
@@ -443,9 +445,14 @@ https://cloud.google.com/compute/docs/shutdownscript#provide_shutdown_script_con
 
 **Question 40**
 
+- B 50%, D 50%/tartar/ME
 - B. Configure a Google Cloud Dedicated Interconnect.
-- Explanation
-  It's latency issue. That won't be solved by adding another VPN tunnel. If it was just a throughput issue then VPN would do, however to improve latency you need to go layer 2. Answer is B
+- D. Add additional VPN connections and load balance them
+- (tartar)Sorry, D is ok. VPN tunnel has already been established, so adding more seems logical.
+  This link back me up: https://cloud.google.com/network-connectivity/docs/vpn/concepts/classic-topologies
+- [Increased throughput and load balancing options](https://cloud.google.com/network-connectivity/docs/vpn/concepts/classic-topologies#vpn-throughput)
+- **Note:** the solutions in this section for increasing throughput can be also used to **load balance** between two gateways as described for each option.
+- There are three options for scaling a Cloud VPN configuration:
 
 <hr />
 
