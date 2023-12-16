@@ -234,7 +234,7 @@ gsutil lifecycle set <config-json-file> gs://<bucket_name>...
 
 **Question 21**
 
-- B. Create synthetic random user input, replay synthetic load until autoscale logic is triggered on at least one layer, and introduce ג€chaosג€ to the system by terminating random resources on both zones. 81%
+- B. Create synthetic random user input, replay synthetic load until autoscale logic is triggered on at least one layer, and introduce ג€chaosג€ to the system by **terminating random resources on both zones**. 81%
 - resilience test is not about load, is about terminate resources and service not affected. Think it's B. The best for resilience in to introduce chaos in the infraestructure.
 - https://cloud.google.com/solutions/scalable-and-resilient-apps#test_your_resilience
 
@@ -242,29 +242,45 @@ gsutil lifecycle set <config-json-file> gs://<bucket_name>...
 
 **Question 22**
 
-- C. Use a slimmed-down base image like Alpine Linux Most Voted
+- CE 100%
+- C. Use a slimmed-down base image like Alpine Linux
 - E. Copy the source after he package dependencies (Python and pip) are installed
-- C: Smaller the base image with minimum dependency faster the container will start
-- E: Docker image build uses caching. Docker Instructions sequence matter because application’s dependencies change less frequently than the Python code which will help to reuse the cached layer of dependency and only add new layer for code change for Python Source code.
-- https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/
+
+- https://semaphoreci.com/blog/reduce-docker-image-size
+- node:<version>-alpine – This variant uses Linux Alpine distributions to ensure that your base image is 5 MB in size. Here is an example of an alpine image:
+
+```
+# You Node.js base image
+FROM node:19-alpine3.16
+```
+
+- node:<version>-slim – Node.js provides this variant to only the common packages needed to run Node.js, thus providing even smaller base images. The slim variant will consequently reduce Docker image size as follows:
+
+```
+# You Node.js base image
+FROM node:19-slim
+```
+
+- C is an obvious choice, as an optimized image will be much better for a container than the one in the file.
 
 <hr />
 
 **Question 23**
 
+- C 62%, D 34%/ExamTopic/tartar/ME
 - C. Increase the load on your test and staging environments Most Voted
-- Explanation
-  You want to avoid this problem, which you can only do if you load test, it in a test environment. With option A, B and D you might find the problem and the solution faster (or not since it's a performance problem), but you do not avoid the problem.
-
+- https://cloud.google.com/architecture/application-deployment-and-testing-strategies#canary_test_pattern
+- **In canary testing**, you partially roll out a change and then evaluate its performance against a baseline deployment, as the following diagram shows.
+- Canary test - most users, few users
 <hr />
 
 **Question 24**
 
-- D. Instrument your application with Stackdriver Trace in order to break down the request latencies at each microserviceD. Instrument your application with Stackdriver Trace in order to break down the request latencies at each microservice
-- Stackdriver Trace is a distributed tracing system that allows you to understand the relationships between requests and the various microservices that they touch as they pass through your application.
-- Setting timeouts on your application or sending custom metrics to Stackdriver Monitoring may not provide the level of detail that you need to identify the specific service that is causing the latency issues.
-
-- Looking for insights in Stackdriver **Monitoring** may also not provide the necessary level of detail, as it may not show the individual latencies at each microservice.
+- D. Instrument your application with Stackdriver Trace in order to break down the request latencies at each microserviceD. Instrument your application with Stackdriver Trace in order to break down the request latencies at each microservice 92%/tartar
+- https://cloud.google.com/trace
+- https://cloud.google.com/trace/docs
+- Find performance bottlenecks in production
+- Cloud Trace is a distributed tracing system for Google Cloud that collects latency data from applications and displays it in near real-time in the Google Cloud console. Learn more about Cloud Trace
 
 <hr />
 
@@ -277,29 +293,31 @@ Option D, implementing routinely scheduled failovers of your databases, is the b
 
 **Question 26**
 
-- D. Configure Stackdriver Monitoring for all Projects, and export to Google Cloud Storage.
-- Explanation
-  D is correct and best practice for long term log storage
+- D. Configure Stackdriver Monitoring for all Projects, and export to Google Cloud Storage. 75%
+- for 5 years for FUTURE analysis in POSSIBLE legal proceedings ..."FUTURE" and "POSSIBLE" are the key words.
+  - So Cloud Storage Coldline storage class is the best option.
+  - When analyses are needed, the data can be imported into BigQuery
+  - D is the correct answer
 
 <hr />
 
 **Question 27**
 
 - A. Google Cloud Dedicated Interconnect. 100%
-- Explanation
-  VPN is not private; it is public but encrypted. Also, VPN is not suitable for large updates that happen frequently
-
-Google Cloud Dedicated Interconnect - large updates and better security, however may not be the most cost effective choice
+  Cloud VPN is not private; it is public but encrypted.
+- Google Cloud Dedicated Interconnect - large updates and better security, however may not be the most cost effective choice
+- https://cloud.google.com/network-connectivity/docs/how-to/choose-product#cloud-interconnect
+- https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview
+- Dedicated Interconnect provides **direct physical connections** between your on-premises network and Google's network.
+- Dedicated - private IP, Physical connection btw on-prem and GCP, 10-100GBps
+  ![](images/27-1.png)
+  ![](images/27-2.png)
 
 <hr />
 
 **Question 28**
 
-- B. Enable Logging export to Google BigQuery and use ACLs and views to scope the data shared with the auditor. 67%
-- Explanation
-  https://cloud.google.com/iam/docs/job-functions/auditing#scenario_external_auditors
-
-B complies with requirements <analysis and audit> you can audit from GCS but not analyze the data in it, that is done by BQ
+- B. Enable Logging export to Google BigQuery and use ACLs and views to scope the data shared with the auditor. 67%/tartar
 
 <hr />
 
@@ -313,12 +331,11 @@ B complies with requirements <analysis and audit> you can audit from GCS but not
 
 **Question 30**
 
+- CF 45%, EF 23%, CE 23%/ME
 - C. Cloud Deployment Manager is unfamiliar to the company's engineers
+- E. Cloud Deployment Manager can be used to permanently delete cloud resources
 - F. Cloud Deployment Manager only supports automation of Google Cloud resources
-- Explanation
-  C. Cloud Deployment Manager is unfamiliar to the company's engineers: This may lead to a learning curve and potential delays or mistakes in deployment, as the team becomes familiar with the new system.
-
-  F. Cloud Deployment Manager only supports automation of Google Cloud resources: If the company has a multi-cloud or hybrid cloud environment, the custom tool might need to be adapted or additional tools might be required for managing resources in other cloud environments or on-premises infrastructure.
+- (Palan 3 months, 3 weeks ago)Answer should be C and E. The major risk is always if the resources are permanently getting deleted and learning a new tool like Cloud Deployment Manager requires time and money.
 
 <hr />
 
