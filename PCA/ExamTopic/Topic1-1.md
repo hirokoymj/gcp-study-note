@@ -673,18 +673,16 @@ kubectl apply -f deployment.yaml
 - B. Allocate budget for team training. Create a roadmap for your team to achieve Google Cloud certification based on job role.
 - Explanation
 - To evaluate your team's readiness for a new GCP project and create a skills gap plan, you should consider the business goal of cost optimization. One way to optimize costs is to invest in training for your team to increase their skills and knowledge of GCP. This can help your team become more efficient and effective in using GCP, potentially resulting in cost savings over time. You should allocate budget for team training and create a roadmap for your team to achieve Google Cloud certification based on their job roles. This will help ensure that your team has the necessary skills and knowledge to successfully deploy the new GCP project.
--
 
 <hr />
 
 **Question 63**
 
 - A. Cloud Functions 93%
-- Explanation
-  - A. Cloud Functions - managed service scales down to 0
-  - B. Compute Engine - not a managed service
-  - C. Google Kubernetes Engine - not a managed service and wont scale down to 0
-  - D. App Engine flexible environment - managed service but won’t scale down to 0
+- A. Cloud Functions - managed service scales down to 0
+- B. Compute Engine - not a managed service
+- C. Google Kubernetes Engine - not a managed service and wont scale down to 0
+- D. App Engine flexible environment - managed service but won’t scale down to 0
 
 <hr />
 
