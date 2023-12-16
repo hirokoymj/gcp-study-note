@@ -901,8 +901,8 @@ ALTER TABLE mydataset.mytable
 
 **Question 81**
 
-- B. Provision preemptible VMs to reduce cost. Disable and then discontinue use of all GCP services and APIs that are not HIPAA-compliant. 94%
-- Disabling and then discontinuing allows you to see the effects of not using the APIs, so you can gauge (check) alternatives. So that leaves B and D as viable answers. The question says only some are not time-critical which implies others are. This means preemptible VMs are good because they will secure a spot for scaling when needed.
+- B. Provision preemptible VMs to reduce cost. Disable and then discontinue use of all GCP services and APIs that are not HIPAA-compliant. 94%/tartar
+
 - https://cloud.google.com/security/compliance/hipaa#unique_features
   > Google Cloud's security practices allow us to have a HIPAA BAA covering Google Cloud's entire infrastructure, not a set aside portion of our cloud. As a result, you are not restricted to a specific region which has scalability, operational and architectural benefits. You can also benefit from multi-regional service redundancy as well as the ability to use **Preemptible VMs to reduce costs**.
 
@@ -910,25 +910,47 @@ ALTER TABLE mydataset.mytable
 
 **Question 82**
 
-- C. Schedule a disaster simulation exercise during which you can shut off all VMs in a zone to see how your application behaves. 42%
-- Resilience testing of their authentication layer means the testing of availability of service/application even when many of the instances fail in a particular location. That’s why. Disaster type of scenario is better where all VM instances becomes unavailable in a particular zone.
+- C. Schedule a disaster simulation exercise during which you can shut off all VMs in a zone to see how your application behaves. 42%/tartar
 - Chaos testing is to shutdown random instances.
 
 <hr />
 
 **Question 83**
 
-- D. Use Cloud Audit Logging to view Cloud Audit Logs, and create a filter on the query operation to get the required information.
+- D. Use Cloud Audit Logging to view Cloud Audit Logs, and create a filter on the query operation to get the required information. 66%/tartar
+- https://cloud.google.com/bigquery/docs/reference/auditlogs#overview
+- Cloud Audit Logs are a collection of logs provided by Google Cloud that provide insight into operational concerns related to your use of Google Cloud services. This page provides details about BigQuery specific log information, and it demonstrates how to use BigQuery to analyze logged activity. For more information, see Introduction to audit logs in BigQuery.
+- https://cloud.google.com/bigquery/docs/introduction-audit-workloads
 
-- Cloud Audit Logging records activities and API calls in Google Cloud services, including BigQuery. You can use Cloud Audit Logging to view logs and filter them based on specific operations, such as queries in BigQuery. By filtering on the query operation, you can gather the required information about how many queries each user ran in the last month, which is essential for audit purposes.
-
-- https://cloud.google.com/bigquery/docs/reference/auditlogs#auditdata_examples
+```json
+{
+  "protoPayload": {
+    "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+    "status": {
+      "code": 5,
+      "message": "Not found: Dataset myproject:mydataset was not found in location US"
+    },
+    "authenticationInfo": { ... },
+    "requestMetadata":  { ... },
+    "serviceName": "bigquery.googleapis.com",
+    "methodName": "google.cloud.bigquery.v2.JobService.InsertJob",
+    "metadata": {
+  },
+  "resource": {
+    "type": "bigquery_project",
+    "labels": { .. },
+  },
+  "severity": "ERROR",
+  "logName": "projects/myproject/logs/cloudaudit.googleapis.com%2Fdata_access",
+  ...
+}
+```
 
 <hr />
 
 **Question 84**
 
-- B. Create a custom VM image with all OS package dependencies. Use Deployment Manager to create the managed instance group with the VM image.
+- B. Create a custom VM image with all OS package dependencies. Use Deployment Manager to create the managed instance group with the VM image. 100%/tartar
 
 - Managed instance groups are a way to manage a group of Compute Engine instances as a single entity. If you want to automate the creation of a managed instance group, you can use tools such as Terraform, Deployment Manager, or Puppet to automate the process. **To minimize the startup time for new VMs in the instance group, you should create a custom VM image with all of the OS package dependencies pre-installed**.
 - https://cloud.google.com/compute/docs/images
@@ -938,7 +960,7 @@ ALTER TABLE mydataset.mytable
 
 **Question 85**
 
-- A. Create a group per country. Add analysts to their respective country-groups. Create a single group 'all_analysts', and add all country-groups as members. Grant the 'all_analysts' group the IAM role of BigQuery jobUser. Share the appropriate dataset with view access with each respective analyst country-group. Most Voted
+- A. Create a group per country. Add analysts to their respective country-groups. Create a single group 'all_analysts', and add all country-groups as members. Grant the 'all_analysts' group the IAM role of BigQuery jobUser. Share the appropriate dataset with view access with each respective analyst country-group. 78%/tartar
 
 - **BigQuery Job User (roles/bigquery.jobUser): **
   Provides permissions to run jobs, including queries, within the project.
@@ -950,25 +972,28 @@ ALTER TABLE mydataset.mytable
 
 **Question 86**
 
-- B. Memcache backed by Cloud Datastore for the customer session state data. Lifecycle-managed Cloud Storage for log archives, thumbnails, and VM boot/data volumes. 68%
-- Explanation
-  Local SSD cannot be used for neither boot nor data. This rules out other options except B.
+- B. Memcache backed by Cloud Datastore for the customer session state data. Lifecycle-managed Cloud Storage for log archives, thumbnails, and VM boot/data volumes. 68%/tartar
+- Local SSD cannot be used for neither boot nor data. This rules out other options except B.
+- A: is wrong Local SSD in non-persistent therefore cannot be used for session state .
+- C: Again Local SSD cannot be used for boot volume (because its Non-persistent again) and always used for temporary data storage.
+- D: Same reason as C.
 
 <hr />
 
 **Question 87**
 
-- A. StatefulSets
-- Explanation
-  StatefulSets is a feature of Kubernetes, which the question asks about. Yes, Persistent volumes are required by StatefulSets https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
+- A. StatefulSets 100%/tartar
+- StatefulSets is a feature of Kubernetes, which the question asks about. Yes, Persistent volumes are required by StatefulSets https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
+- https://cloud.google.com/kubernetes-engine/docs/concepts/statefulset
+- **StatefulSet:** You can use StatefulSets to deploy stateful applications and clustered applications that save data to persistent storage, such as Compute Engine persistent disks.
 
-  See the Google documentations for mentioning of hostnames https://cloud.google.com/kubernetes-engine/docs/concepts/statefulset
+![](images/87.png)
 
 <hr />
 
 **Question 88**
 
-- A 60%/ME, D 40%
+- A 60%/ME/tartar, D 40%
 - A. Customize the cache keys to omit the protocol from the key. 60%
 - https://cloud.google.com/cdn/docs/best-practices#using_custom_cache_keys_to_improve_cache_hit_ratio
 - A logo needs to be cached whether displayed through HTTP or HTTPS. When you customize the cache keys for the backend service that holds the logo, clear the Protocol checkbox so that requests through HTTP and HTTPS count as matches for the logo's cache entry.
@@ -977,20 +1002,13 @@ ALTER TABLE mydataset.mytable
 
 **Question 89**
 
-- B. Stackdriver automatically collects admin activity logs for most services. The Stackdriver Logging agent must be installed on each instance to collect system logs. 100%
-- Explanation
-  Admin and event logs are configured by default. VM System logs require a logging agent to be configured. So, A is not valid. Answer is B
+- B. Stackdriver automatically collects admin activity logs for most services. The Stackdriver Logging agent must be installed on each instance to collect system logs. 100%/tartar
 
 <hr />
 
 **Question 90**
 
 - B. Deploy the update as a new version in the App Engine application, and split traffic between the new and current versions. 100%
-- Explanation
-  To test an update to an App Engine application with production traffic before replacing the current version, you can deploy the update as a new version in the App Engine application and split traffic between the new and current versions. This is known as a "blue-green" deployment, and it allows you to test the new version with a portion of production traffic while the current version is still serving the remainder of traffic.
-
-  To split traffic between the new and current versions, you can use the App Engine traffic splitting feature. This feature allows you to specify the percentage of traffic that should be sent to each version, and it can be used to gradually ramp up traffic to the new version over time. This allows you to test the new version with a small portion of traffic initially, and gradually increase the traffic as you become more confident in the update.
-
 - https://cloud.google.com/appengine/docs/standard/splitting-traffic
 
 <hr />
