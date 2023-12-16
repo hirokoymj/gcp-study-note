@@ -645,24 +645,26 @@ kubectl set image deployment nginx nginx=nginx:1.9.1
 
 **Question 60**
 
-- A. Configure a Cloud SQL instance with high availability enabled. 53%/ME
-- D. Set up SQL Server Always On Availability Groups using Windows Failover Clustering. Place nodes in different zones. 46%/tartar
+- A. Configure a Cloud SQL instance with high availability enabled. 53%
+- D. Set up SQL Server Always On Availability Groups using Windows Failover Clustering. Place nodes in different zones. 46%/tartar/ME
 - https://cloud.google.com/sql/docs/sqlserver/high-availability
 - By elimination, seems to me like D is the correct option with a definition issue in the answer.
 
-  A. Probably, this question was created when Cloud SQL wasn't fully compatible with SQL Server. Even though it is now (2023), Cloud SQL is a regional resource, and the DR strategies talk about failing over from region to region, not from zone to zone - https://cloud.google.com/sql/docs/sqlserver/intro-to-cloud-sql-disaster-recovery#overview_of_the_basic_dr_process.
+  A. Probably, this question was created when **Cloud SQL wasn't fully compatible with SQL Server**. Even though it is now (2023), Cloud SQL is a regional resource, and the DR strategies talk about failing over from region to region, not from zone to zone - https://cloud.google.com/sql/docs/sqlserver/intro-to-cloud-sql-disaster-recovery#overview_of_the_basic_dr_process.
 
 <hr />
 
 **Question 61**
 
-- B. Use gcloud to create a Kubernetes cluster. Use kubectl to create the deployment. 100%
-- Explanation
-  Create a Google Kubernetes Engine (GKE) cluster: You can use the Google Cloud Console or the gcloud command-line tool to create a GKE cluster, which will provide the underlying infrastructure for running your application.
+- B. Use gcloud to create a Kubernetes cluster. Use kubectl to create the deployment. 100%/tartar
+- Create a Google Kubernetes Engine (GKE) cluster: You can use the Google Cloud Console or the gcloud command-line tool to create a GKE cluster, which will provide the underlying infrastructure for running your application.
 
-Deploy the application to the cluster: You can use the kubectl command-line tool to apply the Kubernetes Deployment file provided by the development team to the cluster.
+- Deploy the application to the cluster: You can use the kubectl command-line tool to apply the Kubernetes Deployment file provided by the development team to the cluster.
 
 kubectl apply -f deployment.yaml
+
+- https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-zonal-cluster#interact_with_a_cluster_using_kubectl
+- After you create a cluster, you need to configure kubectl before you can interact with the cluster from the command line.
 
 <hr />
 
@@ -671,6 +673,7 @@ kubectl apply -f deployment.yaml
 - B. Allocate budget for team training. Create a roadmap for your team to achieve Google Cloud certification based on job role.
 - Explanation
 - To evaluate your team's readiness for a new GCP project and create a skills gap plan, you should consider the business goal of cost optimization. One way to optimize costs is to invest in training for your team to increase their skills and knowledge of GCP. This can help your team become more efficient and effective in using GCP, potentially resulting in cost savings over time. You should allocate budget for team training and create a roadmap for your team to achieve Google Cloud certification based on their job roles. This will help ensure that your team has the necessary skills and knowledge to successfully deploy the new GCP project.
+-
 
 <hr />
 
@@ -688,31 +691,49 @@ kubectl apply -f deployment.yaml
 **Question 64**
 
 - A. Create the Key object for each Entity and run a batch get operation
-- Explanation
-  Correct Answer: A Create the Key object for each Entity and run a batch get operation https://cloud.google.com/datastore/docs/best-practices
+- Correct Answer: A Create the Key object for each Entity and run a batch get operation https://cloud.google.com/datastore/docs/best-practices
 
-  Use batch operations for your reads, writes, and deletes instead of single operations. Batch operations are more efficient because they perform multiple operations with the same overhead as a single operation. Firestore in Datastore mode supports batch versions of the operations which allow it to operate on multiple objects in a single Datastore mode call. Such batch calls are faster than making separate calls for each individual entity because they incur the overhead for only one service call. If multiple entity groups are involved, the work for all the groups is performed in parallel on the server side.
+- https://cloud.google.com/datastore/docs/concepts/entities#datastore-datastore-basic-entity-nodejs
+- An entity has one or more named **properties**, each of which can have one or more values.
+- Entity
+
+```
+const taskKey = datastore.key('Task');
+
+# Entity ===group of property
+const task = {
+  category: 'Personal',
+  done: false,
+  priority: 4,
+  description: 'Learn Cloud Datastore',
+};
+
+## data of the task entity
+const entity = {
+  key: taskKey,
+  data: task,
+};
+
+await datastore.upsert(entity);
+// Task inserted successfully.
+
+```
 
 <hr />
 
 **Question 65**
 
-- A. Supply the encryption key in a .boto configuration file. Use gsutil to upload the files. 71%
-- Explanation
-  In GCP document, key could be configured in .boto. No information found which shows gsutil suppots flag "--encryption-key".
-  https://cloud.google.com/storage/docs/encryption/customer-supplied-keys
+- A. Supply the encryption key in a .boto configuration file. Use gsutil to upload the files. 71%/tartar
+- https://cloud.google.com/storage/docs/encryption/using-customer-supplied-keys#gsutil
 
 <hr />
 
 **Question 66**
 
-- B. Output custom metrics to Stackdriver from the game servers, and create a Dashboard in Stackdriver Monitoring Console to view them. 97%
-- BigTable doesn't integrate with Data Studio
-  https://cloud.google.com/bigtable/docs/integrations
+- B. Output custom metrics to Stackdriver from the game servers, and create a Dashboard in Stackdriver Monitoring Console to view them. 97%/tartar
+- Big Table won't talk to Google Data Studio - tartar
 
 - To capture multiple GBs of aggregate real-time KPIs from game servers running on Google Cloud Platform and monitor them with low latency, the customer should output custom metrics to Stackdriver from the game servers. Stackdriver allows you to collect and store custom metrics, as well as view and analyze them in real-time using the Stackdriver Monitoring Console. The customer can create a Dashboard in the Monitoring Console to view the KPIs and monitor them with low latency.
-
-- Option A, storing time-series data in Bigtable and viewing it using Data Studio, would not be suitable for capturing and monitoring real-time KPIs with low latency. Bigtable is a scalable NoSQL database that is optimized for large-scale batch processing, and Data Studio is a visualization tool that is not designed for real-time data analysis.
 
 <hr />
 
@@ -745,9 +766,18 @@ kubectl apply -f deployment.yaml
 
 **Question 70**
 
-- D. Create a failover replica instance in the same region, but in a different zone. 53%
-- Explanation
-  Cloud SQL is regional. For high availability, we need to think fo a failover strategy. So, Option D meets the requirement. create failover replica in the same region but in different Zone
+- D. Create a failover replica instance in the same region, but in a different zone. 53%/tartar
+- Cloud SQL is regional. For high availability, we need to think fo a failover strategy. So, Option D meets the requirement. create failover replica in the same region but in different Zone
+- https://cloud.google.com/sql/docs/mysql/configure-ha
+- step 4. In the Choose region and zonal availability section, select Multiple zones (Highly available).
+
+```
+gcloud sql instances create REGIONAL_INSTANCE_NAME \
+--availability-type=REGIONAL \
+--database-version=DATABASE_VERSION \
+--tier=MACHINE_TYPE \
+--enable-bin-log
+```
 
 <hr />
 
