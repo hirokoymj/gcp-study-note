@@ -105,40 +105,54 @@
 
 **Question 11**
 
-- B. Federate authentication via SAML 2.0 to the existing Identity Provider Most Voted
-- Explanation
-  For this scenario, the most appropriate authentication strategy would be B. Federate authentication via SAML 2.0 to the existing Identity Provider. This approach can achieve single sign-on and will not cause too much disruption to existing users. Additionally, since there are strict security team requirements, SAML federated authentication can ensure the security of password storage and transmission.
-
-Other options may cause issues with security and user experience, such as
-
-option A, which may lead to security issues with password synchronization,
-
-option C, which may require password reassignment,
-
-option D, which may cause user confusion or forgotten passwords.
+- C. Provision users in Google using the Google Cloud Directory Sync tool. 27%/Me/tartar
+- B. Federate authentication via SAML 2.0 to the existing Identity Provider. 73%
+- https://support.google.com/a/answer/106368?hl=en
+- With Google Cloud Directory Sync (GCDS), you can synchronize the data in your Google Account with your Microsoft Active Directory or LDAP server.
+- https://support.google.com/a/answer/6120130?hl=en&ref_topic=2679497#passwords
+- GCDS is better as it is a corporate application. The requirements for storing password can be met by GCP. As GCP has many security features
+  For SAML, the corporate needs to have Identity provider service such as the one provided by Google, Facebook
 
 <hr />
 
 **Question 12**
 
-- B. Google Cloud Dataflow
-- Explanation
-  These options include a mix of batch and stream processing – points to Dataflow.
+- B. Google Cloud Dataflow 100%
+- A. Google Cloud Dataproc
+- **Dataproc** is a fully managed and highly scalable service for running **Apache Hadoop, Apache Spark**, Apache Flink, Presto.
+- **Dataflow**: Unified stream and batch data processing that's serverless, fast, and cost-effective.
 
 <hr />
 
 **Question 13**
 
 - C. Roll back to an earlier known good release initially, then use Stackdriver Trace and Logging to diagnose the problem in a development/test/staging environment 95%
-- Explanation
-  App engine gives flexibility to roll back to previous version. Priority should be restoring the services to working state. And trace the issue using Stackdriver where the logs are already captured from previous failed service.
+- App engine gives flexibility to roll back to previous version. Priority should be restoring the services to working state. And trace the issue using Stackdriver where the logs are already captured from previous failed service.
 
 <hr />
 
 **Question 14**
 
-- Explanation
-  Increasing the size of the persistent disk can be done without requiring the virtual machine to be shut down, and the resize2fs command can be used to resize the ext4 filesystem on the disk to take advantage of the additional space. This will allow you to add more storage space to the virtual machine without disrupting the database service.
+- A. In the Cloud Platform Console, increase the size of the persistent disk and use the resize2fs command in Linux. 82%
+- Increasing the size of the persistent disk can be done without requiring the virtual machine to be shut down, and the resize2fs command can be used to resize the ext4 filesystem on the disk to take advantage of the additional space.
+- https://cloud.google.com/compute/docs/disks/resize-persistent-disk
+- You can increase the disk size at any time, whether or not the disk is attached to a **running VM**.
+- You don't need to **restart your VM after** you complete this process. You can now use the added disk space to store data.
+
+```
+# 1. To increase the size of a boot or non-boot disk, use the following procedures:
+
+gcloud compute disks resize DISK_NAME --size DISK_SIZE
+
+# 2. After increasing the size of a disk, you might need to resize its file system and partitions.
+
+$sudo df -Th
+
+# 3. If you are using ext4, use the resize2fs command to extend the file system:
+sudo resize2fs /dev/DEVICE_NAME
+```
+
+![](images/14.png)
 
 <hr />
 
@@ -153,26 +167,45 @@ option D, which may cause user confusion or forgotten passwords.
 
 **Question 16**
 
-- B. Google Cloud Bigtable
-- Explanation
-  Google Cloud Bigtable is a scalable, high-performance NoSQL database that is well-suited for storing large amounts of data with low latency. It is designed for high-throughput workloads such as streaming data, and is able to handle bursts of up to millions of reads and writes per second.
+- B. Google Cloud Bigtable 94%
+- Google Cloud Bigtable is a scalable, high-performance NoSQL database that is well-suited for storing large amounts of data with low latency. It is designed for high-throughput workloads such as streaming data, and is able to handle bursts of up to millions of reads and writes per second.
+- https://cloud.google.com/bigtable?hl=en
+- NoSQL database service with single-digit millisecond latency, limitless scale, and 99.999% availability for large analytical and operational workloads.
+- https://cloud.google.com/blog/topics/developers-practitioners/your-google-cloud-database-options-explained
 
 <hr />
 
 **Question 17**
 
-- B. Write a lifecycle management rule in JSON and push it to the bucket with gsutil
-- Explanation
-  Cloud Storage has lifecycle management rules and could be applied with gsutil and gcloud storage buckets. It is common to use JSON for transferring data.
+- B. Write a lifecycle management rule in JSON and push it to the bucket with gsutil 100%
+- lifecycle, JSON, delete action
+- https://cloud.google.com/storage/docs/gsutil/commands/lifecycle#examples
+- The following lifecycle management configuration JSON document specifies that all objects in this bucket that are more than 365 days old are deleted automatically:
+
+```
+gsutil lifecycle set <config-json-file> gs://<bucket_name>...
+```
+
+```
+# config-json-file
+{
+  "rule":
+  [
+    {
+      "action": {"type": "Delete"},
+      "condition": {"age": 365}
+    }
+  ]
+}
+```
 
 <hr />
 
 **Question 18**
 
-- B. Google Cloud Dataproc
-- Explanation
-  Dataproc is a fully managed and highly scalable service for running Apache Hadoop, Apache Spark, Apache Flink, Presto, and 30+ open source tools and frameworks. Use Dataproc for data lake modernization, ETL, and secure data science, at scale, integrated with Google Cloud, at a fraction of the cost.
+- B. Google Cloud Dataproc 100%
 - https://cloud.google.com/dataproc
+- Dataproc is a fully managed and highly scalable service for running Apache Hadoop, Apache Spark, Apache Flink,
 
 <hr />
 
@@ -191,9 +224,11 @@ option D, which may cause user confusion or forgotten passwords.
 
 **Question 20**
 
-- C. Google Cloud Bigtable
-- Explanation
-  To optimize the performance of an accurate, real-time, weather-charting application that receives data from 50,000 sensors sending 10 readings per second, it would be most appropriate to store the data in a distributed, horizontally scalable, NoSQL database such as Google Cloud Bigtable Other options, such as Google BigQuery, Google Cloud SQL, and Google Cloud Storage, may not be as well-suited for handling high volumes of real-time data and may not provide the same level of performance and scalability as Google Cloud Bigtable.
+- C. Google Cloud Bigtable 100%
+- https://cloud.google.com/blog/topics/developers-practitioners/your-google-cloud-database-options-explained
+- HBase-compatible, enterprise-grade NoSQL database service with single-digit millisecond latency, limitless scale, and 99.999% availability for large analytical and operational workloads.
+- real-time, IoT, time series and huge writes are some of the keywords to look after for Bigtable
+- Real-Time, IoT/CliekStream/TimeSeries/lowlatency/99.99%/large scale
 
 <hr />
 
