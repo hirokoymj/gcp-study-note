@@ -881,9 +881,16 @@ ALTER TABLE mydataset.mytable
 
 **Question 79**
 
-- A. Configure a HorizontalPodAutoscaler with a target CPU usage. Enable the Cluster Autoscaler from the GCP Console. Most Voted
-- Explanation
-  How does Horizontal Pod Autoscaler work with Cluster Autoscaler? Horizontal Pod Autoscaler changes the deployment's or replicaset's number of replicas based on the current CPU load. If the load increases, HPA will create new replicas, for which there may or may not be enough space in the cluster. If there are not enough resources, CA will try to bring up some nodes, so that the HPA-created pods have a place to run. If the load decreases, HPA will stop some of the replicas. As a result, some nodes may become underutilized or completely empty, and then CA will terminate such unneeded nodes.
+- A. Configure a HorizontalPodAutoscaler with a target CPU usage. Enable the Cluster Autoscaler from the GCP Console. 100%/tartar
+- (tartar): https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app#deploying_the_sample_app_to
+
+- Step 4. Create a HorizontalPodAutoscaler resource for your Deployment.
+- https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+  - This is different from vertical scaling, which for Kubernetes would mean assigning more resources (for example: memory or CPU) to the Pods that are already running for the workload.
+
+```
+kubectl autoscale deployment hello-app --cpu-percent=80 --min=1 --max=5
+```
 
 <hr />
 
