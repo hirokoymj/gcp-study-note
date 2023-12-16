@@ -458,63 +458,60 @@ gcloud compute instances create example-instance --metadata shutdown-script="#! 
 
 **Question 41**
 
-- C. De-identify the data with the Cloud Data Loss Prevention API
-- Explanation
-  The recommended approach for sanitizing data of personally identifiable information or payment card information before storing it in Cloud Bigtable is option C: De-identify the data with the Cloud Data Loss Prevention API.
-
-  The Cloud Data Loss Prevention (DLP) API is a powerful tool that allows you to automatically discover, classify, and redact sensitive data in your organization. It uses advanced machine learning techniques to accurately identify and protect a wide range of sensitive data types, including personal information such as names, addresses, phone numbers, and payment card information.
+- C. De-identify the data with the Cloud Data Loss Prevention API - 100%
+- https://cloud.google.com/security/products/sensitive-data-protection?hl=en
+- The Cloud Data Loss Prevention (DLP) API
 
 <hr />
 
 **Question 42**
 
-- A. ~/bin
-- Explanation
-  https://cloud.google.com/shell/docs/how-cloud-shell-works
-
-  Cloud Shell provisions 5 GB of free persistent disk storage mounted as your $HOME directory on the virtual machine instance. This storage is on a per-user basis and is available across projects. Unlike the instance itself, this storage does not time out on inactivity. All files you store in your home directory, including installed software, scripts and user configuration files like .bashrc and .vimrc, persist between sessions. Your $HOME directory is private to you and cannot be accessed by other users.
+- A. ~/bin (86%)
+- https://cloud.google.com/shell/docs/how-cloud-shell-works
+- Cloud Shell provisions 5 GB of free persistent disk storage mounted as your $HOME directory on the virtual machine instance.
 
 <hr />
 
 **Question 43**
 
-- A. Create a VPC and connect it to your on-premises data center using Dedicated Interconnect.
-- Explanation
-  Cloud VPN supports unto 3 Gbps where as Interconnect can support unto 100 gbps
+- A. Create a VPC and connect it to your on-premises data center using Dedicated Interconnect. 86%/tartar
+
+- https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview#network-bandwidth
+- Each Cloud VPN tunnel supports up to 250,000 packets per second for the sum of ingress and egress traffic. Depending on average packet size in the tunnel, 250,000 packets per second is equivalent to **between 1 Gbps and 3 Gbps of bandwidth.**
+- Cloud VPN supports unto 3 Gbps where as Interconnect can support unto 100 gbps
 
 <hr />
 
 **Question 44**
 
 - B. Utilize free tier and sustained use discounts. Provide training to the team about service cost management. 100%
-- Explanation
-  Sustained are automatic discounts for running specific GCE a significant portion of the billing month:
-
-  https://cloud.google.com/compute/docs/sustained-use-discounts
-
-  Committed is for workloads with predictable resource needs between 1 year or 3 year, discount is up to 57% for most resources:
-
-  https://cloud.google.com/compute/docs/instances/signing-up-committed-use-discounts
+- https://cloud.google.com/compute/docs/sustained-use-discounts
+- Sustained are automatic discounts for running specific GCE a significant portion of the billing month:
+- Committed is for workloads with predictable resource needs between 1 year or 3 year, discount is up to 57% for most resources:
+- https://cloud.google.com/compute/docs/instances/signing-up-committed-use-discounts
 
 <hr />
 
 **Question 45**
 
-- D. Use Jenkins to monitor tags in the repository. Deploy staging tags to a staging environment for testing. After testing, tag the repository for production and deploy that to the production environment.
+- D 100%, C tartar/others
+- C. Use Jenkins to build the staging branches and the master branch. Build and deploy changes to production for 10% of users before doing a complete rollout.
+- D. Use Jenkins to monitor tags in the repository. Deploy staging tags to a staging environment for testing. After testing, tag the repository for production and deploy that to the production environment. 100%
 
 - https://stackify.com/continuous-delivery-git-jenkins/
 
 - The question states: "... code changes can be verified BEFORE deploying to production", it eliminates option C.
   The approach of tagging is the correct practise that DevOps use
 - Correct answer is D. Question talks about 'before deploying to production'. C talks about after deploying to production.
+- https://www.jenkins.io/blog/2018/05/16/pipelines-with-git-tags/
 
 <hr />
 
 **Question 46**
 
-- C. Disable the health check for the instance group. Add his SSH key to the project-wide SSH Keys. 83%
-- C, is the correct answer. As per the requirement linux expert would need access to VM to troubleshoot the issue.
-- With health check enabled, old VM will be terminated as soon as health-check fails for the VM and new VM will be auto-created. So, this situation will prevent linux expert to troubleshoot the issue.
+- C. Disable the health check for the instance group. Add his SSH key to the project-wide SSH Keys. 83%/tartar
+- https://cloud.google.com/compute/docs/access#granting_users_ssh_access_to_vm_instances
+- "Note: To give a user SSH to VM instances and prevent access to all APIs, add the user's SSH keys to the project or instance instead of adding the user to the project and granting them wide ranging permissions."
 
 <hr />
 
@@ -530,7 +527,6 @@ gcloud compute instances create example-instance --metadata shutdown-script="#! 
 **Question 48**
 
 - B. Upload your files into Cloud Storage. Use Cloud Dataprep to explore and clean your data. 100%
-
 - Cloud Dataprep is a fully managed data preparation service that allows you to quickly and easily explore, clean, and transform your data for analysis.
 - "detect anomalies" <<-Very important.
 
@@ -545,7 +541,7 @@ gcloud compute instances create example-instance --metadata shutdown-script="#! 
 
 **Question 50**
 
-- C. Use an IP range on Google Cloud that does not overlap with the range you use on-premises. 85%
+- C. Use an IP range on Google Cloud that does not overlap with the range you use on-premises. 85%/tartar
 - https://cloud.google.com/vpc/docs/using-vpc
 - "Primary and secondary ranges can't conflict with on-premises IP ranges if you have connected your VPC network to another network with Cloud VPN, Dedicated Interconnect, or Partner Interconnect."
 
