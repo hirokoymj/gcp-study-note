@@ -782,8 +782,8 @@ gcloud sql instances create REGIONAL_INSTANCE_NAME \
 **Question 71**
 
 - C. Create a custom image from the existing disk. Create an instance template from the custom image. Create an autoscaled managed instance group from the instance template. 100%
-- Explanation
-  Option C is the correct choice because creating a custom image from the existing disk ensures that the application environment is consistent and does not change between instances, which can reduce variability in performance. Creating an instance template from the custom image allows you to easily create new instances that are based on the same image, which can save time and effort. Finally, creating an autoscaled managed instance group allows you to automatically scale the number of instances based on demand, which can ensure that there are enough instances to handle peak traffic while minimizing costs during periods of low traffic
+- answer is C (image -> template -> mig)
+- https://cloud.google.com/compute/docs/instance-templates/create-instance-templates
 
 <hr />
 
@@ -833,24 +833,23 @@ gcloud sql instances create INSTANCE_NAME \
 
 **Question 75**
 
-- C. In the GCP Console, navigate to Stackdriver Logging. Consult logs for (GKE) and Cloud SQL.
-- Explanation
-  Post mortem always includes log analysis.
-  post mortem = logs
+- C. In the GCP Console, navigate to Stackdriver Logging. Consult logs for (GKE) and Cloud SQL. 100%
+- postmortem=死体解剖, PM, 事後検討
+- post mortem always includes log analysis, answer is C
 
 <hr />
 
 **Question 76**
 
-- A. Ensure that VM service accounts are granted the appropriate Cloud Pub/Sub IAM roles.
-- Explanation
-  The Google-recommended way for your application to authenticate to Cloud Pub/Sub and other Google Cloud services when running on Compute Engine VMs is to use VM service accounts. VM service accounts are automatically created when you create a Compute Engine VM, and they are associated with the VM instance. To authenticate to Cloud Pub/Sub and other Google Cloud services, you should ensure that the VM service accounts are granted the appropriate IAM roles.
+- A. Ensure that VM service accounts are granted the appropriate Cloud Pub/Sub IAM roles. 100%
+- (elenamatay 1 year, 11 months ago) Service accounts are recommended for almost all cases in Pub/Sub (see https://cloud.google.com/pubsub/docs/authentication#service-accounts)
+- If your organization's security policies prevent user accounts from having the required permissions, you can use service account impersonation.
 
 <hr />
 
 **Question 77**
 
-- D. Deploy Cloud VPN Gateway in each region. Ensure that each region has at least one VPN tunnel to the on-premises peer gateway.
+- D. Deploy Cloud VPN Gateway in each region. Ensure that each region has at least one VPN tunnel to the on-premises peer gateway. 100%/tartar
 
 - Cloud VPN Gateway is a regional service, not global.
 
@@ -869,10 +868,14 @@ gcloud compute vpn-gateways create GW_NAME \
 **Question 78**
 
 - B. Make the tables time-partitioned, and configure the partition expiration at 45 days. 100%
-- Explanation
-  If your tables are partitioned by date, the dataset's default table expiration applies to the individual partitions. You can also control partition expiration using the time_partitioning_expiration flag in the bq command-line tool or the expiration configuration setting in the API. When a partition expires, data in the partition is deleted but the partitioned table is not dropped even if the table is empty.
+- https://cloud.google.com/bigquery/docs/managing-partitioned-tables#partition-expiration
 
-  https://cloud.google.com/bigquery/docs/best-practices-storage
+```
+ALTER TABLE mydataset.mytable
+  SET OPTIONS (
+    -- Sets partition expiration to 5 days
+    partition_expiration_days = 5);
+```
 
 <hr />
 
@@ -886,10 +889,8 @@ gcloud compute vpn-gateways create GW_NAME \
 
 **Question 80**
 
-- B. Verify that Dedicated Interconnect can replicate files to GCP. Verify that Cloud VPN can establish a secure connection between your networks if Dedicated Interconnect fails. 100%
-
-- Explanation
-  Dedicated Interconnect is a connection that provides a private, dedicated connection between your on-premises network and GCP over a Google-owned network. It is a secure and reliable option for connecting your on-premises network to GCP. You can use it to replicate files to GCP as a part of your disaster recovery plan. If Dedicated Interconnect fails for any reason, it is a good idea to have a backup solution in place to establish a secure connection between your networks. Cloud VPN is a secure and reliable solution for establishing a connection between your on-premises network and GCP. It uses a virtual private network (VPN) tunnel to securely connect the networks, and it is a good backup option if Dedicated Interconnect fails.
+- B. Verify that Dedicated Interconnect can replicate files to GCP. Verify that Cloud VPN can establish a secure connection between your networks if Dedicated Interconnect fails. 100%/tartar
+- B is correct. Dedicated Interconnect with option of Cloud VPN for redundancy(冗長性)
 
 <hr />
 
