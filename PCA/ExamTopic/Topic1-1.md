@@ -825,9 +825,12 @@ gcloud sql instances create INSTANCE_NAME \
 
 **Question 74**
 
-- D. BigQuery, because it is designed for large-scale processing of tabular data
-- Explanation. 94%
-  Cloud SQL/Spanner is OLTP DB but not OLAP. BQ is a well-known OLAP for analytics and also supports RBMS feature too
+- D. BigQuery, because it is designed for large-scale processing of tabular data. 94%/tartar
+- https://cloud.google.com/sql/docs/quotas#storage_limits
+- Cloud SQL storage limits 64TB
+- OLAP = online analytical processing
+- https://cloud.google.com/blog/topics/developers-practitioners/your-google-cloud-database-options-explained?source=post_page-----44be039179ea--------------------------------
+- BQ == data warehouse, you query terabytes in seconds and petabytes in minutes.
 
 <hr />
 
@@ -835,15 +838,28 @@ gcloud sql instances create INSTANCE_NAME \
 
 - C. In the GCP Console, navigate to Stackdriver Logging. Consult logs for (GKE) and Cloud SQL. 100%
 - postmortem=死体解剖, PM, 事後検討
-- post mortem always includes log analysis, answer is C
+- C -> post-mortem = log analysis
+- https://www.freecodecamp.org/news/what-is-a-software-post-mortem/
 
 <hr />
 
 **Question 76**
 
 - A. Ensure that VM service accounts are granted the appropriate Cloud Pub/Sub IAM roles. 100%
-- (elenamatay 1 year, 11 months ago) Service accounts are recommended for almost all cases in Pub/Sub (see https://cloud.google.com/pubsub/docs/authentication#service-accounts)
-- If your organization's security policies prevent user accounts from having the required permissions, you can use service account impersonation.
+- https://cloud.google.com/pubsub/docs/authentication#service-accounts
+- https://cloud.google.com/iam/docs/service-account-overview
+- **Service Account** - An identity that an instance or an aplication can use to run API requst on your behalf.
+  - Email: sql-reader@PROJECT_ID.gserviceaccount.com
+  - Key:c223344556677
+  - Acceccible by VM, App Engine
+  - Roles: Cloud SQL Viewer, BigQuery Data Editor
+
+```
+gcloud iam service-account list
+
+# List of service accounts including Google-managed SA
+gcloud projects get-iam-policy PROJECT
+```
 
 <hr />
 
@@ -1028,36 +1044,17 @@ ALTER TABLE mydataset.mytable
 **Question 92**
 
 - D. Save a history of recommendations and results of the recommendations in BigQuery, to be used as training data. 100%
-
-- https://cloud.google.com/recommender/docs/recommenders
-  - A recommender is a service on Google Cloud that provides usage recommendations for Google Cloud resources. Recommenders are specific to a single Google Cloud product and resource type.
-- https://cloud.google.com/recommender/docs/bq-export/export-recommendations-to-bq
-  - With the BigQuery export, you can view daily snapshots of recommendations for your organization.
-    ![](images/92-1.png)
-
-![](images/92-2.png)
+- Model performance is generally based on the volume of its training data input. The more the data, the better the model
 
 <hr />
 
 **Question 93**
 
+- A 63%, B 33%/tartar
 - A. Use the Horizontal Pod Autoscaler and enable cluster autoscaling. Use an Ingress resource to load-balance the HTTPS traffic.
-- Explanation
-  To load-balance the HTTPS traffic, we should use an Ingress resource, which acts as a reverse proxy to route traffic to different services based on the HTTP(S) header or the hostname. We can use the GKE Ingress controller to manage the Ingress resource, which will automatically create and manage a Google Cloud Load Balancer to distribute traffic to the pods running the application
+- B. Use the Horizontal Pod Autoscaler and enable cluster autoscaling on the Kubernetes cluster. Use a Service resource of type LoadBalancer to load-balance the HTTPS traffic.
 
-- https://cloud.google.com/kubernetes-engine/docs/how-to/scaling-apps#autoscaling-deployments
-
-  > kubectl autoscale creates a HorizontalPodAutoscaler (or HPA) object that targets a specified resource (called the scale target) and scales it as needed.
-
-  ```
-  kubectl autoscale deployment my-app --max 6 --min 4 --cpu-percent 50
-  ```
-
-**Creating an Ingress resource[1]**
-
-Ingress is a Kubernetes resource that encapsulates a collection of rules and configuration for routing external HTTP(S) traffic to internal services.
-
-- [1] https://cloud.google.com/kubernetes-engine/docs/tutorials/http-balancer#creating_an_ingress_resource
+- https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app
 
 <hr />
 
@@ -1065,10 +1062,6 @@ Ingress is a Kubernetes resource that encapsulates a collection of rules and con
 
 - B. Create an HTTPS load balancer with URL Maps. 100%
 - https://cloud.google.com/load-balancing/docs/https/url-map
-- Explanation
-  An HTTPS load balancer is a type of load balancer that can distribute incoming HTTPS traffic to one or more back-end services, such as Compute Engine instances or Google Kubernetes Engine clusters. It can also provide SSL/TLS termination, enabling you to use your own SSL/TLS certificates and keys.
-
-You can use URL Maps to configure the HTTPS load balancer to route traffic based on the URL path being requested. This allows you to set up different URL paths to be served by different back-end services, providing a high level of flexibility in your load balancing configuration.
 
 <hr />
 
@@ -1083,16 +1076,19 @@ You can use URL Maps to configure the HTTPS load balancer to route traffic based
 
 **Question 96**
 
-- B. Use Deployment Manager to automate service provisioning. Use Stackdriver to monitor and debug your tests. 88%
+- B. Use Deployment Manager to automate service provisioning. Use Stackdriver to monitor and debug your tests. 88%/tartar
 - It is B, Google Best practice ---> never use scripts. They do not trust anyone else's code it seems. TarTar, from exam topic
 
 <hr />
 
 **Question 97**
 
-- D. Save the files in multiple Multi-Regional Cloud Storage buckets, one bucket per multi-region.
-- Explanation
-  To reduce latency you need a bucket near your users and you can't setup multi-region with Asia/EU/America selected so A is out and we are left with D.
+- A. Save the files in a Multi-Regional Cloud Storage bucket. 22%/tartar
+- D. Save the files in multiple Multi-Regional Cloud Storage buckets, one bucket per multi-region. 73%
+- A:
+- First: https://cloud.google.com/storage/docs/locations#location_recommendations
+  tells us to use Multi-regioun for Content serving;
+  Second: if you define multiple buckets, then you have to handle the synch of files between them. This is much more difficult than just maybe configuring Cloud CDN for this bucket.
 
 <hr />
 
@@ -1108,7 +1104,7 @@ Action = "Delete object" Object conditions = select ""Days since custom time" ch
 
 **Question 99**
 
-- A. Set the memcache service level to dedicated. Create a key from the hash of the query, and return database values from memcache before issuing a query to Cloud SQL. 100%
+- A. Set the memcache service level to dedicated. Create a key from the hash of the query, and return database values from memcache before issuing a query to Cloud SQL. 100%/tartar
 - PHP App Engine Stand -> App Engine Memcache PHP API
 - https://cloud.google.com/appengine/docs/legacy/standard/php/memcache/using
 
