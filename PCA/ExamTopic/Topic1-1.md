@@ -849,17 +849,31 @@ gcloud sql instances create INSTANCE_NAME \
 - https://cloud.google.com/pubsub/docs/authentication#service-accounts
 - https://cloud.google.com/iam/docs/service-account-overview
 - **Service Account** - An identity that an instance or an aplication can use to run API requst on your behalf.
-  - Email: sql-reader@PROJECT_ID.gserviceaccount.com
-  - Key:c223344556677
-  - Acceccible by VM, App Engine
-  - Roles: Cloud SQL Viewer, BigQuery Data Editor
+
+- **A service account is an account that belongs to your application instead of to an individual end user.**
+
+- For example, if you write an application that interacts with Google Cloud Storage, it must first authenticate to either the Google Cloud Storage XML API or JSON API.
+  You can enable service accounts and grant read-write access to the account on the instance where you plan to run your application.
+
+- Email: sql-reader@PROJECT_ID.gserviceaccount.com
+- Key:c223344556677
+- Acceccible by VM, App Engine
+- Roles: Cloud SQL Viewer, BigQuery Data Editor
 
 ```
 gcloud iam service-account list
-
 # List of service accounts including Google-managed SA
 gcloud projects get-iam-policy PROJECT
 ```
+
+**Default SA**
+
+- (GAE)project-id@appspot.gserviceaccount.com
+- (VM)project-number-compute@developer.gserviceaccount.com
+
+**Google-managed sa**
+
+- Visibility - click on Include Google-provided role grants checkbox
 
 <hr />
 
@@ -878,6 +892,8 @@ gcloud compute vpn-gateways create GW_NAME \
 ```
 
 - Each Cloud VPN gateway is a regional resource that uses one or more regional external IP addresses. A Cloud VPN gateway can connect to a peer VPN gateway.
+- https://cloud.google.com/network-connectivity/docs/vpn/concepts/classic-topologies
+- https://cloud.google.com/static/network-connectivity/docs/vpn/images/cloud-vpn-overview-01.svg
 
 <hr />
 
