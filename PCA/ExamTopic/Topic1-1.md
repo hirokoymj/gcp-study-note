@@ -16,6 +16,10 @@
 
 ![](images/2.png)
 
+- https://support.google.com/cloud/answer/9113366?hl=en
+- **BigQuery** is Google's fully managed, petabyte-scale, low-cost data warehouse for analytics.
+- https://medium.com/analytics-vidhya/bigquery-petabyte-scale-data-warehouse-in-gcp-980b930e8bd8
+
 <hr />
 
 **Question 3**
@@ -30,9 +34,18 @@
 - Operations manager should not touch application for instrument
 
 - (**ADE**)By elimination and if the J2EE is a basic application ADE:
+
   - B. Integrate Cloud Dataflow => no needed for this application.
   - C. Stackdriver Debugger => it's not the first monitoring tool to put in place, it's only to debug code execution.
   - F. Migrate from MySQL to a managed NoSQL database => no need for that, gcp has SQL supported with cloud SQL.
+
+- I voted ADE.
+  - A - App Engine could be used for J2EE application
+  - B - Dataflow is not used for real-time metrics
+  - C - Debugger is not used for monitoring
+  - D - Good practice
+  - E - Good practice
+  - F - Depends on the situation but I don't think Datastore or BigTable is a good choice for MySQL migration
 
 <hr />
 
@@ -97,9 +110,10 @@
 
 **Question 10**
 
-- C. Create a new service account with BigQuery access and execute your script with that user
-- Explanation
-  Service accounts provide a way to authenticate your application to Google Cloud services. When you create a service account, you can assign it specific roles that dictate what resources the service account can interact with, and how it can interact with them. In this case, you would assign the BigQuery access role to the service account, which would then be used to authenticate your script to BigQuery.
+- C. Create a new service account with BigQuery access and execute your script with that user. 83%/tartar
+- https://cloud.google.com/iam/docs/service-account-overview
+- **A service account** is a special kind of account typically used by **an application** or compute workload, such as a Compute Engine instance, rather than a person.
+- Applications use service accounts to make authorized API calls
 
 <hr />
 
