@@ -112,8 +112,9 @@
 
 - C. Create a new service account with BigQuery access and execute your script with that user. 83%/tartar
 - https://cloud.google.com/iam/docs/service-account-overview
-- **A service account** is a special kind of account typically used by **an application** or compute workload, such as a Compute Engine instance, rather than a person.
-- Applications use service accounts to make authorized API calls
+- **A service account** is a special kind of account typically used by **an application** or compute workload, such as a Compute Engine instance, rather than a person.z
+- A service account is an account that belongs to your application instead of to an individual end user. This provides an identity for carrying out server-to-server interactions in a project without supplying user credentials. (IAM.pdf)
+- For example, if you write an application that interacts with Google Cloud Storage, it must first authenticate to either the Google Cloud Storage XML API or JSON API. (IAM.pdf)
 
 <hr />
 
