@@ -70,3 +70,15 @@ gcloud container clusters create dougs-cluster --zone=us-east4
 - Click on Commandline link -> generating gcloud command -> copy &paste the command on Cloud Shell.
 
 ![](17.png)
+
+## 7. Adding a disk to VM | Google Cloud Quick Tutorials
+
+1. VM (server1, us-east4-a, 10.150.0.2, xxx)
+2. Compute Engine -> Disk -> Create Disk(server1-disk-2, )
+3. types:
+   - Balanced persistant disk(middle)
+   - SSD persistant disk(Fastest, expensive)
+   - Standard persistant disk (cheapest)
+4. Region/zone (select same as the disk attached) ==> **CREATE**
+5. Select server1 and **EDIT**
+6. Boot disk: server1 -> Attached existing disk

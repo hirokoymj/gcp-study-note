@@ -352,6 +352,10 @@ FROM node:19-slim
 - E. Cloud Deployment Manager can be used to permanently delete cloud resources
 - F. Cloud Deployment Manager only supports automation of Google Cloud resources
 - (Palan 3 months, 3 weeks ago)Answer should be C and E. The major risk is always if the resources are permanently getting deleted and learning a new tool like Cloud Deployment Manager requires time and money.
+- https://cloud.google.com/deployment-manager/docs/manage-cloud-resources-deployment
+
+- You can use Google Cloud Deployment Manager to create a set of Google Cloud resources and manage them as a unit, called a deployment.
+- You can make the configuration file part of your team's code repository, so that anyone can create the same environment with consistent results.
 
 <hr />
 
@@ -386,6 +390,10 @@ gcloud compute instances create example-instance --metadata shutdown-script="#! 
 > # Shuts down Apache server
 > /etc/init.d/apache2 stop"
 ```
+
+- https://cloud.google.com/compute/docs/shutdownscript#apply_a_shutdown_script_to_running_instances
+
+> shutdown-script: Supply the shutdown script contents directly with this key. Using the Google Cloud CLI, you can provide the path to a shutdown script file, using the --metadata-from-file flag and the shutdown-script metadata key.
 
 <hr />
 
@@ -445,7 +453,7 @@ gcloud compute instances create example-instance --metadata shutdown-script="#! 
 **Question 38**
 
 - B. Digitally sign all of your JAR files and redeploy your application 92%, tartar
-
+- https://docs.oracle.com/javase/tutorial/deployment/jar/signindex.html
 <hr />
 
 **Question 39**
@@ -460,15 +468,15 @@ gcloud compute instances create example-instance --metadata shutdown-script="#! 
 
 **Question 40**
 
-- B 50%, D 50%/tartar/ME
+- B 54%/ME, D 50%/tartar
 - B. Configure a Google Cloud Dedicated Interconnect.
 - D. Add additional VPN connections and load balance them
 - (tartar)Sorry, D is ok. VPN tunnel has already been established, so adding more seems logical.
   This link back me up: https://cloud.google.com/network-connectivity/docs/vpn/concepts/classic-topologies
 - [Increased throughput and load balancing options](https://cloud.google.com/network-connectivity/docs/vpn/concepts/classic-topologies#vpn-throughput)
 - **Note:** the solutions in this section for increasing throughput can be also used to **load balance** between two gateways as described for each option.
-- There are three options for scaling a Cloud VPN configuration:
-
+- I think B is correct. I think it is more reliable
+- Latency won't be solved by adding new VPN tunnels.
 <hr />
 
 **Question 41**
@@ -541,9 +549,14 @@ gcloud compute instances create example-instance --metadata shutdown-script="#! 
 
 **Question 48**
 
-- B. Upload your files into Cloud Storage. Use Cloud Dataprep to explore and clean your data. 100%
+- B. Upload your files into Cloud Storage. Use Cloud Dataprep to explore and clean your data. 100%/tartar
 - Cloud Dataprep is a fully managed data preparation service that allows you to quickly and easily explore, clean, and transform your data for analysis.
 - "detect anomalies" <<-Very important.
+- D - incorrect; At this time DataPrep cannot connect to SaaS or on-premise source. Not to be confused for DataFlow which can!
+
+- Here’s an example of a Cloud Dataprep architecture. As you can see, Cloud Dataprep can be leveraged to prepare raw data from BigQuery, Cloud Storage, or a file upload before ingesting it onto a transformation pipeline like Cloud Dataflow.(textbook Managed_Services.pdf)
+
+![](images/48.png)
 
 <hr />
 
@@ -575,11 +588,12 @@ gcloud datastore indexes create ~/myapp/index.yaml
 
 **Question 52**
 
+- C 100%
+- A. Deploy the application on two Compute Engine instances in the same project but in a different region. Use the first instance to serve traffic, and use the HTTP load balancing service to fail over to the standby instance in case of a disaster.
 - C. Deploy the application on two Compute Engine instance groups, each in the same project but in a different region. Use the first instance group to serve traffic, and use the HTTP load balancing service to fail over to the standby instance group in case of a disaster
-- Google recommend using MIG for Zonal outage and multiple MIG for regional outage
-- https://cloud.google.com/architecture/disaster-recovery#compute-engine
-- It says: Compute Engine instances are zonal resources, so in the event of a zone outage instances are unavailable by default. Compute Engine does offer managed instance groups (MIGs) which can automatically scale up additional VMs from pre-configured instance templates, both within a single zone and across multiple zones within a region. MIGs are ideal for applications that require resilience to zone loss and are stateless, but require configuration and resource planning. Multiple regional MIGs can be used to achieve regional outage resilience for stateless applications.
-
+- **LB does not work without MIG**
+- You can use either MIG or unmanaged..
+https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-unmanaged-instances
 <hr />
 
 **Question 53**
@@ -607,10 +621,9 @@ gcloud datastore indexes create ~/myapp/index.yaml
 
 **Question 55**
 
-- A. Move your data onto a Transfer Appliance. Use a Transfer Appliance Rehydrator to decrypt the data into Cloud Storage.
-- https://cloud.google.com/dataprep
-- **Dataprep by Trifacta** - An intelligent cloud data service to visually explore, clean, and prepare data for analysis and machine learning.
-
+- A. Move your data onto a Transfer Appliance. Use a Transfer Appliance Rehydrator to decrypt the data into Cloud Storage. 83%/tartar
+- https://cloud.google.com/transfer-appliance/docs/4.0/overview
+- https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets?hl=en#transfer-options
 <hr />
 
 **Question 56**
@@ -621,6 +634,8 @@ gcloud datastore indexes create ~/myapp/index.yaml
 ```
 kubectl set image deployment nginx nginx=nginx:1.9.1
 ```
+
+- https://cloud.google.com/kubernetes-engine/docs/how-to/updating-apps#updating_an_application
 
 <hr />
 
@@ -666,6 +681,8 @@ kubectl set image deployment nginx nginx=nginx:1.9.1
 - By elimination, seems to me like D is the correct option with a definition issue in the answer.
 
   A. Probably, this question was created when **Cloud SQL wasn't fully compatible with SQL Server**. Even though it is now (2023), Cloud SQL is a regional resource, and the DR strategies talk about failing over from region to region, not from zone to zone - https://cloud.google.com/sql/docs/sqlserver/intro-to-cloud-sql-disaster-recovery#overview_of_the_basic_dr_process.
+
+- a couple of good paragraphs in the upper part of the page explains well. https://cloud.google.com/solutions/disaster-recovery-for-microsoft-sql-server -https://cloud.google.com/compute/docs/instances/sql-server/disaster-recovery-for-microsoft-sql-server?hl=en#always_on_availability_groups
 
 <hr />
 
