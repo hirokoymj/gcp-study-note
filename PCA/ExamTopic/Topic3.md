@@ -39,10 +39,20 @@ gcloud compute security-policies rules create 1000 \
 
 **Question 3**
 
-- C. Configure the deployment job to notify a Pub/Sub queue that triggers a Cloud Function. 82%, omermaH
-
+- C. Configure the deployment job to notify a Pub/Sub queue that triggers a Cloud Function. 82%
 - Answer C seems to be ok. Triggering Pub/Sub to invoke Cloud Functions seems to be relevant. Cloud Storage doesn't make any sense.
 - https://cloud.google.com/scheduler/docs/tut-pub-sub
+- https://cloud.google.com/functions/docs/tutorials/pubsub#deploying_the_function
+
+```
+gcloud functions deploy Hello-func \
+--gen2 \
+--runtime=nodejs20 \
+--region=REGION \
+--source=. \
+--entry-point=helloPubSub \
+--trigger-topic=YOUR_TOPIC_NAME
+```
 
 <hr />
 
@@ -56,7 +66,10 @@ gcloud compute security-policies rules create 1000 \
 **Question 5**
 
 - C. Use BigQuery for its scalability and ability to add columns to a schema. Partition race data based on season. 100%,
-- For HRL's data storage needs, it is recommended to use BigQuery due to its scalability and ability to handle large amounts of data. By partitioning the race data based on season, HRL can easily access and query specific seasons' data while also taking into consideration future data growth. BigQuery also allows for the flexibility to add new columns to the schema as needed, making it easier to adapt to changes in the data being collected. Additionally, BigQuery's pay-per-use pricing model allows HRL to only pay for the data storage and querying they use, making it a cost-effective solution. omermaH
+- We can use BigQuery for making Predictions with live and trained data with Cloud ML Engine, and BigQuery can handle large amounts of data.
+- https://www.youtube.com/watch?v=HsEZl5sMByo
+  ![](images/topic4-5.png)
+- https://cloud.google.com/bigquery/docs/partitioned-tables#date_timestamp_partitioned_tables
 
 <hr />
 

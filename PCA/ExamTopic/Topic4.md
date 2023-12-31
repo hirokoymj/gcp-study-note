@@ -16,24 +16,20 @@
 - AD 42%/ME, AC 40%
 - A. Enable Binary Authorization on GKE, and sign containers as part of a CI/CD pipeline.
 - D. Configure Container Registry to use vulnerability scanning to confirm that there are no vulnerabilities before deploying the workload.
-- [jits1984]Binary authorization and Service Account controls (as the question is asking on how you would secure the deployment process and not improving the security of the application)
 
-- https://cloud.google.com/binary-authorization/docs/overview
-- **What is Binary Authorization?**
-- Binary Authorization is a Google Cloud product that you can use to implement software supply-chain security measures when
-- You can use Binary Authorization to do the following:
+- https://cloud.google.com/binary-authorization
 
-- **Monitor**: You can configure continuous validation (CV) (Preview) to periodically monitor that container images associated with running Pods conform to a policy that you define. If images don't conform with the policy, CV produces log entries in Cloud Logging.
-
-- **Enforce**: You can configure Binary Authorization enforcement to enforce that images that are being deployed to one of the supported container-based platforms conform with a policy that you define. Images that conform with the policy are allowed to be deployed; otherwise, they are disallowed from being deployed.
-
-![](images/topic4-2.png)
-
-https://cloud.google.com/artifact-analysis/docs/quickstart-scanning-nodejs-automatically
+  - Binary Authorization is a deploy-time security control that ensures only trusted container images are deployed on Google Kubernetes Engine (GKE) or Cloud Run.
 
 - https://cloud.google.com/blog/products/devops-sre/devsecops-and-cicd-using-google-cloud-built-in-services
 
-- To secure this CI/CD pipeline, we will use a couple of Google Cloud's built-in features and services. First, we will enable **vulnerability scans** on Artifact Registry, an out-of-the-box feature. Then finally, we will create a security policy using the Binary Authorization service, which only allows a specific image to be deployed to your GKE cluster.
+  - To secure this CI/CD pipeline, we will use a couple of Google Cloud's built-in features and services. First, we will enable **vulnerability scans** on Artifact Registry, an out-of-the-box feature. Then finally, we will create a security policy using the Binary Authorization service, which only allows a specific image to be deployed to your GKE cluster.
+
+- https://cloud.google.com/binary-authorization/docs/overview
+
+![](images/topic4-2.png)
+
+- https://cloud.google.com/artifact-analysis/docs/quickstart-scanning-nodejs-automatically
 
 <hr />
 
