@@ -113,3 +113,16 @@ Google recommends using the 99.99% SLA interconnect (dedicated or partner) for p
 - https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept#overview
 
   - **Public endpoint access disabled**: This is the most secure option as it prevents all internet access to the control plane. This is a good choice if you have configured your on-premises network to connect to Google Cloud using Cloud Interconnect or Cloud VPN.
+
+- https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#gcloud
+
+```
+# private-cluster-0, my-net-0, my-subnet-0
+gcloud container clusters create-auto private-cluster-0 \
+    --create-subnetwork name=my-subnet-0 \
+    --enable-master-authorized-networks \
+    --enable-private-nodes \
+    --enable-private-endpoint
+```
+
+- https://www.cloudskillsboost.google/focuses/867?catalog_rank=%7B%22rank%22%3A1%2C%22num_filters%22%3A0%2C%22has_search%22%3Atrue%7D&parent=catalog&search_id=29192036

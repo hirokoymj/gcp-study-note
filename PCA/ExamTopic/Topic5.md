@@ -2,11 +2,12 @@
 
 **Question 1**
 
-- A 66%/ME, D 34%/tartar
+- A 66%, D 34%/tartar/ME
 - A. Tests should scale well beyond the prior approaches
 - D. Tests should include directly testing the Google Cloud Platform (GCP) infrastructure
 - D. Tests should include directly testing the Google Cloud Platform (GCP) infrastructure. 35%, tartar
 - It is D. New to GCP, migrated to GCP.... time to test if it works or not.
+- I go with D as A does not way clearly on the improvements needed to the existing test pack
 
 <hr />
 
@@ -23,7 +24,9 @@
 **Question 3**
 
 - C. Google Kubernetes Registry, Google Container Engine, Google HTTP(S) Load Balancer. 100%/ME
-
+- [erika_v]**Google Kubernetes Engine** is ideal for deploying small services that can be updated and rolled back quickly. It is a best practice to manage services using immutable containers.
+- **Cloud Load Balancing** supports globally distributed services across multiple regions. It provides a single global IP address that can be used in DNS records. Using URL Maps, the requests can be routed to only the services that Mountkirk wants to expose.
+- **Container Registry** is a single place for a team to manage Docker images for the services.
 <hr />
 
 **Question 4**
