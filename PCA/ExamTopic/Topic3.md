@@ -54,6 +54,8 @@ gcloud functions deploy Hello-func \
 --trigger-topic=YOUR_TOPIC_NAME
 ```
 
+- penetration test(侵入テスト)
+
 <hr />
 
 **Question 4**
