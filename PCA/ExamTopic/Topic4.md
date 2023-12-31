@@ -13,9 +13,8 @@
 
 **Question 2**
 
-- AD 42%, AC 40%/ME
+- AD 42%/ME, AC 40%
 - A. Enable Binary Authorization on GKE, and sign containers as part of a CI/CD pipeline.
-- C. Configure Container Registry to only allow trusted service accounts to create and deploy containers from the registry.
 - D. Configure Container Registry to use vulnerability scanning to confirm that there are no vulnerabilities before deploying the workload.
 - [jits1984]Binary authorization and Service Account controls (as the question is asking on how you would secure the deployment process and not improving the security of the application)
 
@@ -29,6 +28,12 @@
 - **Enforce**: You can configure Binary Authorization enforcement to enforce that images that are being deployed to one of the supported container-based platforms conform with a policy that you define. Images that conform with the policy are allowed to be deployed; otherwise, they are disallowed from being deployed.
 
 ![](images/topic4-2.png)
+
+https://cloud.google.com/artifact-analysis/docs/quickstart-scanning-nodejs-automatically
+
+- https://cloud.google.com/blog/products/devops-sre/devsecops-and-cicd-using-google-cloud-built-in-services
+
+- To secure this CI/CD pipeline, we will use a couple of Google Cloud's built-in features and services. First, we will enable **vulnerability scans** on Artifact Registry, an out-of-the-box feature. Then finally, we will create a security policy using the Binary Authorization service, which only allows a specific image to be deployed to your GKE cluster.
 
 <hr />
 

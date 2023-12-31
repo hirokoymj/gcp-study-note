@@ -82,3 +82,7 @@ gcloud container clusters create dougs-cluster --zone=us-east4
 4. Region/zone (select same as the disk attached) ==> **CREATE**
 5. Select server1 and **EDIT**
 6. Boot disk: server1 -> Attached existing disk
+
+![](7.png)
+![](7-1.png)
+![](7-2.png)

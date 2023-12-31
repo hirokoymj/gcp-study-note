@@ -5,6 +5,8 @@
 - AB 100%
 - A. Evaluate the impact of migrating their current batch ETL code to Cloud Dataflow.
 - B. Write a schema migration plan to denormalize data for better performance in BigQuery.
+
+- Traditional extract, transform, and load (ETL) job
 - Now A is a must, the ETL is definitely what Cloud Dataflow does.
   Now between B / C. Its talking about a lot of data. we know that Cloud SQL is not the best for huge volume of data, plus not real time data. Big Query is the best option
 - https://cloud.google.com/bigquery/docs/loading-data#loading_denormalized_nested_and_repeated_data

@@ -4,6 +4,9 @@
 
 - B. Encrypt the card data with a deterministic algorithm stored in Firestore using Datastore mode.
 - google https://cloud.google.com/architecture/tokenizing-sensitive-cardholder-data-for-pci-dss
+- https://cloud.google.com/dlp/docs/transformations-reference
+- Firestore in Native mode - mobile, web
+- Firestore in Datastore mode - backend server
 
 <hr />
 
@@ -61,6 +64,16 @@ gcloud compute security-policies rules create 1000 \
 
 - C. Use the gcloud recommender command to list the idle virtual machine instances. 100%
 - https://cloud.google.com/compute/docs/instances/viewing-and-applying-idle-vm-recommendations
+
+- Use the gcloud recommender recommendations list command with **--recommender=google.compute.instance.IdleResourceRecommender**:
+
+```
+gcloud recommender recommendations list \
+  --project=PROJECT_ID \
+  --location=ZONE \
+  --recommender=google.compute.instance.IdleResourceRecommender \
+  --format=yaml
+```
 
 # Case Study
 

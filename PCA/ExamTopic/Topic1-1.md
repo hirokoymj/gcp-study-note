@@ -86,11 +86,20 @@
 
 **Question 7**
 
-- AD 63%
+- AD 63%/ME, DF 34%
+- D. Use Google BigQuery billing export and labels to associate cost to groups. 100%
+- A. Use the - -no-auto-delete flag on all persistent disks and stop the VM
+- F. Store all state in Google Cloud Storage, snapshot the persistent disks, and terminate the VM
 - Use the flag -no-auto-delete with this flag, the disk won't be deleted when the VM is terminated.
 - https://cloud.google.com/compute/docs/images/create-custom#gcloud
 - By default, the auto-delete option is enabled on the boot disks.
-- Billing export to BigQuery enables you to export your daily usage and cost estimates automatically throughout the day to a BigQuery dataset you specify. You can then access your billing data from BigQuery.
+- https://cloud.google.com/compute/docs/samples/compute-disk-autodelete-change
+- Change the value of the auto-delete flag, which determines whether the disk attached to a VM is automatically deleted or not **when you delete the VM**.
+
+![](images/q7.png)
+
+- https://cloud.google.com/compute/docs/disks#localssds
+- **Local SSD disks** are physically attached to the server that hosts your VM. all data on the Local SSD disk might be lost if the VM terminates
 
 <hr />
 
@@ -703,9 +712,6 @@ kubectl apply -f deployment.yaml
 **Question 62**
 
 - B. Allocate budget for team training. Create a roadmap for your team to achieve Google Cloud certification based on job role.
-- Explanation
-- To evaluate your team's readiness for a new GCP project and create a skills gap plan, you should consider the business goal of cost optimization. One way to optimize costs is to invest in training for your team to increase their skills and knowledge of GCP. This can help your team become more efficient and effective in using GCP, potentially resulting in cost savings over time. You should allocate budget for team training and create a roadmap for your team to achieve Google Cloud certification based on their job roles. This will help ensure that your team has the necessary skills and knowledge to successfully deploy the new GCP project.
-
 <hr />
 
 **Question 63**
@@ -761,20 +767,18 @@ await datastore.upsert(entity);
 **Question 66**
 
 - B. Output custom metrics to Stackdriver from the game servers, and create a Dashboard in Stackdriver Monitoring Console to view them. 97%/tartar
-- Big Table won't talk to Google Data Studio - tartar
-
-- To capture multiple GBs of aggregate real-time KPIs from game servers running on Google Cloud Platform and monitor them with low latency, the customer should output custom metrics to Stackdriver from the game servers. Stackdriver allows you to collect and store custom metrics, as well as view and analyze them in real-time using the Stackdriver Monitoring Console. The customer can create a Dashboard in the Monitoring Console to view the KPIs and monitor them with low latency.
+- BigTable won't talk to Google Data Studio - tartar
 
 <hr />
 
 **Question 67**
 
-- C. Perform the following: 1. Create a Google Kubernetes Engine (GKE) cluster with n1-standard-1 type machines. 2. Build a Docker image from the production branch with all of the dependencies, and tag it with the version number. 3. Create a Kubernetes Deployment with the imagePullPolicy set to 'IfNotPresent' in the staging namespace, and then promote it to the production namespace after testing. 67%
+- C. Perform the following: 1. Create a Google Kubernetes Engine (GKE) cluster with n1-standard-1 type machines. 2. Build a Docker image from the production branch with all of the dependencies, and tag it with the version number. 3. Create a Kubernetes Deployment with the imagePullPolicy set to 'IfNotPresent' in the staging namespace, and then promote it to the production namespace after testing. 67%/tartar
 
 - You should use GKE, because your can scale up and down based on your demand. Also you can specifiy the resource size like 0.1 CPU and 128 MB of memory per Pod.
 
 - Secondly, Kubernetes Deployment with the imagePullPolicy set to “IfNotPresent” in the staging namespace, and then promote it to production namespace after testing. is best practice.
-
+- C, anytime you see cpu in 0 point something its GKE.
 <hr />
 
 **Question 68**
