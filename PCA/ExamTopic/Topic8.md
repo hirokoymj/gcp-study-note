@@ -60,7 +60,7 @@
 
 **Question 7**
 
-- C 28%, D 72%,
+- C 28%/Me, D 72%,
 - C. Directly transfer the files to different Google Cloud **Multi-Regional** Storage bucket locations in US, EU, and Asia using Google APIs over HTTP(S). Run the ETL process using the data in the bucket.
 - D. Directly transfer the files to a different Google Cloud **Regional** Storage bucket location in US, EU, and Asia using Google APIs over HTTP(S). Run the ETL process to retrieve the data from each Regional bucket.
 
