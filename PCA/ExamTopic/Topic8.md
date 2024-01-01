@@ -60,24 +60,25 @@
 
 **Question 7**
 
-- C. Directly transfer the files to different Google Cloud Multi-Regional Storage bucket locations in US, EU, and Asia using Google APIs over HTTP(S). Run the ETL process using the data in the bucket. 27%/Me/omerma
+- C 28%, D 72%,
+- C. Directly transfer the files to different Google Cloud **Multi-Regional** Storage bucket locations in US, EU, and Asia using Google APIs over HTTP(S). Run the ETL process using the data in the bucket.
+- D. Directly transfer the files to a different Google Cloud **Regional** Storage bucket location in US, EU, and Asia using Google APIs over HTTP(S). Run the ETL process to retrieve the data from each Regional bucket.
 
-- D. Directly transfer the files to a different Google Cloud Regional Storage bucket location in US, EU, and Asia using Google APIs over HTTP(S). Run the ETL process to retrieve the data from each Regional bucket. 73%
-- **c**
-
-  - Multi-Region Name Multi-Region Description
-  - asia Data centers in Asia
-  - eu Data centers in the European Union1
-  - us Data centers in the United States
-
-- (amxexam 1 year, 6 months ago) multi-region is a large geographic area, such as the United States, that contains two or more geographic places.
-
-1. We all know the issue is with the file sending mechanism.
-2. Looking at the option direct bucket is better than FTP service hosted on VM.
-3. Also, we will look for multi-regional so there is no latency for long-distance customers. Also, the company has 100 countries it is a multi-regional company.
-
-- Hence C
 - https://cloud.google.com/storage/docs/locations#location_recommendations
+
+- Selected Answer: D - No need for a multi-region here, it's D
+- Selected Answer: D - D seems to be the correct answer
+  - Sending Data to all Multi Region Buckets >> Incurs more cost , More Latency
+  - Sending Data only to Regional Bucket >> Incurs less cost , Less Latency
+- Selected Answer: D
+  - D, multi-region increases latency
+- adding to other explanation, source https://cloud.google.com/storage/docs/locations#location_recommendations
+  It's pretty clear that multi-region is good for content serving and not analytics. Only regional and dual regional buckets are good storage for analytics case which exist in the question
+
+- https://cloud.google.com/storage/docs/locations#considerations
+  - Regional: 200 Gbps (per region, per project)
+  - Multi-regional: 50 Gbps (per region, per project)
+- The next question says its regional buckets :-), so D might be the right answer?
 
 <hr />
 
