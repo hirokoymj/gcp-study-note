@@ -61,6 +61,7 @@
 - A. Navigate the predefined dashboards in the Cloud Monitoring workspace, and then add metrics and create alert policies.
 - It's A for me... Create a dashboard for each incident?? I think D isn't a good choice...DiegoMDZ
 - GKE, triage incidents quickly -> monitoring, alert
+- Google Cloud Monitoring provides a set of predefined dashboards that are specific to GKE clusters. These dashboards provide a comprehensive view of the cluster health, including metrics such as CPU utilization, memory usage, and network traffic. These predefined dashboards can be used as a starting point to monitor the clusters and triage incidents quickly.
 
 <hr />
 
@@ -90,7 +91,7 @@ In the backupConfiguration section, you see binaryLogEnabled: true if the change
 
 **Question 109**
 
-- A 52%, B 48%/ME
+- A 52%/me, B 48%/ME
 - A. Use a unique identifier for each individual. Upon a deletion request, delete all rows from BigQuery with this identifier.
 - B. When ingesting new data in BigQuery, run the data through the Data Loss Prevention (DLP) API to identify any personal information. As part of the DLP scan, save the result to Data Catalog. Upon a deletion request, query Data Catalog to find the column with personal information. 47%
 - B. We do not need to delete entire recrod of sports person but some health information collected by association. B would be correct answer. Aditya G
@@ -484,7 +485,8 @@ spec:
 
 - D. Store the data in a Cloud Storage bucket. Design the processing pipelines to retrieve the data from the bucket. Most Voted
 - https://cloud.google.com/architecture/big-data-analytics/analytics-lakehouse
-
+- (MaxNRG)D, store RAW unstructured data as-is in Cloud Storage, and then define how to process it.
+Classical Data Lake ELT (Extract -> Load -> Transform )
 <hr />
 
 **Question 144**
@@ -580,7 +582,7 @@ gsutil hash [-c] [-h] [-m] filename.
 
 **Question 153**
 
-- A. Install Anthos Service Mesh on your cluster. Use the Google Cloud Console to define a Service Level Objective (SLO), and create an alerting policy based on this SLO.
+- A. Install Anthos Service Mesh on your cluster. Use the Google Cloud Console to define a Service Level Objective (SLO), and create an alerting policy based on this SLO. 86%
 - https://cloud.google.com/service-mesh/docs/observability/slo-overview
 - Service Level Objectives (SLOs) are a core tool in the Google service monitoring toolkit.
 - **Anthos Service Mesh** lets you set SLOs for your services, and monitor and alert on your services in terms of those SLOs
@@ -589,7 +591,7 @@ gsutil hash [-c] [-h] [-m] filename.
 
 **Question 154**
 
-- C. Create a second GKE cluster in asia-southeast1, and use kubemci to create a global HTTP(s) load balancer.
+- C. Create a second GKE cluster in asia-southeast1, and use kubemci to create a global HTTP(s) load balancer.76%
 
 - we are introducing a new command-line interface (CLI) tool called **kubemci** to automatically configure ingress using Google Cloud Load Balancer (GCLB) for multi-cluster Kubernetes Engine environments.
 
@@ -602,7 +604,7 @@ $ kubemci create my-mci --ingress=ingress.yaml \
 
 **Question 155**
 
-- D. Create a Compute Engine instance with CPU and memory options similar to your application's current on-premises virtual machine. Install the Cloud Monitoring agent, and deploy the third-party application. Run a load test with normal traffic levels on the application, and follow the Rightsizing Recommendations in the Cloud Console. Most Voted
+- D. Create a Compute Engine instance with CPU and memory options similar to your application's current on-premises virtual machine. Install the Cloud Monitoring agent, and deploy the third-party application. Run a load test with normal traffic levels on the application, and follow the Rightsizing Recommendations in the Cloud Console. 69%
 
 - https://cloud.google.com/migrate/compute-engine/docs/4.9/concepts/planning-a-migration/cloud-instance-rightsizing?hl=en
 - Recommends Compute Engine instances based on the CPU and RAM currently allocated to the on-premises VM.

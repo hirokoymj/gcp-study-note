@@ -84,7 +84,7 @@
 
 **Question 8**
 
-- D. Launch a cluster in each region to preprocess and compress the raw data, then move the data into a region bucket and use a Cloud Dataproc cluster to finish the job. 100%
+- D. Launch a cluster in each region to preprocess and compress the raw data, then move the data into a region bucket and use a Cloud Dataproc cluster to finish the job. 100%/tartar
 
 - There is one thing for sure here. If we move/copy data between continents it will cost us money therefore compressing the data before copying to another region/continent makes sense.
   Preprocessing also makes sense because we probably want to process smaller chunks of data first (remember 100K milage).
@@ -92,9 +92,13 @@
   Therefore I think standard storage option is good to go given lower costs are always better.
 
 - So my answer would be D
+- Dataproc
 
 **Question 9**
+
 D. Have the vehicle's computer compress the data in hourly snapshots, and store it in a GCS Coldline bucket. 100%
+
+<hr />
 
 **Question 10**
 
