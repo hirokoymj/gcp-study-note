@@ -505,24 +505,19 @@ Classical Data Lake ELT (Extract -> Load -> Transform )
 
 **Question 146**
 
-- B. Use the Data Transfer appliance to perform an offline migration. Most Voted
-- https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets
+- B. Use the Data Transfer appliance to perform an offline migration. 46%/ME
+- D. Compress the data and upload it with gsutil -m to enable multi-threaded copy. 45%
+- https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets#options_available_from_google
+- **gcloud storage** command for smaller transfers of on-premises data
+  The gcloud storage command is the standard tool for **small- to medium-sized transfers** over a typical enterprise-scale network, from a private data center or from another cloud provider to Google Cloud. While gcloud storage supports uploading objects up to the maximum Cloud Storage object size, transfers of large objects are more likely to experience failures than short-running transfers. For more information about transferring large objects to Cloud Storage, see Storage Transfer Service for large transfers of on-premises data.
+- 30 hrs transfer but the answer is B(Data Transfer applicance).
+  ![](images/146-2.png)
 
-- B because anything above 1TB, Google recommends Data Transfer appliance
-  not D because, although the Time to transfer using 1Gbps is around 30 hours, the option is not uploading the content straight away, "Compress the data and upload" - compression of 10TB will take time, again, we must decompress the data before it is usable - again a time consuming process!!
+![](images/146-1.png)
 
-<blockquote>
-
-Answer would be Storage Transfer Service
-
-- A: not suitable for 10 TB load.
-- B: It will take around 3 weeks but feasible.
-- C: not suitable for 10 TB load.
-- D: storage object uploads are limited to 5TiB https://cloud.google.com/storage/quotas. not feasible.
-
-</blockquote>
-
-![](146.png)
+- https://cloud.google.com/storage/quotas#objects
+- Maximum object size 5 TiB
+  ![](images/146-3.png)
 
 <hr />
 
@@ -620,7 +615,7 @@ $ kubemci create my-mci --ingress=ingress.yaml \
 
 **Question 157**
 
-- D. Use node affinity labels based on the node name when creating Compute Engine instances in order to host each workload on the correct node.
+- D. Use node affinity labels based on the node name when creating Compute Engine instances in order to host each workload on the correct node. 100%
 - https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#default_affinity_labels
 - D. Afinity should be set at node level, not node-group as every client has its own node in the group
 
@@ -820,12 +815,9 @@ gcloud container clusters update cluster-name --enable-autoscaling \
 
 **Question 175**
 
-- A. Create an aggregated export on the Production folder. Set the log sink to be a Cloud Storage bucket in an operations project.
-
-- Option B is not the correct solution because it creates an aggregated export on the Organization resource, which will capture logs from all projects in the Organization, including those outside the Production folder. omermaH
-
-- Option A is the correct solution because it allows you to create an aggregated export on the Production folder, which will capture logs from all the production projects contained in the folder. Setting the log sink to a Cloud Storage bucket in an operations project will allow the operations team to store the logs in a central location. omermaH
-
+- A. Create an aggregated export on the Production folder. Set the log sink to be a Cloud Storage bucket in an operations project. 98%
+- https://cloud.google.com/logging/docs/export/aggregated_sinks
+- **Create an aggregated sink** - To use aggregated sinks, you create a sink in a Google Cloud organization or folder, and set the sink's includeChildren parameter to True.
 <hr />
 
 **Question 176**
