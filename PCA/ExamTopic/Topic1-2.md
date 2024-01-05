@@ -257,7 +257,7 @@ gcloud compute os-config patch-jobs execute \
 
 **Question 123**
 
-- C. Create a Cloud Filestore instance and mount it in each instance.
+- C. Create a Cloud Filestore instance and mount it in each instance. 96%
 - https://cloud.google.com/storage/docs/gcs-fuse#notes
 
 | Service       | Filesystem |
@@ -265,6 +265,9 @@ gcloud compute os-config patch-jobs execute \
 | Cloud Storage | FUSE       |
 | Filestore     | POSIX      |
 |               | NFS< CIFS> |
+
+- https://cloud.google.com/storage/docs/gcs-fuse#differences-and-limitations
+  - While Cloud Storage FUSE has a file system interface, it is not like an NFS or CIFS file system on the backend. Additionally, Cloud Storage FUSE is not POSIX compliant. For a POSIX file system product in Google Cloud, see Filestore.
 
 <hr />
 
@@ -286,9 +289,9 @@ gcloud compute os-config patch-jobs execute \
 
 **Question 126**
 
-- C. Create a Cloud Build trigger based on the development branch that tests the code, builds the container, and stores it in Container Registry. Create a deployment pipeline that watches for new images and deploys the new image on the development cluster. Ensure only the deployment tool has access to deploy new versions. 100%
+- C. Create a Cloud Build trigger based on the development branch that tests the code, builds the container, and stores it in Container Registry. Create a deployment pipeline that watches for new images and deploys the new image on the development cluster. Ensure only the deployment tool has access to deploy new versions. 100%/TotoroChina
 
-- To automate the build and deployment process for your microservices in the development environment, you can use Cloud Build to set up a trigger that listens for code pushes to the development branch on your GitHub repository. When a code change is pushed to the branch, Cloud Build can test the code, build the container image, and store it in Container Registry. You can then create a deployment pipeline that watches for new images in Container Registry and deploys them automatically on the development cluster. To ensure that only code that has been properly tested and built is deployed in the development environment, you should ensure that only the deployment tool has access to deploy new versions.
+- (AdGlad) Questions say "relevant microservice will be deployed automatically in the development environment." Therefore A and B are out. D says "Rely on Vulnerability Scanning to ensure the code tests succeed." Vulnerability Scanning is not test so D is out. The correct Answer is therefore C.
 
 - Option D is incorrect because relying on Vulnerability Scanning alone is not sufficient to ensure that the code changes are properly tested and built before being deployed in the development environment.
 
@@ -303,8 +306,8 @@ gcloud compute os-config patch-jobs execute \
 
 **Question 128**
 
-- B. Cloud Run and Cloud Bigtable, MamthaSJ
-- Any correct answer must involve Cloud Bigtable over BigQuery since Bigtable is optimized for heavy write loads
+- B. Cloud Run and Cloud Bigtable. 59%/ME/MamthaSJ
+- Any correct answer must involve Cloud Bigtable over BigQuery since Bigtable is optimized for heavy write loads. That leaves B and D. I would suggest B b/c it is lower cost ("The business wants to keep costs low")
 
 **Compute:**
 
@@ -314,7 +317,7 @@ gcloud compute os-config patch-jobs execute \
 **Storage:**
 
 - BigQuery vs. Big Table.
-- 500,000 requests per second it’s not suitable in BQ:
+- 500,000 requests per second it’s **not** suitable in BQ:
 - https://cloud.google.com/bigquery/quotas
 - “A user can make up to 100 API requests per second to an API method”
   ![](images/128.png)
@@ -323,7 +326,7 @@ gcloud compute os-config patch-jobs execute \
 
 **Question 129**
 
-- A. Deploy each microservice as a Deployment. Expose the Deployment in the cluster using a Service, and use the Service DNS name to address it from other microservices within the cluster. MathamSJ
+- A. Deploy each microservice as a Deployment. Expose the Deployment in the cluster using a Service, and use the Service DNS name to address it from other microservices within the cluster. 100%/MathamSJ
 
 **Benefit of using Service**
 
@@ -354,6 +357,8 @@ gcloud compute os-config patch-jobs execute \
 - D. Store static content such as HTML and images in a Cloud Storage bucket. Use Cloud Functions to host the APIs and save the user data in Firestore. 61%
 - Cloud Storage buckets are a good choice for static web content. Cloud storage buckets behave like a CDN Network:
 - https://cloud.google.com/storage/docs/caching
+- (letonphat)IMHO CDN is not storage solution to store static html or image.
+- CDN is not needed here. You don't need to service users globally thus latency and locality isn't critical
 
 <hr />
 
@@ -483,10 +488,11 @@ spec:
 
 **Question 143**
 
-- D. Store the data in a Cloud Storage bucket. Design the processing pipelines to retrieve the data from the bucket. Most Voted
+- D. Store the data in a Cloud Storage bucket. Design the processing pipelines to retrieve the data from the bucket. 100%
 - https://cloud.google.com/architecture/big-data-analytics/analytics-lakehouse
 - (MaxNRG)D, store RAW unstructured data as-is in Cloud Storage, and then define how to process it.
-Classical Data Lake ELT (Extract -> Load -> Transform )
+  Classical Data Lake ELT (Extract -> Load -> Transform )
+
 <hr />
 
 **Question 144**
@@ -534,7 +540,8 @@ Classical Data Lake ELT (Extract -> Load -> Transform )
 - The answer is easy. It says keys must be left outside of Google Cloud.
   This automatically eliminates A / B.
   Now the C option says decrypts before storing it in BigQuery which the point is to encrypt the data while been in BigQuery, D is the only possible answer.
-- If you want to control encryption yourself, you can use customer-managed encryption keys (CMEK) for BigQuery. https://cloud.google.com/bigquery/docs/customer-managed-encryption
+- If you want to control encryption yourself, you can use customer-managed encryption keys (CMEK) for BigQuery.
+- https://cloud.google.com/bigquery/docs/customer-managed-encryption
 
 <hr />
 
@@ -550,6 +557,9 @@ Classical Data Lake ELT (Extract -> Load -> Transform )
 
 - A. Configure the GKE cluster as a private cluster, and configure Cloud NAT Gateway for the cluster subnet. (100%)
 - https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#workloads_on_private_clusters_unable_to_access_internet
+  - Pods in private GKE clusters cannot access the internet.
+  - If subnet secondary IP address range used for Pods in the cluster is not configured on Cloud NAT gateway, the Pods cannot connect to the internet as they don't have an external IP address configured for Cloud NAT gateway.
+  - Ensure you configure the Cloud NAT gateway to apply at least the following subnet IP address ranges for the subnet that your cluster uses:
 
 <hr />
 
@@ -686,21 +696,16 @@ You would see below and email address
 
 **Question 163**
 
-- B. Mount a Local SSD volume as the backup location. After the backup is complete, use gsutil to move the backup to Google Cloud Storage.
-- Option B is the most appropriate solution in this case. Mounting a Local SSD volume as the backup location will allow the backups to be taken quickly and efficiently, as Local SSDs have very high I/O performance and low latencies. Additionally, using gsutil to move the backups to Google Cloud Storage after they have been taken will provide a secure and durable storage location for the backups. omermaH
-
-- A, configuring a cron job to use the gcloud tool to take regular backups using persistent disk snapshots, may not be the most efficient option because persistent disks have relatively lower I/O performance compared to Local SSDs.
-
-- C, using gcsfuse to mount a Google Cloud Storage bucket as a volume directly on the instance and writing the backups to the mounted location using mysqldump, may not be the most efficient option because the backups would need to be transferred over the network, which could impact the performance of the backups.
-
-- D, mounting additional persistent disk volumes onto each VM instance in a RAID10 array and using LVM to create snapshots to send to Cloud Storage, may not be the most efficient option because it would require additional disk space and setup, and LVM snapshots may not be as fast as Local SSDs for taking backups.
+- B. Mount a Local SSD volume as the backup location. After the backup is complete, use gsutil to move the backup to Google Cloud Storage. 73%/tartar
+- I think it's B. If you use a tool like GCFUSE it will write immediatly to GCS which is a cost benefit because you don't need intermediate storage. In this case however "Quickly as possible" key for understanding. GCFUSE will write to GCS which is much slower than writing directly to an added SSD. During the write to GCS it would also execute reads for a longer period on the production database. Therefor writing to the extra SSD would be my recommended solution. Offloading from the SSD to GCS would not impact the running database because the data is already separated.
+- https://cloud.google.com/compute/docs/disks/local-ssd#formatandmount
+- Yes they can. That's precisely why it makes Local SSD a good scratch / temp storage with very high IOPS.
 
 <hr />
 
 **Question 164**
 
-- ABF 56%
-- ADF, omermaH
+- ABF 46%/ME
 - A. Ensure that the load tests validate the performance of Cloud Bigtable
 - B. Create a separate Google Cloud project to use for the load-testing environment
 - F. Instrument the load-testing tool and the target services with detailed logging and metrics collection
@@ -724,12 +729,12 @@ You would see below and email address
 
 **Question 166**
 
-- BE 45% omermaH/ME, DE 37%
+- BE 45%/ME
 - B. Use source code security analyzers as part of the CI/CD pipeline Most Vot
 - E. Run a vulnerability security scanner as part of your continuous-integration /continuous-delivery (CI/CD) pipeline
-- D. Enable code signing and a trusted binary repository integrated with your CI/CD pipeline Most Voted
+- D. Enable code signing and a trusted binary repository integrated with your CI/CD pipeline
 - BE - For me, Option D, enabling code signing and a trusted binary repository integrated with your CI/CD pipeline. It's to ensure that the correct code is put in production but not link to security errors.
-
+- (PeppaPig)Code signing only verifies the author. In other words it only check who you are, but not what have you done
 - Polaris, BlackDuck, etc
 - https://medium.com/@manjula.aw/nodejs-security-tools-de0d0c937ec0
 - Static Application Security Testing (SAST) tools analyze the source code to find possible vulnerable codes.
@@ -859,8 +864,16 @@ gcloud container clusters update cluster-name --enable-autoscaling \
 
 **Question 181**
 
-- C. Set up a Cloud Monitoring sink that triggers the Cloud Function after an instance removal log message arrives in Cloud Logging. 83%, omermaH
-- Actually C is correct but Wrong also in a way .. Sink cannot trigger a cloud function directly. It need Pub/Sub which then will trigger Cloud Function. Tesla
+- C. Set up a Cloud Monitoring sink that triggers the Cloud Function after an instance removal log message arrives in Cloud Logging. 83%/ME
+- (Tesla)Actually C is correct but Wrong also in a way .. Sink cannot trigger a cloud function directly. It need Pub/Sub which then will trigger Cloud Function.
+- C is the answer as shutdown script is run based on best effort and not a reliable method.
+
+https://cloud.google.com/compute/docs/shutdownscript#limitations
+
+- Compute Engine executes shutdown scripts only on a best-effort basis. In rare cases
+- Compute Engine cannot guarantee that the shutdown script will complete.
+
+- (kuboraam)C would be the cleanest solution. Although at this time, Cloud Monitoring sink cannot trigger a cloud function directly, it can be done via Pub/Sub. Still better than solution D.
 
 <hr />
 
@@ -873,14 +886,13 @@ gcloud container clusters update cluster-name --enable-autoscaling \
 
 **Question 183**
 
-- C. Set up a Cloud VPN gateway in each Shared VPC and peer Cloud VPNs. 79%, omermaH
+- C. Set up a Cloud VPN gateway in each Shared VPC and peer Cloud VPNs. 83%
+- No subnet IP range overlap across peered VPC networks
+- [No subnet IP range overlap across peered VPC netw](https://cloud.google.com/vpc/docs/using-vpc-peering#no_subnet_ip_range_overlap_across_peered_networks)
+- No subnet IP range can overlap with another subnet IP range in a peered VPC network.
 - https://cloud.google.com/architecture/best-practices-vpc-design#shared-service
-- https://cloud.google.com/vpc/docs/using-vpc-peering#creating_multiple_peering_connections
-- Two orgs, each shared VPC, overlapping, -> No VPC peering
-- https://cloud.google.com/architecture/best-practices-vpc-design#shared-service
-- Cloud VPN is another alternative. Because Cloud VPN establishes reachability through managed IPsec tunnels, it doesn't have the aggregate limits of VPC Network Peering. Cloud VPN uses a VPN Gateway for connectivity and doesn't consider the aggregate resource use of the IPsec peer. The drawbacks of Cloud VPN include increased costs (VPN tunnels and traffic egress), management overhead required to maintain tunnels, and the performance overhead of IPsec.
-
-![](images/183.png)
+  ![](images/183.png)
+- Shared VPC 1, Shared VPC 2, subnet overlapping -> Cloud VPN gateway
 
 <hr />
 
@@ -912,25 +924,13 @@ gcloud container clusters update cluster-name --enable-autoscaling \
 
 **Question 187**
 
-- B 73%, D 23% omermaH
-- D. 1. Activate billing export into BigQuery. 2. Perform a BigQuery query on the billing table to extract the information you need. 23%, omermaH
-
-<blockquote>
-
-- Go to the Billing page of your Google Cloud project.
-- In the top left and select "billing Export."
-- Follow the prompts to enable billing export and specify the BigQuery dataset and table where you want the data to be exported.
-- Perform a BigQuery query on the billing table: Once you have enabled billing export and the data has started flowing into the specified BigQuery table, you can run a query on the table to extract the information you need. For example, you could use a query like the following to get the total cost of queries split by user:
-
-```
-SELECT user, SUM(cost) as total_cost
-FROM `your-project.your-dataset.billing_export`
-GROUP BY user
-ORDER BY total_cost DESC
-```
-
-</blockquote>
-
+- B 73%/ME, D 23%
+- B. 1. Create a Cloud Logging sink to export BigQuery data access logs to BigQuery. 2. Perform a BigQuery query on the generated table to extract the information you need.
+- D. 1. Activate billing export into BigQuery. 2. Perform a BigQuery query on the billing table to extract the information you need.
+- I choose B because of "real-time". Otherwise, D seems to be the most relevant and flexible.
+- B is the correct answer https://cloud.google.com/blog/products/data-analytics/taking-a-practical-approach-to-bigquery-cost-monitoring
+  A is incorrect as there is not billing page for a project, its billing account that handles all org billing.
+- Logging Sink -> BQ -> Data Studio
 <hr />
 
 **Question 188**
@@ -938,6 +938,8 @@ ORDER BY total_cost DESC
 - A. Set up a network peering between vpc-a and vpc-b. 100%
 - https://cloud.google.com/vpc/docs/vpc-peering
   > Google Cloud VPC Network Peering allows internal IP address connectivity across two Virtual Private Cloud (VPC) networks regardless of whether they belong to the same project or the same organization.
+- B is the correct answer https://cloud.google.com/blog/products/data-analytics/taking-a-practical-approach-to-bigquery-cost-monitoring
+  A is incorrect as there is not billing page for a project, its billing account that handles all org billing.
 
 <hr />
 
@@ -950,19 +952,14 @@ ORDER BY total_cost DESC
 
 **Question 190**
 
-- D. Change the filter to metric.label.state = 'free' and the Target utilization to 20. 16%, omermaH
+- C 55%/ME, A 29%
+- A. Change the Target type to DELTA_PER_MINUTE. Most Voted
+- C. Change the filter to metric.label.state = 'used' AND metric.label.state = 'buffered' AND metric.label.state = 'cached' AND metric.label.state = 'slab'.
+
 - free is an available state filter for the percent_used metric. MortaW
 - https://cloud.google.com/compute/docs/autoscaler/scaling-cloud-monitoring-metrics#autoscale_based_on_memory_usage
 
-<blockquote>
-[AMEJack]We have to think in different way.
-
-- Option A: TARGET_TYPE: the autoscaler calculates the average rate of growth per minute and compares that to the utilization target.
-  This will not fit question requirments, only the memory utilization growth will be compared with the target value.
-- Option C: Adding all the memory cached, buffer, used and free will always be constant. So, this will also not fit the question requirements.
-- Option D: I want the "free" memory utilization will be around 20. This will solve the problem.
-
-</blockquote>
+- VM, autoscale, memory usage over 80%, monitoring
 
 <hr />
 
