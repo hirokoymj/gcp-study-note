@@ -150,8 +150,11 @@
 
 **Question 13**
 
-- C. Roll back to an earlier known good release initially, then use Stackdriver Trace and Logging to diagnose the problem in a development/test/staging environment 95%
-- App engine gives flexibility to roll back to previous version. Priority should be restoring the services to working state. And trace the issue using Stackdriver where the logs are already captured from previous failed service.
+- C. Roll back to an earlier known good release initially, then use Stackdriver Trace and Logging to diagnose the problem in a **development/test/staging** environment 95%/tartar
+- (AdityaGupta)The issue is not with ISP (A), Not an issue with Google (B).
+  Rollback must be done as mitigation, but testing should be done in **Non-Prod environments** (C), not on prod environment (D).
+
+Hence C is correct answer.
 
 <hr />
 
@@ -311,8 +314,9 @@ FROM node:19-slim
 
 **Question 25**
 
-- D. Implement routinely scheduled failovers of your databases 64％
-- Option D, implementing routinely scheduled failovers of your databases, is the best option in this scenario. This ensures that if the primary database crashes, the replica will automatically be promoted to the master and take over database operations, preventing any downtime or data loss. This can be achieved by setting up automatic failover mechanisms or by manually promoting the replica to the master as soon as the primary database goes down.
+- D. Implement routinely scheduled failovers of your databases 64％/tartar
+- (AWS_Sam)The correct answer is D
+  The question is asking how to avoid the situation of not failing over. The answer is to test the failover procedure. The question does *NOT*ask about what happens in the future and whether the secondary node is large enough.
 
 <hr />
 
@@ -343,6 +347,8 @@ FROM node:19-slim
 **Question 28**
 
 - B. Enable Logging export to Google BigQuery and use ACLs and views to scope the data shared with the auditor. 67%/tartar
+- https://cloud.google.com/iam/docs/job-functions/auditing#scenario_external_auditors
+- In this scenario, audit logs for an organization are aggregated and exported to a central sink location. A third-party auditor is granted access several times a year to review the organization's audit logs. The auditor is not authorized to view PII data in the Admin Activity logs. To comply with this requirement, a dashboard is available that provides access to the historic logs stored in BigQuery, and on request, to the Cloud Logging Admin Activity logs.
 
 <hr />
 
@@ -762,6 +768,12 @@ await datastore.upsert(entity);
 - A. Supply the encryption key in a .boto configuration file. Use gsutil to upload the files. 71%/tartar
 - https://cloud.google.com/storage/docs/encryption/using-customer-supplied-keys#gsutil
 
+- Add the following option to the [GSUtil] section of your **boto configuration file**:
+
+```
+encryption_key = YOUR_ENCRYPTION_KEY
+```
+
 <hr />
 
 **Question 66**
@@ -972,7 +984,11 @@ ALTER TABLE mydataset.mytable
 - B. Provision preemptible VMs to reduce cost. Disable and then discontinue use of all GCP services and APIs that are not HIPAA-compliant. 94%/tartar
 
 - https://cloud.google.com/security/compliance/hipaa#unique_features
+
   > Google Cloud's security practices allow us to have a HIPAA BAA covering Google Cloud's entire infrastructure, not a set aside portion of our cloud. As a result, you are not restricted to a specific region which has scalability, operational and architectural benefits. You can also benefit from multi-regional service redundancy as well as the ability to use **Preemptible VMs to reduce costs**.
+
+- https://cloud.google.com/compute/docs/instances/preemptible#what_is_a_preemptible_instance
+- Preemptible VM instances are available at much lower price—a 60-91% discount—compared to the price of standard VMs. However, Compute Engine might stop (preempt) these instances if **it needs to reclaim the compute capacity for allocation to other VMs**. Preemptible instances use excess Compute Engine capacity, so their availability varies with usage.
 
 <hr />
 
@@ -986,9 +1002,8 @@ ALTER TABLE mydataset.mytable
 **Question 83**
 
 - D. Use Cloud Audit Logging to view Cloud Audit Logs, and create a filter on the query operation to get the required information. 66%/tartar
-- https://cloud.google.com/bigquery/docs/reference/auditlogs#overview
-- Cloud Audit Logs are a collection of logs provided by Google Cloud that provide insight into operational concerns related to your use of Google Cloud services. This page provides details about BigQuery specific log information, and it demonstrates how to use BigQuery to analyze logged activity. For more information, see Introduction to audit logs in BigQuery.
-- https://cloud.google.com/bigquery/docs/introduction-audit-workloads
+- https://cloud.google.com/bigquery/docs/reference/auditlogs#stackdriver_logging_exports
+- BigQuery automatically sends audit logs to Cloud Logging.
 
 ```json
 {

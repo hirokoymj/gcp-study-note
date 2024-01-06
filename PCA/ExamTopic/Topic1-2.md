@@ -61,7 +61,8 @@
 - A. Navigate the predefined dashboards in the Cloud Monitoring workspace, and then add metrics and create alert policies.
 - It's A for me... Create a dashboard for each incident?? I think D isn't a good choice...DiegoMDZ
 - GKE, triage incidents quickly -> monitoring, alert
-- Google Cloud Monitoring provides a set of predefined dashboards that are specific to GKE clusters. These dashboards provide a comprehensive view of the cluster health, including metrics such as CPU utilization, memory usage, and network traffic. These predefined dashboards can be used as a starting point to monitor the clusters and triage incidents quickly.
+- (JC0926)Google Cloud Monitoring provides a set of predefined dashboards that are specific to GKE clusters. These dashboards provide a comprehensive view of the cluster health, including metrics such as CPU utilization, memory usage, and network traffic. These predefined dashboards can be used as a starting point to monitor the clusters and triage incidents quickly.
+- https://cloud.google.com/stackdriver/docs/solutions/gke/observing
 
 <hr />
 
@@ -91,10 +92,10 @@ In the backupConfiguration section, you see binaryLogEnabled: true if the change
 
 **Question 109**
 
-- A 52%/me, B 48%/ME
+- A 52%, B 48%/ME
 - A. Use a unique identifier for each individual. Upon a deletion request, delete all rows from BigQuery with this identifier.
 - B. When ingesting new data in BigQuery, run the data through the Data Loss Prevention (DLP) API to identify any personal information. As part of the DLP scan, save the result to Data Catalog. Upon a deletion request, query Data Catalog to find the column with personal information. 47%
-- B. We do not need to delete entire recrod of sports person but some health information collected by association. B would be correct answer. Aditya G
+- (Aditya G) B - We do not need to delete entire recrod of sports person but some health information collected by association. B would be correct answer.
 
 <hr />
 
